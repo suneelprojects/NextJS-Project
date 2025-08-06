@@ -1,0 +1,88 @@
+
+.pathToExcelContainer{
+    background-color: #553cdf;
+    padding: 135px 0px 135px 0px;
+  }
+  .pathToExcelDiv{
+    height: 64px;
+    width: 165px!important;
+    border-radius: 5px;
+    background-color: #553cdf!important;
+    display: flex;
+    align-items: center;
+    border: rgb(172, 170, 170) 1px solid;
+  }
+  .pathToExcelRowDiv{
+    column-gap: 25px!important;
+  }
+ 
+  .pathToExcelDiv img{
+    width: 32px;
+    height: 34px;
+  }
+  .pathToExcelDiv p{
+    width: 83px;
+    color: white;
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+  
+  .whiteBtn button{
+    width: 226px;
+    height: 55px;
+    background-color: white;
+    color: #553cdf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .whiteBtn button:hover{
+    background-color: #553cdf;
+    color: white;
+    border: solid 1px white;
+  }
+  .leftSideImg{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    place-items: center;
+    column-gap: 10px;
+  }
+  .leftSideImg Image{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  .leftSideImg .leftImg{
+    grid-area: 1/1;
+    border-radius: 25px!important;
+  }
+  
+  .rightSideImg p{
+    color: white!important;
+  }
+  .rightSideImg span Image{
+    width: 35px!important;
+  }
+  
+  @media (max-width:400px){
+   
+    .pathToExcelDiv{
+      width: 140px!important;
+      height: 64px;
+    }
+    .pathToExcelDiv p{
+      width: 83px;
+      color: white;
+      margin-top: 15px;
+      margin-left: 10px;
+    }
+  }
+  @media (max-width:500px){
+    .pathToExcelRowDiv{
+      column-gap: 0px!important;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  

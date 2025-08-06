@@ -1,0 +1,438 @@
+.statcard {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid #e0e0e0; */
+  border-radius: 8px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  /* background: linear-gradient(to bottom right, #ffffff, #f8f9fa); */
+  transition: transform 0.2s ease-in-out;
+}
+
+.iconcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.statcard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+.hexagon {
+  /* background-color: #52de12; */
+  color: white;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* * @format */
+.testimonials {
+  position: relative;
+  /* top: 170px; */
+}
+.card {
+  border: 1px solid #543cdf49;
+}
+.header2 {
+  color: black;
+  font-weight: 550;
+  font-size: 56px;
+}
+
+.header1 {
+  color: #707070;
+  font-weight: 700;
+  font-size: 32px;
+  margin: 5px 0;
+}
+
+.headerContainer {
+  width: 100%;
+  height: auto;
+  /* margin-bottom: -150px; */
+  overflow: hidden;
+  position: relative;
+}
+
+.highlightedWord {
+  color: #ff5003;
+  font-weight: bold;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* .contentContainer {
+  background: white;
+  width: 75%;
+  height: 70vh;
+  margin: 15px auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: start;
+  padding: 70px 50px 30px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0px 15px 25px 10px rgba(174, 174, 174, 0.582);
+} */
+
+.FollowerImage {
+  width: 150px;
+  height: auto;
+}
+
+.symbolsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.symbolItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 10px;
+}
+
+.symbolText {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #2d2d2d;
+}
+.symbol {
+  width: 32px;
+  height: 32px;
+}
+
+.EnrollButtonContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 999;
+}
+
+.FollowerStars {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  width: 20px;
+  height: auto;
+}
+
+.FollowerCount {
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 10px;
+}
+
+.HeaderPicture {
+  width: 100%;
+  position: relative;
+  /* top: -20px; */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.headerImage {
+  /* width: 100%; */
+  height: auto;
+  border-radius: 30px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7), 0 2px 6px rgba(0, 0, 0, 0.7) !important;
+  margin-bottom: 20px;
+}
+
+.headerText {
+  text-align: left;
+  font-family: sans-serif;
+  height: auto;
+  color: black;
+  font-size: 40px;
+  font-weight: 700;
+}
+.professorTitle {
+  margin-top: -10px;
+}
+
+.professorTitle h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0;
+}
+
+.professorTitle p {
+  font-size: 1rem;
+  color: #666;
+  margin: 5px 0 0 0;
+}
+
+/* Scroll Section */
+.scrollSection {
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  /* top: 10px; */
+  /* height: 180px; */
+}
+
+.scrollSection h5 {
+  color: #333;
+  padding-top: 20px !important;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.logo {
+  width: 250px;
+  padding-left: 80px;
+  /* height:auto; */
+}
+
+.logoContainer {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoScroll1,
+.logoScroll2 {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 30px;
+}
+
+.logoScroll1 {
+  animation: scroll-left 20s linear infinite;
+}
+
+.logoScroll2 {
+  animation: scroll-right 20s linear infinite;
+}
+
+.companyName {
+  width: 100px;
+  margin: 0 30px;
+}
+
+/* Keyframes for Scroll Animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* media queries */
+@media(max-width:376px){
+  .EnrollButtonContent > .Button{
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .card {
+    padding: 10px !important;
+  }
+  .headerText {
+    font-size: 20px;
+    text-align: center;
+  }
+  .symbolText {
+    font-size: 12px;
+  }
+  .symbol,
+  .symbol1 {
+    width: 24px;
+    height: 24px;
+  }
+  .FollowerImage {
+    width: 120px;
+  }
+  .star {
+    width: 15px;
+    height: auto;
+  }
+  .FollowerCount {
+    font-size: 0.7rem;
+    color: #333;
+    margin-top: 5px;
+    text-align: center;
+  }
+  .logo {
+  width: 150px;
+  padding-left: 30px;
+  /* height:auto; */
+}
+
+.logoContainer {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoScroll1,
+.logoScroll2 {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 15px;
+}
+
+.logoScroll1 {
+  animation: scroll-left 10s linear infinite;
+}
+
+.logoScroll2 {
+  animation: scroll-right 10s linear infinite;
+}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .headerText {
+    font-size: 40px;
+    text-align: center;
+  }
+  .symbolText {
+    font-size: 18px;
+  }
+  .symbol,
+  .symbol1 {
+    width: 36px;
+    height: 36px;
+  }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .headerText {
+    font-size: 24px;
+  }
+  .card {
+    padding: 20px !important;
+  }
+  .FollowerImage {
+    width: 120px;
+  }
+  .star {
+    width: 15px;
+    height: auto;
+  }
+  .FollowerCount {
+    font-size: 0.7rem;
+    color: #333;
+    margin-top: 5px;
+    text-align: center;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .headerText {
+    font-size: 28px;
+  }
+  .FollowerImage {
+    width: 120px;
+  }
+  .star {
+    width: 15px;
+    height: auto;
+  }
+  .FollowerCount {
+    font-size: 0.7rem;
+    color: #333;
+    margin-top: 5px;
+    text-align: center;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  .headerText {
+    font-size: 28px;
+  }
+  .symbol,
+  .symbol1 {
+    width: 24px;
+    height: 24px;
+  }
+  .symbolText {
+    font-size: 12px;
+  }
+  .FollowerImage {
+    width: 100px;
+  }
+  .star {
+    width: 15px;
+    height: auto;
+  }
+  .FollowerCount {
+    font-size: 0.7rem;
+    color: #333;
+    margin-top: 5px;
+    text-align: center;
+  }
+}
+
+/* XXL devices (very large screens) */
+@media (min-width: 1400px) {
+  .headerText {
+    font-size: 40px;
+  }
+}

@@ -1,0 +1,244 @@
+.buttonStyle {
+    align-items: center;
+    background: #ffffff;
+    border: 0 solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    display: inline-flex;
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 45px;
+    justify-content: center;
+    line-height: 24px;
+    overflow-wrap: break-word;
+    padding: 20px;
+    text-decoration: none;
+    width: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  .buttonStyle:hover {
+    transform: scale(1.05); /* Slightly enlarge the button */
+    transition: all 0.3s ease;
+  }
+  
+  .navBarSticky {
+    position: sticky;
+    top: 0;
+    white-space: nowrap !important;
+    font-size: 16px;
+    line-height: 26px;
+    z-index: 999;
+    font-family: "Hind", sans-serif;
+    font-style: normal;
+    /* background-color: #543cdf2f; */
+  }
+  
+  .navbarTogglerBar {
+    border: none !important;
+    outline: none !important;
+    position: absolute;
+    right: 0px !important;
+  }
+  .navbarTogglerBar:focus {
+    outline: none !important;
+    border: none !important;
+  }
+  .containerfluidForNav {
+    padding-left: 45px !important;
+    padding-right: 45px !important;
+    /* height: auto; */
+    /* background-color: red; */
+  }
+  
+  /* second nav css start */
+  
+  @media (max-width: 992px) {
+    .offCanvasContaniner .offCanvasContaninerHeader {
+      background-color: #553cdf !important;
+      position: absolute;
+      left: 0;
+    }
+    .offCanvasContaniner {
+      font-size: 18.4px;
+      line-height: 26px;
+      font-weight: 500;
+      color: #221859;
+    }
+    .offCanvasContaniner ul {
+      margin-top: 30px;
+      margin-left: 30px;
+      gap: 16px;
+    }
+  }
+  .spLogo {
+    height: auto;
+    width: 350px;
+  }
+  
+ 
+  .selectDropDown {
+    border-radius: 5px;
+    border: #553cdf 1px solid !important;
+    color: #553cdf !important;
+    width: 92px !important;
+    font-size: smaller;
+    height: 30px;
+    outline: none;
+  }
+  
+  /* navBarList code starts */
+  .navBarList .NavLinkForHover {
+    font-weight: 500;
+    color: #1f1f25;
+  }
+  .navBarList ul li .NavLinkForHover:hover {
+    color: #553cdf;
+  }
+  
+  /* navBarList code ends */
+  /* second nav css ends */
+  
+  
+ 
+  
+  @media (min-width: 480px) {
+    .selectDropDown {
+      margin-left: 40px;
+    }
+  }
+  
+  @media (min-width: 990px) {
+    .selectDropDown {
+      display: none !important;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .buttonStyle {
+      padding: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      width: 90px;
+    }
+  }
+  
+  @media (max-width: 1250px) {
+    .containerfluidForNav {
+      padding-left: 5px !important;
+      padding-right: 10px !important;
+    }
+  }
+  @media (max-width: 340px) {
+    .containerfluidForNav {
+      padding-left: 1px !important;
+      padding-right: 1px !important;
+    }
+  
+  }
+  
+  @media (max-width: 375px) {
+    .spLogo {
+      height: auto;
+      width: 170px !important;
+    }
+  
+  }
+  
+  @media (min-width: 360.6px) and (max-width: 464px) {
+    .spLogo {
+      height: auto;
+      width: 190px!important;
+    }
+    .selectDropDown {
+      max-width: 98px !important;
+    }
+    .selectDropDown option{
+      font-size:14px !important;
+    }
+  
+  }
+  
+  @media (min-width: 330px) and (max-width: 464px) {
+    .containerfluidForNav {
+      padding-left: 9px !important;
+    }
+  }
+  
+  @media (min-width: 464px) and (max-width: 768px) {
+    .containerfluidForNav {
+      padding-left: 15px !important;
+      padding-right: 15px !important;
+    }
+    .spLogo {
+      height: auto;
+      width: 250px;
+    }
+
+  }
+  @media (min-width: 768px) {
+   
+    .navBarSticky {
+      padding: 8px 0px 8px 0px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .dropdown-menu {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+  
+    .dropdown-item {
+      flex: 1; /* Allow items to take equal space */
+      text-align: center; /* Center-align the text */
+      padding: 10px; /* Add some padding for better touch targets */
+    }
+  }
+  
+
+  @media (max-width: 992px) {
+    .spLogo {
+      width: 270px;
+    }
+  }
+   @media (min-width: 992px) and (max-width:1200px){
+    .navBarList{
+      font-size: 13px;
+    }
+    .buttonStyle{
+      width: auto;
+    }
+    .spLogo {
+      width: 280px;
+    }
+   }
+   @media (min-width: 1200px) and (max-width:1400px){
+    .navBarList{
+      font-size: 15px;
+    }
+    .buttonStyle{
+      width: auto;
+    }
+  }
+   @media (min-width:1500px) {
+    .offCanvasContaniner ul {
+    gap: 16px;
+    }
+   }
+
+   @media (max-width:310px) {
+    .selectDropDown{
+      display: none;
+    }
+    .spLogo{
+      width: 190px!important;
+    }
+   }

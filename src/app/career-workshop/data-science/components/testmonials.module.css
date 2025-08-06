@@ -1,0 +1,108 @@
+.testimonials {
+    background-color: #eef5ff;
+    padding: 60px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.header {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1a3a6b;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.scrollContainer {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.scrollContainer::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+.cardsWrapper {
+    display: flex;
+    gap: 30px; /* Adjust gap between cards */
+}
+
+.testimonialCard {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 380px;
+    min-width: 380px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonialCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.cardContent {
+    position: relative;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.quoteStart, .quoteEnd {
+    color: #4a90e2;
+    font-size: 1.8rem;
+    position: absolute;
+}
+
+.quoteStart {
+    top: -10px;
+    left: -10px;
+}
+
+.quoteEnd {
+    bottom: -10px;
+    right: -10px;
+}
+
+.content p {
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.authorSection {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authorInfo {
+    text-align: center;
+}
+
+.authorName {
+    font-weight: bold;
+    color: #1a3a6b;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.stars {
+    color: #ffd700;
+    margin-top: 5px;
+    font-size: 1rem;
+} 

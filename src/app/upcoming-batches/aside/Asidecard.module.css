@@ -1,0 +1,36 @@
+/** @format */
+
+.icon {
+  border-radius: 8px;
+  width: 50px;
+  height: 50px;
+  background: #fffdfd;
+}
+.iconImg{
+   width: 40px;
+   height: 40px;
+   border-radius: 8px;
+}
+.rating{
+  border-radius: 8px;
+  background-color: #f5f5f5;
+}
+@media(max-width:340px) {
+  .font{
+    font-size: 12px;
+  }
+  .icon {
+    border-radius: 8px;
+    width: 45px;
+    height: 45px;
+    background: #fffdfd;
+  }
+  .iconImg{
+    width: 40px;
+    height: auto;
+  }
+  .fontSpam{
+    font-size: 12px;
+  }
+
+}

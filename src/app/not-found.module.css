@@ -1,0 +1,237 @@
+.notFoundFullPage {
+  /* position: relative; */
+  inset: 0;
+  width: 100vw;
+  /* height: 100vh; */
+  /* min-height: 100vh; */
+  min-width: 100vw;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #6c47ff54 0%, #0748ee49 50%, #f5f7fa 100%);
+  z-index: 9999;
+}
+
+.visualAccent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 70% 30%, #fff 0%, #e6e0ff 40%, transparent 80%),
+    radial-gradient(circle at 20% 80%, #e0e7ff 0%, #fff 60%, transparent 100%);
+  opacity: 0.7;
+}
+
+.notFoundContentWide {
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding: 0;
+}
+
+.notFoundTitleBig {
+  font-size: 10vw;
+  font-weight: 900;
+  color: #6c47ff;
+  letter-spacing: -6px;
+  text-shadow: 0 4px 32px rgba(108, 71, 255, 0.18);
+  margin-bottom: 0px;
+  line-height: 1;
+}
+
+.notFoundHeading {
+  font-size: 2.5vw;
+  font-weight: 700;
+  color: #382796;
+  margin-bottom: 12px;
+  margin-top: -10px;
+  letter-spacing: -1px;
+  text-align: center;
+}
+
+.notFoundTextWide {
+  font-size: 1.2vw;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 2vw;
+  text-align: center;
+  opacity: 0.95;
+  max-width: 700px;
+}
+
+.destinationsGridWide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+  justify-content: center;
+  margin-bottom: 2.5vw;
+  width: 100vw;
+  max-width: 900px;
+}
+
+.destinationCardWide {
+  background: linear-gradient(120deg, #f5f7fa 60%, #e6e0ff 100%);
+  border: 2px solid #ece9f7;
+  border-radius: 1.2vw;
+  box-shadow: 0 2px 16px rgba(108, 71, 255, 0.09);
+  padding: 2vw 2.5vw 1.5vw 2.5vw;
+  min-width: 220px;
+  max-width: 320px;
+  text-align: left;
+  text-decoration: none;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: box-shadow 0.2s, border 0.2s, transform 0.2s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 260px;
+}
+.destinationCardWide:hover {
+  border: 2px solid #6c47ff;
+  box-shadow: 0 8px 32px rgba(108, 71, 255, 0.18);
+  transform: translateY(-2px) scale(1.04);
+  background: linear-gradient(120deg, #e6e0ff 0%, #f5f7fa 100%);
+}
+.destinationIcon {
+  margin-bottom: 1vw;
+}
+.icon {
+  width: 2.2vw;
+  height: 2.2vw;
+  min-width: 32px;
+  min-height: 32px;
+}
+.destinationTitle {
+  font-size: 1.2vw;
+  font-weight: 700;
+  margin-bottom: 2px;
+  color: #6c47ff;
+}
+.destinationDesc {
+  font-size: 1vw;
+  color: #666;
+  margin-bottom: 10px;
+}
+.destinationLabel {
+  font-size: 1vw;
+  color: #6c47ff;
+  font-weight: 600;
+  margin-top: auto;
+  transition: color 0.2s;
+}
+.destinationCardWide:hover .destinationLabel {
+  color: #382796;
+}
+
+.backHomeBtnWide {
+  display: inline-block;
+  background: linear-gradient(90deg, #6c47ff 0%, #553cdf 100%);
+  border: none;
+  color: #fff;
+  padding: 1vw 3vw;
+  font-size: 1.3vw;
+  font-weight: 800;
+  border-radius: 0.7vw;
+  text-decoration: none;
+  margin-top: 1vw;
+  box-shadow: 0 2px 12px rgba(108, 71, 255, 0.18);
+  transition: background 0.2s, transform 0.2s;
+  letter-spacing: 0.5px;
+}
+.backHomeBtnWide:hover {
+  background: linear-gradient(90deg, #553cdf 0%, #6c47ff 100%);
+  transform: scale(1.07);
+}
+
+@media (max-width: 900px) {
+  .notFoundTitleBig {
+    font-size: 12vw;
+  }
+  .notFoundHeading {
+    font-size: 4vw;
+  }
+  .notFoundTextWide {
+    font-size: 2.5vw;
+  }
+  .destinationsGridWide {
+    gap: 3vw;
+  }
+  .destinationCardWide {
+    min-width: 140px;
+    max-width: 98vw;
+    padding: 3vw 2vw 2vw 2vw;
+  }
+  .icon {
+    width: 6vw;
+    height: 6vw;
+  }
+  .destinationTitle {
+    font-size: 2.5vw;
+  }
+  .destinationDesc {
+    font-size: 2vw;
+  }
+  .destinationLabel {
+    font-size: 2vw;
+  }
+  .backHomeBtnWide {
+    font-size: 2.5vw;
+    padding: 2vw 6vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .notFoundContentWide {
+    padding: 0;
+  }
+  .notFoundTitleBig {
+    font-size: 16vw;
+  }
+  .notFoundHeading {
+    font-size: 6vw;
+  }
+  .notFoundTextWide {
+    font-size: 3.5vw;
+    max-width: 98vw;
+  }
+  .destinationsGridWide {
+    gap: 4vw;
+    flex-direction: column;
+    align-items: center;
+    max-width: 98vw;
+  }
+  .destinationCardWide {
+    min-width: 80vw;
+    max-width: 98vw;
+    padding: 4vw 3vw 3vw 3vw;
+  }
+  .icon {
+    width: 10vw;
+    height: 10vw;
+  }
+  .destinationTitle {
+    font-size: 4vw;
+  }
+  .destinationDesc {
+    font-size: 3vw;
+  }
+  .destinationLabel {
+    font-size: 3vw;
+  }
+  .backHomeBtnWide {
+    font-size: 4vw;
+    padding: 3vw 10vw;
+  }
+} 
