@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import React from 'react'
+import Script from 'next/script';
 import Buttonstyle from '@/app/subscription/[userType]/subscription-comp/Enrollbutton.module.css';
 
 
@@ -67,7 +68,22 @@ const Thankyou = () => {
       };
 
   return (
-    <div style={styles.container}>
+    <>
+      {/* Google tag (gtag.js) */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-930111032"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-930111032');
+        `}
+      </Script>
+      
+      <div style={styles.container}>
     <div style={styles.thankyouWrapper}>
         <div style={styles.contentBox}>
             <h1 style={styles.heading}>
@@ -109,6 +125,7 @@ const Thankyou = () => {
         </div>
     </div>
 </div>
+    </>
   )
 }
 
