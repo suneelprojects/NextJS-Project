@@ -68,7 +68,7 @@ const AboutUs = () => {
                   className={`col-12 col-sm-6 col-md-6 col-lg-3 ${aboutusStyle.weProvide}`}
                   key={i}
                 >
-                  <div>
+                  <div >
                     <Image src={aboutusItem.image} alt="aboutUsItem" />
                     <h5>{aboutusItem.heading}</h5>
                     <p>{aboutusItem.sentense}</p>

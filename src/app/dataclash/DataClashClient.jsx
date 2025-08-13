@@ -106,7 +106,7 @@ export default function DataClashClient() {
     },
     {
       question: "What is the format of the hackathon?",
-      answer: "It's a 3-day format: Days 1-2 (August 18-19, 2025) consist of online data science challenges, and Day 3 (August 23, 2025) is an offline finale at SocialPrachar HQ, KPHB, Hyderabad."
+      answer: "It's a 3-day format: Days 1-2 ( To be Announced) consist of online data science challenges, and Day 3 ( To be Announced) is an offline finale at SocialPrachar HQ, KPHB, Hyderabad."
     },
     {
       question: "Do I need to attend all days?",
@@ -317,7 +317,7 @@ export default function DataClashClient() {
                     <h3>Process</h3>
                   </div>
                   <p>
-                    2-day online challenges (August 18-19, 2025) and a grand offline finale on August 23, 2025 at KPHB.
+                    2-day online challenges ( To be Announced) and a grand offline finale on  at KPHB Office.
                   </p>
                 </div>
               </div>
@@ -329,7 +329,7 @@ export default function DataClashClient() {
                     <span className={styles.infoIcon}>⏰</span>
                     <div>
                       <h4>Online Challenges</h4>
-                      <p>August 18-19, 2025</p>
+                      <p> To be Announced</p>
                     </div>
                   </div>
                 </div>
@@ -338,7 +338,7 @@ export default function DataClashClient() {
                     <span className={styles.infoIcon}>📍</span>
                     <div>
                       <h4>Grand Finale (Offline)</h4>
-                      <p>August 23, 2025 - KPHB Office</p>
+                      <p> KPHB Office</p>
                     </div>
                   </div>
                 </div>
