@@ -25,8 +25,8 @@ import {
   ArrowBigUp,
   ArrowUp
 } from "lucide-react";
-import Homeimage from '../../assets/homeReplaceImage.png';
-import homeImage2 from '../../assets/newassets/Artical1-img-5.jpg';
+import Homeimage from '../../../public/og/Home-image.png';
+import homeImage2 from '../../../public/newassets/Artical1-img-5.jpg';
 import OurAchievements from '../success-stories/ourAchievements/OurAchievements';
 
 // Apps Script web app URL - replace with your deployed script URL or set NEXT_PUBLIC_APPS_SCRIPT_URL in env

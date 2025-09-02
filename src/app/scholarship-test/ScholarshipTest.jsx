@@ -7,9 +7,9 @@ import styles from './ScholarShipTest.module.css';
 import ScholarshipFormTest from './ScholarshipFormTest';
 
 // images importing 
-import heroimg from '@/assets/schlorship/schlorshippage-1.jpg'
-import heroimg3 from '@/assets/schlorship/img-3.png'
-import backgroundImage from '@/assets/schlorship/image.png'
+import heroimg from '../../../public/schlorship/schlorshippage-1.jpg'
+import heroimg3 from '../../../public/schlorship/img-3.png'
+import backgroundImage from '../../../public/schlorship/image.png'
 
 // Components
 

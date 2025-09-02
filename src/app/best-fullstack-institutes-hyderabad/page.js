@@ -3,12 +3,12 @@ import Image from 'next/image';
 import styles from './BestFullstackInstitutesHyderabad.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-import fullstackCareerImage from "@/assets/newassets/Articel1-img1.png";
-import socialpracharImage from "@/assets/newassets/Artical1-img2.jpg";
-import fullstackTrainingImage from "@/assets/newassets/Artical1-img3.jpg";
-import careerOpportunitiesImage from "@/assets/newassets/Artical1-img4.jpg";
-import salaryTrendsImage from "@/assets/newassets/Artical1-img-5.jpg";
-import finalThoughtsImage from "@/assets/newassets/Artical1-img6.jpg";
+import fullstackCareerImage from "../../../public/newassets/Articel1-img1.png";
+import socialpracharImage from "../../../public/newassets/Artical1-img2.jpg";
+import fullstackTrainingImage from "../../../public/newassets/Artical1-img3.jpg";
+import careerOpportunitiesImage from "../../../public/newassets/Artical1-img4.jpg";
+import salaryTrendsImage from "../../../public/newassets/Artical1-img-5.jpg";
+import finalThoughtsImage from "../../../public/newassets/Artical1-img6.jpg";
 import DataAnalyticsForm from '../best-data-analytics-hyderabad/DataAnalyticsForm';
 
 export default function BestFullstackInstitutesHyderabad() {
