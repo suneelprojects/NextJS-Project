@@ -211,7 +211,7 @@ const Header = () => {
 
               <p className={`mt-3 ${style.highlightedText}`}>
 
-                 Built for 2025  Curriculum - <span className={style.tagline} >That Gets You Hired Earn while  Learning With Paid Internship</span>
+                 Built for 2025  Curriculum - <span className={style.tagline} >That Gets You Hired </span>
               </p>
 
 
