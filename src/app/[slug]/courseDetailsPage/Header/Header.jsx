@@ -19,6 +19,8 @@ import successLogo from "@/assets/courses/courseDetailspage/success.png";
 import partnershipLogo from "@/assets/courses/courseDetailspage/hand-shake.png";
 import MobileIconLogo from "@/assets/courses/courseDetailspage/mobile-development.png";
 import awardImage from "@/assets/homepage/award_image.png";
+import jobRolesLogo from "@/assets/courses/courseDetailspage/promotion.png";
+import curriculumLogo from "@/assets/courses/courseDetailspage/folder.png";
 
 // company logos
 import company1Logo from "@/assets/successStories/Accenture.png";
@@ -44,6 +46,28 @@ import company20Logo from "@/assets/successStories/dell_technologies_logo.png";
 import { useParams } from "next/navigation";
 import { data } from "@/app/courses/mainCoursePage/cardsSection/CardData";
 import { FaChevronDown } from 'react-icons/fa';
+
+//font awesome imports
+import {
+  faChevronLeft,
+  faChevronRight,
+  faChalkboardTeacher,
+  faUsers,
+  faBook,
+  faBriefcase,
+  faHandshake,
+  faAward,
+  faLaptopCode,
+  faProjectDiagram,
+  faMoneyBillWave,
+  faUserCog,
+  faCertificate,
+  faNetworkWired,
+
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import '../Unlockbonuses/UnlockbonusesCustom.css';
+
 
 const logos = [
   { src: company1Logo, alt: "Company 1" },
@@ -181,6 +205,17 @@ const Header = () => {
                   </>
                 )}
               </h2>
+
+
+              {/* i nned to add a highited text that can a eye cathieee thta text should be like this "india's  first institite that give stipend based intership" */}
+
+              <p className={`mt-3 ${style.highlightedText}`}>
+
+                 Built for 2025  Curriculum - <span className={style.tagline} >That Gets You Hired Earn while  Learning With Paid Internship</span>
+              </p>
+
+
+
               <div className={style.symbolItemContent}>
                 <div className={style.symbolItem}>
                   <Image
@@ -189,7 +224,7 @@ const Header = () => {
                     className={style.symbol1}
                   />
                   <span className={style.symbolText}>
-                    Unlock 12+ LPA with In-Demand Skills
+                   <strong> Earn 3X Salaries with Our Internship Format </strong>
                   </span>
                 </div>
                 <div className={style.symbolItem}>
@@ -199,8 +234,7 @@ const Header = () => {
                     className={style.symbol}
                   />
                   <span className={style.symbolText}>
-                    {" "}
-                    Flexible Learning: Classroom & Online Options{" "}
+                   <strong> 3-Month Full-Day Industry Internship</strong>
                   </span>
                 </div>
                 <div className={style.symbolItem}>
@@ -210,7 +244,7 @@ const Header = () => {
                     className={style.symbol}
                   />
                   <span className={style.symbolText}>
-                    17,000+ Successful Career Transitions Since 2014
+                    <strong>7 Global Certifications (IBM, Microsoft & more)</strong>
                   </span>
                 </div>
                 <div className={style.symbolItem}>
@@ -220,8 +254,7 @@ const Header = () => {
                     className={style.symbol}
                   />
                   <span className={style.symbolText}>
-                    {" "}
-                    550+ Batches Completed, 350+ Hiring Partners
+                   <strong> 3/5/7 Month Fast-Track Programs with Paid Internship</strong>
                   </span>
                 </div>
                 <div className={style.symbolItem}>
@@ -231,9 +264,29 @@ const Header = () => {
                     className={style.symbol}
                   />
                   <span className={style.symbolText}>
-                    Lifetime LMS Access & Dedicated Mobile App
+                    <strong>Build 30+ End-to-End AI Applications</strong>
                   </span>
                 </div>
+                <div className={style.symbolItem}>
+                  <Image
+                    src={jobRolesLogo}
+                    alt="Job roles symbol"
+                    className={style.symbol}
+                  />
+                  <span className={style.symbolText}>
+                    <strong>Eligible for 10+ High-Demand Job Roles</strong>
+                  </span>
+                </div>
+                {/* <div className={style.symbolItem}>
+                  <Image
+                    src={curriculumLogo}
+                    alt="Curriculum symbol"
+                    className={style.symbol}
+                  />
+                  <span className={style.symbolText}>
+                    <strong>Built for 2025: The Curriculum That Gets You Hired</strong>
+                  </span>
+                </div> */}
               </div>
             </div>
 
@@ -271,6 +324,7 @@ const Header = () => {
                           src={starSymbol}
                           alt="Star"
                           className={style.star}
+                          style={{ color: "gold" }}
                         />
                       ))}
                     </div>
@@ -285,12 +339,12 @@ const Header = () => {
         </div>
 
         <div className={style.scrollSection}>
-          <h5 className="fs-6 fs-md-5 fs-lg-2">
-            Trusted by Learners Working At Top Companies
+          <h5 className="fs-6 fs-md-5 fs-lg-2" style={{ fontWeight: "800", fontSize: '2.5rem' }}>
+            Trusted by Learners Working At <span style={{ color: "#ff5003" }}>Top Companies</span>
           </h5>
 
           {/* SCROLL BUTTONS START */}
-          <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', margin: '24px 0' }}>
+          {/* <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', margin: '24px 0' }}>
             <button
               onClick={() => {
                 const el = document.getElementById('what-will-you-learn-section');
@@ -365,7 +419,7 @@ const Header = () => {
                 </svg>
               </span>
             </button>
-          </div>
+          </div> */}
           {/* SCROLL BUTTONS END */}
 
           <div className={style.logoContainer}>
@@ -394,11 +448,10 @@ const Header = () => {
 
         <div className={style.testimonials}>
           <div
-            className={`d-flex m-4 ${
-              isMobile
-                ? "flex-column text-center"
-                : "justify-content-center align-items-center gap-2"
-            }`}
+            className={`d-flex m-4 ${isMobile
+              ? "flex-column text-center"
+              : "justify-content-center align-items-center gap-2"
+              }`}
           >
             <h3 className="fw-bold">
               <span style={{ color: "#ff5003" }}> Know More</span> About{" "}
@@ -472,8 +525,101 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+      {/* why socialprachar standout section  */}
+      <div>
+        <p
+          className="text-center mb-4"
+          style={{
+            fontSize: "24px",
+            fontWeight: "bold",
+            position: "relative",
+            top: "25px",
+          }}
+        >
+          What Makes <span style={{ color: "#ff5003" }}>SocialPrachar</span>{" "}
+          Stand Out?
+        </p>
+        <p
+          className="text-center mb-4"
+          style={{
+            fontSize: "18px",
+            fontWeight: "bold",
+            position: "relative",
+            top: "25px",
+          }}
+        >
+
+          Job-Ready <span style={{ color: "#ff5003" }}>{card ? card.text : "Your"} </span> {" "} Program – Includes{" "}
+          {card && card.internshipDuration ? card.internshipDuration : "3-Month"} Paid Internship
+        </p>
+
+        {/* Responsive Feature Grid */}
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <div
+            className="feature-grid-responsive"
+          >
+            {/* Feature Cards */}
+            {/* 1 */}
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faChalkboardTeacher} style={featureIconStyle} />
+              <div className="feature-card-text">Job-Ready Curriculum Designed by Industry Experts from IIT & IIM Alumni</div>
+            </div>
+            {/* 2 */}
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faBriefcase} style={featureIconStyle} />
+              <div className="feature-card-text">Internship + Placement-Driven Learning Model</div>
+            </div>
+            {/* 3 */}
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faHandshake} style={featureIconStyle} />
+              <div className="feature-card-text">Unlimited Placement Support Till You Get Placed</div>
+            </div>
+            {/* 4 */}
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faAward} style={featureIconStyle} />
+              <div className="feature-card-text">Award-Winning Institute with 16,000+ Alumni</div>
+            </div>
+            {/* 5 */}
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faLaptopCode} style={featureIconStyle} />
+              <div className="feature-card-text">Flexible Learning Modes with Mentorship & Tools</div>
+            </div>
+            {/* 6 */}
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faProjectDiagram} style={featureIconStyle} />
+              <div className="feature-card-text">Real-Time Projects That Build Your Portfolio</div>
+            </div>
+            {/* 7 */}
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faMoneyBillWave} style={featureIconStyle} />
+              <div className="feature-card-text">Stipend Opportunities Up to ₹45,000 During Internship</div>
+            </div>
+            {/* 8 */}
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faUserCog} style={featureIconStyle} />
+              <div className="feature-card-text">Dedicated HR & Corporate Relations Team for Job Support</div>
+            </div>
+            {/* 9 */}
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faCertificate} style={featureIconStyle} />
+              <div className="feature-card-text">Access to Certifications from IBM, Microsoft & AWS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </>
   );
 };
+
+//extra styling for feature icons
+
+const featureIconStyle = {
+  color: '#ff5003',
+  fontSize: 40,
+  marginBottom: 14,
+};
+
 
 export default Header;

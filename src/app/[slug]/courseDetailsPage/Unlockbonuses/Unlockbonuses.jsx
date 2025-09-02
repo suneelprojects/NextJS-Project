@@ -137,7 +137,7 @@ const Unlockbonuses = () => {
         </div>
 
         {/* Section with 3 boxes */}
-        <div>
+        {/* <div>
           <p
             className="text-center mb-4"
             style={{
@@ -150,60 +150,60 @@ const Unlockbonuses = () => {
             What Makes <span style={{ color: "#ff5003" }}>SocialPrachar</span>{" "}
             Stand Out?
           </p>
-          {/* Responsive Feature Grid */}
+          Responsive Feature Grid
           <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
             <div
               className="feature-grid-responsive"
             >
-              {/* Feature Cards */}
-              {/* 1 */}
+              Feature Cards
+              1
               <div className="feature-card-hover">
                 <FontAwesomeIcon icon={faChalkboardTeacher} style={featureIconStyle} />
                 <div className="feature-card-text">Job-Ready Curriculum Designed by Industry Experts from IIT & IIM Alumni</div>
               </div>
-              {/* 2 */}
+              2
               <div className="feature-card-hover">
                 <FontAwesomeIcon icon={faBriefcase} style={featureIconStyle} />
                 <div className="feature-card-text">Internship + Placement-Driven Learning Model</div>
               </div>
-              {/* 3 */}
+              3
               <div className="feature-card-hover">
                 <FontAwesomeIcon icon={faHandshake} style={featureIconStyle} />
                 <div className="feature-card-text">Unlimited Placement Support Till You Get Placed</div>
               </div>
-              {/* 4 */}
+              4
               <div className="feature-card-hover">
                 <FontAwesomeIcon icon={faAward} style={featureIconStyle} />
                 <div className="feature-card-text">Award-Winning Institute with 16,000+ Alumni</div>
               </div>
-              {/* 5 */}
+              5
               <div className="feature-card-hover">
                 <FontAwesomeIcon icon={faLaptopCode} style={featureIconStyle} />
                 <div className="feature-card-text">Flexible Learning Modes with Mentorship & Tools</div>
               </div>
-              {/* 6 */}
+              6
               <div className="feature-card-hover">
                 <FontAwesomeIcon icon={faProjectDiagram} style={featureIconStyle} />
                 <div className="feature-card-text">Real-Time Projects That Build Your Portfolio</div>
               </div>
-              {/* 7 */}
+              7
               <div className="feature-card-hover">
                 <FontAwesomeIcon icon={faMoneyBillWave} style={featureIconStyle} />
                 <div className="feature-card-text">Stipend Opportunities Up to ₹45,000 During Internship</div>
               </div>
-              {/* 8 */}
+              8
               <div className="feature-card-hover">
                 <FontAwesomeIcon icon={faUserCog} style={featureIconStyle} />
                 <div className="feature-card-text">Dedicated HR & Corporate Relations Team for Job Support</div>
               </div>
-              {/* 9 */}
+              9
               <div className="feature-card-hover">
                 <FontAwesomeIcon icon={faCertificate} style={featureIconStyle} />
                 <div className="feature-card-text">Access to Certifications from IBM, Microsoft & AWS</div>
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Mentor Profile Section */}
         <div className={styles.mentorInfo}>
@@ -264,7 +264,7 @@ const Unlockbonuses = () => {
               {[
                 {
                   image: instagramLogo,
-                  followers: "13.7K+",
+                  followers: "16.7K+",
                   label: "Followers",
                 },
                 { image: linkedIn, followers: "6k+", label: "Followers" },

@@ -90,6 +90,7 @@ const NavBar = () => {
 
   const secondDDrouters = [
     { hrefLink: "/aboutUs", routerName: "About us" },
+    { hrefLink: "/preplacement", routerName: "Pre-Placement" },
     { hrefLink: "/courseBlog", routerName: "CourseBlog" },
     { hrefLink: "/events", routerName: "Events" },
     { hrefLink: "/dataclash", routerName: "DataClash" },
@@ -283,7 +284,7 @@ const isExternal = (hrefLink) => hrefLink.startsWith("http");
                   >
                     More
                   </button>
-                  <div className={`dropdown-menu ${dropdowns.dropdown1 ? "show" : ""}`}>
+                  <div className={`dropdown-menu ${navBarStyle.mobileScrollDropdown} ${dropdowns.dropdown1 ? "show" : ""}`}>
                   
                   
                 {secondDDrouters.map((item, i) => (

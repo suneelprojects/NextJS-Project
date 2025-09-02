@@ -147,11 +147,15 @@
 .FollowerStars {
   display: flex;
   gap: 5px;
+  background-color: rgb(253, 245, 245);
 }
 
 .star {
   width: 20px;
   height: auto;
+  filter: brightness(0) saturate(100%) invert(76%) sepia(72%) saturate(2500%) hue-rotate(20deg) brightness(110%) contrast(105%);
+  box-shadow: 0 0 6px rgba(255, 217, 0, 0.927);
+  
 }
 
 .FollowerCount {
@@ -257,7 +261,84 @@
   width: 100px;
   margin: 0 30px;
 }
+/* .highlightedText {
+  color: #ff5003;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  margin-top: 10px;
+} */
+ /** @format */
 
+.highlightedText {
+  position: relative;
+  display: inline-block; /* So the shine fits the text width */
+  font-size: 1.35rem; /* Adjust font size as needed */
+  font-weight: bolder;
+  color: black; /* Text color */
+  overflow: hidden;
+}
+
+.tagline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.85) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: shine 3.5s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+/* Responsive text size adjustments */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .highlightedText {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 376px) {
+  .highlightedText {
+    font-size: 14px;
+  }
+  .tagline{
+    font-size: 1rem !important;
+    font-weight: bold !important;
+  }
+}
+
+.tagline{
+  color:#ff5003;
+  font-weight: 600;
+  font-size:1.35rem;
+  font-weight: bolder;
+}
+
+
+
+
+
+
+.moneyicon{
+  /* golden coour */
+  color:rgb(255, 217, 0) !important;
+  margin-right:8px;
+
+}
 /* Keyframes for Scroll Animation */
 @keyframes scroll-left {
   0% {

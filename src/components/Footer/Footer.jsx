@@ -59,30 +59,17 @@ const Footer = () => {
   ];
 
   const OfficeDetails = [
-    <b>Head Office:</b>,
-    " #301, 3rd Floor, ",
-    "Sathyabhama Commercial Complex, ",
-    "BhagyaNagar Colony, ",
-    "KPHB, Hyderabad.",
-    "KPHB, Hyderabad - 500072",
-    "Contact: +91-8019 479 419",
-    <div>
-      <div className="container mt-3">
-        <div className="embed-responsive embed-responsive-16by9">
-          <iframe
-            className="embed-responsive-item"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.453265774153!2d78.3910161!3d17.491839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91f20663c46d%3A0x846796db82f76735!2sSocial%20Prachar!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </div>
+    <b>New Updates:</b>,
+    <div onClick={() => handleNavigate("/best-fullstack-institutes-hyderabad")}>
+      Best Full Stack Institute Hyderabad
     </div>,
+    <div onClick={() => handleNavigate("/best-data-analytics-hyderabad")}>
+      Best data analytics Institute Hyderabad
+    </div>
   ];
 
   const TrainingCenter = [
-    <b>Training Centers:</b>,
+    <b>Head Office:</b>,
     "#301, 3rd Floor,",
     "Sathyabhama Commercial Complex,",
     "BhagyaNagar Colony,",
@@ -189,6 +176,17 @@ const Footer = () => {
                 packages. Offering cutting-edge programs in Full Stack, Data
                 Science, AI, and Cloud.
               </p>
+              <div className="container mt-3">
+                <div className="embed-responsive embed-responsive-16by9">
+                  <iframe
+                    className="embed-responsive-item"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.453265774153!2d78.3910161!3d17.491839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91f20663c46d%3A0x846796db82f76735!2sSocial%20Prachar!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </div>
               <div className="d-flex gap-4">
                 {iconsArray.map((iconItem, i) => (
                   <div

@@ -109,7 +109,7 @@ const Thankyou = () => {
                         </a>
                     </li>
                     <li>
-                        <a className="dropdown-item" href="/curriculum_pdfs/Data_Science_Curriculum.pdf" download="Data_Science_Curriculum.pdf">
+                        <a className="dropdown-item" href="/curriculum_pdfs/Data Science & AI Curriculum 2025.pdf" download="Data_Science_Curriculum.pdf">
                             Data Science Curriculum
                         </a>
                     </li>

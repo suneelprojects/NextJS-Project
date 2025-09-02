@@ -65,7 +65,7 @@ const OurAchievements = () => {
       <div style={{ background: "#543cdf31" }}>
         {/* Filter Buttons */}
         <div className={`${style.filterButtons} d-flex justify-content-center`}>
-          <div className={style.btn_group}>
+          <div className={style.btn_group} style={{padding: "40px 0px"}}>
             <button
               type="button"
               className={style.btn}

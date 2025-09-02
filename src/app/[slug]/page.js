@@ -12,6 +12,7 @@ import ConnectUs from '@/components/ConnectUs/ConnectUs';
 import Banner from './courseDetailsPage/Banner/Banner';
 import { notFound } from 'next/navigation';
 
+// ✅ Generate metadata
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const course = data.find(c => c.slug === slug);
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const courseName = course.title || slug.replace(/-/g, ' ');
+  const courseName = course.courseTitle || slug.replace(/-/g, ' ');
 
   const metaTitle = `Best ${courseName} Training Institute in Hyderabad | SocialPrachar`;
   const metaDescription = `Learn the top-rated ${courseName} course in Hyderabad with real-time projects and expert mentors at SocialPrachar.`;
@@ -72,24 +73,33 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// ✅ Page Component with JSON-LD injection
 const Page = async ({ params }) => {
   const { slug } = await params;
   const course = data.find(c => c.slug === slug);
   if (!course) return notFound();
 
   return (
-    <div className='px-2'>
-      <Header />
-      <Testimonials />
-      <WhatwillYouLearn />
-      <Unlockbonuses />
-      <Coursepath />
-      <NextcohortStarts />
-      <CourseFaqs />
-      <Masterclass />
-      <ConnectUs />
-      <Banner />
-    </div>
+    <>
+      {/* Inject JSON-LD for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(course.schemaJsonLd) }}
+      />
+
+      <div className="px-2">
+        <Header />
+        <Testimonials />
+        <WhatwillYouLearn />
+        <Unlockbonuses />
+        <Coursepath />
+        <NextcohortStarts />
+        <CourseFaqs />
+        <Masterclass />
+        <ConnectUs />
+        <Banner />
+      </div>
+    </>
   );
 };
 

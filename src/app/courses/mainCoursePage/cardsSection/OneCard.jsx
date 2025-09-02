@@ -1,7 +1,8 @@
 import React,{ useState } from 'react';
 import cardsCSS from './Cards.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark, faStar, faStarHalfAlt } from "@fortawesome/free-regular-svg-icons";
+import { faBookmark } from "@fortawesome/free-regular-svg-icons";
+import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import calendar from '@/assets/courses/calendar-lines-pen.png';
 import user from '@/assets/courses/usergroup.png';
 import Image from 'next/image';

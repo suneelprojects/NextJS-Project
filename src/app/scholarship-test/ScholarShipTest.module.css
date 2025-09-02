@@ -21,6 +21,16 @@
   letter-spacing: 1px;
 }
 
+.stylingtext{
+  color: hsl(43, 62%, 52%);
+background: linear-gradient(to bottom, #fff9c4, #fcb80d); /* Light to dark yellow gradient */
+-webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; 
+  font-weight: bolder;
+  
+}
+
 .eventsContainer {
   padding: 20px;
 }
@@ -160,4 +170,849 @@
 
 .marks {
   margin-left: 15px;
+}
+
+/* ScholarshipTest Component Styles */
+.preparationSection {
+  background-color: #232529;
+  color: #ffffff;
+  padding: 20px;
+  
+}
+.preparationGrid {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .preparationGrid {
+    display: block; /* Change to block on small screens */
+  }
+  .preparationItem {
+    flex: none; /* Remove flex property to allow full width */
+    width: 100%; /* Ensure it takes full width */
+  }
+  .preparationItem h3{
+    
+    padding-right: 10px ;
+  }
+}
+.preparationItem {
+  flex: 1;
+  padding: 20px;
+  line-height: 1.9;
+ 
+}
+.boldlist {
+  font-weight: bold;
+
+}
+.preparationList {
+  list-style-type: disc;
+  
+}
+
+.preparationItem h3 {
+  font-size: 1.5em;
+  color: #ff9f7f;
+  margin-bottom: 10px;
+  padding-left: 80px;
+}
+
+
+
+.preparationItem li {
+  margin-bottom: 5px;
+  list-style: disc;
+  line-height: 2.5;
+}
+
+.preparationItem p {
+  
+  line-height: 1.5;
+}
+
+/* process  */
+.processGrid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 10px;
+}
+.processDescription{
+  color: hsl(215, 20%, 65%);
+  line-height: 1.8;
+
+}
+
+/* Container */
+.container {
+  min-height: 100vh;
+  background: #1a1a1a; /* Dark background */
+  color: hsl(210, 40%, 98%);
+}
+
+/* Hero Section */
+.heroSection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.backgroundImageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.backgroundImage {
+  object-fit: cover;
+  filter: blur(5px);
+  transform: scale(1.1);
+}
+
+.backgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 253, 253, 0));
+  z-index: 2;
+}
+
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  padding-bottom: 10px;
+  background: linear-gradient(135deg, hsl(239, 100%, 67%), hsl(322, 85%, 68%), hsl(43, 100%, 68%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .heroTitle {
+    font-size: 4.5rem;
+  }
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  margin-bottom: 48px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  color: hsl(215, 20%, 65%);
+}
+
+@media (min-width: 768px) {
+  .heroSubtitle {
+    font-size: 1.5rem;
+  }
+}
+
+.heroButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .heroButtons {
+    flex-direction: row;
+  }
+}
+
+/* Button Styles */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button:focus-visible {
+  outline: 2px solid hsl(239, 100%, 67%);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.button-default {
+  background: hsl(239, 100%, 67%);
+  color: hsl(210, 40%, 98%);
+}
+
+.button-default:hover {
+  background: hsl(239, 100%, 62%);
+}
+
+.button-outline {
+  border: 1px solid hsl(239, 100%, 67%);
+  background: transparent;
+  color: hsl(239, 100%, 67%);
+}
+
+.button-outline:hover {
+  background: hsl(239, 100%, 67%);
+  color: hsl(210, 40%, 98%);
+}
+
+.heroButtonPrimary {
+  background: linear-gradient(135deg, hsl(239, 100%, 67%), hsl(322, 85%, 68%));
+  color: white;
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 0 40px hsl(239, 100%, 67%, 0.3);
+  transform: scale(1);
+}
+
+.heroButtonPrimary:hover {
+  background: linear-gradient(135deg, hsl(239, 98%, 50%), hsl(322, 96%, 50%));
+  color: white;
+  box-shadow: 0 0 60px hsl(239, 100%, 67%, 0.5);
+  transform: scale(1.05);
+}
+
+.heroButtonSecondary {
+  border: 1px solid hsl(239, 100%, 67%);
+  color: hsl(239, 100%, 67%);
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.heroButtonSecondary:hover {
+background: #0b0630;
+background: radial-gradient(circle, rgba(11, 6, 48, 1) 50%, rgba(51, 70, 181, 1) 94%);
+  color: white;
+}
+
+/* Card Component */
+.card {
+  background: linear-gradient(135deg, hsl(224, 32%, 12%), hsl(224, 32%, 15%));
+  border: 1px solid hsl(224, 32%, 20%, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px -10px hsl(0, 0%, 0%, 0.5);
+}
+
+/* Section Styles */
+.sectionContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 64px;
+  padding-bottom: 10px;
+  background: linear-gradient(135deg, hsl(239, 100%, 67%), hsl(322, 85%, 68%), hsl(43, 100%, 68%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .sectionTitle {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sectionTitle {
+    font-size: 3.75rem;
+  }
+}
+
+/* Journey Section */
+.journeySection {
+  padding: 80px 0;
+  background: linear-gradient(to bottom, hsl(240, 4%, 16%), hsl(240, 4%, 20%));
+}
+
+.journeyGrid {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .journeyGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.journeyText {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.journeyImageContainer {
+  position: relative;
+}
+
+.journeyImage {
+  border-radius: 16px;
+  box-shadow: 0 10px 40px -10px hsl(0, 0%, 0%, 0.5);
+  width: 100%;
+  height: auto;
+}
+
+/* Program Section */
+.programSection {
+  padding: 80px 0;
+}
+
+.programGrid {
+  display: grid;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .programGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.programCard {
+  padding: 32px;
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+color: hsl(43, 94%, 49%);
+background: linear-gradient(to bottom, #fff9c4, #f7b308); /* Light to dark yellow gradient */
+-webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; 
+}
+
+.cardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.listBullet {
+  width: 8px;
+  height: 8px;
+  background: hsla(239, 64%, 52%, 0.756);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.programInfo {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.programPrice {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.programDescription {
+  color: hsl(215, 20%, 65%);
+}
+
+/* Stats Section */
+.statsSection {
+  padding: 80px 0;
+  background: hsla(220, 9%, 20%, 0.818);
+}
+
+.statsGrid {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.statsImage {
+  border-radius: 16px;
+  box-shadow: 0 10px 40px -10px hsl(0, 0%, 0%, 0.5);
+  width: 100%;
+  height: 500px;
+}
+
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 3rem;
+  font-weight: 700;
+  color: hsl(43, 62%, 52%);
+background: linear-gradient(to bottom, #fff9c4, #fbc02d); /* Light to dark yellow gradient */
+-webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; 
+  margin-bottom: 8px;
+}
+
+.statLabel {
+  font-size: 24px;
+  font-weight: bold;
+  color: hsl(215, 20%, 65%);
+  margin-bottom: 8px;
+}
+
+.statDescription {
+  font-size: 12px;
+  color: hsl(215, 20%, 65%);
+}
+
+.statsFooter {
+  margin-top: 64px;
+  text-align: center;
+}
+
+.statsFooter p {
+  font-size: 18px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Scholarship Section */
+.scholarshipSection {
+  padding: 80px 0;
+}
+
+.scholarshipIntro {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 48px;
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scholarshipDescription {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.scholarshipDetails {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.scholarshipTable {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tableContainer {
+  padding: 32px;
+}
+
+.tableTitle {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+  color: hsl(250, 75%, 53%);
+}
+
+.tableContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid hsl(224, 32%, 20%, 0.2);
+}
+
+.tableHeaderCell {
+  font-weight: 600;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid hsl(224, 32%, 20%, 0.1);
+}
+
+.tableCell {
+  /* Base styles for table cells */
+}
+
+.topReward {
+color: hsl(43, 62%, 52%);
+background: linear-gradient(to bottom, #ecde66, #eaaa07); /* Light to dark yellow gradient */
+-webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; 
+  font-weight: 700;
+}
+
+.scholarshipFooter {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.scholarshipNote {
+  margin-bottom: 16px;
+}
+
+.scholarshipSubnote {
+  color: hsl(215, 20%, 65%);
+}
+
+/* Benefits Section */
+.benefitsSection {
+  padding: 80px 0;
+  background: hsla(220, 8%, 16%, 0.79);
+}
+
+.benefitsGrid {
+  display: grid;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.benefitCard {
+  padding: 24px;
+  text-align: center;
+}
+
+.benefitTitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+color: hsl(43, 62%, 52%);
+background: linear-gradient(to bottom, #ccc055, #fdb603); /* Light to dark yellow gradient */
+-webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; 
+}
+
+.benefitDescription {
+  font-size: 14px;
+  color: hsl(215, 20%, 65%);
+}
+
+.benefitsFooter {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.benefitsFooter p {
+  font-size: 18px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.benefitsNote {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.benefitsNote p {
+  color: hsl(215, 20%, 65%);
+}
+
+/* FAQ Section */
+.faqSection {
+  padding: 80px 0;
+}
+
+.faqGrid {
+  display: grid;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .faqGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.faqCard {
+  padding: 24px;
+}
+
+.faqQuestion {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: hsl(239, 100%, 67%);
+}
+
+.faqAnswer {
+  font-size: 14px;
+  color: hsl(215, 20%, 65%);
+}
+
+.faqFooter {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.faqFooter p {
+  margin-bottom: 16px;
+}
+
+.faqSubnote {
+  color: hsl(215, 20%, 65%);
+}
+
+/* Opportunity Section */
+.opportunitySection {
+  padding: 80px 0;
+  background: hsla(216, 7%, 14%, 0.763);
+}
+
+.opportunityGrid {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .opportunityGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.opportunityCard {
+  padding: 32px;
+}
+
+.opportunityTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: hsl(239, 100%, 67%);
+}
+
+.opportunityDescription {
+  color: hsl(210, 40%, 98%);
+  margin-bottom: 16px;
+}
+
+/* CTA Section */
+.ctaSection {
+  padding: 80px 0;
+}
+
+.ctaTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, hsl(239, 100%, 67%), hsl(322, 85%, 68%), hsl(43, 100%, 68%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .ctaTitle {
+    font-size: 3rem;
+  }
+}
+
+.ctaSubtitle {
+  font-size: 20px;
+  margin-bottom: 48px;
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.ctaButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .ctaButtons {
+    flex-direction: row;
+  }
+}
+
+.ctaButtonPrimary {
+  background: linear-gradient(135deg, hsl(239, 100%, 67%), hsl(322, 85%, 68%));
+  color: white;
+  padding: 16px 48px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 0 40px hsl(239, 100%, 67%, 0.3);
+  transform: scale(1);
+}
+
+.ctaButtonPrimary:hover {
+    background: linear-gradient(135deg, hsl(239, 97%, 47%), hsl(322, 96%, 47%));
+  color: white;
+  box-shadow: 0 0 60px hsl(239, 100%, 67%, 0.5);
+  transform: scale(1.05);
+}
+
+.ctaButtonSecondary {
+  border: 1px solid hsl(239, 100%, 67%);
+  color: hsl(239, 100%, 67%);
+  padding: 16px 48px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.ctaButtonSecondary:hover {
+  background: #0b0630;
+background: radial-gradient(circle, rgba(11, 6, 48, 1) 50%, rgba(51, 70, 181, 1) 94%);
+  
+  color: white;
+}
+
+/* Responsive Design */
+/* Popup Styles */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.popupContent {
+  background: white;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .statsContainer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .tableRow, .tableHeader {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .tableHeaderCell, .tableCell {
+    text-align: left;
+  }
+  
+  .ctaTitle {
+    font-size: 2rem;
+  }
+  
+  .ctaSubtitle {
+    font-size: 18px;
+  }
+
+  .popupContent {
+    max-width: 95%;
+    margin: 10px;
+  }
 }

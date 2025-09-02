@@ -121,13 +121,14 @@ export const data = [
         slug: 'data-science',
         Duration: ' 6 months',
         imageSrc: DS,
-        careerRoadmap: '/textTypeRoadmaps/DataScience&AI.pdf',
+        careerRoadmap: '/textTypeRoadmaps/Data-Scientist-Career-Roadmap-India-0-8-years.pdf',
         TestmonialsCommentsImage1: testmonialsCommentImageDS,
         TestmonialsCommentsImage2: testmonialsCommentImageSSDS,
         courseTitle: 'Development',
         students: '1600+ Students',
         text: 'Data Science & AI',
         Header: 'Learn DataScience AI course & Become a Certified Professional in',
+        internshipDuration: "3-Month",
         questions: [
             "You want to explore career opportunitiees in Data Science and AI?",
             "You want to learn the essential skills to master in 150 days?",
@@ -156,137 +157,141 @@ export const data = [
         selfQuestioning: 'Starting your Data Science Career?',
         Description: 'Data Scientists are in high demand across every industry.Even tech giants such as Google, Amazon, Apple, Facebook, and Microsoft are constantly seeking experts in data extraction, data mining, visualization, and more.The course covers a comprehensive range of topics including Data Analytics(Power BI, Tableau, Excel), Data Science(Machine Learning, Python, SQL, Statistics), AI(Deep Learning, NLP, OpenCV), and Cloud(AWS DevOps).',
         moduleContent: [
-            {
+              {
                 id: 1,
                 module: "Module 1",
-                title: "Business Understanding & Core Python",
+                title: "Foundations & Hands-On Mastery",
                 details: {
                     videos: 7,
-                    time: "2 months",
+                    time: "1 months",
                     descriptions: [
-                        "Understanding the Business Goal And analyzing the features/variables/columns needed for data analysis",
-                        "Core Python (From Basics, Loops & Functions)",
-                        "Advanced Python (From OOP, Modules to Multi-Threading & Multi-Processing)"
+                        "Daily live classes (3 hours/day) with industry experts",
+                        "Balanced approach of conceptual learning and hands-on projects",
+                        "Weekly assignments and assessments to monitor progress",
+                        "Build strong foundational knowledge across all four domains"
                     ]
                 }
             },
             {
                 id: 2,
                 module: "Module 2",
-                title: "Functions, OOP & Advanced Python",
+                title: "Data Analytics Mastery: From Raw Data to Business Insights",
                 details: {
                     videos: 7,
-                    time: "1 month",
+                    time: "3 months",
                     descriptions: [
-                        "User-defined functions, built-in functions, lambda, map, filter, reduce",
-                        "Object-oriented programming: Class, inheritance, polymorphism, encapsulation, abstraction",
-                        "Working with Python modules, parsing arguments, libraries for data science",
-                        "Handling exceptions, file handling, multi-threading, and multi-processing"
+                        "Understanding data collection, cleaning, and preprocessing techniques for accurate analysis",
+                        "Performing statistical analysis to identify patterns, trends, and relationships in data",
+                        "Creating data visualizations using tools like Matplotlib, Seaborn, or Tableau for better decision-making",
+                        "Applying business intelligence (BI) tools to generate actionable insights and reports"
                     ]
                 }
             },
             {
                 id: 3,
                 module: "Module 3",
-                title: "Data Collection & Validation",
+                title: "Data Science Excellence: Turning Data into Intelligence",
                 details: {
                     videos: 7,
-                    time: "1 month",
+                    time: "2 month",
                     descriptions: [
-                        "Primary data collection (manual) and secondary data (Kaggle, UCI, web scraping)",
-                        "Working with databases: SQL import/export",
-                        "Validating data, handling missing values, and removing unwanted characters",
-                        "Feature engineering, scaling, encoding (ordinal, one-hot), data leakage prevention"
+                        "Applying scientific methods to analyze and interpret complex datasets",
+                        "Implementing algorithms to solve real-world business and research problems",
+                        "Using machine learning techniques for predictive and prescriptive analytics",
+                        "Working with both structured and unstructured data for comprehensive insights"
                     ]
                 }
             },
             {
                 id: 4,
                 module: "Module 4",
-                title: "Exploratory Data Analysis (EDA) & Statistics",
+                title: "AI Innovations: Build the Future with Intelligent Systems",
                 details: {
                     videos: 7,
                     time: "1 month",
                     descriptions: [
-                        "Uni-variate, bi-variate, and multi-variate analysis",
-                        "Descriptive statistics: mean, median, mode, variance, skewness",
-                        "Visual analysis: Bar plots, boxplots, pie charts, histograms, scatterplots, heatmaps",
-                        "Probability, z-scores, confidence intervals, hypothesis testing (z-test, ANOVA, Chi-square)"
+                        "Understanding the fundamentals of Artificial Intelligence and its applications",
+                        "Building and training neural networks for predictive and classification tasks",
+                        "Implementing computer vision techniques for image recognition and analysis",
+                        "Applying natural language processing (NLP) to interpret and generate human language"
                     ]
                 }
             },
             {
                 id: 5,
                 module: "Module 5",
-                title: "Predictive Modeling (Machine Learning)",
+                title: "Cloud & DevOps Pro: Deploy, Scale, and Automate on AWS",
                 details: {
                     videos: 7,
                     time: "1 month",
                     descriptions: [
-                        "Supervised learning algorithms: Linear regression, Logistic regression, SVM, KNN, Naïve Bayes, decision tree, random forest",
-                        "Model evaluation: Cross-validation, hyper-parameter tuning",
-                        "Model deployment using Streamlit (local/cloud)"
+                        "Deploying and managing data solutions using Amazon Web Services (AWS)",
+                        "Applying DevOps principles for continuous integration and continuous deployment (CI/CD)",
+                        "Automating workflows and infrastructure using tools like Terraform, Ansible, or AWS CloudFormation",
+                        "Implementing monitoring, logging, and scaling strategies for high availability and performance"
                     ]
                 }
             },
             {
                 id: 6,
                 module: "Module 6",
-                title: "Unsupervised Learning & Deep Learning (DL)",
-                details: {
-                    videos: 7,
-                    time: "3 Weeks",
-                    descriptions: [
-                        "Unsupervised learning: Dimensionality reduction (PCA), clustering (K-means, DBSCAN)",
-                        "Deep learning introduction: Neural networks, backpropagation, gradient descent",
-                        "Types of neural networks: ANN, CNN, RNN"
-                    ]
-                }
-            },
-            {
-                id: 7,
-                module: "Module 7",
-                title: "Deep Learning Applications",
+                title: "Cross-Functional AI Projects: Build Real Products",
                 details: {
                     videos: 7,
                     time: "1 month",
                     descriptions: [
-                        "Image classification using CNN, object detection (OpenCV, YOLO, R-CNN)",
-                        "Transfer learning and custom object detection",
-                        "Natural language processing (NLP): Text data collection, validation, cleaning, tokenization, stemming, lemmatization",
-                        "Sentiment analysis, RNN/LSTM applications"
+                        "Collaborating in a simulated startup environment to design, develop, and deploy AI products",
+                        "Working in 5-member teams (2 Data Science & AI students, 2 Full Stack Developers, 1 Cloud & DevOps student) to mirror real-world tech company structures",
+                        "Building complete AI solutions like AI-powered e-commerce portals, job recommendation platforms, fitness tracking apps, and movie recommendation systems",
+                        "Delivering portfolio-ready projects that demonstrate your skills to potential employers"
+                    ]
+                }
+            },
+          
+            {
+                id: 7,
+                module: "Module 7",
+                title: "Internship + Advanced Training",
+                details: {
+                    videos: 7,
+                    time: "3 month",
+                    descriptions: [
+                        "Full-day internship experience (6 hours/day) in real-world projects",
+                        "Continued live training (2 hours/day) to enhance expertise",
+                        "Advanced modules in Machine Learning, Deep Learning, and modern AI tools",
+                        "Opportunity to earn up to ₹45,000 INR during internship (subject to passing Stipend Eligibility Test)"
                     ]
                 }
             },
             {
                 id: 8,
                 module: "Module 8",
-                title: "Databases (SQL & NoSQL)",
+                title: "Global Certifications to Validate Your Expertise",
                 details: {
                     videos: 7,
                     time: "1 month",
                     descriptions: [
-                        "Relational databases (SQL): Database management basics, MySQL, SQL queries (DDL, DML, joins, aggregations)",
-                        "Non-relational databases (NoSQL): MongoDB, CRUD operations",
-                        "Case studies on database tables and query optimization"
+                        "Earn globally recognised certifications from leading tech companies to enhance your employability",
+                        "Validate your skills in Data Science, AI, Python, and Analytics with industry-approved credentials",
+                        "Gain certifications that act as tangible proof of expertise and boost your professional credibility"
                     ]
                 }
             },
-            {
-                id: 9,
-                module: "Module 9",
-                title: "Data Visualization & Reporting",
-                details: {
-                    videos: 7,
-                    time: "1 month",
-                    descriptions: [
-                        "Introduction to Power BI and Tableau",
-                        "Power BI: Data collection, power queries, creating reports, DAX queries, applying filters",
-                        "Tableau: Data collection, transformation, visual reports, measures, and filters",
-                        "Real-world projects and visualizations using Power BI/Tableau"
-                    ]
-                }
-            }
+            // {
+            //     id: 9,       
+            //     module: "Module 9",
+            //     title: "Data Visualization & Reporting",
+            //     details: {
+            //         videos: 7,
+            //         time: "1 month",
+            //         descriptions: [
+            //             "Introduction to Power BI and Tableau",
+            //             "Power BI: Data collection, power queries, creating reports, DAX queries, applying filters",
+            //             "Tableau: Data collection, transformation, visual reports, measures, and filters",
+            //             "Real-world projects and visualizations using Power BI/Tableau"
+            //         ]
+            //     }
+            // }
         ],
         rating: 4.5,
         certificate: defaultCertificate,
@@ -336,26 +341,28 @@ export const data = [
         bannerStudentsEnrolled: '6k+ Students Enrolled',
         timeLineHeading: 'Data Scientist',
         levelcardIndex: [
-            {
-                icon: faChartBar,
-                title: "Master Data-Science",
-                description: "Python, OOPs, Machine Learning, Statistics and Probability, Data Mining, Data Warehousing, Programming"
-            },
-            {
+             {
                 icon: faChartBar,
                 title: "Master Data Analytics",
                 description: "Learn data analysis, statistics, and visualization using tools like Excel, SQL, and Power BI. Build a strong foundation for data-driven decision-making."
             },
             {
-                icon: faCloud,
-                title: "Learn Cloud Deployment",
-                description: "Deploy AI models on cloud platforms like AWS and Azure. Gain practical knowledge of scaling and automation."
+                icon: faChartBar,
+                title: "Master Data-Science",
+                description: "Python, OOPs, Machine Learning, Statistics and Probability, Data Mining, Data Warehousing, Programming"
             },
-            {
+             {
                 icon: faRobot,
                 title: "Explore AI Concepts",
                 description: "Learn AI techniques like deep learning and NLP. Use frameworks like TensorFlow to build intelligent solutions."
             },
+           
+            {
+                icon: faCloud,
+                title: "Learn Cloud Deployment",
+                description: "Deploy AI models on cloud platforms like AWS and Azure. Gain practical knowledge of scaling and automation."
+            },
+           
             {
                 icon: faClipboardList,
                 title: "Weekly Assessments",
@@ -390,21 +397,21 @@ export const data = [
                 icon: faCogs,
                 title: "Technical Skills Training",
                 description: "Master essential technical skills required in the industry, including tools, frameworks, and best practices."
-            },{
+            }, {
                 icon: faBriefcase,
                 title: "Placement Preparation",
                 description: "Get expert guidance on resumes, LinkedIn profiles, and interviews. Be fully prepared to impress recruiters."
-              },
-              {
+            },
+            {
                 icon: faHandshake,
                 title: "Job Support",
                 description: "Receive unlimited interview opportunities until you secure a job. Achieve your career goals with our placement assistance."
-              },
-              {
+            },
+            {
                 icon: faTrophy,
                 title: "Congratulations for the job ",
                 description: "Congratulations on getting the job, you have done a great job, you are the best"
-              }
+            }
         ],
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Data Science' },
@@ -447,6 +454,20 @@ export const data = [
             { id: 34, image: Nani_ML },
             { id: 35, image: Sai_Chand_ML },
         ],
+        schemaJsonLd: {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Data Science & AI Course in Hyderabad",
+            "description": "Master Data Science and AI together—learn Python, ML, Deep Learning, AI tools through real-time projects and placement support in Hyderabad.",
+            "provider": {
+                "@type": "Organization",
+                "name": "SocialPrachar",
+                "url": "https://www.socialprachar.com"
+            },
+            "url": "https://www.socialprachar.com/data-science",
+            "educationalCredentialAwarded": "Certificate of Completion"
+        }
+
     },
 
     {
@@ -465,6 +486,7 @@ export const data = [
         students: '2800+ students',
         text: 'Advanced Full Stack',
         rating: 4.3,
+        internshipDuration: "3-Month",
         Header: 'Master Full Stack Java / Python With Mern Stack Course in ',
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Advanced Full stack' },
@@ -695,21 +717,21 @@ export const data = [
                 icon: faBriefcase,
                 title: "Placement Preparation",
                 description: "Prepare for the job market with resume building, interview preparation, and understanding the roles and responsibilities of a MERN Stack Developer."
-            },{
+            }, {
                 icon: faBriefcase,
                 title: "Placement Preparation",
                 description: "Get expert guidance on resumes, LinkedIn profiles, and interviews. Be fully prepared to impress recruiters."
-              },
-              {
+            },
+            {
                 icon: faHandshake,
                 title: "Job Support",
                 description: "Receive unlimited interview opportunities until you secure a job. Achieve your career goals with our placement assistance."
-              },
-              {
+            },
+            {
                 icon: faTrophy,
                 title: "Congratulations for the job ",
                 description: "Congratulations on getting the job, you have done a great job, you are the best"
-              }
+            }
         ]
         ,
         accordionContent: [
@@ -783,6 +805,19 @@ export const data = [
         ],
         bannerHeader: 'Learn Mern Stack Today',
         bannerStudentsEnrolled: '2.8k+ Students Enrolled',
+        schemaJsonLd: {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Full Stack Developer Course in Hyderabad",
+            "description": "Become a Full Stack Developer with our comprehensive course covering MERN stack, Java/Python backend, and real-world projects. Enroll now!",
+            "provider": {
+                "@type": "Organization",
+                "name": "SocialPrachar",
+                "url": "https://www.socialprachar.com"
+            },
+            "url": "https://www.socialprachar.com/full-stack-developer-course",
+            "educationalCredentialAwarded": "Certificate of Completion"
+        }
 
     },
 
@@ -800,6 +835,7 @@ export const data = [
         courseTitle: 'Development',
         students: '2900+ students',
         selfQuestioning: 'starting your Python Full Stack Career?',
+        internshipDuration: "3-Month",
         questions: [
             "You want to explore career opportunities in Python Full Stack Development?",
             "You want to learn the essential skills to master in 180 days?",
@@ -1159,6 +1195,19 @@ export const data = [
                 content: 'Our program offers a comprehensive curriculum, real-time projects, soft skills training, hackathons, and job placement support, all with a small batch size for focused learning.'
             }
         ],
+        schemaJsonLd: {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Full Stack Developer Course in Hyderabad",
+            "description": "Become a Full Stack Developer with our comprehensive course covering MERN stack, Java/Python backend, and real-world projects. Enroll now!",
+            "provider": {
+                "@type": "Organization",
+                "name": "SocialPrachar",
+                "url": "https://www.socialprachar.com"
+            },
+            "url": "https://www.socialprachar.com/full-stack-developer-course",
+            "educationalCredentialAwarded": "Certificate of Completion"
+        }
     },
 
     {
@@ -1177,6 +1226,7 @@ export const data = [
         certificate: defaultCertificate,
         Header: 'Learn Java Full Stack Development & Become a Certified Professional in',
         selfQuestioning: 'starting your Java Full Stack Career?',
+        internshipDuration: "3-Month",
         questions: [
             "You want to explore career opportunities in Java Full Stack Development?",
             "You want to learn the essential skills to master in 180 days?",
@@ -1484,26 +1534,26 @@ export const data = [
                 icon: faCogs,
                 title: "Technical Skills Development",
                 description: "Build proficiency in debugging, optimizing code, and implementing clean architecture practices for scalable applications."
-            },         
+            },
             {
                 icon: faCertificate,
                 title: "Certification of Completion",
                 description: "Earn an industry-recognized certificate upon completing the course to showcase your expertise in full-stack Java development."
-            },{
+            }, {
                 icon: faBriefcase,
                 title: "Placement Preparation",
                 description: "Get expert guidance on resumes, LinkedIn profiles, and interviews. Be fully prepared to impress recruiters."
-              },
-              {
+            },
+            {
                 icon: faHandshake,
                 title: "Job Support",
                 description: "Receive unlimited interview opportunities until you secure a job. Achieve your career goals with our placement assistance."
-              },
-              {
+            },
+            {
                 icon: faTrophy,
                 title: "Congratulations for the job ",
                 description: "Congratulations on getting the job, you have done a great job, you are the best"
-              }
+            }
         ],
         accordionContent: [
             {
@@ -1571,6 +1621,19 @@ export const data = [
                 content: 'Our program offers a comprehensive curriculum, real-time projects, soft skills training, hackathons, and job placement support, all with a small batch size for focused learning.'
             }
         ],
+        schemaJsonLd: {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Full Stack Java Developer Course in Hyderabad",
+            "description": "Become a Full Stack Java Developer with our comprehensive course covering Java, Spring Boot, React, and real-world projects. Enroll now!",
+            "provider": {
+                "@type": "Organization",
+                "name": "SocialPrachar",
+                "url": "https://www.socialprachar.com"
+            },
+            "url": "https://www.socialprachar.com/full-stack-java-developer-course",
+            "educationalCredentialAwarded": "Certificate of Completion"
+        }
     },
 
     {
@@ -1590,6 +1653,7 @@ export const data = [
         Header: 'Learn AWS DevOps Course & Become a Certified Professional in ',
         TestmonialsCommentsImage1: testmonialsCommentImageDevOps,
         TestmonialsCommentsImage2: testmonialsCommentImageDevOps,
+        internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'AWS DevOps' },
         ],
@@ -1892,6 +1956,20 @@ export const data = [
         ],
         bannerHeader: 'Learn AWS DevOps Today',
         bannerStudentsEnrolled: '6k+ Students Enrolled',
+        bannerDescription: 'Join our AWS DevOps course and master cloud computing, automation, and CI/CD pipelines. Enroll now to kickstart your career!',
+        schemaJsonLd: {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "AWS DevOps Course in Hyderabad",
+            "description": "Master AWS DevOps with our comprehensive course covering cloud infrastructure, CI/CD, containerization, and real-world projects. Enroll now!",
+            "provider": {
+                "@type": "Organization",
+                "name": "SocialPrachar",
+                "url": "https://www.socialprachar.com"
+            },
+            "url": "https://www.socialprachar.com/aws-devops-course",
+            "educationalCredentialAwarded": "Certificate of Completion"
+        }
     },
 
     {
@@ -1902,7 +1980,7 @@ export const data = [
         slug: 'artificial-intelligence-course-training-institute-in-hyderabad',
         courseTitle: 'AI Development',
         imageSrc: AI,
-        careerRoadmap: '/textTypeRoadmaps/DataScience&AI.pdf',
+        careerRoadmap: '/textTypeRoadmaps/AI-and-GenAI-Career-Roadmap-From-Fresher-to-Expert.pdf',
         certificate: defaultCertificate,
         TestmonialsCommentsImage1: testmonialsCommentImageDS,
         TestmonialsCommentsImage2: testmonialsCommentImageSSDS,
@@ -1911,6 +1989,7 @@ export const data = [
         text: 'Artificial Intelligence',
         rating: 4.2,
         Header: 'Learn Artificial Intelligence Course & Become a Certified Professional in ',
+        internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Artificial Intelligence' },
         ],
@@ -1942,157 +2021,141 @@ export const data = [
         ],
         Description: "Social Prachar is ranked as the #1 Best Artificial Intelligence Training Institute in Hyderabad, with 15,000+ success stories since 2014. We offer a 100% placement guarantee for all our trainees with top MNCs and startups. Master AI concepts, including machine learning, deep learning, and generative AI, in less than 4 months. Enroll now in the most advanced AI training program and accelerate your career in Artificial Intelligence!",
         moduleContent: [
-            {
+              {
                 id: 1,
                 module: "Module 1",
-                title: "Introduction & Installations",
+                title: "Foundations & Hands-On Mastery",
                 details: {
                     videos: 7,
-                    time: "2 weeks",
+                    time: "1 months",
                     descriptions: [
-                        "Introduction to corporate training",
-                        "Software life cycle",
-                        "Methodologies",
-                        "Soft skills",
-                        "Professional Ethics",
-                        "Understanding your strengths",
-                        "Self-assessment: Where do you stand?",
-                        "Installations required for data science",
-                        "Step-by-step setup for data science tools"
+                        "Daily live classes (3 hours/day) with industry experts",
+                        "Balanced approach of conceptual learning and hands-on projects",
+                        "Weekly assignments and assessments to monitor progress",
+                        "Build strong foundational knowledge across all four domains"
                     ]
                 }
             },
             {
                 id: 2,
                 module: "Module 2",
-                title: "Data Science & AI Fundamentals",
+                title: "Data Analytics Mastery: From Raw Data to Business Insights",
                 details: {
                     videos: 7,
-                    time: "3 weeks",
+                    time: "3 months",
                     descriptions: [
-                        "What is data science?",
-                        "Need for data science?",
-                        "Data science vs Business Intelligence",
-                        "Prerequisites for learning data science",
-                        "Roles and responsibilities of a data scientist",
-                        "Data science life cycle with examples",
-                        "Demand and opportunities in data science"
+                        "Understanding data collection, cleaning, and preprocessing techniques for accurate analysis",
+                        "Performing statistical analysis to identify patterns, trends, and relationships in data",
+                        "Creating data visualizations using tools like Matplotlib, Seaborn, or Tableau for better decision-making",
+                        "Applying business intelligence (BI) tools to generate actionable insights and reports"
                     ]
                 }
             },
             {
                 id: 3,
                 module: "Module 3",
-                title: "Python Programming & Libraries",
+                title: "Data Science Excellence: Turning Data into Intelligence",
                 details: {
                     videos: 7,
-                    time: "4 weeks",
+                    time: "2 month",
                     descriptions: [
-                        "Introduction to Python",
-                        "Operators and Data Types",
-                        "Control Statements",
-                        "Functions",
-                        "Data Structures: Lists, Sets, Tuples, Strings, Dictionaries",
-                        "OOPS Concepts",
-                        "Overview of key libraries: Numpy, Pandas, Scipy, Scikit-Learn, Keras",
-                        "Visualization tools: Matplotlib, Seaborn, Cufflinks",
-                        "Natural Language Processing (NLP) with NLTK"
+                        "Applying scientific methods to analyze and interpret complex datasets",
+                        "Implementing algorithms to solve real-world business and research problems",
+                        "Using machine learning techniques for predictive and prescriptive analytics",
+                        "Working with both structured and unstructured data for comprehensive insights"
                     ]
                 }
             },
             {
                 id: 4,
                 module: "Module 4",
-                title: "Data Exploration & Preprocessing",
+                title: "AI Innovations: Build the Future with Intelligent Systems",
                 details: {
                     videos: 7,
-                    time: "3 weeks",
+                    time: "1 month",
                     descriptions: [
-                        "Collecting and analyzing data from different sources",
-                        "Data preprocessing and munging",
-                        "Data manipulation and visualization",
-                        "Feature selection, scaling, and dimensionality reduction"
+                        "Understanding the fundamentals of Artificial Intelligence and its applications",
+                        "Building and training neural networks for predictive and classification tasks",
+                        "Implementing computer vision techniques for image recognition and analysis",
+                        "Applying natural language processing (NLP) to interpret and generate human language"
                     ]
                 }
             },
             {
                 id: 5,
                 module: "Module 5",
-                title: "Statistics & Mathematics",
+                title: "Cloud & DevOps Pro: Deploy, Scale, and Automate on AWS",
                 details: {
                     videos: 7,
-                    time: "3 weeks",
+                    time: "1 month",
                     descriptions: [
-                        "Basics of Statistics",
-                        "Descriptive and Inferential Statistics",
-                        "Qualitative vs Quantitative Analysis",
-                        "Hypothesis Testing and Data Distribution",
-                        "Probability and Calculus",
-                        "Linear Algebra",
-                        "Applications in data science"
+                        "Deploying and managing data solutions using Amazon Web Services (AWS)",
+                        "Applying DevOps principles for continuous integration and continuous deployment (CI/CD)",
+                        "Automating workflows and infrastructure using tools like Terraform, Ansible, or AWS CloudFormation",
+                        "Implementing monitoring, logging, and scaling strategies for high availability and performance"
                     ]
                 }
             },
             {
                 id: 6,
                 module: "Module 6",
-                title: "Machine Learning",
+                title: "Cross-Functional AI Projects: Build Real Products",
                 details: {
                     videos: 7,
-                    time: "4 weeks",
+                    time: "1 month",
                     descriptions: [
-                        "Introduction to Machine Learning models",
-                        "Supervised and Unsupervised Learning",
-                        "Regression, Classification, Clustering, and Aggregation models",
-                        "Dealing with overfitting and underfitting"
+                        "Collaborating in a simulated startup environment to design, develop, and deploy AI products",
+                        "Working in 5-member teams (2 Data Science & AI students, 2 Full Stack Developers, 1 Cloud & DevOps student) to mirror real-world tech company structures",
+                        "Building complete AI solutions like AI-powered e-commerce portals, job recommendation platforms, fitness tracking apps, and movie recommendation systems",
+                        "Delivering portfolio-ready projects that demonstrate your skills to potential employers"
                     ]
                 }
             },
+          
             {
                 id: 7,
                 module: "Module 7",
-                title: "Deep Learning & Algorithms",
+                title: "Internship + Advanced Training",
                 details: {
                     videos: 7,
-                    time: "4 weeks",
+                    time: "3 month",
                     descriptions: [
-                        "Introduction to Deep Learning",
-                        "Artificial Neural Networks, CNNs, RNNs",
-                        "TensorFlow and OpenCV",
-                        "Advanced optimization techniques"
+                        "Full-day internship experience (6 hours/day) in real-world projects",
+                        "Continued live training (2 hours/day) to enhance expertise",
+                        "Advanced modules in Machine Learning, Deep Learning, and modern AI tools",
+                        "Opportunity to earn up to ₹45,000 INR during internship (subject to passing Stipend Eligibility Test)"
                     ]
                 }
             },
             {
                 id: 8,
                 module: "Module 8",
-                title: "Natural Language Processing (NLP)",
+                title: "Global Certifications to Validate Your Expertise",
                 details: {
                     videos: 7,
-                    time: "3 weeks",
+                    time: "1 month",
                     descriptions: [
-                        "Introduction to NLP",
-                        "Text preprocessing, lemmatization, and stemming",
-                        "Feature extraction from text",
-                        "Important tasks and libraries in NLP"
+                        "Earn globally recognised certifications from leading tech companies to enhance your employability",
+                        "Validate your skills in Data Science, AI, Python, and Analytics with industry-approved credentials",
+                        "Gain certifications that act as tangible proof of expertise and boost your professional credibility"
                     ]
                 }
             },
-            {
-                id: 9,
-                module: "Module 9",
-                title: "Computer Vision & Project Work",
-                details: {
-                    videos: 7,
-                    time: "4 weeks",
-                    descriptions: [
-                        "Working on data science projects",
-                        "Preparing and analyzing data",
-                        "Selecting algorithms and evaluating results",
-                        "Real-time project work and best practices"
-                    ]
-                }
-            }
+            // {
+            //     id: 9,       
+            //     module: "Module 9",
+            //     title: "Data Visualization & Reporting",
+            //     details: {
+            //         videos: 7,
+            //         time: "1 month",
+            //         descriptions: [
+            //             "Introduction to Power BI and Tableau",
+            //             "Power BI: Data collection, power queries, creating reports, DAX queries, applying filters",
+            //             "Tableau: Data collection, transformation, visual reports, measures, and filters",
+            //             "Real-world projects and visualizations using Power BI/Tableau"
+            //         ]
+            //     }
+            // }
         ],
 
         timeLineHeading: 'Artificial Intelligence',
@@ -2166,17 +2229,17 @@ export const data = [
                 icon: faBriefcase,
                 title: "Placement Preparation",
                 description: "Get expert guidance on resumes, LinkedIn profiles, and interviews. Be fully prepared to impress recruiters."
-              },
-              {
+            },
+            {
                 icon: faHandshake,
                 title: "Job Support",
                 description: "Receive unlimited interview opportunities until you secure a job. Achieve your career goals with our placement assistance."
-              },
-              {
+            },
+            {
                 icon: faTrophy,
                 title: "Congratulations for the job ",
                 description: "Congratulations on getting the job, you have done a great job, you are the best"
-              }
+            }
         ],
         accordionContent: [
             {
@@ -2255,6 +2318,20 @@ export const data = [
         ],
         bannerHeader: 'Learn Artificial Intelligence Today',
         bannerStudentsEnrolled: '6k+ Students Enrolled',
+        bannerDescription: 'Join our Artificial Intelligence course and master AI, machine learning, and deep learning. Enroll now to kickstart your career!',
+        schemaJsonLd: {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Artificial Intelligence Course in Hyderabad",
+            "description": "Master Artificial Intelligence with our comprehensive course covering machine learning, deep learning, NLP, and real-world projects. Enroll now!",
+            "provider": {
+                "@type": "Organization",
+                "name": "SocialPrachar",
+                "url": "https://www.socialprachar.com"
+            },
+            "url": "https://www.socialprachar.com/artificial-intelligence-course",
+            "educationalCredentialAwarded": "Certificate of Completion"
+        }
     },
 
     {
@@ -2274,6 +2351,7 @@ export const data = [
         Header: 'Learn Digital Marketing Course & Become a Certified Professional in ',
         TestmonialsCommentsImage1: testmonialsCommentImageDM,
         TestmonialsCommentsImage2: testmonialsCommentImageDM,
+        internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Digital Marketing' },
         ],
@@ -2547,7 +2625,7 @@ export const data = [
             { id: 13, image: dmimg12 },
             { id: 14, image: dmimg13 },
             { id: 15, image: dmimg14 },
-            { id: 16, image: student64},
+            { id: 16, image: student64 },
             { id: 17, image: Ajay_kola_ML },
             { id: 18, image: Bhargavi_Trinee_engineer },
             { id: 19, image: Mohit_kopuri_ML },
@@ -2556,6 +2634,20 @@ export const data = [
         ],
         bannerHeader: 'Learn Digital Marketing Today',
         bannerStudentsEnrolled: '6k+ Students Enrolled',
+        bannerDescription: 'Join our Digital Marketing course and master SEO, SEM, social media, and content marketing. Enroll now to kickstart your career!',
+        schemaJsonLd: {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Digital Marketing Course in Hyderabad",
+            "description": "Master Digital Marketing with our comprehensive course covering SEO, SEM, social media, and real-world projects. Enroll now!",
+            "provider": {
+                "@type": "Organization",
+                "name": "SocialPrachar",
+                "url": "https://www.socialprachar.com"
+            },
+            "url": "https://www.socialprachar.com/digital-marketing-course",
+            "educationalCredentialAwarded": "Certificate of Completion"
+        }
 
     },
 
@@ -2567,7 +2659,7 @@ export const data = [
         slug: 'generative-ai-course-training-institute-hyderabad',
         courseTitle: 'Generative AI Development',
         imageSrc: AI,
-        careerRoadmap: '/textTypeRoadmaps/DataScience&AI.pdf',
+        careerRoadmap: '/textTypeRoadmaps/AI-and-GenAI-Career-Roadmap-From-Fresher-to-Expert.pdf',
         certificate: defaultCertificate,
         TestmonialsCommentsImage1: testmonialsCommentImageDS,
         TestmonialsCommentsImage2: testmonialsCommentImageSSDS,
@@ -2576,6 +2668,7 @@ export const data = [
         text: 'Generative AI',
         rating: 4.3,
         Header: 'Learn Generative AI Course & Become a Certified Professional in ',
+        internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Generative AI' },
         ],
@@ -2607,135 +2700,141 @@ export const data = [
         ],
         Description: "Social Prachar is ranked as the #1 Best Generative AI Training Institute in Hyderabad, with 15,000+ success stories since 2014. We offer a 100% placement guarantee for all our trainees with top MNCs and startups. Master cutting-edge Generative AI concepts, including deep learning, neural networks, NLP, and AI model deployment, in less than 4 months. Enroll now in the most advanced Generative AI training program and unlock new career opportunities in Artificial Intelligence!",
         moduleContent: [
-            {
+              {
                 id: 1,
-                module: " Module 1",
-                title: "Fundamentals of Generative AI and LLMs ",
+                module: "Module 1",
+                title: "Foundations & Hands-On Mastery",
                 details: {
-                    videos: 6,
-                    time: '4 weeks',
+                    videos: 7,
+                    time: "1 months",
                     descriptions: [
-                        "Evolution and fundamentals of AI/ML",
-                        "Large Language Models architecture",
-                        "Prompt engineering and optimization",
-                        "LLM applications and use cases",
-                        "ChatGPT (Prompt engineering)",
-                        "Claude (Analysis and coding)",
-                        "Langchain (LLM framework)",
-                        "GitHub Copilot (Code assistance)",
-                        "OpenAI Playground (API testing)"
+                        "Daily live classes (3 hours/day) with industry experts",
+                        "Balanced approach of conceptual learning and hands-on projects",
+                        "Weekly assignments and assessments to monitor progress",
+                        "Build strong foundational knowledge across all four domains"
                     ]
                 }
             },
             {
                 id: 2,
                 module: "Module 2",
-                title: "Multi-Modal AI ",
+                title: "Data Analytics Mastery: From Raw Data to Business Insights",
                 details: {
                     videos: 7,
-                    time: "3 weeks",
+                    time: "3 months",
                     descriptions: [
-                        "Image generation and manipulation",
-                        "Audio and speech processing",
-                        "Video generation and editing",
-                        "Multi-modal integration",
-                        "Midjourney (Image generation)",
-                        "DALL-E 3 (Image creation)",
-                        "ElevenLabs (Voice synthesis)",
-                        "Runway (Video generation)",
-                        "D-ID (Digital avatars)"
+                        "Understanding data collection, cleaning, and preprocessing techniques for accurate analysis",
+                        "Performing statistical analysis to identify patterns, trends, and relationships in data",
+                        "Creating data visualizations using tools like Matplotlib, Seaborn, or Tableau for better decision-making",
+                        "Applying business intelligence (BI) tools to generate actionable insights and reports"
                     ]
                 }
             },
             {
                 id: 3,
                 module: "Module 3",
-                title: "AI Automation and Productivity ",
+                title: "Data Science Excellence: Turning Data into Intelligence",
                 details: {
-                    videos: 6,
-                    time: "4 weeks",
+                    videos: 7,
+                    time: "2 month",
                     descriptions: [
-                        " Personal task automation",
-                        "Business process automation",
-                        "Content automation",
-                        "Workflow optimization",
-                        " Zapier(Workflow automation)",
-                        "Make.com(Complex automation)",
-                        " Beautiful.ai(Presentations)",
-                        " TextCortex(Content automation)",
-                        "Notion AI(Documentation)"
+                        "Applying scientific methods to analyze and interpret complex datasets",
+                        "Implementing algorithms to solve real-world business and research problems",
+                        "Using machine learning techniques for predictive and prescriptive analytics",
+                        "Working with both structured and unstructured data for comprehensive insights"
                     ]
                 }
             },
             {
                 id: 4,
                 module: "Module 4",
-                title: ": AI Agents Implementation ",
+                title: "AI Innovations: Build the Future with Intelligent Systems",
                 details: {
-                    videos: 8,
-                    time: "3 weeks",
+                    videos: 7,
+                    time: "1 month",
                     descriptions: [
-                        "AI agent fundamentals,Agent development",
-                        "Multi - agent systems, Future trends",
-                        " AutoGPT(Agent development), LangChain(Framework) ",
-                        " Fixie.ai(Development platform)",
-                        " SuperAGI(Infrastructure)",
-                        "Chipp.ai(Marketplace)"
+                        "Understanding the fundamentals of Artificial Intelligence and its applications",
+                        "Building and training neural networks for predictive and classification tasks",
+                        "Implementing computer vision techniques for image recognition and analysis",
+                        "Applying natural language processing (NLP) to interpret and generate human language"
                     ]
                 }
             },
             {
                 id: 5,
                 module: "Module 5",
-                title: ": AI App Building",
+                title: "Cloud & DevOps Pro: Deploy, Scale, and Automate on AWS",
                 details: {
-                    videos: 8,
-                    time: "4 weeks",
+                    videos: 7,
+                    time: "1 month",
                     descriptions: [
-                        "App planning and architecture",
-                        "Frontend development with AI",
-                        " Backend integration,Deployment and scaling ",
-                        " Streamlit (App development),",
-                        " Vercel AI SDK (Integration)",
-                        "Bubble.io (No-code),Gradio (UI creation)",
-                        "Retool (Internal tools)"
+                        "Deploying and managing data solutions using Amazon Web Services (AWS)",
+                        "Applying DevOps principles for continuous integration and continuous deployment (CI/CD)",
+                        "Automating workflows and infrastructure using tools like Terraform, Ansible, or AWS CloudFormation",
+                        "Implementing monitoring, logging, and scaling strategies for high availability and performance"
                     ]
                 }
             },
             {
                 id: 6,
                 module: "Module 6",
-                title: "Domain Applications & Career",
+                title: "Cross-Functional AI Projects: Build Real Products",
                 details: {
-                    videos: 8,
-                    time: "4 weeks",
+                    videos: 7,
+                    time: "1 month",
                     descriptions: [
-                        "Marketing & Sales - Campaign automation, Customer analytics, Content creation, Lead generation",
-                        "Finance & Banking - Risk assessment, Investment analysis, Fraud detection, Automated reporting",
-                        "Education - Content generation, Student support, Assessment automation, Learning analytics",
-                        "Healthcare - Patient care automation, Administrative tasks, Medical analysis, Research assistance",
-                        " Manufacturing - Production planning, Quality control, Supply chain optimization, Predictive maintenance",
+                        "Collaborating in a simulated startup environment to design, develop, and deploy AI products",
+                        "Working in 5-member teams (2 Data Science & AI students, 2 Full Stack Developers, 1 Cloud & DevOps student) to mirror real-world tech company structures",
+                        "Building complete AI solutions like AI-powered e-commerce portals, job recommendation platforms, fitness tracking apps, and movie recommendation systems",
+                        "Delivering portfolio-ready projects that demonstrate your skills to potential employers"
+                    ]
+                }
+            },
+          
+            {
+                id: 7,
+                module: "Module 7",
+                title: "Internship + Advanced Training",
+                details: {
+                    videos: 7,
+                    time: "3 month",
+                    descriptions: [
+                        "Full-day internship experience (6 hours/day) in real-world projects",
+                        "Continued live training (2 hours/day) to enhance expertise",
+                        "Advanced modules in Machine Learning, Deep Learning, and modern AI tools",
+                        "Opportunity to earn up to ₹45,000 INR during internship (subject to passing Stipend Eligibility Test)"
                     ]
                 }
             },
             {
-                id: 7,
-                module: "Module 7",
-                title: "Capstone Project",
+                id: 8,
+                module: "Module 8",
+                title: "Global Certifications to Validate Your Expertise",
                 details: {
-                    videos: 8,
-                    time: "4 weeks",
+                    videos: 7,
+                    time: "1 month",
                     descriptions: [
-                        "Students can demonstrate their competencies through either a single development effort (Capstone Project) or a series of mini-projects (Learn by Doing Assignments).",
-                        "Project Options:",
-                        " AI-Powered Business Solution, Customer Service Automation Suite",
-                        " Smart Document Processing System, AI-Powered Recruitment Assistant",
-                        "Multi-Modal Content Creation Suite, AI Agent Ecosystem",
-                        "Industry-Specific Application."
+                        "Earn globally recognised certifications from leading tech companies to enhance your employability",
+                        "Validate your skills in Data Science, AI, Python, and Analytics with industry-approved credentials",
+                        "Gain certifications that act as tangible proof of expertise and boost your professional credibility"
                     ]
                 }
             },
-
+            // {
+            //     id: 9,       
+            //     module: "Module 9",
+            //     title: "Data Visualization & Reporting",
+            //     details: {
+            //         videos: 7,
+            //         time: "1 month",
+            //         descriptions: [
+            //             "Introduction to Power BI and Tableau",
+            //             "Power BI: Data collection, power queries, creating reports, DAX queries, applying filters",
+            //             "Tableau: Data collection, transformation, visual reports, measures, and filters",
+            //             "Real-world projects and visualizations using Power BI/Tableau"
+            //         ]
+            //     }
+            // }
         ],
         levelcardIndex: [
             {
@@ -2802,17 +2901,17 @@ export const data = [
                 icon: faBriefcase,
                 title: "Placement Preparation",
                 description: "Get expert guidance on resumes, LinkedIn profiles, and interviews. Be fully prepared to impress recruiters."
-              },
-              {
+            },
+            {
                 icon: faHandshake,
                 title: "Job Support",
                 description: "Receive unlimited interview opportunities until you secure a job. Achieve your career goals with our placement assistance."
-              },
-              {
+            },
+            {
                 icon: faTrophy,
                 title: "Congratulations for the job ",
                 description: "Congratulations on getting the job, you have done a great job, you are the best"
-              }
+            }
         ],
         accordionContent: [
             {
@@ -2890,6 +2989,20 @@ export const data = [
         ],
         bannerHeader: 'Learn Generative AI Today',
         bannerStudentsEnrolled: '6k+ Students Enrolled',
+        bannerDescription: 'Join our Generative AI course and master LLMs, prompt engineering, and AI applications. Enroll now to kickstart your career!',
+        schemaJsonLd: {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Generative AI Course in Hyderabad",
+            "description": "Master Generative AI with our comprehensive course covering LLMs, prompt engineering, and real-world projects. Enroll now!",
+            "provider": {
+                "@type": "Organization",
+                "name": "SocialPrachar",
+                "url": "https://www.socialprachar.com"
+            },
+            "url": "https://www.socialprachar.com/generative-ai-course",
+            "educationalCredentialAwarded": "Certificate of Completion"
+        }
 
     },
 
@@ -2901,7 +3014,7 @@ export const data = [
         slug: 'data-analytics-course-training-hyderabad',
         courseTitle: 'Data Science',
         imageSrc: DA,
-        careerRoadmap: '/textTypeRoadmaps/DataScience&AI.pdf',
+        careerRoadmap: '/textTypeRoadmaps/Data-Analytics-Career-Roadmap-India-0-8-years.pdf',
         certificate: defaultCertificate,
         Duration: '5 months',
         students: '2700+ students',
@@ -2910,6 +3023,7 @@ export const data = [
         Header: 'Learn Data Analytics Course & Become a Certified Professional in ',
         TestmonialsCommentsImage1: testmonialsCommentImageDA,
         TestmonialsCommentsImage2: testmonialsCommentImageDA,
+        internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Data Analytics' },
         ],
@@ -2941,118 +3055,141 @@ export const data = [
         ],
         Description: "In this comprehensive Data Analytics certification course, you will gain a thorough understanding of essential data processing tools such as Excel, SQL, and NoSQL, enabling you to work efficiently with database management systems. You'll also learn to use powerful data visualization tools like Tableau and Power BI to analyze data and create compelling visual stories for end - users.The program delves into critical concepts such as Data Preparation, Data Cleansing, and Exploratory Data Analysis, ensuring a solid foundation for handling diverse datasets.You will explore advanced topics like Data Mining of both Structured(RDBMS) and Unstructured(Big Data) data, illustrated with real - world examples to bridge theory and practice.Mastery of Advanced Excel will enhance your data proficiency, helping you optimize workflows and significantly reduce working hours.Through this training, you'll gain practical skills to transform raw data into actionable insights, empowering you to make data-driven decisions with confidence.",
         moduleContent: [
-            {
+              {
                 id: 1,
                 module: "Module 1",
-                title: "Introduction to Data Analytics",
+                title: "Foundations & Hands-On Mastery",
                 details: {
-                    videos: 5,
-                    time: "2 weeks",
+                    videos: 7,
+                    time: "1 months",
                     descriptions: [
-                        "Overview of data analytics and its importance in decision-making",
-                        "Introduction to data processing tools like Excel, SQL, and NoSQL",
-                        "Setting up a data analytics environment"
+                        "Daily live classes (3 hours/day) with industry experts",
+                        "Balanced approach of conceptual learning and hands-on projects",
+                        "Weekly assignments and assessments to monitor progress",
+                        "Build strong foundational knowledge across all four domains"
                     ]
                 }
             },
             {
                 id: 2,
                 module: "Module 2",
-                title: "Data Preparation and Cleansing",
+                title: "Data Analytics Mastery: From Raw Data to Business Insights",
                 details: {
-                    videos: 6,
-                    time: "3 weeks",
+                    videos: 7,
+                    time: "3 months",
                     descriptions: [
-                        "Understanding the importance of clean data",
-                        "Techniques for data preparation and cleansing",
-                        "Working with structured and unstructured data"
+                        "Understanding data collection, cleaning, and preprocessing techniques for accurate analysis",
+                        "Performing statistical analysis to identify patterns, trends, and relationships in data",
+                        "Creating data visualizations using tools like Matplotlib, Seaborn, or Tableau for better decision-making",
+                        "Applying business intelligence (BI) tools to generate actionable insights and reports"
                     ]
                 }
             },
             {
                 id: 3,
                 module: "Module 3",
-                title: "Exploratory Data Analysis (EDA)",
+                title: "Data Science Excellence: Turning Data into Intelligence",
                 details: {
                     videos: 7,
-                    time: "3 weeks",
+                    time: "2 month",
                     descriptions: [
-                        "Performing exploratory analysis to uncover patterns",
-                        "Visualization techniques for data exploration",
-                        "Using statistical methods to summarize data"
+                        "Applying scientific methods to analyze and interpret complex datasets",
+                        "Implementing algorithms to solve real-world business and research problems",
+                        "Using machine learning techniques for predictive and prescriptive analytics",
+                        "Working with both structured and unstructured data for comprehensive insights"
                     ]
                 }
             },
             {
                 id: 4,
                 module: "Module 4",
-                title: "Data Mining Techniques",
+                title: "AI Innovations: Build the Future with Intelligent Systems",
                 details: {
-                    videos: 8,
-                    time: "4 weeks",
+                    videos: 7,
+                    time: "1 month",
                     descriptions: [
-                        "Introduction to data mining and its applications",
-                        "Techniques for mining structured (RDBMS) data",
-                        "Approaches to mining unstructured (Big Data) data"
+                        "Understanding the fundamentals of Artificial Intelligence and its applications",
+                        "Building and training neural networks for predictive and classification tasks",
+                        "Implementing computer vision techniques for image recognition and analysis",
+                        "Applying natural language processing (NLP) to interpret and generate human language"
                     ]
                 }
             },
             {
                 id: 5,
                 module: "Module 5",
-                title: "Data Visualization with Tableau and Power BI",
+                title: "Cloud & DevOps Pro: Deploy, Scale, and Automate on AWS",
                 details: {
                     videos: 7,
-                    time: "3 weeks",
+                    time: "1 month",
                     descriptions: [
-                        "Introduction to data visualization principles",
-                        "Creating visual dashboards with Tableau",
-                        "Building interactive reports using Power BI"
+                        "Deploying and managing data solutions using Amazon Web Services (AWS)",
+                        "Applying DevOps principles for continuous integration and continuous deployment (CI/CD)",
+                        "Automating workflows and infrastructure using tools like Terraform, Ansible, or AWS CloudFormation",
+                        "Implementing monitoring, logging, and scaling strategies for high availability and performance"
                     ]
                 }
             },
             {
                 id: 6,
                 module: "Module 6",
-                title: "Advanced Excel for Data Proficiency",
+                title: "Cross-Functional AI Projects: Build Real Products",
                 details: {
-                    videos: 6,
-                    time: "2 weeks",
+                    videos: 7,
+                    time: "1 month",
                     descriptions: [
-                        "Mastering advanced Excel functions for data manipulation",
-                        "Using pivot tables and charts for data analysis",
-                        "Automating workflows with Excel macros"
+                        "Collaborating in a simulated startup environment to design, develop, and deploy AI products",
+                        "Working in 5-member teams (2 Data Science & AI students, 2 Full Stack Developers, 1 Cloud & DevOps student) to mirror real-world tech company structures",
+                        "Building complete AI solutions like AI-powered e-commerce portals, job recommendation platforms, fitness tracking apps, and movie recommendation systems",
+                        "Delivering portfolio-ready projects that demonstrate your skills to potential employers"
                     ]
                 }
             },
+          
             {
                 id: 7,
                 module: "Module 7",
-                title: "Real-World Applications and Case Studies",
+                title: "Internship + Advanced Training",
                 details: {
                     videos: 7,
-                    time: "3 weeks",
+                    time: "3 month",
                     descriptions: [
-                        "Applying data analytics in real-world scenarios",
-                        "Analyzing case studies to solve business challenges",
-                        "Presenting insights with actionable recommendations"
+                        "Full-day internship experience (6 hours/day) in real-world projects",
+                        "Continued live training (2 hours/day) to enhance expertise",
+                        "Advanced modules in Machine Learning, Deep Learning, and modern AI tools",
+                        "Opportunity to earn up to ₹45,000 INR during internship (subject to passing Stipend Eligibility Test)"
                     ]
                 }
             },
             {
                 id: 8,
                 module: "Module 8",
-                title: "Capstone Project & Certification",
+                title: "Global Certifications to Validate Your Expertise",
                 details: {
                     videos: 7,
                     time: "1 month",
                     descriptions: [
-                        "Executing a full-scale data analytics project",
-                        "Integrating data processing, EDA, and visualization",
-                        "Preparing for certification with project showcase"
+                        "Earn globally recognised certifications from leading tech companies to enhance your employability",
+                        "Validate your skills in Data Science, AI, Python, and Analytics with industry-approved credentials",
+                        "Gain certifications that act as tangible proof of expertise and boost your professional credibility"
                     ]
                 }
-            }
+            },
+            // {
+            //     id: 9,       
+            //     module: "Module 9",
+            //     title: "Data Visualization & Reporting",
+            //     details: {
+            //         videos: 7,
+            //         time: "1 month",
+            //         descriptions: [
+            //             "Introduction to Power BI and Tableau",
+            //             "Power BI: Data collection, power queries, creating reports, DAX queries, applying filters",
+            //             "Tableau: Data collection, transformation, visual reports, measures, and filters",
+            //             "Real-world projects and visualizations using Power BI/Tableau"
+            //         ]
+            //     }
+            // }
         ],
         timeLineHeading: 'Data Analytics',
         levelcardIndex: [
@@ -3186,6 +3323,20 @@ export const data = [
         ],
         bannerHeader: 'Learn Data Analytics Today',
         bannerStudentsEnrolled: '2.7k+ Students Enrolled',
+        bannerDescription: 'Join our Data Analytics course and master data visualization, SQL, and Tableau. Enroll now to kickstart your career!',
+        schemaJsonLd: {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Data Analytics Course in Hyderabad",
+            "description": "Master Data Analytics with our comprehensive course covering SQL, Tableau, Power BI, and real-world projects. Enroll now!",
+            "provider": {
+                "@type": "Organization",
+                "name": "SocialPrachar",
+                "url": "https://www.socialprachar.com"
+            },
+            "url": "https://www.socialprachar.com/data-analytics-course",
+            "educationalCredentialAwarded": "Certificate of Completion"
+        }
 
     },
 
@@ -3206,6 +3357,7 @@ export const data = [
         text: 'SnowFlake Course',
         rating: 4.1,
         Header: 'Learn Snow Flake Course & Become a Certified Professional in ',
+        internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'SnowFlake' },
         ],
@@ -3444,17 +3596,17 @@ export const data = [
                 icon: faBriefcase,
                 title: "Placement Preparation",
                 description: "Get expert guidance on resumes, LinkedIn profiles, and interviews. Be fully prepared to impress recruiters."
-              },
-              {
+            },
+            {
                 icon: faHandshake,
                 title: "Job Support",
                 description: "Receive unlimited interview opportunities until you secure a job. Achieve your career goals with our placement assistance."
-              },
-              {
+            },
+            {
                 icon: faTrophy,
                 title: "Congratulations for the job ",
                 description: "Congratulations on getting the job, you have done a great job, you are the best"
-              }
+            }
         ],
         accordionContent: [
             {
@@ -3541,6 +3693,20 @@ export const data = [
         ],
         bannerHeader: 'Learn Snow Flake Today',
         bannerStudentsEnrolled: '2.7k+ Students Enrolled',
+        bannerDescription: 'Join our Snow Flake course and master cloud data warehousing, SQL, and data modeling. Enroll now to kickstart your career!',
+        schemaJsonLd: {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Snow Flake Course in Hyderabad",
+            "description": "Master Snow Flake with our comprehensive course covering cloud data warehousing, SQL, and data modeling. Enroll now!",
+            "provider": {
+                "@type": "Organization",
+                "name": "SocialPrachar",
+                "url": "https://www.socialprachar.com"
+            },
+            "url": "https://www.socialprachar.com/snowflake-training-in-hyderabad",
+            "educationalCredentialAwarded": "Certificate of Completion"
+        }
 
     },
 
@@ -3561,6 +3727,7 @@ export const data = [
         text: 'SalesForce Course',
         rating: 4.2,
         Header: 'Learn Sales Force Course & Become a Certified Professional in ',
+        internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Sales Force Development' },
         ],
@@ -3799,17 +3966,17 @@ export const data = [
                 icon: faBriefcase,
                 title: "Placement Preparation",
                 description: "Get expert guidance on resumes, LinkedIn profiles, and interviews. Be fully prepared to impress recruiters."
-              },
-              {
+            },
+            {
                 icon: faHandshake,
                 title: "Job Support",
                 description: "Receive unlimited interview opportunities until you secure a job. Achieve your career goals with our placement assistance."
-              },
-              {
+            },
+            {
                 icon: faTrophy,
                 title: "Congratulations for the job ",
                 description: "Congratulations on getting the job, you have done a great job, you are the best"
-              }
+            }
         ],
         accordionContent: [
             {
@@ -3895,6 +4062,20 @@ export const data = [
             { id: 24, image: Sai_Chand_ML },
         ],
         bannerHeader: 'Learn Sales Force Today',
-        bannerStudentsEnrolled: '2.7k+ Students Enrolled'
+        bannerStudentsEnrolled: '2.7k+ Students Enrolled',
+        bannerDescription: 'Join our Sales Force course and master CRM, automation, and customer relationship management. Enroll now to kickstart your career!',
+        schemaJsonLd: {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Sales Force Course in Hyderabad",
+            "description": "Master Sales Force with our comprehensive course covering CRM, automation, and customer relationship management. Enroll now!",
+            "provider": {
+                "@type": "Organization",
+                "name": "SocialPrachar",
+                "url": "https://www.socialprachar.com"
+            },
+            "url": "https://www.socialprachar.com/salesforce-course",
+            "educationalCredentialAwarded": "Certificate of Completion"
+        }
     }
 ];
