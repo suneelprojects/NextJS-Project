@@ -4,8 +4,8 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 // import { motion } from 'framer-motion';
 import styles from './dataanalytics.module.css';
-import img2 from '@/assets/newassets/artical-2.jpg';
-import img3 from '@/assets/newassets/artical-2.jpg';
+import img2 from '../../assets/newassets/artical2-img2.jpg';
+import img3 from '../../assets/newassets/artical-2.jpg';
 import { AnimatePresence, motion } from 'framer-motion';
 import DataAnalyticsForm from './DataAnalyticsForm';
 
@@ -126,7 +126,7 @@ export default function NowPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           >
-            In today&apos;s data-driven world, organizations are making decisions not on gut feeling but on data-backed insights. From tech giants to startups, data analytics is at the heart of strategic planning, product launches, customer engagement, and revenue growth. This rising demand has created a massive career opportunity for skilled data analysts.
+            In today&aposs data-driven world, organizations are making decisions not on gut feeling but on data-backed insights. From tech giants to startups, data analytics is at the heart of strategic planning, product launches, customer engagement, and revenue growth. This rising demand has created a massive career opportunity for skilled data analysts.
           </motion.p>
           <motion.div
             className={styles.heroButtons}
@@ -206,7 +206,7 @@ export default function NowPage() {
           <Section className={styles.imageSection}>
             <div className={styles.containerFluid}>
               <Image
-                src={img2}
+                src={img3}
                 alt="Data Analytics Course"
                 className={styles.sectionImage}
                 unoptimized
@@ -219,7 +219,7 @@ export default function NowPage() {
         <Section id="why-socialprachar" className={styles.whySocialprachar}>
           <div className={styles.containerFluid}>
             <h2 className={`${styles.sectionTitle} ${styles.gradientText3}`}>Why Socialprachar Offers the Best Data Analytics Course with Internship in Hyderabad</h2>
-            <p className={styles.sectionText}><strong>Socialprachar</strong> is a <span className={styles.highlights}>leading EdTech institute in Hyderabad</span> with a strong reputation for providing industry-oriented training. Here&apos;s why it is considered the Best Data Analytics Course with Internship in Hyderabad:</p>
+            <p className={styles.sectionText}><strong>Socialprachar</strong> is a <span className={styles.highlights}>leading EdTech institute in Hyderabad</span> with a strong reputation for providing industry-oriented training. Here&aposs why it is considered the Best Data Analytics Course with Internship in Hyderabad:</p>
             <ul className={styles.featureList}>
               <li><strong>Comprehensive Curriculum</strong><br />Covers Python, SQL, Excel, Power BI, Tableau, Statistics, Machine Learning basics, and Cloud tools.</li>
               <li><strong>Internship Included</strong><br />Every student gets an opportunity to work on live projects through the internship program.</li>
