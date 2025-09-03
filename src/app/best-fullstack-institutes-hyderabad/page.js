@@ -354,6 +354,7 @@ const [showFormPopup, setShowFormPopup] = useState(false);
                   src={socialpracharImage}
                   alt="Socialprachar - Best Fullstack Training Institute"
                   className={styles.featuredImage}
+                  unoptimized
                 />
                 <div className={styles.imageOverlay}>
                   <div className={styles.statsCard}>
@@ -480,6 +481,7 @@ const [showFormPopup, setShowFormPopup] = useState(false);
                 src={careerOpportunitiesImage}
                 alt="Career opportunities for fullstack developers"
                 className={styles.careersImage}
+                unoptimized
               />
             </div>
           </div>
@@ -504,6 +506,7 @@ const [showFormPopup, setShowFormPopup] = useState(false);
                 src={finalThoughtsImage}
                 alt="Fullstack developer salary trends"
                 className={styles.salaryImage}
+                unoptimized
               />
             </div>
             
@@ -598,6 +601,7 @@ const [showFormPopup, setShowFormPopup] = useState(false);
                 src={salaryTrendsImage}
                 alt="Start your fullstack development journey"
                 className={styles.ctaImage}
+                unoptimized
               />
             </div>
           </div>

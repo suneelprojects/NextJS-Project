@@ -57,6 +57,7 @@ const ScholarshipTest = () => {
             fill
             className={styles.backgroundImage}
             priority
+            unoptimized
           />
           <div className={styles.backgroundOverlay}></div>
         </div>
@@ -97,6 +98,7 @@ const ScholarshipTest = () => {
                 src={heroimg} 
                 alt="Professional training session" 
                 className={styles.journeyImage}
+                unoptimized
               />
             </div>
           </div>
@@ -173,6 +175,7 @@ const ScholarshipTest = () => {
                 src={heroimg3} 
                 alt="Student coding in modern environment" 
                 className={styles.statsImage}
+                unoptimized
               />
             </div>
             <div className={styles.statsContainer}>

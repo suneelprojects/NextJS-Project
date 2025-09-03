@@ -522,6 +522,7 @@ export default function PrePlacementProgram() {
                 height={780}
                 className="relative z-10 rounded-3xl shadow-2xl w-full"
                 priority
+                unoptimized
               />
             </div>
           </div>
