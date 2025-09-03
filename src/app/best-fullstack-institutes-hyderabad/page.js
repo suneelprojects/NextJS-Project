@@ -3,12 +3,12 @@ import Image from 'next/image';
 import styles from './BestFullstackInstitutesHyderabad.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-import fullstackCareerImage from "../../../public/newassets/Articel1-img1.png";
-import socialpracharImage from "../../../public/newassets/Artical1-img2.jpg";
-import fullstackTrainingImage from "../../../public/newassets/Artical1-img3.jpg";
-import careerOpportunitiesImage from "../../../public/newassets/Artical1-img4.jpg";
-import salaryTrendsImage from "../../../public/newassets/Artical1-img-5.jpg";
-import finalThoughtsImage from "../../../public/newassets/Artical1-img6.jpg";
+import fullstackCareerImage from "@/assets/newassets/Articel1-img1.png";
+import socialpracharImage from "@/assets/newassets/Artical1-img2.jpg";
+import fullstackTrainingImage from "@/assets/newassets/Artical1-img3.jpg";
+import careerOpportunitiesImage from "@/assets/newassets/Artical1-img4.jpg";
+import salaryTrendsImage from "@/assets/newassets/Artical1-img-5.jpg";
+import finalThoughtsImage from "@/assets/newassets/Artical1-img6.jpg";
 import DataAnalyticsForm from '../best-data-analytics-hyderabad/DataAnalyticsForm';
 
 export default function BestFullstackInstitutesHyderabad() {
@@ -230,7 +230,7 @@ const [showFormPopup, setShowFormPopup] = useState(false);
               Transform your career with comprehensive full-stack development training from Hyderabad&aposs leading institutes
             </p>
             <p className={styles.heroDescription}>
-              In today&apos;s digital-first economy, Fullstack Web Development has emerged as one of the most sought-after career paths for students, fresh graduates, and professionals seeking career transitions. Hyderabad, as a premier IT hub in India, offers exceptional opportunities for aspiring developers.
+              In today&aposs digital-first economy, Fullstack Web Development has emerged as one of the most sought-after career paths for students, fresh graduates, and professionals seeking career transitions. Hyderabad, as a premier IT hub in India, offers exceptional opportunities for aspiring developers.
             </p>
             <div className={styles.heroActions}>
               <button
@@ -448,7 +448,7 @@ const [showFormPopup, setShowFormPopup] = useState(false);
                 Career Opportunities & Growth Path
               </h2>
               <p className={styles.sectionDescription}>
-                Upon completing your fullstack training at premier institutes like Socialprachar, diverse career opportunities await you in Hyderabad&apos;s thriving tech ecosystem.
+                Upon completing your fullstack training at premier institutes like Socialprachar, diverse career opportunities await you in Hyderabad&aposs thriving tech ecosystem.
               </p>
 
               <div className={styles.careerRoles}>
@@ -588,7 +588,7 @@ const [showFormPopup, setShowFormPopup] = useState(false);
               <div className={styles.successNote}>
                 <span className={styles.successIcon}>🎯</span>
                 <p className={styles.successText}>
-                  Whether you&apos;re a fresh graduate, career switcher, or working professional, the right training can transform your future in just 4-6 months.
+                  Whether you&aposre a fresh graduate, career switcher, or working professional, the right training can transform your future in just 4-6 months.
                 </p>
               </div>
             </div>

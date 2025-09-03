@@ -25,8 +25,8 @@ import {
   ArrowBigUp,
   ArrowUp
 } from "lucide-react";
-import Homeimage from '../../../public/og/Home-image.png';
-import homeImage2 from '../../../public/newassets/Artical1-img-5.jpg';
+import Homeimage from '../../assets/homeReplaceImage.png';
+import homeImage2 from '../../assets/newassets/Artical1-img-5.jpg';
 import OurAchievements from '../success-stories/ourAchievements/OurAchievements';
 
 // Apps Script web app URL - replace with your deployed script URL or set NEXT_PUBLIC_APPS_SCRIPT_URL in env
@@ -591,7 +591,7 @@ export default function PrePlacementProgram() {
                 Launch Your Career Before Graduation
               </h3>
               <p className="text-base sm:text-lg mb-6 sm:mb-8 brand-text-secondary">
-                With  <strong className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">SocialPrachar & aposs Placement Program 2026</strong>, you&apos;ll:
+                With  <strong className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">SocialPrachar & aposs Placement Program 2026</strong>, you&aposll:
               </p>
 
               <div className="space-y-4 sm:space-y-6">
@@ -913,7 +913,7 @@ export default function PrePlacementProgram() {
 
           <div className="text-center">
             <p className="text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto text-gray-800 font-medium">
-              With SocialPrachar, students <strong className="text-orange-500">don&apost just study, they launch their careers.</strong> We&apos;re recognized as a trusted <strong className="text-orange-500">Campus-to-Career Partner</strong> for both students and colleges nationwide.
+              With SocialPrachar, students <strong className="text-orange-500">don&apost just study, they launch their careers.</strong> We&aposre recognized as a trusted <strong className="text-orange-500">Campus-to-Career Partner</strong> for both students and colleges nationwide.
             </p>
           </div>
         </div>
@@ -1004,7 +1004,7 @@ export default function PrePlacementProgram() {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-              🎓 2026 Final-Year Student? Don&apos;t wait till after graduation to find a job.
+              🎓 2026 Final-Year Student? Don&apost wait till after graduation to find a job.
             </h2>
             <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-12 opacity-90">
               Join thousands of students who are getting placed before graduation with our proven 6-month program.
