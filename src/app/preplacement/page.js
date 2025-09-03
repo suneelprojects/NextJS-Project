@@ -793,7 +793,7 @@ export default function PrePlacementProgram() {
               />
             </div>
             <div className="order-1 lg:order-2">
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 bg-gradient-to-r from-indigo-700 to-violet-600 bg-clip-text text-transparent">
                 What Sets Us Apart:
               </h3>
 
