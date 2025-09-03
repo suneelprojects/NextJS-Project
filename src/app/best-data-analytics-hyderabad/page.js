@@ -4,8 +4,8 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 // import { motion } from 'framer-motion';
 import styles from './dataanalytics.module.css';
-import img2 from '@/assets/newassets/artical-2.jpg';
-import img3 from '@/assets/newassets/artical-2.jpg';
+import img2 from '../../assets/newassets/artical2-img2.jpg';
+import img3 from '../../assets/newassets/artical-2.jpg';
 import { AnimatePresence, motion } from 'framer-motion';
 import DataAnalyticsForm from './DataAnalyticsForm';
 
@@ -206,7 +206,7 @@ export default function NowPage() {
           <Section className={styles.imageSection}>
             <div className={styles.containerFluid}>
               <Image
-                src={img2}
+                src={img3}
                 alt="Data Analytics Course"
                 className={styles.sectionImage}
               />

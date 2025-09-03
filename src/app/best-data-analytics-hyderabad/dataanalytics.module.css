@@ -190,7 +190,7 @@
 /* Hero Section - Exact match */
 .hero {
   background: linear-gradient(135deg, rgba(44, 62, 80, 0.642), rgba(52, 73, 94, 0.484)),
-              url('../../assets/newassets/artical2-img2.png');
+              url('../../assets//newassets/artical2-img2.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
