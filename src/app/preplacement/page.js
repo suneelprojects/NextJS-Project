@@ -522,6 +522,7 @@ export default function PrePlacementProgram() {
                 height={780}
                 className="relative z-10 rounded-3xl shadow-2xl w-full"
                 priority
+                unoptimized
               />
             </div>
           </div>
@@ -584,6 +585,7 @@ export default function PrePlacementProgram() {
                 width={1000}
                 height={500}
                 className="rounded-3xl shadow-2xl w-full"
+                unoptimized
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -787,6 +789,7 @@ export default function PrePlacementProgram() {
                 width={1284}
                 height={856}
                 className="rounded-3xl shadow-2xl w-full transform hover:scale-105 transition-transform duration-500"
+                unoptimized
               />
             </div>
             <div className="order-1 lg:order-2">

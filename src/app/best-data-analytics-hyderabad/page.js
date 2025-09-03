@@ -209,6 +209,7 @@ export default function NowPage() {
                 src={img3}
                 alt="Data Analytics Course"
                 className={styles.sectionImage}
+                unoptimized
               />
             </div>
           </Section>
@@ -337,6 +338,7 @@ export default function NowPage() {
                 src={img2}
                 alt="Data Analytics Training"
                 className={`${styles.sectionImage} ${styles.sideBySideImage}`}
+                unoptimized
               />
             </div>
           </Section>
