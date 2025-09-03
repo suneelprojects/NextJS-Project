@@ -4,8 +4,8 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 // import { motion } from 'framer-motion';
 import styles from './dataanalytics.module.css';
-import img2 from '../../assets/newassets/artical2-img2.jpg';
-import img3 from '../../assets/newassets/artical-2.jpg';
+const img2 = '/artical2-img2.jpg';
+const img3 = '/artical-2.jpg';
 import { AnimatePresence, motion } from 'framer-motion';
 import DataAnalyticsForm from './DataAnalyticsForm';
 
