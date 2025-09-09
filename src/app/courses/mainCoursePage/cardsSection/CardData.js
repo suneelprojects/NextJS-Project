@@ -157,7 +157,7 @@ export const data = [
         selfQuestioning: 'Starting your Data Science Career?',
         Description: 'Data Scientists are in high demand across every industry.Even tech giants such as Google, Amazon, Apple, Facebook, and Microsoft are constantly seeking experts in data extraction, data mining, visualization, and more.The course covers a comprehensive range of topics including Data Analytics(Power BI, Tableau, Excel), Data Science(Machine Learning, Python, SQL, Statistics), AI(Deep Learning, NLP, OpenCV), and Cloud(AWS DevOps).',
         moduleContent: [
-              {
+            {
                 id: 1,
                 module: "Module 1",
                 title: "Foundations & Hands-On Mastery",
@@ -247,7 +247,7 @@ export const data = [
                     ]
                 }
             },
-          
+
             {
                 id: 7,
                 module: "Module 7",
@@ -341,7 +341,7 @@ export const data = [
         bannerStudentsEnrolled: '6k+ Students Enrolled',
         timeLineHeading: 'Data Scientist',
         levelcardIndex: [
-             {
+            {
                 icon: faChartBar,
                 title: "Master Data Analytics",
                 description: "Learn data analysis, statistics, and visualization using tools like Excel, SQL, and Power BI. Build a strong foundation for data-driven decision-making."
@@ -351,18 +351,18 @@ export const data = [
                 title: "Master Data-Science",
                 description: "Python, OOPs, Machine Learning, Statistics and Probability, Data Mining, Data Warehousing, Programming"
             },
-             {
+            {
                 icon: faRobot,
                 title: "Explore AI Concepts",
                 description: "Learn AI techniques like deep learning and NLP. Use frameworks like TensorFlow to build intelligent solutions."
             },
-           
+
             {
                 icon: faCloud,
                 title: "Learn Cloud Deployment",
                 description: "Deploy AI models on cloud platforms like AWS and Azure. Gain practical knowledge of scaling and automation."
             },
-           
+
             {
                 icon: faClipboardList,
                 title: "Weekly Assessments",
@@ -2025,7 +2025,7 @@ export const data = [
         ],
         Description: "Social Prachar is ranked as the #1 Best Artificial Intelligence Training Institute in Hyderabad, with 15,000+ success stories since 2014. We offer a 100% placement guarantee for all our trainees with top MNCs and startups. Master AI concepts, including machine learning, deep learning, and generative AI, in less than 4 months. Enroll now in the most advanced AI training program and accelerate your career in Artificial Intelligence!",
         moduleContent: [
-              {
+            {
                 id: 1,
                 module: "Module 1",
                 title: "Foundations & Hands-On Mastery",
@@ -2115,7 +2115,7 @@ export const data = [
                     ]
                 }
             },
-          
+
             {
                 id: 7,
                 module: "Module 7",
@@ -2165,71 +2165,62 @@ export const data = [
         timeLineHeading: 'Artificial Intelligence',
         levelcardIndex: [
             {
-                icon: faBrain,
-                title: "Introduction to AI",
-                description: "Explore the foundational concepts of Artificial Intelligence, its history, applications, and the impact it has on various industries."
+                icon: faChartBar,
+                title: "Master Data Analytics",
+                description: "Learn data analysis, statistics, and visualization using tools like Excel, SQL, and Power BI. Build a strong foundation for data-driven decision-making."
             },
             {
-                icon: faCogs,
-                title: "Machine Learning Basics",
-                description: "Understand the basics of Machine Learning, including supervised, unsupervised, and reinforcement learning techniques."
-            },
-            {
-                icon: faChartLine,
-                title: "Data Analysis for AI",
-                description: "Learn to preprocess and analyze data using tools like Python, NumPy, and Pandas to prepare datasets for AI models."
-            },
-            {
-                icon: faProjectDiagram,
-                title: "Deep Learning Foundations",
-                description: "Dive into neural networks, activation functions, and techniques to build deep learning models using frameworks like TensorFlow or PyTorch."
+                icon: faChartBar,
+                title: "Master Data-Science",
+                description: "Python, OOPs, Machine Learning, Statistics and Probability, Data Mining, Data Warehousing, Programming"
             },
             {
                 icon: faRobot,
-                title: "Natural Language Processing (NLP)",
-                description: "Discover NLP techniques, including text processing, sentiment analysis, and chatbots, using libraries like NLTK and SpaCy."
+                title: "Explore AI Concepts",
+                description: "Learn AI techniques like deep learning and NLP. Use frameworks like TensorFlow to build intelligent solutions."
             },
-            {
-                icon: faImages,
-                title: "Computer Vision",
-                description: "Learn image processing, object detection, and facial recognition techniques using OpenCV and deep learning models."
-            },
+
             {
                 icon: faCloud,
-                title: "AI in the Cloud",
-                description: "Understand how to deploy AI solutions on cloud platforms like AWS, Azure, or Google Cloud."
+                title: "Learn Cloud Deployment",
+                description: "Deploy AI models on cloud platforms like AWS and Azure. Gain practical knowledge of scaling and automation."
+            },
+
+            {
+                icon: faClipboardList,
+                title: "Weekly Assessments",
+                description: "Test your knowledge weekly to track progress and strengthen your understanding of core topics."
             },
             {
-                icon: faShieldAlt,
-                title: "AI Ethics & Responsible AI",
-                description: "Explore ethical considerations, bias mitigation, and responsible AI practices to ensure fairness and transparency in AI systems."
+                icon: faCalendarCheck,
+                title: "Monthly Evaluations",
+                description: "Take in-depth monthly tests to consolidate your learning and improve problem-solving skills."
             },
             {
-                icon: faNetworkWired,
-                title: "AI for IoT Applications",
-                description: "Combine AI with IoT to create smart solutions for real-world applications, including predictive maintenance and automation."
+                icon: faProjectDiagram,
+                title: "Capstone Projects",
+                description: "Work on real-world projects that simulate industry scenarios. Solve complex challenges and gain valuable experience."
             },
             {
-                icon: faTasks,
-                title: "AI Project Lifecycle",
-                description: "Learn how to design, implement, and manage AI projects, including problem identification, solution deployment, and monitoring."
+                icon: faUsers,
+                title: "Group Activities",
+                description: "Collaborate with peers in group tasks and brainstorming sessions. Build teamwork and problem-solving skills."
             },
             {
-                icon: faUserGraduate,
-                title: "AI Research & Development",
-                description: "Understand the process of AI research, including literature review, experimentation, and publishing findings."
+                icon: faSearch,
+                title: "Research Techniques",
+                description: "Learn research methodologies and techniques to solve problems effectively. Build skills in data sourcing and analysis."
             },
             {
-                icon: faCode,
-                title: "AI Programming Challenges",
-                description: "Practice solving real-world problems using AI techniques to strengthen your programming and problem-solving skills."
+                icon: faBook,
+                title: "Interactive Tutorials",
+                description: "Access engaging tutorials that break down complex topics into simple concepts. Learn at your own pace with comprehensive resources."
             },
             {
-                icon: faBriefcase,
-                title: "Career in AI",
-                description: "Prepare for careers in AI with guidance on resume building, interview preparation, and leveraging LinkedIn effectively."
-            },
-            {
+                icon: faCogs,
+                title: "Technical Skills Training",
+                description: "Master essential technical skills required in the industry, including tools, frameworks, and best practices."
+            }, {
                 icon: faBriefcase,
                 title: "Placement Preparation",
                 description: "Get expert guidance on resumes, LinkedIn profiles, and interviews. Be fully prepared to impress recruiters."
@@ -2704,7 +2695,7 @@ export const data = [
         ],
         Description: "Social Prachar is ranked as the #1 Best Generative AI Training Institute in Hyderabad, with 15,000+ success stories since 2014. We offer a 100% placement guarantee for all our trainees with top MNCs and startups. Master cutting-edge Generative AI concepts, including deep learning, neural networks, NLP, and AI model deployment, in less than 4 months. Enroll now in the most advanced Generative AI training program and unlock new career opportunities in Artificial Intelligence!",
         moduleContent: [
-              {
+            {
                 id: 1,
                 module: "Module 1",
                 title: "Foundations & Hands-On Mastery",
@@ -2794,7 +2785,7 @@ export const data = [
                     ]
                 }
             },
-          
+
             {
                 id: 7,
                 module: "Module 7",
@@ -3059,7 +3050,7 @@ export const data = [
         ],
         Description: "In this comprehensive Data Analytics certification course, you will gain a thorough understanding of essential data processing tools such as Excel, SQL, and NoSQL, enabling you to work efficiently with database management systems. You'll also learn to use powerful data visualization tools like Tableau and Power BI to analyze data and create compelling visual stories for end - users.The program delves into critical concepts such as Data Preparation, Data Cleansing, and Exploratory Data Analysis, ensuring a solid foundation for handling diverse datasets.You will explore advanced topics like Data Mining of both Structured(RDBMS) and Unstructured(Big Data) data, illustrated with real - world examples to bridge theory and practice.Mastery of Advanced Excel will enhance your data proficiency, helping you optimize workflows and significantly reduce working hours.Through this training, you'll gain practical skills to transform raw data into actionable insights, empowering you to make data-driven decisions with confidence.",
         moduleContent: [
-              {
+            {
                 id: 1,
                 module: "Module 1",
                 title: "Foundations & Hands-On Mastery",
@@ -3149,7 +3140,7 @@ export const data = [
                     ]
                 }
             },
-          
+
             {
                 id: 7,
                 module: "Module 7",

@@ -133,6 +133,8 @@ const Testimonials = () => {
             className={styles.line}
             data-aos="fade-right"
             data-aos-duration="1500"
+            
+
           />
 
           {testimonialImage ? (
@@ -144,6 +146,7 @@ const Testimonials = () => {
               height={500}
               layout="responsive"
               objectFit="cover"
+              unoptimized
             />
           ) : (
             <p>No image available for this card.</p>
