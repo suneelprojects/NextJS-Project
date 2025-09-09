@@ -1992,6 +1992,10 @@ export const data = [
         internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Artificial Intelligence' },
+            { dropDownid: 1, courseName: 'AI Developer' },
+            { dropDownid: 2, courseName: 'GenAI' },
+            { dropDownid: 3, courseName: 'Agentic AI ' }
+
         ],
         selfQuestioning: 'Starting your Artificial Intelligence Career?',
         questions: [
