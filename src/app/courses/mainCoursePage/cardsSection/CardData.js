@@ -2162,7 +2162,7 @@ export const data = [
             // }
         ],
 
-        timeLineHeading: 'Artificial Intelligence',
+        timeLineHeading: 'Ai Engineer',
         levelcardIndex: [
             {
                 icon: faChartBar,
