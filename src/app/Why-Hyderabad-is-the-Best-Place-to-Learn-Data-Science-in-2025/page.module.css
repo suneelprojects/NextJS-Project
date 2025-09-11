@@ -1,0 +1,248 @@
+/* --- GENERAL & ROOT VARIABLES --- */
+/* :root {
+  --font-primary: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --color-text-light: #e0e7ff;
+  --color-text-dark: #374151;
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-text: linear-gradient(135deg, #fff, #e0e7ff);
+} */
+
+.container {
+  font-family:'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #374151;
+  background-color: #f8f9fa;
+  overflow-x: hidden;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #ff6b9d, #ffa726);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.subheading {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: #e0e7ff;
+  margin-bottom: 40px;
+}
+
+/* --- HERO SECTION --- */
+.heroSection {
+  padding: 120px 20px;
+  color: #fff;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(10, 2, 44, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.heroOverlay {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #fff, #ffffff);;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); */
+}
+
+.heroContent p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.8;
+  font-weight: 500;
+  margin: 0 auto 25px auto;
+  max-width: 1200px;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.heroButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.exploreButton, .contactButton, .enrollButton, .consultButton {
+  padding: 16px 36px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.exploreButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);;
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+.exploreButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+}
+
+.contactButton {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.contactButton:hover {
+  background: #fff;
+  color: #667eea;
+}
+
+/* --- GENERIC SECTION STYLING --- */
+.whyHyderabadSection, .careerSection, .instituteSection, .ctaSection, .faqSection, .skillsSection, .advantagesSection {
+  padding: 100px 20px;
+}
+
+.whyHyderabadTitle, .careerTitle, .skillsTitle, .advantagesTitle, .instituteTitle, .ctaTitle, .faqTitle {
+  font-size: clamp(2.25rem, 5vw, 3rem);
+  text-align: center;
+  margin-bottom: 60px;
+  font-weight: 800;
+}
+
+/* --- WHY HYDERABAD SECTION --- */
+.whyHyderabadSection { background: #0F2027; background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027); background: linear-gradient(to right, #2C5364, #203A43, #0F2027); color: #fff; }
+.whyHyderabadTitle { background: linear-gradient(135deg, #fff, #e0e7ff);; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.whyHyderabadContent { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto 80px; align-items: center; }
+.whyHyderabadIntro { font-size: clamp(1.1rem, 2.5vw, 1.4rem); line-height: 1.7; color: #e0e7ff;font-weight: 600; }
+.whyHyderabadImageContainer { display: flex; justify-content: center; }
+.whyHyderabadImage { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease; }
+.whyHyderabadImage:hover { transform: scale(1.05); }
+.benefitsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;  }
+.benefit { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); padding: 40px 30px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease;justify-items: center; }
+.benefit:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.1); }
+.benefitIcon { font-size: 3rem; margin-bottom: 20px; display: block; }
+.benefit h3 { font-size: 1.5rem; margin-bottom: 15px; font-weight: 700; }
+.benefit p { color: #e0e7ff; line-height: 1.7; margin: 0; font-size: 1.05rem; }
+
+/* --- CAREER SECTION --- */
+.careerSection { background: #141E30; background: -webkit-linear-gradient(to right, #243B55, #141E30); background: linear-gradient(to right, #243B55, #141E30); color: #fff; }
+.careerTitle { background: linear-gradient(135deg, #fff, #e0e7ff);; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.careerContent { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
+.careerImage { width: 100%; height: auto; border-radius: 20px; }
+.marketInfo p { margin-bottom: 20px; font-size: clamp(1rem, 2.5vw, 1.1rem); line-height: 1.7; color: #e0e7ff; }
+.marketInfo ul { list-style: none; padding: 0; }
+.marketInfo li { margin-bottom: 10px; position: relative; padding-left: 25px; color: #e0e7ff; }
+.marketInfo li::before { content: '✓'; color: #4ade80; position: absolute; left: 0; }
+.jobRolesGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 60px auto 0; }
+.jobRole { background: #2c3e50; border-radius: 15px; padding: 30px; text-align: center; transition: all 0.3s ease-in-out; border: 1px solid #34495e; position: relative; overflow: hidden; }
+.jobRole:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.4); background: #34495e; }
+.jobIcon { margin-bottom: 20px; justify-items: center;}
+.jobIcon svg { width: 48px; height: 48px; color: #4facfe; }
+.jobInfo h4 { margin: 0 0 10px 0; font-size: 1.3rem; font-weight: 700; color: #fff; }
+.jobInfo p { margin: 0 0 15px 0; font-size: 0.95rem; color: #e0e7ff; min-height: 40px; }
+.salary { font-size: 0.9rem; font-weight: 700; color: #4ade80; background: rgba(74, 222, 128, 0.1); padding: 5px 15px; border-radius: 20px; display: inline-block; }
+
+/* --- SKILLS SECTION --- */
+.skillsSection { background-color: #f8f9fa; }
+.skillsTitle { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.skillsGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.skillItem { text-align: center; padding: 40px 30px; background: #ffffff; border-radius: 20px; border: 1px solid #e7eaf3; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
+.skillItem:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15); border-color: rgba(102, 126, 234, 0.5); }
+.skillIcon { margin-bottom: 25px;justify-items: center; }
+.skillIcon svg { width: 50px; height: 50px; color: #667eea; transition: all 0.3s ease; }
+.skillItem:hover .skillIcon svg { transform: scale(1.1); }
+.skillItem h4 { color: #374151; font-size: 1.4rem; margin-bottom: 15px; font-weight: 700; }
+.skillItem p { color: #6b7280; margin: 0; font-size: 1rem; line-height: 1.6; }
+
+/* --- ADVANTAGES SECTION --- */
+.advantagesSection { background: #000000; background: -webkit-linear-gradient(to right, #434343, #000000); background: linear-gradient(to right, #434343, #000000); color: #fff; }
+.advantagesTitle { background: linear-gradient(135deg, #fff, #e0e7ff);; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.advantagesImageContainerTop { max-width: 900px; margin: 0 auto 60px; }
+.advantagesImage { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); }
+.advantagesGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.advantage { display: flex; align-items: flex-start; gap: 20px; padding: 25px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.1); }
+.advantage:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-5px); }
+.advantageIcon svg { color: #f093fb; width: 32px; height: 32px; flex-shrink: 0; margin-top: 5px; }
+.advantageText h3 { font-size: 1.25rem; font-weight: 700; margin: 0 0 10px; }
+.advantageText p { margin: 0; color: #e0e7ff; font-size: 0.95rem; }
+
+/* --- INSTITUTE SECTION --- */
+.instituteSection { background: #141E30; background: -webkit-linear-gradient(to right, #243B55, #141E30); background: linear-gradient(to right, #243B55, #141E30); color: #fff; }
+.instituteTitle { background:linear-gradient(135deg, #fff, #e0e7ff);; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.instituteContent { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
+.instituteImage { width: 100%; height: auto; border-radius: 20px; }
+.instituteDescription { font-size: clamp(1.1rem, 2.5vw, 1.3rem); line-height: 1.7; margin-bottom: 40px; color: #e0e7ff; }
+.instituteFeatures { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+.featureItem { display: flex; flex-direction: column; gap: 10px; background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; }
+.featureLabel { display: inline-block; padding: 8px 16px; color: #fff; border-radius: 25px; font-size: 0.9rem; font-weight: 700; width: fit-content; }
+.featureDesc { color: #e0e7ff; font-size: 1rem; margin: 0; line-height: 1.6; }
+
+/* --- CTA SECTION --- */
+.ctaSection { background: linear-gradient(135deg, #7995db 0%, #766dda 100%);; text-align: center; color: #fff; }
+.ctaTitle { background: linear-gradient(135deg, #fff, #e0e7ff);; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.ctaDescription { max-width: 900px; margin: 0 auto 30px; font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.8; color: #e0e7ff; }
+.ctaButtons { display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap; }
+.enrollButton { background: #fff; color: #f5576c; }
+.enrollButton:hover { background: #f5576c; color: #fff; animation-duration: 4s; }
+.consultButton { background: transparent; color: #fff; border: 2px solid #fff; }
+
+/* --- FAQ SECTION --- */
+.faqSection { background-color: #f8f9fa; }
+.faqTitle { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.faqContainer { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+.faqItem { background: #fff; border-radius: 10px; border: 1px solid #e7eaf3; cursor: pointer; transition: all 0.3s ease; }
+.faqQuestion { display: flex; justify-content: space-between; align-items: center; padding: 20px; font-size: 1.1rem; font-weight: 600; color: #374151; }
+.faqIcon { font-size: 1.5rem; transition: transform 0.3s ease; font-weight: 300; }
+.faqIcon.active { transform: rotate(45deg); }
+.faqAnswer { overflow: hidden; max-height: 0; transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out; }
+.faqItem:hover { border-color: rgba(102, 126, 234, 0.5); }
+.faqAnswer p { padding: 0 20px 20px; margin: 0; color: #6b7280; }
+.faqItem .faqAnswer { max-height: 200px; } /* Updated for simplicity on click */
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 1024px) {
+  .whyHyderabadContent, .careerContent, .advantagesContent, .instituteContent { grid-template-columns: 1fr; gap: 50px; }
+  .careerContent, .instituteContent { text-align: center; }
+  .whyHyderabadImageContainer, .careerImageContainer, .instituteImageContainer { order: -1; }
+  .jobRolesGrid, .advantagesGrid { grid-template-columns: repeat(2, 1fr); }
+  .instituteFeatures { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .heroSection { padding: 100px 20px; }
+  .whyHyderabadSection, .careerSection, .instituteSection, .ctaSection, .faqSection, .skillsSection, .advantagesSection { padding: 80px 20px; }
+  .jobRolesGrid, .advantagesGrid { grid-template-columns: 1fr; }
+  .heroButtons, .ctaButtons { flex-direction: column; align-items: center; }
+  .exploreButton, .contactButton, .enrollButton, .consultButton { width: 100%; max-width: 300px; }
+}

@@ -42,7 +42,7 @@
     "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
     "firebase": "^11.6.0",
-    "framer-motion": "^12.23.6",
+    "framer-motion": "^12.23.12",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",
     "lexical": "^0.33.1",
