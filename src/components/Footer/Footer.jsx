@@ -65,6 +65,9 @@ const Footer = () => {
     </div>,
     <div onClick={() => handleNavigate("/best-data-analytics-hyderabad")}>
       Best data analytics Institute Hyderabad
+    </div>,
+    <div onClick={() => handleNavigate("/Why-Hyderabad-is-the-Best-Place-to-Learn-Data-Science-in-2025")}>
+      Why Hyderabad is the BestPlace toLearn Data-Science in 2025
     </div>
   ];
 
