@@ -26,7 +26,7 @@ const OpenCourseBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const snap = await getDoc(doc(db, 'blog', id));
+        const snap = await getDoc(doc(db, 'blogs', id));
         if (snap.exists()) {
           const data = snap.data();
           setBlog(data);
