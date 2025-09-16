@@ -68,7 +68,11 @@ const Footer = () => {
     </div>,
     <div onClick={() => handleNavigate("/Why-Hyderabad-is-the-Best-Place-to-Learn-Data-Science-in-2025")}>
       Why Hyderabad is the BestPlace toLearn Data-Science in 2025
+    </div>,
+    <div onClick={() => handleNavigate("/how-long-does-it-take-to-become-fullstackdeveloper")}>
+      how-long-does-it-take-to-become-A-fullstack-developer
     </div>
+
   ];
 
   const TrainingCenter = [

@@ -40,7 +40,7 @@ const Blog = () => {
         const fetchData = async () => {
             try {
                 // Fetch blog posts
-                const postsSnapshot = await getDocs(collection(db, 'blog'));
+                const postsSnapshot = await getDocs(collection(db, 'blogs'));
                 const postsData = postsSnapshot.docs.map(doc => ({
                     id: doc.id,
                     ...doc.data()
@@ -108,11 +108,13 @@ const Blog = () => {
                              onClick={() => router.push(`/courseBlog/${featuredPost.id}`)}>
                             <div className="lg:flex">
                                 <div className="lg:w-1/2 relative overflow-hidden">
-                                    <img
-                                        className="w-full  lg:h-96  transition-transform duration-700 group-hover:scale-110"
-                                        src={featuredPost.imageUrl}
-                                        alt="Featured post"
-                                    />
+                                    {featuredPost.imageUrl && (
+                                        <img
+                                            className="w-full  lg:h-96  transition-transform duration-700 group-hover:scale-110"
+                                            src={featuredPost.imageUrl}
+                                            alt="Featured post"
+                                        />
+                                    )}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>
                                 <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
@@ -173,11 +175,13 @@ const Blog = () => {
                                 >
                                     <div className="md:flex">
                                         <div className="md:w-80 relative overflow-hidden">
-                                            <img
-                                                className="h-64 md:h-full w-full  transition-transform duration-700 group-hover:scale-110"
-                                                src={post.imageUrl}
-                                                alt={post.title}
-                                            />
+                                            {post.imageUrl && (
+                                                <img
+                                                    className="h-64 md:h-full w-full  transition-transform duration-700 group-hover:scale-110"
+                                                    src={post.imageUrl}
+                                                    alt={post.title}
+                                                />
+                                            )}
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         </div>
                                         <div className="flex-1 p-8">
