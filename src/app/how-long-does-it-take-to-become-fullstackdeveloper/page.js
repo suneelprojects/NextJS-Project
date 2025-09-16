@@ -417,7 +417,7 @@ const Timeline = () => {
               </h2>
               <p className="text-xl text-gray-400 leading-relaxed">
                 Your journey timeline depends on your starting point and dedication level. 
-                Here's what you can expect based on different experience levels.
+                Here &apos s what you can expect based on different experience levels.
               </p>
             </div>
             
