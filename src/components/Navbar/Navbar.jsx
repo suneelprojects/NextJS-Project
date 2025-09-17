@@ -91,7 +91,7 @@ const NavBar = () => {
   const secondDDrouters = [
     { hrefLink: "/aboutUs", routerName: "About us" },
     { hrefLink: "/preplacement", routerName: "Pre-Placement" },
-    { hrefLink: "/courseBlog", routerName: "CourseBlog" },
+    { hrefLink: "/courseBlog", routerName: "Articles" },
     { hrefLink: "/events", routerName: "Events" },
     { hrefLink: "/dataclash", routerName: "DataClash" },
     { hrefLink: "/codeclash", routerName: "CodeClash" },

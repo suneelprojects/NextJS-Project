@@ -17,7 +17,7 @@ import styles from './CourseBlogdashboard.module.css';
 import { addDoc, collection, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from 'firebase/firestore';
 import { serverTimestamp } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage';
-import { auth, db } from '../../../firebase';
+import { auth, db, storage } from '../../../firebase';
 import dynamic from 'next/dynamic';
 const TiptapEditor = dynamic(() => import('./TiptapEditor'), { ssr: false });
 
@@ -136,7 +136,7 @@ export default function CourseBlogdashboard() {
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    const storageRef = ref(auth.storage, `images/${file.name}`);
+    const storageRef = ref(storage, `blogs-images/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
     uploadTask.on(
       "state_changed",
