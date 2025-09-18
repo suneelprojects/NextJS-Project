@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronRight, Clock, Calendar, User, ArrowLeft, ArrowRight } from 'lucide-react';
 import { db } from '../../../firebase';
-import { collection, getDocs, orderBy } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import Asidebar from './Asidebar';
 import Footer from '@/components/Footer/Footer';
 import { useRouter } from 'next/navigation';
@@ -39,26 +39,86 @@ const Blog = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Fetch blog posts
-                const postsSnapshot = await getDocs(collection(db, 'blogs'));
-                const postsData = postsSnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
+                // Query: order by createdAt descending (newest first)
+                const postsQuery = query(collection(db, 'blogs'), orderBy('createdAt', 'desc'));
+                const postsSnapshot = await getDocs(postsQuery);
+
+                const postsData = postsSnapshot.docs.map(doc => {
+                    const data = doc.data();
+
+                    // Normalize createdAt into a JS Date and a numeric value for sorting defensively
+                    let createdAtDate = null;
+                    let createdAtMs = 0;
+
+                    if (data.createdAt && typeof data.createdAt === 'object') {
+                        // Firestore Timestamp has toDate()
+                        if (typeof data.createdAt.toDate === 'function') {
+                            createdAtDate = data.createdAt.toDate();
+                        } else if (data.createdAt.seconds) {
+                            // Might be an object with seconds
+                            createdAtDate = new Date(data.createdAt.seconds * 1000);
+                        } else {
+                            createdAtDate = new Date();
+                        }
+                    } else if (typeof data.createdAt === 'string') {
+                        // If stored as a string like "18 September 2025 at 13:42:09 UTC+5:30"
+                        createdAtDate = new Date(data.createdAt);
+                        if (isNaN(createdAtDate)) {
+                            // fallback to current date if parsing fails
+                            createdAtDate = new Date();
+                        }
+                    } else if (typeof data.createdAt === 'number') {
+                        createdAtDate = new Date(data.createdAt);
+                    } else {
+                        createdAtDate = new Date();
+                    }
+
+                    createdAtMs = createdAtDate.getTime();
+
+                    // Format date for display in en-IN (Asia/Kolkata-like) style
+                    const formattedDate = createdAtDate.toLocaleString('en-IN', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                    });
+
+                    return {
+                        id: doc.id,
+                        ...data,
+                        // keep original createdAt raw for any future usage
+                        createdAtRaw: createdAtMs,
+                        // human-friendly date string used in markup
+                        date: formattedDate,
+                    };
+                });
+
+                // As query already orders desc, this should be newest-first.
+                // But sort defensively in case some documents lack createdAt or query didn't work:
+                postsData.sort((a, b) => (b.createdAtRaw || 0) - (a.createdAtRaw || 0));
+
                 setBlogPosts(postsData);
 
-                // Fetch the latest featured post (most recent blog post)
+                // Latest featured post is the first item after sorting
                 if (postsData.length > 0) {
-                    setFeaturedPost(postsData[0]); // Set the latest post as featured
+                    setFeaturedPost(postsData[0]);
                 }
 
                 // Fetch categories (unique categories from posts)
                 const categoriesSet = new Set(postsData.map(post => post.category).filter(Boolean));
-                setCategories(Array.from(categoriesSet).map((cat, i) => ({ id: i, name: cat, category: cat, count: postsData.filter(p => p.category === cat).length })));
+                setCategories(
+                    Array.from(categoriesSet).map((cat, i) => ({
+                        id: i,
+                        name: cat,
+                        category: cat,
+                        count: postsData.filter(p => p.category === cat).length
+                    }))
+                );
 
                 setLoading(false);
             } catch (err) {
-                setError(err.message);
+                setError(err.message || 'Failed to load posts');
                 setLoading(false);
             }
         };
@@ -101,8 +161,7 @@ const Blog = () => {
                     <div className="mb-16 transform transition-all duration-500 hover:scale-[1.02]">
                         <div className="flex items-center space-x-3 mb-8">
                             <h2 className="text-3xl font-bold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">
-                                Featured Story
-                            </h2>
+                                Featured Article                            </h2>
                         </div>
                         <div className="group bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500 cursor-pointer"
                              onClick={() => router.push(`/courseBlog/${featuredPost.id}`)}>
@@ -143,7 +202,7 @@ const Blog = () => {
                                                 <p className="font-semibold text-gray-900">{featuredPost.author}</p>
                                                 <div className="flex items-center space-x-2 text-sm text-gray-500">
                                                     <Calendar className="h-3 w-3" />
-                                                    <time dateTime={featuredPost.date}>{featuredPost.date}</time>
+                                                    <time dateTime={featuredPost.createdAtRaw}>{featuredPost.date}</time>
                                                 </div>
                                             </div>
                                         </div>
@@ -204,7 +263,7 @@ const Blog = () => {
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center space-x-2 text-sm text-gray-500">
                                                     <Calendar className="h-4 w-4" />
-                                                    <time dateTime={post.date}>{post.date}</time>
+                                                    <time dateTime={post.createdAtRaw}>{post.date}</time>
                                                 </div>
                                                 <div className="flex items-center space-x-2 text-indigo-600 group-hover:text-indigo-700 transition-colors duration-300">
                                                     <span className="text-sm font-medium">Read more</span>
