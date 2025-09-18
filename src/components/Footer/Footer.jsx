@@ -71,7 +71,18 @@ const Footer = () => {
     </div>,
     <div onClick={() => handleNavigate("/how-long-does-it-take-to-become-fullstackdeveloper")}>
       How-long-does-it-take-to-become-A-fullstack-developer
+
+    </div>,
+     <div onClick={() => handleNavigate("/why-small-business-need-digital-marketing")}>
+        Why Small Businesses Need Digital Marketing
+    </div>,
+    <div onClick={() => handleNavigate("/data_science-artificial_intelligence")}>
+        Difference Between Data Science & Artficial Intelligence
+    </div>,
+    <div onClick={() => handleNavigate("/digital_marketing-career_path")}>
+        Digital Marketing Career Path
     </div>
+
 
   ];
 
