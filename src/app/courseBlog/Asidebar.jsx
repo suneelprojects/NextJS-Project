@@ -25,7 +25,7 @@ const Asidebar = ({ featuredPost, categories, popularPosts = [] }) => {
           <div className="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center">
             <BookOpen className="w-5 h-5 text-white" />
           </div>
-          <h3 className="text-xl font-bold text-gray-900">About Our Blog</h3>
+          <h3 className="text-xl font-bold text-gray-900">About Our Airtcle</h3>
         </div>
         
         <p className="text-gray-600 leading-relaxed mb-6">

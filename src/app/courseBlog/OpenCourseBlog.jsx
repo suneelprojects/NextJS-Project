@@ -156,57 +156,57 @@ const OpenCourseBlog = () => {
       </div>
 
       {/* Main Content */}
-      <article className="max-w-4xl mx-auto px-6 py-12 bg-white rounded-2xl shadow-lg">
-        {/* Article Header */}
-        <header className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+      <article className="max-w-full sm:max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 bg-white rounded-2xl shadow-lg">
+        {/* Article Header */} 
+        <header className="mb-8 sm:mb-12 text-center px-2 sm:px-0">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
             {blog.title}
           </h1>
           {/* Meta Information */} 
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 mb-8">
-            <div className="flex items-center bg-white px-4 py-2 rounded-full shadow-sm">
-              <CalendarDays className="w-4 h-4 mr-2 text-blue-500" />
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-600 mb-6 sm:mb-8 px-2 sm:px-0">
+            <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
+              <CalendarDays className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-blue-500" />
               {blog.date}
             </div>
-            <div className="flex items-center bg-white px-4 py-2 rounded-full shadow-sm">
-              <Clock className="w-4 h-4 mr-2 text-green-500" />
+            <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
+              <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-green-500" />
               {blog.readTime}
             </div>
             {blog.category && (
-              <div className="flex items-center bg-white px-4 py-2 rounded-full shadow-sm">
-                <BookOpen className="w-4 h-4 mr-2 text-purple-500" />
+              <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
+                <BookOpen className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-purple-500" />
                 {blog.category}
               </div>
             )}
             {blog.author && (
-              <div className="flex items-center bg-white px-4 py-2 rounded-full shadow-sm">
-                <User className="w-4 h-4 mr-2 text-orange-500" />
+              <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
+                <User className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-orange-500" />
                 {blog.author}
               </div>
             )}
           </div>
-          {/* Excerpt */}
+          {/* Excerpt */} 
           {blog.excerpt && (
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-base sm:text-xl text-gray-600 leading-relaxed max-w-full sm:max-w-3xl mx-auto px-2 sm:px-0">
               {blog.excerpt}
             </p>
           )}
         </header>
-        {/* Featured Image */}
+        {/* Featured Image */} 
         {blog.imageUrl && (
-          <div className="mb-12">
+          <div className="mb-8 sm:mb-12 px-2 sm:px-0">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               <img 
                 src={blog.imageUrl} 
                 alt={blog.title || "Article image"} 
-                className="w-full h-64 md:h-96 object-cover transition-transform duration-700 hover:scale-105"
+                className="w-full h-full sm:h-64 md:h-96 object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
           </div>
         )}
-        {/* Article Content */}
-        <div className="max-w-none">
+        {/* Article Content */} 
+        <div className="max-w-none px-2 sm:px-0">
           {blog.content && typeof blog.content === 'object' && editor ? (
             <EditorContent editor={editor} />
           ) : (
@@ -214,53 +214,53 @@ const OpenCourseBlog = () => {
               dangerouslySetInnerHTML={{ __html: blog.content }} 
               className="
                 article-content
-                text-gray-700 leading-relaxed text-lg
-                [&>h1]:text-3xl [&>h1]:font-bold [&>h1]:text-gray-900 [&>h1]:mb-6 [&>h1]:mt-12
-                [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mb-4 [&>h2]:mt-10
-                [&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-gray-900 [&>h3]:mb-3 [&>h3]:mt-8
-                [&>h4]:text-lg [&>h4]:font-semibold [&>h4]:text-gray-900 [&>h4]:mb-2 [&>h4]:mt-6
-                [&>h5]:text-base [&>h5]:font-semibold [&>h5]:text-gray-900 [&>h5]:mb-2 [&>h5]:mt-4
-                [&>h6]:text-sm [&>h6]:font-semibold [&>h6]:text-gray-900 [&>h6]:mb-2 [&>h6]:mt-4
-                [&>p]:mb-6 [&>p]:leading-relaxed
+                text-gray-700 leading-relaxed text-base sm:text-lg
+                [&>h1]:text-2xl sm:[&>h1]:text-3xl md:[&>h1]:text-4xl [&>h1]:font-bold [&>h1]:text-gray-900 [&>h1]:mb-4 sm:[&>h1]:mb-6 [&>h1]:mt-8 sm:[&>h1]:mt-12
+                [&>h2]:text-xl sm:[&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mb-3 sm:[&>h2]:mb-4 [&>h2]:mt-6 sm:[&>h2]:mt-10
+                [&>h3]:text-lg sm:[&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-gray-900 [&>h3]:mb-2 sm:[&>h3]:mb-3 [&>h3]:mt-4 sm:[&>h3]:mt-8
+                [&>h4]:text-base sm:[&>h4]:text-lg [&>h4]:font-semibold [&>h4]:text-gray-900 [&>h4]:mb-1 sm:[&>h4]:mb-2 [&>h4]:mt-3 sm:[&>h4]:mt-6
+                [&>h5]:text-sm sm:[&>h5]:text-base [&>h5]:font-semibold [&>h5]:text-gray-900 [&>h5]:mb-1 sm:[&>h5]:mb-2 [&>h5]:mt-2 sm:[&>h5]:mt-4
+                [&>h6]:text-xs sm:[&>h6]:text-sm [&>h6]:font-semibold [&>h6]:text-gray-900 [&>h6]:mb-1 sm:[&>h6]:mb-2 [&>h6]:mt-2 sm:[&>h6]:mt-4
+                [&>p]:mb-4 sm:[&>p]:mb-6 [&>p]:leading-relaxed
                 [&>a]:text-blue-600 [&>a]:no-underline hover:[&>a]:underline hover:[&>a]:text-blue-700
                 [&>strong]:text-gray-900 [&>strong]:font-semibold
                 [&>em]:italic [&>em]:text-gray-600
-                [&>ul]:my-6 [&>ul]:pl-0 [&>ul]:list-none
-                [&>ul>li]:mb-3 [&>ul>li]:pl-6 [&>ul>li]:relative
+                [&>ul]:my-4 sm:[&>ul]:my-6 [&>ul]:pl-0 [&>ul]:list-none
+                [&>ul>li]:mb-2 sm:[&>ul>li]:mb-3 [&>ul>li]:pl-6 [&>ul>li]:relative
                 [&>ul>li]:before:content-['\2022'] [&>ul>li]:before:absolute 
                 [&>ul>li]:before:left-0 [&>ul>li]:before:text-black
                 [&>ul>li]:before:font-bold [&>ul>li]:before:text-lg
-                [&>ol]:my-6 [&>ol]:pl-0 [&>ol]:list-decimal [&>ol]:list-inside
-                [&>ol>li]:mb-3 [&>ol>li]:pl-2
+                [&>ol]:my-4 sm:[&>ol]:my-6 [&>ol]:pl-0 [&>ol]:list-decimal [&>ol]:list-inside
+                [&>ol>li]:mb-2 sm:[&>ol>li]:mb-3 [&>ol>li]:pl-2
                 [&>ol>li]:marker:text-black [&>ol>li]:marker:font-semibold
                 [&>blockquote]:border-l-4 [&>blockquote]:border-blue-500 
-                [&>blockquote]:bg-blue-50 [&>blockquote]:py-4 [&>blockquote]:px-6 
-                [&>blockquote]:my-8 [&>blockquote]:rounded-r-lg [&>blockquote]:italic
+                [&>blockquote]:bg-blue-50 [&>blockquote]:py-3 [&>blockquote]:px-4 
+                [&>blockquote]:my-6 [&>blockquote]:rounded-r-lg [&>blockquote]:italic
                 [&>code]:bg-gray-100 [&>code]:px-2 [&>code]:py-1 [&>code]:rounded 
                 [&>code]:text-sm [&>code]:font-mono [&>code]:text-gray-800
-                [&>pre]:bg-gray-900 [&>pre]:text-gray-100 [&>pre]:p-4 
-                [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:my-6
+                [&>pre]:bg-gray-900 [&>pre]:text-gray-100 [&>pre]:p-3 
+                [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:my-4
                 [&>pre>code]:bg-transparent [&>pre>code]:p-0
-                [&>img]:rounded-lg [&>img]:shadow-lg [&>img]:my-8 [&>img]:w-full
-                [&>hr]:my-8 [&>hr]:border-gray-300
-                [&>table]:w-full [&>table]:border-collapse [&>table]:my-6
-                [&>table>thead>tr>th]:bg-gray-100 [&>table>thead>tr>th]:p-3 
+                [&>img]:rounded-lg [&>img]:shadow-lg [&>img]:my-6 [&>img]:w-full
+                [&>hr]:my-6 [&>hr]:border-gray-300
+                [&>table]:w-full [&>table]:border-collapse [&>table]:my-4
+                [&>table>thead>tr>th]:bg-gray-100 [&>table>thead>tr>th]:p-2 
                 [&>table>thead>tr>th]:text-left [&>table>thead>tr>th]:font-semibold
-                [&>table>tbody>tr>td]:p-3 [&>table>tbody>tr>td]:border-t 
+                [&>table>tbody>tr>td]:p-2 [&>table>tbody>tr>td]:border-t 
                 [&>table>tbody>tr>td]:border-gray-200
               "
             />
           )}
         </div>
-        {/* Article Footer */}
-        <footer className="mt-16 pt-8 border-t border-gray-500">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-md text-gray-500">
+        {/* Article Footer */} 
+        <footer className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-500 px-2 sm:px-0">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+            <div className="text-sm sm:text-md text-gray-500">
               Published on {blog.date}
             </div>
             <button 
               onClick={handleShare}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-5 hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-5 hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Share this article
             </button>

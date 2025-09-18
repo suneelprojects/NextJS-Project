@@ -70,7 +70,7 @@ const Footer = () => {
       Why Hyderabad is the BestPlace toLearn Data-Science in 2025
     </div>,
     <div onClick={() => handleNavigate("/how-long-does-it-take-to-become-fullstackdeveloper")}>
-      how-long-does-it-take-to-become-A-fullstack-developer
+      How-long-does-it-take-to-become-A-fullstack-developer
     </div>
 
   ];
