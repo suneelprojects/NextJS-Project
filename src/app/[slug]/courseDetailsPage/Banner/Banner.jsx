@@ -41,13 +41,13 @@ const Banner = () => {
           <div className={`${style.bannerPrice}`}>
             <span className={style.originalPrice}>
               Learn Till You <span className={style.offerText1}> Get Placed</span> 
-              <p>
+              {/* <p>
                 Almost Full{" "}
                 <span className={style.offerText}>Only 5 Slots Left!</span>
-              </p>
+              </p> */}
             </span>
           </div>
-          <div>
+          <div className="getdetails">
             {card && (
               <EnrollButton
                 courseID={card.id}
