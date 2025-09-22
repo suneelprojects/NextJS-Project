@@ -40,7 +40,7 @@ const Banner = () => {
           </div>
           <div className={`${style.bannerPrice}`}>
             <span className={style.originalPrice}>
-              Unlock Exclusive OFFERS
+              Learn Till You <span className={style.offerText1}> Get Placed</span> 
               <p>
                 Almost Full{" "}
                 <span className={style.offerText}>Only 5 Slots Left!</span>
@@ -56,7 +56,8 @@ const Banner = () => {
                 label={
                   <>
                     <FontAwesomeIcon icon={faDownload} />
-                    Curriculum
+                    
+                    Get Details
                   </>
                 }
               />
