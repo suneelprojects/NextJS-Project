@@ -80,7 +80,13 @@ const Footer = () => {
     </div>,
     <div onClick={() => handleNavigate("/digital_marketing-career_path")}>
         Digital Marketing Career Path
+    </div>,
+
+    // add a link that when cliked on it it will go to the  "/courseBlog" page  and add the text that attracte the link
+     <div onClick={() => handleNavigate("/courseBlog")}>
+        Check Out Your New Updates
     </div>
+    
 
 
   ];
