@@ -11,6 +11,7 @@ import Masterclass from './courseDetailsPage/Masterclass/Masterclass';
 import ConnectUs from '@/components/ConnectUs/ConnectUs';
 import Banner from './courseDetailsPage/Banner/Banner';
 import { notFound } from 'next/navigation';
+import Datascience from './courseDetailsPage/Datascience_ai_newsection/page'
 
 // ✅ Generate metadata
 export async function generateMetadata({ params }) {
@@ -91,6 +92,7 @@ const Page = async ({ params }) => {
         <Header />
         <Testimonials />
         <WhatwillYouLearn />
+        <Datascience slug={slug}/>
         <Unlockbonuses />
         <Coursepath />
         <NextcohortStarts />

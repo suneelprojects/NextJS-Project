@@ -62,9 +62,12 @@
 
 @media(max-width:376px){
   .shinebtn{
-    width: 100%;
-    padding: 15px 10px;
-    font-size: 12px;  
-    margin-right: 12px;
+    display: inline-block;
+    width: 150px;
+  
+    padding: .8rem 0.8rem;
+    font-size: .9rem;  
+    margin-right: 10px;
   }
+ 
 }

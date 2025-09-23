@@ -47,7 +47,7 @@ const Banner = () => {
               </p> */}
             </span>
           </div>
-          <div className="getdetails">
+          <div >
             {card && (
               <EnrollButton
                 courseID={card.id}
@@ -57,7 +57,7 @@ const Banner = () => {
                   <>
                     <FontAwesomeIcon icon={faDownload} />
                     
-                    Get Details
+                     &nbsp;Get Details
                   </>
                 }
               />

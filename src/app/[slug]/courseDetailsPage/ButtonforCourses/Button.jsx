@@ -13,7 +13,8 @@ const Button = ({ label, courseID, actionType }) => {
   return (
     <div className={Buttonstyle.Enrollbutton}>
       <button className={Buttonstyle.shinebtn} onClick={togglePopup}>
-        <span> {label}</span>
+        {/* USE CSS MODULE class reference */}
+        <span className={Buttonstyle.btntext}>{label}</span>
       </button>
 
       {isPopupVisible && (
