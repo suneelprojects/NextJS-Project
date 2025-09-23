@@ -58,7 +58,7 @@ const AboutUs = () => {
         <div>
           <div className={`container ${aboutusStyle.containerXl}`}>
             <div className={aboutusStyle.smallBuss}>
-              <Image src={smallBuss} alt="smallBussiness" />
+              <Image src={smallBuss} alt="smallBussiness"  unoptimized />
             </div>
     
             <h1 className="my-5 text-center">What We Provide</h1>
@@ -69,7 +69,7 @@ const AboutUs = () => {
                   key={i}
                 >
                   <div >
-                    <Image src={aboutusItem.image} alt="aboutUsItem" />
+                    <Image src={aboutusItem.image} alt="aboutUsItem" unoptimized />
                     <h5>{aboutusItem.heading}</h5>
                     <p>{aboutusItem.sentense}</p>
                   </div>
@@ -83,7 +83,7 @@ const AboutUs = () => {
               <div
                 className={`col-12 col-md-4  d-flex justify-content-center ${aboutusStyle.aboutUsWomenConImg}`}
               >
-                <Image src={aboutUsWomen} alt="aboutUswomen" />
+                <Image src={aboutUsWomen} alt="aboutUswomen" unoptimized />
               </div>
               <div className="col-12 col-md-8">
                 <BulbText
@@ -153,15 +153,15 @@ const AboutUs = () => {
     
               <div className={`row row-gap-4 ${aboutusStyle.AboutusPics}`}>
                 <div className="col col-lg-4">
-                  <Image src={aboutusPic1} alt="pic1" />
+                  <Image src={aboutusPic1} alt="pic1" unoptimized />
                 </div>
     
                 <div className="col col-lg-4">
-                  <Image src={aboutusPic2} alt="pic2" />
+                  <Image src={aboutusPic2} alt="pic2" unoptimized />
                 </div>
     
                 <div className="col col-lg-4">
-                  <Image src={aboutusPic3} alt="pic3" />
+                  <Image src={aboutusPic3} alt="pic3" unoptimized />
                 </div>
               </div>
             </div>
