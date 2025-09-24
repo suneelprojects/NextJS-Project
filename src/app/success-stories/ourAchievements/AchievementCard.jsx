@@ -26,7 +26,7 @@ export default function AchievementCard({ achievement }) {
                 border: "4px solid #553cdf",
                 marginRight: "16px",
               }}
-            />
+               unoptimized />
           </div>
           <div>
             <h5 className="card-title">{achievement.name}</h5>
@@ -61,6 +61,7 @@ export default function AchievementCard({ achievement }) {
                 alt="Previous Company Logo"
                 fill
                 className="object-contain"
+                unoptimized
               />
             </div>
           </div>
@@ -80,6 +81,7 @@ export default function AchievementCard({ achievement }) {
                 alt="Current Company Logo"
                 fill
                 className="object-contain"
+                unoptimized
               />
             </div>
           </div>
