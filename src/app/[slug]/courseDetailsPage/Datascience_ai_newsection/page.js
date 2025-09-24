@@ -67,7 +67,7 @@ export default function LearnDataScienceAI({ slug }) {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
-      <section className="py-5 px-6">
+      <section className="py-3 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="rounded-3xl overflow-hidden shadow-2xl" style={{background: 'linear-gradient(90deg,#0000FF,#fb8500)'}}>
             <div className="lg:p-5 p-3 text-center text-white">
@@ -85,8 +85,8 @@ export default function LearnDataScienceAI({ slug }) {
       {/* Projects Section */}
       <section className="py-10 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <p className="text-5xl md:text-4xl font-extrabold text-center m-5">💡 Featured Projects <span className="text-orange-500"> You’ll Work On</span> </p>
-          <p className="text-sm font-semibold md:text-xl max-w-3xl mx-auto mb-8 text-gray-800 text-center ">
+          <p className="text-5xl md:text-4xl font-extrabold text-center ">💡 Featured Projects <span className="text-orange-500"> You’ll Work On</span> </p>
+          <p className="text-sm font-semibold md:text-xl max-w-3xl mx-auto m-10 text-gray-800 text-center  ">
                 Hands-on projects, real-world datasets, and deployment-ready pipelines — designed to make you industry-ready.
               </p>
 
