@@ -20,6 +20,7 @@ import partnershipLogo from "@/assets/courses/courseDetailspage/hand-shake.png";
 import MobileIconLogo from "@/assets/courses/courseDetailspage/mobile-development.png";
 import awardImage from "@/assets/homepage/award_image.png";
 import jobRolesLogo from "@/assets/courses/courseDetailspage/promotion.png";
+
 // import curriculumLogo from "@/assets/courses/courseDetailspage/folder.png";
 
 // company logos
