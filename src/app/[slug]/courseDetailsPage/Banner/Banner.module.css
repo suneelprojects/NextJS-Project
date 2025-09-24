@@ -10,6 +10,8 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
 }
 
@@ -68,6 +70,7 @@
   font-size: 20px;
   margin-right: 10px;
   color: #c0c0c0;
+  white-space: nowrap;
 }
 .bannerPrice p {
   font-size: 14px;
@@ -78,8 +81,12 @@
   color: red;
 }
 .offerText1{
-    font-size: 18px;
+  display: inline;     /* or inline-block */
+  margin: 0;           /* remove default h1 margins */
+  padding: 0;
+  font-size: 1.2rem;   /* tune as needed */
   font-weight: 800;
+  vertical-align: baseline;
   color: red;
 
 }
@@ -101,20 +108,26 @@
 
   .originalPrice {
     position: relative;
-    top: 5px;
-    font-size: 20px !important;
-    margin-left: 15px;
-    color: #cecece;
+  top: 5px;
+  font-size: 23px !important;
+  margin-left: 15px;
+  color: #c0c0c0;
+  /* white-space: nowrap; */
+  /* margin-right: 10px; */
   }
   .offerText {
     font-size: 14px;
     font-weight: 800;
   }
   .offerText1{
-    /* font-size: px; */
-  font-weight: 900;
+  display: block;     /* or inline-block */
+  margin: 0;           /* remove default h1 margins */
+  padding: 0;
+  font-size: 1.4rem;   /* tune as needed */
+  font-weight: 800;
+  /* vertical-align: baseline; */
   color: red;
-  margin-left: 20px;
+  margin-left: 15px;
   
 
 }
@@ -145,10 +158,15 @@
   }
   .originalPrice {
     font-size: 16px;
+    /* white-space: nowrap; */
   }
   .discountedPrice {
     font-size: 16px;
     margin-left: -5px;
   }
+  /* .offerText1 {
+     display: inline; margin: 0; 
+    } */
   
+
 }
