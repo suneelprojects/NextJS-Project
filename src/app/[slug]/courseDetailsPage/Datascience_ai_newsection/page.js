@@ -113,7 +113,7 @@ export default function LearnDataScienceAI({ slug }) {
             ))}
           </div>
 
-          <p className="text-center  m-5 text-lg font-bold">✨ <span className="text-orange-400">" Gain Hands-On Experience with 30+ Data Science & AI/ML Projects! "</span> ✨</p>
+          <p className="text-center  m-5 text-lg font-bold">✨ <span className="text-orange-400">&ldquo; Gain Hands-On Experience with 30+ Data Science & AI/ML Projects! &rdquo;</span> ✨</p>
         </div>
       </section>
 
