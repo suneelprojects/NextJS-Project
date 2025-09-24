@@ -61,6 +61,7 @@ export default function AchievementCard({ achievement }) {
                 alt="Previous Company Logo"
                 fill
                 className="object-contain"
+                unoptimized
               />
             </div>
           </div>
@@ -80,6 +81,7 @@ export default function AchievementCard({ achievement }) {
                 alt="Current Company Logo"
                 fill
                 className="object-contain"
+                unoptimized
               />
             </div>
           </div>
