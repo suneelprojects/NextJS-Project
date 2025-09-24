@@ -40,14 +40,14 @@ const Banner = () => {
           </div>
           <div className={`${style.bannerPrice}`}>
             <span className={style.originalPrice}>
-              Learn Till You <span className={style.offerText1}> Get Placed</span> 
+              #LearnTillYou<h1 className={style.offerText1}>GetPlaced</h1> 
               {/* <p>
                 Almost Full{" "}
                 <span className={style.offerText}>Only 5 Slots Left!</span>
               </p> */}
             </span>
           </div>
-          <div className="getdetails">
+          <div >
             {card && (
               <EnrollButton
                 courseID={card.id}
@@ -57,7 +57,7 @@ const Banner = () => {
                   <>
                     <FontAwesomeIcon icon={faDownload} />
                     
-                    Get Details
+                     &nbsp;Get Details
                   </>
                 }
               />

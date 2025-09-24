@@ -58,7 +58,10 @@ const AboutUs = () => {
         <div>
           <div className={`container ${aboutusStyle.containerXl}`}>
             <div className={aboutusStyle.smallBuss}>
+
+            
               <Image src={smallBuss} alt="smallBussiness" unoptimized />
+
             </div>
     
             <h1 className="my-5 text-center">What We Provide</h1>
