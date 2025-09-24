@@ -67,7 +67,7 @@ export default function LearnDataScienceAI({ slug }) {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
-      <section className="py-3 px-6">
+      <section className="py-5 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="rounded-3xl overflow-hidden shadow-2xl" style={{background: 'linear-gradient(90deg,#0000FF,#fb8500)'}}>
             <div className="lg:p-5 p-3 text-center text-white">
