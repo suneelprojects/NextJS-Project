@@ -114,6 +114,7 @@ const SuccessStoriesReader = () => {
                 className="img-fluid w-100 h-100"
                 alt={recentJobs[activeJobIndex].name}
                 style={{ objectFit: "cover" }}
+                unoptimized
               />
             </div>
           </div>
@@ -140,6 +141,7 @@ const SuccessStoriesReader = () => {
                 className="img-fluid w-100 h-100"
                 alt={recentAwards[activeAwardIndex].name}
                 style={{ objectFit: "cover" }}
+                unoptimized
               />
             </div>
           </div>
@@ -258,6 +260,7 @@ const SuccessStoriesReader = () => {
                       margin: "0 auto",
                       width: "100%",
                       top: -55,
+                      unoptimized,
                     }}
                   />
                 </div>

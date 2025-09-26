@@ -23,6 +23,7 @@ const CareerQuiz = () => {
     const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
     const [windowWidth, setWindowWidth] = useState(0);
     const resultRef = useRef(null);
+    const hasManualClicked = useRef(false);
 
     useEffect(() => {
         AOS.init({ duration: 1000, easing: 'ease-in-out', once: true });
@@ -71,6 +72,18 @@ const CareerQuiz = () => {
             return () => clearInterval(timer);
         }
     }, [isFormSubmitted, timeLeft]);
+
+    useEffect(() => {
+        if (!isFormSubmitted) {
+            const timer = setTimeout(() => {
+                if (!hasManualClicked.current && !isFormSubmitted) {
+                    handleFormSubmit();
+                }
+            }, 10000);
+
+            return () => clearTimeout(timer);
+        }
+    }, []);
 
     const handleOptionClick = (option) => {
         setSelectedOption(option);
@@ -140,58 +153,82 @@ const CareerQuiz = () => {
         formDataEncoded.append('phone', formData.mobile);
         formDataEncoded.append('sheetName', 'careerQuiz');
 
+        // Add timeout to fetch (30 seconds)
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000);
+
         fetch(sheetURL, {
             method: 'POST',
-            body: formDataEncoded
+            body: formDataEncoded,
+            signal: controller.signal
         })
             .then((response) => {
+                clearTimeout(timeoutId);
                 if (response.ok) {
-                    try {
-                        if (!window.salesmaxScriptLoaded) {
-                            const script = document.createElement('script');
-                            script.src = 'https://salesmax.ai/formdata/js/index.js';
-                            script.async = true;
-                            script.onload = () => { 
-                                window.salesmaxScriptLoaded = true;
-                                initializeSalesmax();
-                            };
-                            document.body.appendChild(script);
-                        } else {
-                            initializeSalesmax();
-                        }
-
-                        function initializeSalesmax() {
-                            window.salesmaxDataLayer = window.salesmaxDataLayer || [];
-                            function salesmax() {
-                                window.salesmaxDataLayer.push(arguments);
-                            }
-                            
-                            salesmax('form-id', 'Career Quiz Form');
-                            salesmax('account', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJqdGkiOiI0NDQ2MzgwNC1mZTMwLTRhZWYtOGRmMS00OWE3ZmJlNTBlNDAiLCJzdWIiOiJiMmI4MzM2OC01M2QxLTQyOGMtYmEzNC02NDZjZDZlNTExMjMiLCJpYXQiOjE3NTM3MDU0NDZ9.k07Y0TJwp6al2RQAOqbnS4d2JIyqdRLj1des0bYFeBuecEz2CG6ZHboL0z1WS9ko');
-                            
-                            salesmax('event', 'form_submit', { 
-                                name: formData.name, 
-                                mobile: formData.mobile,
-                                form_type: 'Career Quiz Form',
-                                page_url: window.location.href,
-                                timestamp: new Date().toISOString()
-                            });
-                        }
-                    } catch (error) {
-                        console.error('Error in SalesMax integration:', error);
-                    }
-                    alert('Form submitted successfully!');
+                    // Update UI immediately after successful fetch
+                    alert('Form submitted successfully! Starting your quiz...');
                     setIsFormSubmitted(true);
                     setShowForm(false);
+
+                    // Handle Salesmax in background asynchronously
+                    setTimeout(() => {
+                        try {
+                            if (!window.salesmaxScriptLoaded) {
+                                const script = document.createElement('script');
+                                script.src = 'https://salesmax.ai/formdata/js/index.js';
+                                script.async = true;
+                                script.onload = () => { 
+                                    window.salesmaxScriptLoaded = true;
+                                    initializeSalesmax();
+                                };
+                                script.onerror = () => {
+                                    console.error('Failed to load Salesmax script during submission');
+                                };
+                                document.body.appendChild(script);
+                            } else {
+                                initializeSalesmax();
+                            }
+
+                            function initializeSalesmax() {
+                                if (typeof window.salesmaxDataLayer === 'undefined') {
+                                    window.salesmaxDataLayer = [];
+                                }
+                                function salesmax() {
+                                    window.salesmaxDataLayer.push(arguments);
+                                }
+                                
+                                salesmax('form-id', 'Career Quiz Form');
+                                salesmax('account', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJqdGkiOiI0NDQ2MzgwNC1mZTMwLTRhZWYtOGRmMS00OWE3ZmJlNTBlNDAiLCJzdWIiOiJiMmI4MzM2OC01M2QxLTQyOGMtYmEzNC02NDZjZDZlNTExMjMiLCJpYXQiOjE3NTM3MDU0NDZ9.k07Y0TJwp6al2RQAOqbnS4d2JIyqdRLj1des0bYFeBuecEz2CG6ZHboL0z1WS9ko');
+                                
+                                salesmax('event', 'form_submit', { 
+                                    name: formData.name, 
+                                    mobile: formData.mobile,
+                                    form_type: 'Career Quiz Form',
+                                    page_url: window.location.href,
+                                    timestamp: new Date().toISOString()
+                                });
+                            }
+                        } catch (error) {
+                            console.error('Error in SalesMax integration:', error);
+                        }
+                    }, 0); // Immediate async execution
                 } else {
                     alert('Error submitting form. Please try again.');
                 }
             })
             .catch((error) => {
-                console.error('Error:', error);
-                alert('An error occurred while submitting the form.');
+                clearTimeout(timeoutId);
+                if (error.name === 'AbortError') {
+                    console.error('Form submission timed out after 30 seconds');
+                    alert('Submission timed out. The server is taking too long to process. Please try again later or contact support.');
+                } else {
+                    console.error('Error:', error);
+                    alert('An error occurred while submitting the form. Please try again.');
+                }
             })
-            .finally(() => setLoading(false));
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     const formatTime = (seconds) => {
@@ -695,7 +732,7 @@ const CareerQuiz = () => {
                             </div>
                         </div>
 
-                        <button className={style.ctaButton} onClick={handleFormSubmit} data-aos="fade-up" data-aos-delay="300">
+                        <button className={style.ctaButton} onClick={() => { hasManualClicked.current = true; handleFormSubmit(); }} data-aos="fade-up" data-aos-delay="300">
                             Start Your Journey
                         </button>
                     </div>
