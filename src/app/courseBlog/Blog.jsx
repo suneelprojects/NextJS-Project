@@ -164,7 +164,7 @@ const Blog = () => {
                                 Featured Article                            </h2>
                         </div>
                         <div className="group bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500 cursor-pointer"
-                             onClick={() => router.push(`/courseBlog/${featuredPost.id}`)}>
+                             onClick={() => router.push(`/courseBlog/${featuredPost.slug}`)}>
                             <div className="lg:flex">
                                 <div className="lg:w-1/2 relative overflow-hidden">
                                     {featuredPost.imageUrl && (
@@ -223,10 +223,10 @@ const Blog = () => {
                         </div>
                         <div className="space-y-8">
                             {blogPosts.map((post, index) => (
-                                <article 
-                                    key={post.id} 
+                                <article
+                                    key={post.id}
                                     className="group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 cursor-pointer transform hover:-translate-y-1"
-                                    onClick={() => router.push(`/courseBlog/${post.id}`)}
+                                    onClick={() => router.push(`/courseBlog/${post.slug}`)}
                                     style={{
                                         animationDelay: `${index * 100}ms`,
                                         animation: 'fadeInUp 0.6s ease-out forwards'
@@ -331,7 +331,7 @@ const Blog = () => {
                     </div>
                 </div>
             </main>
-            <Footer/>
+            
             {/* Add custom CSS for animations */}
             <style jsx>{`
                 @keyframes fadeInUp {

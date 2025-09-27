@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { db } from '../../../firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 import { CalendarDays, Clock, ArrowLeft, Share2, BookOpen, User } from 'lucide-react';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -17,7 +17,7 @@ import { createLowlight } from 'lowlight';
 const lowlight = createLowlight();
 
 const OpenCourseBlog = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [readingProgress, setReadingProgress] = useState(0);
@@ -26,9 +26,11 @@ const OpenCourseBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const snap = await getDoc(doc(db, 'blogs', id));
-        if (snap.exists()) {
-          const data = snap.data();
+        const q = query(collection(db, 'blogs'), where('slug', '==', slug));
+        const querySnapshot = await getDocs(q);
+        if (!querySnapshot.empty) {
+          const docSnap = querySnapshot.docs[0];
+          const data = docSnap.data();
           setBlog(data);
           // If content is Tiptap JSON, set up a Tiptap editor in read-only mode
           if (data.content && typeof data.content === 'object') {
@@ -56,7 +58,7 @@ const OpenCourseBlog = () => {
       }
     };
     fetchBlog();
-  }, [id]);
+  }, [slug]);
 
   useEffect(() => {
     const handleScroll = () => {
