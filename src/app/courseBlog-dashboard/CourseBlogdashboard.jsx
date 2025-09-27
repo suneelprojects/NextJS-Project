@@ -14,11 +14,13 @@ import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 import { lowlight } from 'lowlight';
 import { Camera, Calendar, Tag, Clock, CheckCircle, User, FileText, Upload, X, Save, Trash2, Edit, Search } from 'lucide-react';
 import styles from './CourseBlogdashboard.module.css';
-import { addDoc, collection, getDocs, deleteDoc, doc, query, orderBy, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, getDocs, deleteDoc, doc, query, orderBy, updateDoc, where } from 'firebase/firestore';
 import { serverTimestamp } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage';
 import { auth, db, storage } from '../../../firebase';
 import dynamic from 'next/dynamic';
+import { slugify } from '../../utils/slugify';
+
 const TiptapEditor = dynamic(() => import('./TiptapEditor'), { ssr: false });
 
 const categories = [
@@ -36,6 +38,7 @@ export default function CourseBlogdashboard() {
   const [imageUrl, setImageUrl] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [currentBlogId, setCurrentBlogId] = useState(null);
+  const [currentBlogSlug, setCurrentBlogSlug] = useState(null);
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -73,44 +76,80 @@ export default function CourseBlogdashboard() {
     return () => clearInterval(interval);
   }, []);
 
+  const generateUniqueSlug = async (baseSlug, excludeId = null) => {
+    let candidateSlug = baseSlug;
+    let counter = 1;
+    while (true) {
+      const q = query(collection(db, 'blogs'), where('slug', '==', candidateSlug));
+      const querySnapshot = await getDocs(q);
+      const hasConflict = querySnapshot.docs.some(doc => doc.id !== excludeId);
+      if (!hasConflict) {
+        return candidateSlug;
+      }
+      candidateSlug = `${baseSlug}-${counter}`;
+      counter++;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      await updateDoc(doc(db, "blogs", currentBlogId), {
-        title,
-        excerpt,
-        content,
-        category: selectedCategory,
-        readTime,
-        author,
-        tags,
-        imageUrl,
-        updatedAt: serverTimestamp(),
-      });
-    } else {
-      await addDoc(collection(db, "blogs"), {
-        title,
-        excerpt,
-        content,
-        category: selectedCategory,
-        readTime,
-        author,
-        tags,
-        imageUrl,
-        createdAt: serverTimestamp(),
-        updatedAt: serverTimestamp(),
-      });
+    if (!title.trim()) {
+      alert('Title is required');
+      return;
     }
-    setIsEditing(false);
-    setCurrentBlogId(null);
-    setTitle('');
-    setExcerpt('');
-    setContent('');
-    setSelectedCategory('');
-    setReadTime('');
-    setAuthor('');
-    setTags('');
-    setImageUrl('');
+    const baseSlug = slugify(title);
+    let finalSlug;
+    try {
+      if (isEditing) {
+        finalSlug = await generateUniqueSlug(baseSlug, currentBlogId);
+        await updateDoc(doc(db, "blogs", currentBlogId), {
+          title,
+          excerpt,
+          content,
+          category: selectedCategory,
+          readTime,
+          author,
+          tags,
+          imageUrl,
+          slug: finalSlug,
+          updatedAt: serverTimestamp(),
+        });
+      } else {
+        finalSlug = await generateUniqueSlug(baseSlug);
+        await addDoc(collection(db, "blogs"), {
+          title,
+          excerpt,
+          content,
+          category: selectedCategory,
+          readTime,
+          author,
+          tags,
+          imageUrl,
+          slug: finalSlug,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
+        });
+      }
+      // Reset form
+      setIsEditing(false);
+      setCurrentBlogId(null);
+      setCurrentBlogSlug(null);
+      setTitle('');
+      setExcerpt('');
+      setContent('');
+      setSelectedCategory('');
+      setReadTime('');
+      setAuthor('');
+      setTags('');
+      setImageUrl('');
+      // Refresh blogs list
+      const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
+      const querySnapshot = await getDocs(q);
+      setBlogs(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    } catch (err) {
+      console.error('Error saving blog:', err);
+      setError(err.message);
+    }
   };
 
   const handleDelete = async (id) => {
@@ -123,6 +162,7 @@ export default function CourseBlogdashboard() {
   const handleEdit = (blog) => {
     setIsEditing(true);
     setCurrentBlogId(blog.id);
+    setCurrentBlogSlug(blog.slug || null);
     setTitle(blog.title);
     setExcerpt(blog.excerpt);
     setContent(blog.content || '');
@@ -228,6 +268,11 @@ export default function CourseBlogdashboard() {
                 <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><User size={12} style={{ marginRight: 4 }} />{blog.author}</span>
               </div>
               <div style={{ color: '#9ca3af', fontSize: 12 }}>Tags: {blog.tags}</div>
+              {blog.slug && (
+                <div style={{ color: '#10b981', fontSize: 11, fontFamily: 'monospace', background: '#ecfdf5', padding: '4px 8px', borderRadius: 4, margin: '4px 0' }}>
+                  Slug: /courseBlog/{blog.slug}
+                </div>
+              )}
               <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
                 <button className={styles.draftBtn} onClick={() => handleEdit(blog)}><Edit size={14} /> Edit</button>
                 <button className={styles.resetBtn} onClick={() => handleDelete(blog.id)}><Trash2 size={14} /> Delete</button>
