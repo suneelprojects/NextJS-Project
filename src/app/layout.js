@@ -55,6 +55,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <meta name="google-site-verification" content="RS7Kklvic-EwKl4Zl03SKi0tdApuHkUJ86MQV9KeWTI" />
         {/* <!-- Google tag (gtag.js) --> */}
         <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="afterInteractive" />
         <Script
