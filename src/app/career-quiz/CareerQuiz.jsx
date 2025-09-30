@@ -786,7 +786,7 @@ const CareerQuiz = () => {
                                             Starting...
                                         </>
                                     ) : (
-                                        'TRY FOR - FREE'
+                                        'TRY NOW - FREE'
                                     )}
                                 </button>
                             </form>
