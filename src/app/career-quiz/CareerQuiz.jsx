@@ -79,11 +79,11 @@ const CareerQuiz = () => {
                 if (!hasManualClicked.current && !isFormSubmitted) {
                     handleFormSubmit();
                 }
-            }, 10000);
+            }, 30000);
 
             return () => clearTimeout(timer);
         }
-    }, []);
+    }, [isFormSubmitted]);
 
     const handleOptionClick = (option) => {
         setSelectedOption(option);
@@ -661,8 +661,8 @@ const CareerQuiz = () => {
             pdf.setFont('helvetica', 'normal');
             const contactInfo = [
                 'Website: www.socialprachar.com',
-                'Email: info@socialprachar.com',
-                'Phone: +91-XXXXXXXXXX',
+                'Email: admin@socialprachar.com',
+                'Phone: +91-8019479419',
                 'Location: Hyderabad, India'
             ];
 
@@ -708,11 +708,94 @@ const CareerQuiz = () => {
                 <div className={style.heroSection} data-aos="fade-up">
                     <div className={style.heroContent}>
                         <h1 className={style.heroTitle}>
-                            Discover Your Dream Tech Career
+                            Discover Your Dream Tech Career in Just 10 Minutes
                         </h1>
                         <p className={style.heroSubtitle}>
                             Take our 10-minute quiz to unlock personalized career insights
                         </p>
+
+                        <div className={style.heroForm} style={{ backgroundColor: '#a3a8f7', padding: '20px', borderRadius: '12px', maxWidth: '500px', margin: '0 auto' }}>
+                            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                    <label htmlFor="hero-name" style={{ fontWeight: 'bold', marginBottom: '8px', color: '#2c2c6c' }}>Full Name</label>
+                                    <input
+                                        type="text"
+                                        id="hero-name"
+                                        name="name"
+                                        placeholder="Your full name"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                        required
+                                        style={{
+                                            padding: '12px 16px',
+                                            borderRadius: '12px',
+                                            border: 'none',
+                                            outline: 'none',
+                                            fontSize: '16px',
+                                            backgroundColor: '#e9e9ff',
+                                            color: '#333',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
+                                        }}
+                                    />
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                    <label htmlFor="hero-mobile" style={{ fontWeight: 'bold', marginBottom: '8px', color: '#2c2c6c' }}>Mobile Number</label>
+                                    <input
+                                        type="tel"
+                                        id="hero-mobile"
+                                        name="mobile"
+                                        placeholder="Your 10-digit mobile number"
+                                        value={formData.mobile}
+                                        onChange={handleInputChange}
+                                        required
+                                        style={{
+                                            padding: '12px 16px',
+                                            borderRadius: '12px',
+                                            border: 'none',
+                                            outline: 'none',
+                                            fontSize: '16px',
+                                            backgroundColor: '#e9e9ff',
+                                            color: '#333',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
+                                        }}
+                                    />
+                                </div>
+                                <button
+                                    type="submit"
+                                    disabled={loading}
+                                    style={{
+                                        backgroundColor: '#4b4bd6',
+                                        color: 'white',
+                                        fontWeight: 'bold',
+                                        padding: '14px 0',
+                                        borderRadius: '12px',
+                                        border: 'none',
+                                        cursor: 'pointer',
+                                        boxShadow: '0 4px 8px rgba(75, 75, 214, 0.5)',
+                                        textTransform: 'uppercase',
+                                        fontSize: '16px',
+                                        letterSpacing: '1px',
+                                        transition: 'background-color 0.3s ease'
+                                    }}
+                                    onMouseEnter={e => e.currentTarget.style.backgroundColor = '#3a3ab0'}
+                                    onMouseLeave={e => e.currentTarget.style.backgroundColor = '#4b4bd6'}
+                                >
+                                    {loading ? (
+                                        <>
+                                            <span className={style.spinner}></span>
+                                            Starting...
+                                        </>
+                                    ) : (
+                                        'TRY NOW - FREE'
+                                    )}
+                                </button>
+                            </form>
+                        </div>
+
+
+
+
+
                         
                         <div className={style.featuresGrid}>
                             <div className={style.featureCard} data-aos="zoom-in">
@@ -935,7 +1018,7 @@ const CareerQuiz = () => {
                 <div className={style.modalOverlay}>
                     <div className={style.modalContent} data-aos="zoom-in">
                         <div className={style.modalHeader}>
-                            <h2>Begin Your Tech Adventure</h2>
+                            <h2>Discover your career path in Just 10 minutes</h2>
                            
                         </div>
                         <div className={style.modalBody}>
