@@ -83,9 +83,17 @@ const Footer = () => {
     </div>,
 
     // add a link that when cliked on it it will go to the  "/courseBlog" page  and add the text that attracte the link
-     <div onClick={() => handleNavigate("/courseBlog")}>
-        Check Out Your New Updates
-    </div>
+     <button  style={{
+      borderRadius: "40px",
+      backgroundColor: "#1C45E8",
+      color: "white",
+      padding: "3px 10px",
+      hover: { backgroundColor: "#e64a19" },
+      cursor: "pointer",
+      border: "none",
+      }} onClick={() => handleNavigate("/courseBlog")}>
+        Explore More Blogs
+    </button>
     
 
 
