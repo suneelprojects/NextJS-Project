@@ -40,14 +40,16 @@ const Banner = () => {
           </div>
           <div className={`${style.bannerPrice}`}>
             <span className={style.originalPrice}>
-              #LearnTillYou<h1 className={style.offerText1}>GetPlaced</h1> 
-              {/* <p>
-                Almost Full{" "}
-                <span className={style.offerText}>Only 5 Slots Left!</span>
-              </p> */}
+              <span className={style.whiteBold}>Earn While Learning</span>
+              <br />
+              <span className={style.grayText}>(upto</span>
+              <span className={style.redHighlight}> 45,000 INR - </span>
+             
+              <br className={style.smallBr} />
+              <span className={style.grayText}>stipend based intenships)</span>
             </span>
           </div>
-          <div >
+          <div className={style.enrollButtonContainer}>
             {card && (
               <EnrollButton
                 courseID={card.id}
@@ -56,7 +58,6 @@ const Banner = () => {
                 label={
                   <>
                     <FontAwesomeIcon icon={faDownload} />
-                    
                      &nbsp;Get Details
                   </>
                 }
