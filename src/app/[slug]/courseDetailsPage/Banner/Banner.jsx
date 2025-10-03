@@ -40,7 +40,9 @@ const Banner = () => {
           </div>
           <div className={`${style.bannerPrice}`}>
             <span className={style.originalPrice}>
-              #LearnTillYou<h1 className={style.offerText1}>GetPlaced</h1> 
+              <h1 className={style.offerText1}>Earn while Learning</h1> 
+              {/* <br /> */}
+              &nbsp; (Stipend Based internships)
               {/* <p>
                 Almost Full{" "}
                 <span className={style.offerText}>Only 5 Slots Left!</span>

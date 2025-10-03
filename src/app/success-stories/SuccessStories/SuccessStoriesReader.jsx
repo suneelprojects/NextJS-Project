@@ -103,7 +103,7 @@ const SuccessStoriesReader = () => {
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.35)",
               }}
             >
-              Recent Best Salary Package March 2025
+              Recent Best Salary Package July 2025
             </h4>
             <div
               className="card shadow bg-dark text-white w-100 position-relative rounded-4 overflow-hidden d-flex flex-column"
