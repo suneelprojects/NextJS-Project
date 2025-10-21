@@ -63,6 +63,11 @@ import {
   faUserCog,
   faCertificate,
   faNetworkWired,
+  faRocket,
+  faCode,
+  faMicrophone,
+  faGift,
+  faPercent,
 
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -181,141 +186,181 @@ const Header = () => {
 
   return (
     <>
+      {/* Offer Banner */}
       <div className={style.headerContainer}>
-        <Image
-          src={BackgroundImg}
-          alt="Background"
-          className={style.backgroundImage}
-        />
+        <Image src={BackgroundImg} alt="Background" className={style.backgroundImage} />
 
         <div className="row d-flex justify-content-center mt-4">
+          {/* Offer Banner inside the card at top */}
           <div
             className={`px-5 py-4 d-flex flex-column flex-md-row col-11 col-md-12 col-lg-10 col-xl-8 bg-white vh-75 rounded-4 shadow position-relative ${style.card}`}
             style={{ zIndex: 10 }}
           >
+            {/* ===== Seamless Scrolling Offer Banner ===== */}
+
+            <div
+            // style={{
+            //   width: '100%',
+            //   height: '35px',
+            //   backgroundColor: '#ff5003',
+            //   color: 'white',
+            //   display: 'flex',
+            //   alignItems: 'center',
+            //   overflow: 'hidden',
+            //   position: 'absolute',
+            //   top: 0,
+            //   left: 0,
+            //   borderTopLeftRadius: '1rem',
+            //   borderTopRightRadius: '1rem',
+            //   fontSize: '18px',
+            //   fontWeight: 'bold',
+            // }}
+            >
+              {/* <div
+                style={{
+                  display: 'flex',
+                  whiteSpace: 'nowrap',
+                  animation: 'scrollLeft 40s linear infinite',
+                }}
+              > */}
+              {/* Duplicate content twice for seamless loop */}
+              {/* {[...Array(2)].map((_, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '20px',
+                      paddingRight: '20px',
+                    }}
+                  > */}
+              {/* <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                      <FontAwesomeIcon icon={faGift} style={{ fontSize: '20px' }} />
+                      Limited Time Offer: 20% Off on All Courses!
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                      <FontAwesomeIcon icon={faPercent} style={{ fontSize: '20px' }} />
+                      Free Internship with Stipend!
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                      <FontAwesomeIcon icon={faAward} style={{ fontSize: '20px' }} />
+                      7 Global Certifications Included!
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                      <FontAwesomeIcon icon={faBriefcase} style={{ fontSize: '20px' }} />
+                      Placement Assistance Till You Get Hired!
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                      <FontAwesomeIcon icon={faHandshake} style={{ fontSize: '20px' }} />
+                      Enroll Now and Boost Your Career!
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                      <FontAwesomeIcon icon={faRocket} style={{ fontSize: '20px' }} />
+                      Early Bird Discount: 25% Off!
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                      <FontAwesomeIcon icon={faCode} style={{ fontSize: '20px' }} />
+                      Build Real Projects and Get Placed!
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                      <FontAwesomeIcon icon={faMicrophone} style={{ fontSize: '20px' }} />
+                      Free CRT Sessions for Exam Prep!
+                    </div>
+                  </div> */}
+              {/* ))} */}
+              {/* </div> */}
+
+              {/* <style jsx>{`
+    @keyframes scrollLeft {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  `}</style> */}
+            </div>
+
+            {/* ===== End Offer Banner ===== */}
+
+
             {/* LEFT CONTENT */}
-            <div className="col-md-6 d-flex flex-column justify-content-center px-2">
+            <div className="col-md-6 d-flex flex-column justify-content-center px-2 mt-5">
+              {/* Added mt-5 to push down content below banner */}
               <h2 className={`${style.headerText}`}>
                 {card && (
                   <>
                     {card.Header}
-                    <span style={{ color: "#ff5003", textWrap: "nowrap" }}>
-                      {card.Duration}
-                    </span>
+                    <span style={{ color: '#ff5003', textWrap: 'nowrap' }}>{card.Duration}</span>
                   </>
                 )}
               </h2>
 
-
-              {/* i nned to add a highited text that can a eye cathieee thta text should be like this "india's  first institite that give stipend based intership" */}
-
+              {/* Highlighted Text */}
               <p className={`mt-3 ${style.highlightedText}`}>
 
-                 Built for 2025  - <span className={style.tagline} > Curriculum That Gets You Hired </span>
+                Built for 2025  - <span className={style.tagline} > Curriculum That Gets You Hired </span>
               </p>
 
-
-
+              {/* Symbol Items */}
               <div className={style.symbolItemContent}>
                 <div className={style.symbolItem}>
-                  <Image
-                    src={unlockLogo}
-                    alt="Book symbol"
-                    className={style.symbol1}
-                  />
+                  <Image src={unlockLogo} alt="Book symbol" className={style.symbol1} unoptimized />
                   <span className={style.symbolText}>
-                   <strong> Earn 3X Salaries with Our Internship Format </strong>
+                    <strong>Students have earned ₹4,45,000 INR through our paid internships.</strong>
                   </span>
                 </div>
                 <div className={style.symbolItem}>
-                  <Image
-                    src={booksymbol}
-                    alt="Book symbol"
-                    className={style.symbol}
-                  />
+                  <Image src={booksymbol} alt="Book symbol" className={style.symbol} unoptimized />
                   <span className={style.symbolText}>
-                   <strong> 3-Month Full-Day Industry Internship</strong>
+                    <strong>3-Month Full-Day Industry Internship</strong>
                   </span>
                 </div>
                 <div className={style.symbolItem}>
-                  <Image
-                    src={successLogo}
-                    alt="Book symbol"
-                    className={style.symbol}
-                  />
+                  <Image src={successLogo} alt="Book symbol" className={style.symbol} />
                   <span className={style.symbolText}>
                     <strong>7 Global Certifications (IBM, Microsoft & more)</strong>
                   </span>
                 </div>
                 <div className={style.symbolItem}>
-                  <Image
-                    src={partnershipLogo}
-                    alt="Book symbol"
-                    className={style.symbol}
-                  />
+                  <Image src={partnershipLogo} alt="Book symbol" className={style.symbol} />
                   <span className={style.symbolText}>
-                   <strong> 3/5/7 Month Fast-Track Programs with Paid Internship</strong>
+                    <strong>3/5/7 Month Fast-Track Programs with Paid Internship</strong>
                   </span>
                 </div>
                 <div className={style.symbolItem}>
-                  <Image
-                    src={MobileIconLogo}
-                    alt="Book symbol"
-                    className={style.symbol}
-                  />
+                  <Image src={MobileIconLogo} alt="Book symbol" className={style.symbol} />
                   <span className={style.symbolText}>
                     <strong>Build 30+ End-to-End AI Applications</strong>
                   </span>
                 </div>
                 <div className={style.symbolItem}>
-                  <Image
-                    src={jobRolesLogo}
-                    alt="Job roles symbol"
-                    className={style.symbol}
-                    unoptimized
-                  />
+                  <Image src={jobRolesLogo} alt="Job roles symbol" className={style.symbol} unoptimized />
                   <span className={style.symbolText}>
                     <strong>Eligible for 10+ High-Demand Job Roles</strong>
                   </span>
                 </div>
-                {/* <div className={style.symbolItem}>
-                  <Image
-                    src={curriculumLogo}
-                    alt="Curriculum symbol"
-                    className={style.symbol}
-                  />
-                  <span className={style.symbolText}>
-                    <strong>Built for 2025: The Curriculum That Gets You Hired</strong>
-                  </span>
-                </div> */}
               </div>
             </div>
 
             {/* RIGHT CONTENT - IMAGE */}
-            <div className="col-md-6 d-flex justify-content-center align-items-center mt-4">
+            <div className="col-md-6 d-flex justify-content-center align-items-center mt-5">
               <div className={`${style.HeaderPicture} text-center`}>
                 {card && (
-                  <Image
-                    src={awardImage}
-                    alt="Course"
-                    className={`img-fluid ${style.headerImage} shadow`}
-                  />
+                  <Image src={awardImage} alt="Course" className={`img-fluid ${style.headerImage} shadow`} />
                 )}
                 <div className={style.EnrollButtonContent}>
                   {card && (
                     <EnrollButton
-                      label="Enroll Now"
+                      label="Watch Free Demo"
                       courseID={card.id}
                       className={style.Button}
                       actionType="Button:Enroll Now"
                     />
                   )}
                   <span>
-                    <Image
-                      src={FollowerImg}
-                      alt="Follower group"
-                      className={style.FollowerImage}
-                    />
+                    <Image src={FollowerImg} alt="Follower group" className={style.FollowerImage} />
                   </span>
                   <div className={style.reviewContainer}>
                     <div className={style.FollowerStars}>
@@ -325,207 +370,19 @@ const Header = () => {
                           src={starSymbol}
                           alt="Star"
                           className={style.star}
-                          style={{ color: "gold" }}
+                          style={{ color: 'gold' }}
                         />
                       ))}
                     </div>
-                    <span className={style.FollowerCount}>
-                      426 reviews (4.7 of 5)
-                    </span>
+                    <span className={style.FollowerCount}>426 reviews (4.7 of 5)</span>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className={style.scrollSection}>
-          <h5 className="fs-6 fs-md-5 fs-lg-2" style={{ fontWeight: "800", fontSize: '2.5rem' }}>
-            Trusted by Learners Working At <span style={{ color: "#ff5003" }}>Top Companies</span>
-          </h5>
-
-          {/* SCROLL BUTTONS START */}
-          {/* <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', margin: '24px 0' }}>
-            <button
-              onClick={() => {
-                const el = document.getElementById('what-will-you-learn-section');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              style={{
-                background: '#ff5003',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '999px',
-                padding: '0.5em 0.5em',
-                fontWeight: 600,
-                fontSize: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5em',
-                boxShadow: '0 2px 8px rgba(255,80,3,0.10)',
-                cursor: 'pointer',
-                transition: 'background 0.2s',
-                minWidth: 180,
-              }}
-            >
-              What will you learn
-              <span style={{ display: 'flex', alignItems: 'center', marginLeft: 8 }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="12" fill="white"/>
-                  <defs>
-                    <linearGradient id="arrow-gradient" x1="12" y1="6" x2="12" y2="18" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#ff5003"/>
-                      <stop offset="1" stopColor="#ff3c7e"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M12 7V17" stroke="url(#arrow-gradient)" strokeWidth="2.5" strokeLinecap="round"/>
-                  <path d="M7 12.5L12 17L17 12.5" stroke="url(#arrow-gradient)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-            </button>
-            <button
-              onClick={() => {
-                const el = document.getElementById('course-flow-section');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              style={{
-                background: '#ff5003',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '999px',
-                padding: '0.5em 0.5em',
-                fontWeight: 600,
-                fontSize: '1.1rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5em',
-                boxShadow: '0 2px 8px rgba(255,80,3,0.10)',
-                cursor: 'pointer',
-                transition: 'background 0.2s',
-                minWidth: 180,
-              }}
-            >
-              See our course flow
-              <span style={{ display: 'flex', alignItems: 'center', marginLeft: 8 }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="12" fill="white"/>
-                  <defs>
-                    <linearGradient id="arrow-gradient2" x1="12" y1="6" x2="12" y2="18" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#ff5003"/>
-                      <stop offset="1" stopColor="#ff3c7e"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M12 7V17" stroke="url(#arrow-gradient2)" strokeWidth="2.5" strokeLinecap="round"/>
-                  <path d="M7 12.5L12 17L17 12.5" stroke="url(#arrow-gradient2)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-            </button>
-          </div> */}
-          {/* SCROLL BUTTONS END */}
-
-          <div className={style.logoContainer}>
-            <div className={style.logoScroll1}>
-              {logos.slice(0, 10).map((logo, index) => (
-                <Image
-                  key={index}
-                  src={logo.src}
-                  alt={logo.alt}
-                  className={style.logo}
-                />
-              ))}
-            </div>
-            <div className={style.logoScroll2}>
-              {logos.slice(10).map((logo, index) => (
-                <Image
-                  key={index}
-                  src={logo.src}
-                  alt={logo.alt}
-                  className={style.logo}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className={style.testimonials}>
-          <div
-            className={`d-flex m-4 ${isMobile
-              ? "flex-column text-center"
-              : "justify-content-center align-items-center gap-2"
-              }`}
-          >
-            <h3 className="fw-bold">
-              <span style={{ color: "#ff5003" }}> Know More</span> About{" "}
-              {card && card.text}
-            </h3>
-
-            {card && (
-              <EnrollButton
-                label="Download Roadmap"
-                courseID={card.id}
-                className={style.Button}
-                actionType="Button:Enroll Now"
-              />
-            )}
-          </div>
-        </div>
-
-        <div className="container pb-3">
-          {/* Ratings Section */}
-          <div className="row text-center mb-4">
-            {ratings.map((item, index) => (
-              <div className="col-md-4 mb-3" key={index}>
-                <div className="border p-3 rounded d-flex align-items-center justify-content-center">
-                  <div
-                    className="logo-wrapper d-flex align-items-center justify-content-center me-2"
-                    style={{ width: 60, height: 60 }}
-                  >
-                    {item.logo ? (
-                      <Image
-                        src={item.logo}
-                        alt={item.title}
-                        style={{
-                          maxHeight: "50px",
-                          objectFit: "contain",
-                          paddingRight: "15px",
-                        }}
-                      />
-                    ) : null}{" "}
-                    {/* Remove the span if no logo */}
-                  </div>
-
-                  <div>
-                    <div className="fw-bold">{item.title}</div>
-                    <div>{item.rating}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Stats Section */}
-          <div className="row text-center justify-content-center gap-3">
-            {stats.map((stat, index) => (
-              <div className={`${style.statcard} shadow-m border`} key={index}>
-                <div className={style.iconcontainer}>
-                  <div
-                    className={`${style.hexagon}`}
-                    style={{
-                      backgroundColor: stat.color,
-                      boxShadow: "0 12px 12px rgba(80, 0, 185, 0.85)",
-                    }}
-                  >
-                    {stat.value}
-                  </div>
-                </div>
-                <div className={style.content}>
-                  <div className={style.label}>{stat.label}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
+
 
       {/* why socialprachar standout section  */}
       <div>
@@ -561,6 +418,28 @@ const Header = () => {
             className="feature-grid-responsive"
           >
             {/* Feature Cards */}
+            {/* New Cards */}
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faRocket} style={{ color: '#ffc107', fontSize: 40, marginBottom: 14 }} />
+              <div className="feature-card-text">
+                <div><strong>Interview Booster Sessions</strong></div>
+                <div><small>Tailored sessions to boost interview skills for learners who need extra support.</small></div>
+              </div>
+            </div>
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faCode} style={{ color: '#0000ff', fontSize: 40, marginBottom: 14 }} />
+              <div className="feature-card-text">
+                <div><strong>Code Labs</strong></div>
+                <div><small>Daily coding labs with hands-on assignments to sharpen your programming skills.</small></div>
+              </div>
+            </div>
+            <div className="feature-card-hover">
+              <FontAwesomeIcon icon={faMicrophone} style={{ color: '#00ff00', fontSize: 40, marginBottom: 14 }} />
+              <div className="feature-card-text">
+                <div><strong>CRT Sessions (Free)</strong></div>
+                <div><small>Free sessions covering spoken English, aptitude tests, and logical reasoning to prepare for competitive exams.</small></div>
+              </div>
+            </div>
             {/* 1 */}
             <div className="feature-card-hover">
               <FontAwesomeIcon icon={faChalkboardTeacher} style={featureIconStyle} />
@@ -610,6 +489,39 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Video Section */}
+      {[
+        "data-science",
+        "awsdevopscourse",
+        "artificial-intelligence-course-training-institute-in-hyderabad",
+        "generative-ai-course-training-institute-hyderabad",
+        "data-analytics-course-training-hyderabad",
+      ].includes(slug) && (
+          <div className="flex justify-center my-5 px-4">
+            <div className="max-w-3xl text-center mx-auto">
+              <h2
+                style={{
+                  fontSize: "28px",
+                  fontWeight: "bold",
+                  marginBottom: "20px",
+                  lineHeight: "1.4",
+                }}
+              >
+                Before you invest your time or money —  <span style={{ color: '#ff5003' }}>watch this video! It’ll change how you see Data Science, AI & Analytics careers</span>
+              </h2>
+              {card && (
+                <EnrollButton
+                  label="Watch Free Demo"
+                  courseID={card.id}
+                  className={style.Button}
+                  actionType="Button:Watch Video"
+                />
+              )}
+            </div>
+          </div>
+        )}
+
+
     </>
   );
 };
@@ -621,6 +533,11 @@ const featureIconStyle = {
   fontSize: 40,
   marginBottom: 14,
 };
+
+
+
+
+
 
 
 export default Header;

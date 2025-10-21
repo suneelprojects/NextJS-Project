@@ -44,7 +44,10 @@ const ScholarshipTest = () => {
   };
 
   const handleExploreClick = () => {
-    router.push("/");
+    const element = document.getElementById('scholarship-table');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
   return (
     <div className={styles.container}>
@@ -73,7 +76,7 @@ const ScholarshipTest = () => {
               Register Now
             </Button>
             <Button variant="outline" className={styles.heroButtonSecondary} onClick={handleExploreClick}>
-              Explore SocialPrachar
+              Explore Scholarship Rewards
             </Button>
           </div>
         </div>
@@ -210,7 +213,7 @@ const ScholarshipTest = () => {
       </section>
 
       {/* Scholarship Test Section */}
-      <section className={styles.scholarshipSection}>
+      <section  className={styles.scholarshipSection}>
         <div className={styles.sectionContainer}>
           <h2 className={styles.sectionTitle}>
             Scholarship Rewards Based on Your Performance
@@ -226,7 +229,7 @@ const ScholarshipTest = () => {
           </p>
           
           {/* Scholarship Table */}
-          <Card className={styles.scholarshipTable}>
+          <Card id="scholarship-table" className={styles.scholarshipTable}>
             <div className={styles.tableContainer}>
               <h3 className={styles.tableTitle}>Your Score (out of 30) vs Scholarship Reward</h3>
               <div className={styles.tableContent}>

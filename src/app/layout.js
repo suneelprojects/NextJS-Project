@@ -17,15 +17,15 @@ const geistMono = Geist_Mono({
 });
 
 
-// export const metadata = {
-//   metadataBase: new URL('https://socialprachar.com'),
-//   // You can add other global metadata here if needed
-// };
-
-
 export const metadata = {
-  metadataBase: new URL('https://nextjs-social-prachar.vercel.app'),
+  metadataBase: new URL('https://socialprachar.com'),
+  // You can add other global metadata here if needed
 };
+
+
+// export const metadata = {
+//   metadataBase: new URL('https://nextjs-social-prachar.vercel.app'),
+// };
 
 // Helper function for OG image path by route
 export function getOgImageByPath(pathname) {
@@ -142,14 +142,14 @@ export default function RootLayout({ children }) {
           }}
         />
 
+      {/* SearchAtlas / Dynamic Optimization loader (clean next/script version) */}
         <Script
-          nowprocket="true"
-          nitro-exclude="true"
-          type="text/javascript"
-          id="sa-dynamic-optimization"
-          data-uuid="b917f7d8-8abb-4a14-804e-7618135930f4"
-          src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLnNlYXJjaGF0bGFzLmNvbS9zY3JpcHRzL2R5bmFtaWNfb3B0aW1pemF0aW9uLmpzIjtzY3JpcHQuZGF0YXNldC51dWlkID0gImI5MTdmN2Q4LThhYmItNGExNC04MDRlLTc2MTgxMzU5MzBmNCI7c2NyaXB0LmlkID0gInNhLWR5bmFtaWMtb3B0aW1pemF0aW9uLWxvYWRlciI7ZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzY3JpcHQpOw=="
-        ></Script>
+          id="sa-dynamic-optimization-loader"
+          src="https://dashboard.searchatlas.com/scripts/dynamic_optimization.js"
+          strategy="afterInteractive"
+          data-uuid="f805ade7-73d1-4f80-b7a6-02cc509739ad"
+          {...{ nowprocket: "", "nitro-exclude": "" }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
