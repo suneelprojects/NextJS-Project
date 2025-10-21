@@ -143,13 +143,13 @@ export default function RootLayout({ children }) {
         />
 
       {/* SearchAtlas / Dynamic Optimization loader (clean next/script version) */}
-        <Script
+        {/* <Script
           id="sa-dynamic-optimization-loader"
           src="https://dashboard.searchatlas.com/scripts/dynamic_optimization.js"
           strategy="afterInteractive"
           data-uuid="f805ade7-73d1-4f80-b7a6-02cc509739ad"
           {...{ nowprocket: "", "nitro-exclude": "" }}
-        />
+        /> */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
