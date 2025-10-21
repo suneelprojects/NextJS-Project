@@ -125,6 +125,8 @@ const Footer = () => {
       path: "/digital-marketing-course-training-institute-hyderabad/",
     },
     { name: "Privacy Policy", path: "/privacy-policy" },
+    // { name: "data-science-ai-course-training-institutes-in-hyderabad", path: "/data-science-ai-course-training-institutes-in-hyderabad" },
+    // { name: "best-ai-institute-in-hyderabad", path: "/best-ai-institute-in-hyderabad" },
   ];
 
   const NavToAppleStore = () => {

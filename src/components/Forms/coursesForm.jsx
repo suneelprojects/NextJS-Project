@@ -36,6 +36,9 @@ const CoursesForm = ({ onClose, courseID, actionType }) => {
   const crmTokenURL =
     "https://integration.pqa.salesmax.ai/salesmax/leads?token=ZFLXQw9q0qT-FJn11iRc2w";
 
+  const zoomShareUrl =
+    "https://us06web.zoom.us/rec/share/FciY-bGPip_icmBZYLDqDELz1nrecWlYTD0MP7tuHnzUDym5ydzKJKXcYbB3U7Pz.xI0jz2vDEWr2zBFt?startTime=1755605186000";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { fullName, email, phone, course, mode } = formData;
@@ -92,6 +95,9 @@ const CoursesForm = ({ onClose, courseID, actionType }) => {
       if (card?.careerRoadmap) {
         downloadRoadmap(card.careerRoadmap);
       }
+
+      // Open Zoom link in a new tab
+      window.open(zoomShareUrl, '_blank');
 
       setTimeout(() => {
         router.push("/thank-you");

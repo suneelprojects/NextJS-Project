@@ -10,7 +10,7 @@ const APPS_SCRIPT_URL = typeof window !== 'undefined'
 
 const APPS_PROXY = '/api/forward-lead';
 
-const DataAnalyticsForm = ({ isPopup = false, onClose }) => {
+const DataAnalyticsForm = ({ isPopup = false, onClose, heading = "Apply for Data Analytics Course" }) => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     fullName: "",
@@ -65,31 +65,34 @@ const DataAnalyticsForm = ({ isPopup = false, onClose }) => {
         detail: { yearOfGraduation: formData.yearOfGraduation }
       }));
 
-      let appsOk = false;
-      try {
-        const appsResp = await fetch(APPS_PROXY, {
+      const [appsResult, localResult] = await Promise.allSettled([
+        fetch(APPS_PROXY, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             source: 'data_analytics_enrollment',
             ...formData
           })
-        });
-        appsOk = appsResp.ok;
-      } catch (appsErr) {
-        console.warn('Forward to Apps Script failed:', appsErr);
-      }
-
-      let localOk = false;
-      try {
-        const localResp = await fetch('/api/data-analytics-lead', {
+        }),
+        fetch('/api/data-analytics-lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
-        });
-        localOk = localResp.ok;
-      } catch (localErr) {
-        console.warn('Local API call failed:', localErr);
+        })
+      ]);
+
+      let appsOk = false;
+      if (appsResult.status === 'fulfilled') {
+        appsOk = appsResult.value.ok;
+      } else {
+        console.warn('Forward to Apps Script failed:', appsResult.reason);
+      }
+
+      let localOk = false;
+      if (localResult.status === 'fulfilled') {
+        localOk = localResult.value.ok;
+      } else {
+        console.warn('Local API call failed:', localResult.reason);
       }
 
       if (appsOk || localOk) {
@@ -123,8 +126,8 @@ const DataAnalyticsForm = ({ isPopup = false, onClose }) => {
       <div className="p-4 sm:p-8">
         {isPopup && (
           <div className="flex justify-between items-center mb-6">
-            <h3 className="text-lg sm:text-2xl font-bold brand-text">
-              Apply for Data Analytics Course
+            <h3 className="text-lg sm:text-2xl font-bold text-black">
+              {heading}
             </h3>
             <button
               onClick={onClose}
@@ -137,7 +140,7 @@ const DataAnalyticsForm = ({ isPopup = false, onClose }) => {
 
         {!isPopup && (
           <div className="text-center mb-6 sm:mb-8">
-            <h3 className="text-lg sm:text-2xl font-bold mb-2 brand-text">Get Started Today</h3>
+            <h3 className="text-lg sm:text-2xl font-bold mb-2 text-black">Get Started Today</h3>
             <p className="text-gray-600 text-sm sm:text-base">Join our Data Analytics course with guaranteed internship</p>
           </div>
         )}
@@ -145,7 +148,7 @@ const DataAnalyticsForm = ({ isPopup = false, onClose }) => {
         <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div>
-              <label htmlFor="fullName" className="block text-sm font-medium brand-text">Full Name *</label>
+              <label htmlFor="fullName" className="block text-sm font-medium text-black">Full Name *</label>
               <input
                 id="fullName"
                 type="text"
@@ -157,7 +160,7 @@ const DataAnalyticsForm = ({ isPopup = false, onClose }) => {
             </div>
 
             <div>
-              <label htmlFor="mobile" className="block text-sm font-medium brand-text">Mobile Number *</label>
+              <label htmlFor="mobile" className="block text-sm font-medium text-black">Mobile Number *</label>
               <input
                 id="mobile"
                 type="tel"
@@ -172,7 +175,7 @@ const DataAnalyticsForm = ({ isPopup = false, onClose }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium brand-text">Email Address *</label>
+              <label htmlFor="email" className="block text-sm font-medium text-black">Email Address *</label>
               <input
                 id="email"
                 type="email"
@@ -184,7 +187,7 @@ const DataAnalyticsForm = ({ isPopup = false, onClose }) => {
             </div>
 
             <div>
-              <label htmlFor="collegeName" className="block text-sm font-medium brand-text">College Name *</label>
+              <label htmlFor="collegeName" className="block text-sm font-medium text-black">College Name *</label>
               <input
                 id="collegeName"
                 type="text"
@@ -197,7 +200,7 @@ const DataAnalyticsForm = ({ isPopup = false, onClose }) => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium brand-text">Year of Graduation *</label>
+            <label className="block text-sm font-medium text-black">Year of Graduation *</label>
             <div className="flex flex-wrap gap-4 mt-2">
               {['2026', '2027'].map((year) => (
                 <label key={year} className="flex items-center space-x-2">
@@ -209,27 +212,36 @@ const DataAnalyticsForm = ({ isPopup = false, onClose }) => {
                     onChange={(e) => handleInputChange('yearOfGraduation', e.target.value)}
                     className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                   />
-                  <span className="text-sm">{year}</span>
+                  <span className="text-sm text-black">{year}</span>
                 </label>
               ))}
             </div>
             {errors.yearOfGraduation && <p className="text-xs text-red-600 mt-1">{errors.yearOfGraduation}</p>}
           </div>
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full font-semibold py-3 sm:py-4 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl text-sm sm:text-lg disabled:opacity-50 bg-indigo-600 text-white flex items-center justify-center"
-          >
-            {isSubmitting ? (
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                Submitting...
-              </div>
-            ) : (
-              'Apply Now'
-            )}
-          </button>
+          <div className="flex gap-4">
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex-1 font-semibold py-3 sm:py-4 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl text-sm sm:text-lg bg-gray-300 text-gray-700 hover:bg-gray-400"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="flex-1 font-semibold py-3 sm:py-4 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl text-sm sm:text-lg disabled:opacity-50 bg-indigo-600 text-white flex items-center justify-center"
+            >
+              {isSubmitting ? (
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Submitting...
+                </div>
+              ) : (
+                'Apply Now'
+              )}
+            </button>
+          </div>
         </form>
       </div>
     </div>
@@ -237,7 +249,7 @@ const DataAnalyticsForm = ({ isPopup = false, onClose }) => {
 
   if (isPopup) {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
         <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
           {formContent}
         </div>

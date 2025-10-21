@@ -70,8 +70,8 @@ export default function LearnDataScienceAI({ slug }) {
       <section className="py-5 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="rounded-3xl overflow-hidden shadow-2xl" style={{background: 'linear-gradient(90deg,#0000FF,#fb8500)'}}>
-            <div className="lg:p-5 p-3 text-center text-white">
-              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-4xl md:text-5xl font-extrabold mb-4">
+            <div className="lg:py-2 p-3 text-center text-white">
+              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-4xl md:text-5xl font-extrabold ">
                 🚀 Don’t Just Learn Data Science & AI — Build It
               </motion.h1>
       
