@@ -54,6 +54,7 @@ export default function Page() {
         <meta property="twitter:title" content="Code Clash Hackathon | Test Your Skills in Coding Challenges – Socialprachar" />
         <meta property="twitter:description" content="Participate in Code Clash, a dynamic coding hackathon designed for aspiring developers and coders. Compete, solve real-world problems, and win exciting prizes." />
         <meta property="twitter:image" content={ogImage} />
+        <link rel="canonical" href="https://socialprachar.com/codeclash" />
       </Head>
       <CodeClashClient />
     </>

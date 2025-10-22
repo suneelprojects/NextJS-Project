@@ -8,6 +8,7 @@ import img2 from '@/assets/newassets/artical-2.jpg';
 import img3 from '@/assets/newassets/artical-2.jpg';
 import { AnimatePresence, motion } from 'framer-motion';
 import DataAnalyticsForm from './DataAnalyticsForm';
+import Head from 'next/head';
 
 const Section = ({ children, className = '', id }) => (
   <motion.section
@@ -109,6 +110,172 @@ export default function NowPage() {
 
   return (
     <div  className={`${styles.container} ${styles.rootVariables} ` }>
+
+      {/* Structured Data - JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            // Course Schema
+            {
+              "@context": "https://schema.org",
+              "@type": "Course",
+              "name": "Data Analytics Course with Internship",
+              "description": "Comprehensive data analytics training with hands-on internship experience in Hyderabad. Master Python, SQL, Power BI, Tableau, and real-world data projects.",
+              "provider": {
+                "@type": "Organization",
+                "name": "Socialprachar",
+                "url": "https://socialprachar.com",
+                "logo": "https://socialprachar.com/images/socialprachar-logo.png"
+              },
+              "courseMode": ["online", "classroom"],
+              "educationalLevel": "Beginner to Advanced",
+              "teaches": [
+                "Python for Data Analysis",
+                "SQL & Database Management",
+                "Data Visualization (Power BI, Tableau)",
+                "Statistics & Probability",
+                "Excel for Analytics",
+                "Machine Learning basics"
+              ],
+              "timeRequired": "P4-6M",
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": ["online", "classroom"],
+                "location": {
+                  "@type": "Place",
+                  "name": "Hyderabad, Telangana, India"
+                },
+                "instructor": {
+                  "@type": "Organization",
+                  "name": "Socialprachar Expert Trainers"
+                }
+              },
+              "offers": {
+                "@type": "Offer",
+                "price": "Contact for pricing",
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock",
+                "validFrom": "2024-01-01"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "500"
+              }
+            },
+            // Organization Schema
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Socialprachar",
+              "url": "https://socialprachar.com",
+              "logo": "https://socialprachar.com/images/socialprachar-logo.png",
+              "description": "Leading EdTech institute in Hyderabad providing industry-oriented training in data analytics, fullstack development, and digital marketing.",
+              "foundingDate": "2020",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Hyderabad",
+                "addressRegion": "Telangana",
+                "addressCountry": "IN"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-XXXXXXXXXX",
+                "contactType": "customer service",
+                "availableLanguage": "English"
+              },
+              "sameAs": [
+                "https://www.facebook.com/socialprachar",
+                "https://www.instagram.com/socialprachar",
+                "https://www.linkedin.com/company/socialprachar"
+              ]
+            },
+            // BreadcrumbList Schema
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://socialprachar.com"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Courses",
+                  "item": "https://socialprachar.com/courses"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Best Data Analytics Course with Internship in Hyderabad",
+                  "item": "https://socialprachar.com/best-data-analytics-hyderabad"
+                }
+              ]
+            },
+            // FAQPage Schema
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Who can join the Data Analytics course at Socialprachar?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Anyone with a graduation degree (B.Tech, B.Sc, B.Com, MBA, etc.) can join. Prior IT knowledge is not mandatory."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need coding experience to learn Data Analytics?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No, basic logical skills are enough. The course starts from beginner level."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How long is the internship?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The internship typically lasts for 2 months and involves real datasets."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What kind of projects will I work on during the internship?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Projects include Sales Forecasting, Customer Behavior Analysis, HR Analytics, and Financial Reporting dashboards."
+                  }
+                }
+              ]
+            }
+          ])
+        }}
+      />
+
+      <Head>
+        <title>Best Data Analytics Course with Internship in Hyderabad – Socialprachar</title>
+        <meta name="description" content="In today's data-driven world, organizations are making decisions not on gut feeling but on data-backed insights. From tech giants to startups, data analytics is at the heart of strategic planning, product launches, customer engagement, and revenue growth. This rising demand has created a massive career opportunity for skilled data analysts." />
+        <meta name="keywords" content="data analytics course, data analytics internship, best data analytics course in hyderabad, data analytics training hyderabad, data analytics certification" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Socialprachar" />
+        <link rel="canonical" href="https://socialprachar.com/best-data-analytics-hyderabad" />
+        <meta property="og:title" content="Best Data Analytics Course with Internship in Hyderabad – Socialprachar" />
+        <meta property="og:description" content="Join the best data analytics course with internship in Hyderabad at Socialprachar. Gain hands-on experience, expert training, and job-ready skills in data analytics." />
+        <meta property="og:url" content="https://socialprachar.com/best-data-analytics-hyderabad" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://socialprachar.com/images/data-analytics-course.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Best Data Analytics Course with Internship in Hyderabad – Socialprachar" />
+        <meta name="twitter:description" content="Join the best data analytics course with internship in Hyderabad at Socialprachar. Gain hands-on experience, expert training, and job-ready skills in data analytics." />
+        <meta name="twitter:image" content="https://socialprachar.com/images/data-analytics-course.jpg" />
+      </Head>
       {/* Hero Section */}
       <header className={styles.hero}>
         <div className={styles.heroContent} ref={finalCTARef}>
@@ -139,7 +306,7 @@ export default function NowPage() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
                onClick={() => setShowFormPopup(true)}
-              
+
             >
               Enroll Now
             </motion.button>

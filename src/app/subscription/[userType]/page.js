@@ -15,9 +15,10 @@ export default function Page() {
   return (
     <>
       <Head>
+        <link rel="canonical" href="https://socialprachar.com/subscription" />
         <title>Affordable Learning Plans for Students and Working Professionals | socialprachar</title>
         <meta name="description" content="Get student-friendly plans to learn top tech skills. Begin your career in Data Science, AI, Fullstack & more with expert guidance from Hyderabad's trusted institute – Socialprachar." />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://socialprachar.com/subscription" />
@@ -28,7 +29,7 @@ export default function Page() {
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Socialprachar" />
         <meta property="og:locale" content="en_US" />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://socialprachar.com/subscription" />

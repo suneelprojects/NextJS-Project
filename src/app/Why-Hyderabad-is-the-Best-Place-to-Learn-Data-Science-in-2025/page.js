@@ -83,6 +83,7 @@ export default function Home() {
   return (
     <>
       <Head>
+        <link rel="canonical" href="https://socialprachar.com/Why-Hyderabad-is-the-Best-Place-to-Learn-Data-Science-in-2025" />
         <title>Best Data Science Course Training in Hyderabad 2025 | Socialprachar</title>
         <meta name="description" content="Discover why Hyderabad is the best place to learn Data Science in 2025. Get expert training, 100% placement assistance, and affordable courses at Socialprachar." />
         <meta name="keywords" content="Data Science Course Hyderabad, Data Science Training, Machine Learning Course, AI Training, Python Training, Data Analytics Course, Socialprachar" />

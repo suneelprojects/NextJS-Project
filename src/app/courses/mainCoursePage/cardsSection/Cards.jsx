@@ -12,12 +12,13 @@ import Image from "next/image";
 import OneCard from "./OneCard";
 
 const cards = ({filters}) => {
-  const { checkedCategories, checkedTags } = filters;
+  const { checkedCategories, checkedTags, searchQuery } = filters;
   const matchesFilters = (card) => {
     const categoryMatch =
       checkedCategories[card.categoryIndex] || !checkedCategories.some(Boolean);
     const tagMatch = checkedTags[card.tagIndex] || !checkedTags.some(Boolean);
-    return categoryMatch && tagMatch;
+    const searchMatch = !searchQuery || card.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return categoryMatch && tagMatch && searchMatch;
   };
   const filteredCards = data.filter(matchesFilters);
 

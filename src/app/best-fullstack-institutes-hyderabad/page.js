@@ -10,6 +10,7 @@ import careerOpportunitiesImage from "@/assets/newassets/Artical1-img4.jpg";
 import salaryTrendsImage from "@/assets/newassets/Artical1-img-5.jpg";
 import finalThoughtsImage from "@/assets/newassets/Artical1-img6.jpg";
 import DataAnalyticsForm from '../best-data-analytics-hyderabad/DataAnalyticsForm';
+import Head from 'next/head';
 
 export default function BestFullstackInstitutesHyderabad() {
   const scrollToSection = (sectionId) => {
@@ -17,8 +18,8 @@ export default function BestFullstackInstitutesHyderabad() {
       const element = document.getElementById(sectionId);
       if (element) {
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        element.scrollIntoView({ 
-          behavior: prefersReducedMotion ? 'auto' : 'smooth' 
+        element.scrollIntoView({  
+          behavior: prefersReducedMotion ? 'auto' : 'smooth'  
         });
       }
     }
@@ -32,14 +33,14 @@ export default function BestFullstackInstitutesHyderabad() {
       icon: "🚀"
     },
     {
-      number: "2", 
+      number: "2",  
       title: "Excellent Salary Packages",
       description: "Fresh graduates can expect packages between ₹4-6 LPA, while experienced developers can earn ₹15+ LPA easily.",
       icon: "💰"
     },
     {
       number: "3",
-      title: "Technical Versatility", 
+      title: "Technical Versatility",  
       description: "Build complete web applications, enterprise systems, e-commerce platforms, and integrate modern AI solutions.",
       icon: "🔧"
     },
@@ -215,9 +216,303 @@ export default function BestFullstackInstitutesHyderabad() {
 const [showFormPopup, setShowFormPopup] = useState(false);
 
   return (
-    
+
     <div className={styles.pageContainer}>
-     
+
+      {/* Structured Data - JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            // Organization Schema for Socialprachar
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Socialprachar",
+              "url": "https://socialprachar.com",
+              "logo": "https://socialprachar.com/images/socialprachar-logo.png",
+              "description": "Leading EdTech institute in Hyderabad providing industry-oriented training in data analytics, fullstack development, and digital marketing.",
+              "foundingDate": "2020",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Hyderabad",
+                "addressRegion": "Telangana",
+                "addressCountry": "IN"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-XXXXXXXXXX",
+                "contactType": "customer service",
+                "availableLanguage": "English"
+              },
+              "sameAs": [
+                "https://www.facebook.com/socialprachar",
+                "https://www.instagram.com/socialprachar",
+                "https://www.linkedin.com/company/socialprachar"
+              ],
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Fullstack Development Training Programs",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Course",
+                      "name": "Fullstack Web Development Course",
+                      "description": "Complete fullstack development training covering frontend, backend, databases, and modern AI integration."
+                    }
+                  }
+                ]
+              }
+            },
+            // ItemList Schema for Institute Listings
+            {
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "name": "Top Fullstack Institutes in Hyderabad",
+              "description": "Comprehensive list of the best fullstack web development training institutes in Hyderabad",
+              "numberOfItems": 7,
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "item": {
+                    "@type": "EducationalOrganization",
+                    "name": "Socialprachar",
+                    "description": "Leading institute with job guarantee program and AI integration",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": "Hyderabad",
+                      "addressRegion": "Telangana",
+                      "addressCountry": "IN"
+                    }
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "item": {
+                    "@type": "EducationalOrganization",
+                    "name": "Naresh IT",
+                    "description": "Comprehensive MERN stack training institute",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": "Hyderabad",
+                      "addressRegion": "Telangana",
+                      "addressCountry": "IN"
+                    }
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "item": {
+                    "@type": "EducationalOrganization",
+                    "name": "Durga Soft",
+                    "description": "Strong focus on Java and Python backend development",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": "Hyderabad",
+                      "addressRegion": "Telangana",
+                      "addressCountry": "IN"
+                    }
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 4,
+                  "item": {
+                    "@type": "EducationalOrganization",
+                    "name": "Kelly Technologies",
+                    "description": "Hands-on project-based learning institute",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": "Hyderabad",
+                      "addressRegion": "Telangana",
+                      "addressCountry": "IN"
+                    }
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 5,
+                  "item": {
+                    "@type": "EducationalOrganization",
+                    "name": "AchieversIT",
+                    "description": "MERN stack specialization with real-time case studies",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": "Hyderabad",
+                      "addressRegion": "Telangana",
+                      "addressCountry": "IN"
+                    }
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 6,
+                  "item": {
+                    "@type": "EducationalOrganization",
+                    "name": "Digital Lync",
+                    "description": "Industry-aligned curriculum with corporate tie-ups",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": "Hyderabad",
+                      "addressRegion": "Telangana",
+                      "addressCountry": "IN"
+                    }
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 7,
+                  "item": {
+                    "@type": "EducationalOrganization",
+                    "name": "Codegnan IT Solutions",
+                    "description": "Python fullstack specialization institute",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": "Hyderabad",
+                      "addressRegion": "Telangana",
+                      "addressCountry": "IN"
+                    }
+                  }
+                }
+              ]
+            },
+            // BreadcrumbList Schema
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://socialprachar.com"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Courses",
+                  "item": "https://socialprachar.com/courses"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Best Fullstack Institutes in Hyderabad",
+                  "item": "https://socialprachar.com/best-fullstack-institutes-hyderabad"
+                }
+              ]
+            },
+            // FAQPage Schema
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Which is the Best Fullstack Web Development Course in Hyderabad?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Socialprachar is highly recommended for its comprehensive curriculum, job guarantee program, and integration of modern technologies like AI and cloud platforms."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How long does it take to become job-ready as a Fullstack developer?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "With dedicated learning, 4-6 months of intensive training is typically sufficient to become industry-ready with a strong project portfolio."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need prior coding experience before joining?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No prior experience required. Most reputable institutes, including Socialprachar, offer comprehensive training from basics to advanced levels."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What's the difference between Fullstack and specialized development roles?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Fullstack developers have broader skills across frontend and backend, offering more versatility and career flexibility compared to specialized roles."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Are job placements really guaranteed?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "While many institutes offer placement assistance, only select institutes like Socialprachar provide job guarantee programs with real accountability."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What modern tools and technologies will I learn?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You'll master development environments, version control (Git), cloud platforms (AWS/Azure), containerization (Docker), and AI-powered development tools."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What salary expectations should freshers have in Hyderabad?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Freshers can realistically expect ₹4-6 LPA, with potential for higher packages based on skills in modern technologies and strong project portfolios."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Which companies actively hire Fullstack developers in Hyderabad?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Major recruiters include Infosys, TCS, Accenture, Cognizant, plus growing startups like Soulpage IT Solutions and NYXIFY Technologies."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Why choose Socialprachar over other training institutes?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Socialprachar combines comprehensive training, mentorship, real projects, industry connections, and job guarantee - a complete career transformation package."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can working professionals pursue this course part-time?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, flexible scheduling options including evening batches, weekend classes, and online learning accommodate working professionals."
+                  }
+                }
+              ]
+            }
+          ])
+        }}
+      />
+
+      <Head>
+        <title>Best Fullstack Institutes in Hyderabad – Socialprachar</title>
+        <meta name="description" content="Discover the top fullstack web development training institutes in Hyderabad. Comprehensive curriculum covering frontend, backend, databases, and modern AI integration with job guarantee." />
+        <meta name="keywords" content="fullstack institutes hyderabad, fullstack web development training, best fullstack course hyderabad, fullstack developer training, fullstack certification hyderabad" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Socialprachar" />
+        <link rel="canonical" href="https://socialprachar.com/best-fullstack-institutes-hyderabad" />
+        <meta property="og:title" content="Best Fullstack Institutes in Hyderabad – Socialprachar" />
+        <meta property="og:description" content="Join the best fullstack web development training in Hyderabad at Socialprachar. Master frontend, backend, databases, and AI integration with guaranteed job placement." />
+        <meta property="og:url" content="https://socialprachar.com/best-fullstack-institutes-hyderabad" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://socialprachar.com/images/fullstack-training.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Best Fullstack Institutes in Hyderabad – Socialprachar" />
+        <meta name="twitter:description" content="Join the best fullstack web development training in Hyderabad at Socialprachar. Master frontend, backend, databases, and AI integration with guaranteed job placement." />
+        <meta name="twitter:image" content="https://socialprachar.com/images/fullstack-training.jpg" />
+      </Head>
 
       {/* Hero Section */}
       <section className={styles.heroSection}>

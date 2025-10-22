@@ -54,6 +54,7 @@ const Page = () => {
         <meta property="twitter:title" content="Top Training Courses in Hyderabad | Data Science, AI, Fullstack, AWS & Digital Marketing" />
         <meta property="twitter:description" content="Explore industry-leading courses in Data Science, Artificial Intelligence, Fullstack, AWS DevOps & Digital Marketing at Socialprachar — Hyderabad's favorite training institute." />
         <meta property="twitter:image" content={ogImage} />
+        <link rel="canonical" href="https://socialprachar.com/courses" />
       </Head>
       <div>
         <MainCoursePage />

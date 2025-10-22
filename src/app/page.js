@@ -29,7 +29,9 @@ export default function Home() {
       <Head>
         <title>Best Leading  Training Institute in Hyderabad | SocialPrachar</title>
         <meta name="description" content="Join the top-rated leading Training Institute  in Hyderabad with real-time projects and expert mentors at SocialPrachar." />
-        
+
+        <link rel="canonical" href="https://socialprachar.com/" />
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://socialprachar.com/" />
@@ -40,7 +42,7 @@ export default function Home() {
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="SocialPrachar" />
         <meta property="og:locale" content="en_US" />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://socialprachar.com/" />

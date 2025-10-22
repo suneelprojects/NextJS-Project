@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import Header from './Header/Header';
 import ProgramHighlates from './ProgramHighlates/ProgramHighlates';
 import HandsOnCaseStudies from './HandsOnCaseStudies/HandsOnCaseStudies';
@@ -11,17 +12,22 @@ import WhatSupport from './WhatSupport/WhatSupport';
 
 const page = () => {
     return (
-        <div>
-            <Header />
-            <ProgramHighlates />
-            <HandsOnCaseStudies />
-            <CertificationAndBadges />
-            <DigitalNest />
-            <DigitalMarketing />
-            <NextGenAiTools />
-            <PlacementsSupport />
-            <WhatSupport />
-        </div>
+        <>
+            <Head>
+                <link rel="canonical" href="https://socialprachar.com/digital-marketing-course-hyderabad" />
+            </Head>
+            <div>
+                <Header />
+                <ProgramHighlates />
+                <HandsOnCaseStudies />
+                <CertificationAndBadges />
+                <DigitalNest />
+                <DigitalMarketing />
+                <NextGenAiTools />
+                <PlacementsSupport />
+                <WhatSupport />
+            </div>
+        </>
     );
 };
 
