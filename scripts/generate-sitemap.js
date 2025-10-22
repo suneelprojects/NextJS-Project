@@ -30,7 +30,7 @@ const staticUrls = [
   '/hosting',
   '/codeclash',
   '/courseBlog',
-  '/courseBlogDashboard',
+  '/courseBlog-dashboard',
   '/OurAchievementsDashboard',
   '/events',
   '/project-dashboard',
@@ -44,7 +44,20 @@ const staticUrls = [
   '/career-workshop/full-stack',
   '/career-workshop/data-science',
   '/career-workshop/cloud-career',
-  
+  '/career-counselling',
+  '/career-quiz',
+  '/datesform',
+  '/digital_marketing-career_path',
+  '/how-long-does-it-take-to-become-fullstackdeveloper',
+  '/preplacement',
+  '/video-lead',
+  '/Why-Hyderabad-is-the-Best-Place-to-Learn-Data-Science-in-2025',
+  '/why-small-business-need-digital-marketing',
+  '/best-ai-institute-in-hyderabad',
+  '/best-data-analytics-hyderabad',
+  '/best-fullstack-institutes-hyderabad',
+  '/data_science-artificial_intelligence',
+  '/data-science-ai-course-training-institutes-in-hyderabad',
 ];
 
 const urls = [
@@ -66,4 +79,4 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 const outputPath = path.join(__dirname, '../public/sitemap.xml');
 fs.writeFileSync(outputPath, sitemap);
 
-console.log('Sitemap generated successfully with daily updates for all pages!'); 
+console.log('✅ Sitemap generated successfully with daily updates for all pages!');
