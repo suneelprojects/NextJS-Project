@@ -81,11 +81,11 @@ const mainCoursePage = () => {
                <div className={courseCSS.EntirePage}>
                     <div className={courseCSS.category}>
                         {/* Duplicate filter section for non-toggle bar view */}
-                        <div className={courseCSS.checkbox}>
+                            <div className={courseCSS.checkbox}>
                             <div className={courseCSS.search}>
                                 <p>Search</p>
                                 <div className={courseCSS.searchBar}>
-                                    <input type="text" placeholder='search' />
+                                    <input type="text" placeholder='search' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                                     <button className={courseCSS.searchIcon}><FontAwesomeIcon icon={faSearch} /></button>
                                 </div>
                             </div>
@@ -135,6 +135,7 @@ const mainCoursePage = () => {
                             filters={{
                                 checkedCategories: checked,
                                 checkedTags,
+                                searchQuery,
 
                             }} />
                     </div>

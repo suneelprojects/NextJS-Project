@@ -1,12 +1,17 @@
 import React from 'react';
+import Head from 'next/head';
 import Thankyou from './Thankyou';
-
 
 const page = () => {
     return (
-        <div>
-            <Thankyou/>
-        </div>
+        <>
+            <Head>
+                <link rel="canonical" href="https://socialprachar.com/thank-you" />
+            </Head>
+            <div>
+                <Thankyou/>
+            </div>
+        </>
     );
 };
 

@@ -1,9 +1,13 @@
 import React from 'react'
+import Head from 'next/head'
 import style from './PrivacyPolicy.module.css'
 
 const page = () => {
   return (
     <>
+      <Head>
+        <link rel="canonical" href="https://socialprachar.com/privacy-policy" />
+      </Head>
             <div className={style.bg_light}>
                 <div className={style.Page}>
                     <h1 className='text-center'>Data Privacy Guidelines</h1>

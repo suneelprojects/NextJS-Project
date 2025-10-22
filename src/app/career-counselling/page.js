@@ -30,6 +30,7 @@ const page = () => {
           <meta property="twitter:title" content="Career Counselling | Expert Guidance for Tech Careers – Socialprachar Hyderabad" />
           <meta property="twitter:description" content="Get personalized career counselling for Data Science, AI, Fullstack, AWS & Digital Marketing. Expert guidance to choose the right tech career path at Socialprachar." />
           <meta property="twitter:image" content="https://socialprachar.com/og/Home-image.png" />
+          <link rel="canonical" href="https://socialprachar.com/career-counselling" />
         </Head>
         <ProfileHeader/>
         <WhatWillYouGet/>

@@ -216,21 +216,28 @@ const Modal = ({ isOpen, children }) => {
   );
 };
 
+import Head from 'next/head';
+
 // Page Component
 export default function Page() {
   const zoomShareUrl =
     "https://us06web.zoom.us/rec/share/FciY-bGPip_icmBZYLDqDELz1nrecWlYTD0MP7tuHnzUDym5ydzKJKXcYbB3U7Pz.xI0jz2vDEWr2zBFt?startTime=1755605186000";
 
   return (
-    <main className="min-h-screen bg-gray-100 py-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <VideoLeadSection
-          thumbnail={thumbnailImage}
-          videoUrl={zoomShareUrl}
-          openLeadFormFn={openLeadForm}
-        />
-        <LeadFormPromiseWrapper LeadFormComponent={CoursesForm} />
-      </div>
-    </main>
+    <>
+      <Head>
+        <link rel="canonical" href="https://socialprachar.com/video-lead" />
+      </Head>
+      <main className="min-h-screen bg-gray-100 py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <VideoLeadSection
+            thumbnail={thumbnailImage}
+            videoUrl={zoomShareUrl}
+            openLeadFormFn={openLeadForm}
+          />
+          <LeadFormPromiseWrapper LeadFormComponent={CoursesForm} />
+        </div>
+      </main>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Head from 'next/head';
 import {
   BookOpen, Brain, Briefcase, BarChart, Cloud, Code, Monitor, Award, CheckCircle, Factory, Users,
   Star, Trophy, Link, MessageSquare, Download,
@@ -78,13 +79,31 @@ export default function Page() {
 
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white font-sans">
+    <>
+      <Head>
+        <title>Best AI & Data Science Institutes in Hyderabad | Socialprachar</title>
+        <meta name="description" content="Discover the top AI training institutes in Hyderabad for 2025. Compare courses, placements, and choose the best for your AI career opportunities. Leading machine learning bootcamp and data science certification programs." />
+        <meta name="keywords" content="AI training institute Hyderabad, data science courses Hyderabad, machine learning bootcamp, artificial intelligence certification, AI career opportunities, tech education Hyderabad, best AI institute KPHB Hyderabad" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Socialprachar" />
+        <link rel="canonical" href="https://socialprachar.com/best-ai-institute-in-hyderabad" />
+        <meta property="og:title" content="Best AI & Data Science Institutes in Hyderabad | Socialprachar" />
+        <meta property="og:description" content="Searching for the best AI training and data science courses in Hyderabad? Our 2025 Updated Comparison Guide helps you navigate the options." />
+        <meta property="og:image" content="https://socialprachar.com/assets/articleAssets/Gemini_Generated_Image_66306u66306u6630.png" />
+        <meta property="og:url" content="https://socialprachar.com/best-ai-institute-in-hyderabad" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Best AI & Data Science Institutes in Hyderabad | Socialprachar" />
+        <meta name="twitter:description" content="Discover the top AI training institutes in Hyderabad for 2025. Compare courses, placements, and choose the best for your AI career opportunities." />
+        <meta name="twitter:image" content="https://socialprachar.com/assets/articleAssets/Gemini_Generated_Image_66306u66306u6630.png" />
+      </Head>
+      <div className="min-h-screen bg-zinc-900 text-white font-sans">
 
       {/* Hero Section */}
       <section
         className="relative py-24 md:py-32 lg:py-48 bg-cover bg-center"
         style={{ backgroundImage: `url(${hero.src})` }}
-        unoptimized
+        unoptimized="true"
         
       >
         {/* <div className="absolute inset-0 bg-black/70"></div> */}
@@ -1218,5 +1237,6 @@ export default function Page() {
         </div>
       </section>
     </div>
+    </>
   );
 }

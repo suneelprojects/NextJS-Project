@@ -34,9 +34,10 @@ const Page = () => {
   return (
     <>
       <Head>
+        <link rel="canonical" href="https://socialprachar.com/upcoming-batches" />
         <title>Upcoming Batches – Join Top Tech Courses at Socialprachar Hyderabad</title>
         <meta name="description" content="Stay updated on our latest course batches in Data Science, AI, Fullstack, AWS & Digital Marketing. Enroll in upcoming sessions at Hyderabad's top-rated training institute." />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://socialprachar.com/upcoming-batches" />
@@ -47,7 +48,7 @@ const Page = () => {
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Socialprachar" />
         <meta property="og:locale" content="en_US" />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://socialprachar.com/upcoming-batches" />

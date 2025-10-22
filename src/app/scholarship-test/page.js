@@ -34,9 +34,10 @@ const Page = () => {
   return (
     <>
       <Head>
+        <link rel="canonical" href="https://socialprachar.com/scholarship-test" />
         <title>Scholarship Test | Earn Course Scholarships via MCQ Exam – Socialprachar</title>
         <meta name="description" content="Apply now for the Socialprachar Scholarship Test. Attempt the MCQ exam to win scholarships for top tech courses like Data Science, Fullstack & Digital Marketing." />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://socialprachar.com/scholarship-test" />
@@ -47,7 +48,7 @@ const Page = () => {
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Socialprachar" />
         <meta property="og:locale" content="en_US" />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://socialprachar.com/scholarship-test" />
