@@ -53,6 +53,7 @@ const page = () => {
           <meta property="twitter:title" content="Career Roadmaps for Tech Roles | Data Science, Cloud, Fullstack & More" />
           <meta property="twitter:description" content="Explore expert-designed career roadmaps to become a pro in Data Science, Fullstack, AI & Cloud. Socialprachar Hyderabad helps you chart the path to tech success." />
           <meta property="twitter:image" content="https://socialprachar.com/og/Home-image.png" />
+          <link rel="canonical" href="https://socialprachar.com/career-roadmaps" />
         </Head>
         <div>
             <CareerRoadmap/>

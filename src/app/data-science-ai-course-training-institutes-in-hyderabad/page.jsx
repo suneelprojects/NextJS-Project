@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
 import Image1 from '@/assets/articleAssets/ds-1.png';
 import Image2 from '@/assets/articleAssets/ds-2.png';
@@ -109,6 +110,10 @@ export default function Page() {
   const closePopup = () => setHeading('');
 
   return (
+    <>
+    <Head>
+      <link rel="canonical" href="https://socialprachar.com/data-science-ai-course-training-institutes-in-hyderabad" />
+    </Head>
     <div className="font-sans text-[#333333] antialiased bg-[#FCF9F3]">
       {/* Hero Section */}
      <header
@@ -454,5 +459,6 @@ export default function Page() {
       </AnimatedSection>
       {heading && <DataAnalyticsForm isPopup={true} heading={heading} onClose={closePopup} />}
     </div>
+    </>
   );
 }

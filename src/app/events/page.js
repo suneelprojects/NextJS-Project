@@ -33,9 +33,10 @@ const page = () => {
     return (
         <>
         <Head>
+          <link rel="canonical" href="https://socialprachar.com/events" />
           <title>Workshops, Events & Webinars | Tech Learning at Socialprachar Hyderabad</title>
           <meta name="description" content="Join live workshops, career events & webinars on tech topics like Data Science, AI, Fullstack & AWS. Learn from Hyderabad's top trainers at Socialprachar." />
-          
+
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://socialprachar.com/events" />
@@ -46,7 +47,7 @@ const page = () => {
           <meta property="og:image:height" content="630" />
           <meta property="og:site_name" content="Socialprachar" />
           <meta property="og:locale" content="en_US" />
-          
+
           {/* Twitter */}
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://socialprachar.com/events" />

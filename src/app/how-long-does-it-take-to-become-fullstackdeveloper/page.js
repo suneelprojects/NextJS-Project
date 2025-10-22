@@ -1544,24 +1544,31 @@ const Footer = () => {
   );
 };
 
+import Head from 'next/head';
+
 // --- Main App Component ---
 export default function Page() {
   return (
-    <div className="bg-gray-900 text-gray-100 font-sans antialiased overflow-x-hidden">
-      <Header />
-      <main>
-        <WhatIsFullstack />
-        <Timeline />
-        <Technologies />
-        <Pathways />
-        <Journey />
-        <FastTrack />
-        <Tips />
-        <FAQ />
-        <CTA />
-      </main>
-      {/* <Footer /> */}
-      
-    </div>
+    <>
+      <Head>
+        <link rel="canonical" href="https://socialprachar.com/how-long-does-it-take-to-become-fullstackdeveloper" />
+      </Head>
+      <div className="bg-gray-900 text-gray-100 font-sans antialiased overflow-x-hidden">
+        <Header />
+        <main>
+          <WhatIsFullstack />
+          <Timeline />
+          <Technologies />
+          <Pathways />
+          <Journey />
+          <FastTrack />
+          <Tips />
+          <FAQ />
+          <CTA />
+        </main>
+        {/* <Footer /> */}
+
+      </div>
+    </>
     );
 };

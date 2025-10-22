@@ -28,6 +28,7 @@ const page = () => {
           <meta property="twitter:title" content="Career Quiz | Find Your Perfect Tech Career Path – Socialprachar" />
           <meta property="twitter:description" content="Take our comprehensive career quiz to discover the best tech career path for you. Get personalized recommendations for Data Science, AI, Fullstack, AWS & Digital Marketing." />
           <meta property="twitter:image" content="https://socialprachar.com/og/Home-image.png" />
+          <link rel="canonical" href="https://socialprachar.com/career-quiz" />
         </Head>
         <div style={{
             minHeight: '100vh',

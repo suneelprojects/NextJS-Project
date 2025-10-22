@@ -34,7 +34,9 @@ const Page = () => {
       <Head>
         <title>About Socialprachar | Hyderabad&apos;s Most Loved Tech Training Institute</title>
         <meta name="description" content="Learn more about Socialprachar – the go-to training institute in Hyderabad for cutting-edge tech courses in Data Science, AI, Fullstack, AWS, and Digital Marketing." />
-        
+
+        <link rel="canonical" href="https://socialprachar.com/aboutUs" />
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://socialprachar.com/aboutUs" />
@@ -45,7 +47,7 @@ const Page = () => {
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Socialprachar" />
         <meta property="og:locale" content="en_US" />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://socialprachar.com/aboutUs" />

@@ -33,9 +33,10 @@ export default function Page() {
   return (
     <>
       <Head>
+        <link rel="canonical" href="https://socialprachar.com/dataclash" />
         <title>Data Clash Hackathon | Battle of Data Minds – Socialprachar</title>
         <meta name="description" content="Join Data Clash – a thrilling data-centric hackathon focused on Data Science, AI & Analytics. Solve challenges, showcase skills, and boost your career profile." />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://socialprachar.com/dataclash" />
@@ -46,7 +47,7 @@ export default function Page() {
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Socialprachar" />
         <meta property="og:locale" content="en_US" />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://socialprachar.com/dataclash" />

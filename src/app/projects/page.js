@@ -33,9 +33,10 @@ const page = () => {
     return (
         <>
         <Head>
+          <link rel="canonical" href="https://socialprachar.com/projects" />
           <title>Student Projects | Real-world Tech Projects by Socialprachar Students</title>
           <meta name="description" content="Explore real-world projects built by our students in Data Science, AI, Fullstack Development, and Digital Marketing. See the practical skills and expertise gained at Socialprachar." />
-          
+
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://socialprachar.com/projects" />
@@ -46,7 +47,7 @@ const page = () => {
           <meta property="og:image:height" content="630" />
           <meta property="og:site_name" content="Socialprachar" />
           <meta property="og:locale" content="en_US" />
-          
+
           {/* Twitter */}
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://socialprachar.com/projects" />

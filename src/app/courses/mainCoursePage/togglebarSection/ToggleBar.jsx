@@ -17,6 +17,8 @@ const ToggleBar = ({
   showUncheckedShadowTags,
   setShowUncheckedShadowTags,
   clearFilters,
+  searchQuery,
+  setSearchQuery,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -96,7 +98,7 @@ const ToggleBar = ({
               <div className={courseCSS.search}>
                 <p>Search</p>
                 <div className={courseCSS.searchBar}>
-                  <input type="text" placeholder="search" />
+                  <input type="text" placeholder="search" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                 </div>
               </div>
               <hr />

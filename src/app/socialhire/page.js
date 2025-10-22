@@ -33,9 +33,10 @@ export default function Page() {
   return (
     <>
       <Head>
+        <link rel="canonical" href="https://socialprachar.com/socialhire" />
         <title>SocialHire by Socialprachar | Placement-Ready Career Acceleration Platform</title>
         <meta name="description" content="Get job-ready with SocialHire – a placement preparation platform by Socialprachar. Resume building, mock interviews, skill grooming & hiring assistance." />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://socialprachar.com/socialhire" />
@@ -46,7 +47,7 @@ export default function Page() {
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Socialprachar" />
         <meta property="og:locale" content="en_US" />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://socialprachar.com/socialhire" />

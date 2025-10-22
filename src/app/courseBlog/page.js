@@ -53,6 +53,7 @@ const page = () => {
           <meta property="twitter:title" content="Course Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar" />
           <meta property="twitter:description" content="Stay updated with blogs on Data Science, AI, Fullstack, and Digital Marketing. Insights, career tips, and learning resources from Hyderabad's leading training institute." />
           <meta property="twitter:image" content="https://socialprachar.com/og/Home-image.png" />
+          <link rel="canonical" href="https://socialprachar.com/courseBlog" />
         </Head>
         <div>
             <Blog/>

@@ -39,9 +39,10 @@ const Page = () => {
   return (
     <>
       <Head>
+        <link rel="canonical" href="https://socialprachar.com/success-stories" />
         <title>Student Success Stories | Real Reviews & Placements at Socialprachar Hyderabad</title>
         <meta name="description" content="Discover inspiring success stories of students who launched their careers through Socialprachar's top-rated courses in Data Science, AI, Fullstack, AWS & Digital Marketing." />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://socialprachar.com/success-stories" />
@@ -52,7 +53,7 @@ const Page = () => {
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Socialprachar" />
         <meta property="og:locale" content="en_US" />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://socialprachar.com/success-stories" />
