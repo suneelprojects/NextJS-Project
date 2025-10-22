@@ -79,4 +79,4 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 const outputPath = path.join(__dirname, '../public/sitemap.xml');
 fs.writeFileSync(outputPath, sitemap);
 
-console.log('Sitemap generated successfully with daily updates for all pages!'); 
+console.log('✅ Sitemap generated successfully with daily updates for all pages!');
