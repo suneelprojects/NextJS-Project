@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Head from 'next/head';
 import {
   GraduationCap,
   TrendingUp,
@@ -29,13 +30,13 @@ const Homeimage = '/homeReplaceImage.png';
 const homeImage2 = '/Artical1-img-5.jpg';
 import OurAchievements from '../success-stories/ourAchievements/OurAchievements';
 
+
 // Apps Script web app URL - replace with your deployed script URL or set NEXT_PUBLIC_APPS_SCRIPT_URL in env
 const APPS_SCRIPT_URL = typeof window !== 'undefined'
   ? (process.env.NEXT_PUBLIC_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/REPLACE_WITH_YOUR_DEPLOYED_ID/exec')
   : 'https://script.google.com/macros/s/REPLACE_WITH_YOUR_DEPLOYED_ID/exec';
 
 // Use a same-origin proxy (Next.js API route) to avoid browser CORS issues
-const APPS_PROXY = '/api/forward-lead';
 
 const LeadForm = ({ isPopup = false, onClose, submissionType = 'preplacement' }) => {
   const router = useRouter();
@@ -353,7 +354,94 @@ export default function PrePlacementProgram() {
   };
 
   return (
-    <div className="min-h-screen brand-root">
+    <>
+      <Head>
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Pre-Placement Training Program | Job Readiness by Socialprachar" />
+        <meta property="og:description" content="Get interview-ready with Socialprachar’s Pre-Placement Program. Learn resume building, aptitude, and soft skills to land your dream job." />
+        <meta property="og:url" content="https://socialprachar.com/preplacement" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/homeReplaceImage.png" />
+        <meta property="og:site_name" content="Socialprachar" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Pre-Placement Training Program | Job Readiness by Socialprachar" />
+        <meta name="twitter:description" content="Enhance your career with Socialprachar’s expert-led Pre-Placement Program. Mock interviews, aptitude training & resume guidance included." />
+        <meta name="twitter:image" content="/homeReplaceImage.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Course",
+              "name": "Pre-Placement Training Program",
+              "description": "Boost your career with Socialprachar's Pre-Placement Program! Get interview-ready with mock tests, resume building, and placement guidance from industry experts.",
+              "provider": {
+                "@type": "Organization",
+                "name": "Socialprachar",
+                "url": "https://socialprachar.com",
+                "logo": "https://socialprachar.com/wp-content/uploads/2023/05/socialprachar-logo.png"
+              },
+              "url": "https://socialprachar.com/preplacement",
+              "courseMode": "Online and Classroom",
+              "inLanguage": "English,Telugu",
+              "educationalCredentialAwarded": "Placement Readiness Certification",
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "name": "Pre-Placement Program - Job Readiness & Interview Training in Hyderabad",
+                "courseMode": "Offline & Online",
+                "startDate": "2026-11-01",
+                "endDate": "2026-12-31",
+                "location": {
+                  "@type": "Place",
+                  "name": "Socialprachar training Institute, Software webdevelopment training in Hyderabad",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Kukatpally, ameerpet , KPHB , JNTU , Madhapur, Hyderabad",
+                    "addressLocality": "Hyderabad",
+                    "addressRegion": "Telangana",
+                    "postalCode": "500081",
+                    "addressCountry": "IN"
+                  }
+                },
+                "instructor": {
+                  "@type": "Person",
+                  "name": "Mahesh Channa",
+                  "jobTitle": "CEO & Career Coach",
+                  "worksFor": {
+                    "@type": "Organization",
+                    "name": "Socialprachar"
+                  }
+                }
+              },
+              "offers": {
+                "@type": "Offer",
+                "url": "https://socialprachar.com/preplacement",
+                "priceCurrency": "INR",
+                "price": "29,999",
+                "priceValidUntil": "2026-12-31",
+                "availability": "https://schema.org/InStock",
+                "validFrom": "2026-10-24"
+              },
+              "audience": {
+                "@type": "EducationalAudience",
+                "educationalRole": "Student",
+                "description": "Final-year students, fresh graduates, and job seekers preparing for placement drives."
+              },
+              "keywords": [
+                "pre placement training",
+                "job readiness program",
+                "interview preparation course",
+                "placement training in Hyderabad",
+                "mock interview sessions",
+                "resume building course",
+                "career development"
+              ]
+            })
+          }}
+        />
+      </Head>
+      
+      <div className="min-h-screen brand-root">
       {/* Enhanced Brand Styling */}
       <style jsx global>{`
         .brand-root {
@@ -496,7 +584,7 @@ export default function PrePlacementProgram() {
                 </span>
               </h1>
               <p className="text-base sm:text-lg lg:text-xl brand-text-secondary mb-6 sm:mb-8 leading-relaxed">
-                A <strong>6-Month Job-Ready Placement Program</strong> designed exclusively for <strong>2026 pass-outs</strong> – BTech, MBA, Degree, and MCA Final Year students.
+                A <strong>6-Month Job-Ready Placement Program in Hyderabad</strong> designed exclusively for <strong>2026 pass-outs</strong> – BTech, MBA, Degree, and MCA Final Year students.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <button
@@ -625,7 +713,7 @@ export default function PrePlacementProgram() {
       <section className="section-primary py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 sm:mb-16">
-            <h1 className="text-4xl sm:text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-amber-500 to-pink-500 bg-clip-text text-transparent">6-Month Program Structure</h1>
+            <h2 className="text-4xl sm:text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-amber-500 to-pink-500 bg-clip-text text-transparent">6-Month Program Structure</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
@@ -1031,5 +1119,6 @@ export default function PrePlacementProgram() {
         </div>
       </section>
     </div>
+    </>
   );
 }

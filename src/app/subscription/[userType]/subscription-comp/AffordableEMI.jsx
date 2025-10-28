@@ -177,7 +177,7 @@ const AffordableEMI = () => {
                         <div className="col-lg-8 col-md-6 col-sm-12 d-flex">
                             <div className={`card rounded-5 p-4 shadow-lg ${displayContent[0].color} h-100 d-flex flex-column`}>
                                 <div className="card-body d-flex flex-column justify-content-between">
-                                    <h1 className="card-title mb-3 fw-bold">{displayContent[0].title}</h1>
+                                    <h2 className="card-title mb-3 fw-bold">{displayContent[0].title}</h2>
                                     <ul className="list-unstyled flex-grow-1 fs-5">
                                         {displayContent[0].subTitle.map((point, index) => (
                                             <li key={index} className="py-2 d-flex align-items-start">

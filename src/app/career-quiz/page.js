@@ -28,6 +28,34 @@ const page = () => {
           <meta property="twitter:title" content="Career Quiz | Find Your Perfect Tech Career Path – Socialprachar" />
           <meta property="twitter:description" content="Take our comprehensive career quiz to discover the best tech career path for you. Get personalized recommendations for Data Science, AI, Fullstack, AWS & Digital Marketing." />
           <meta property="twitter:image" content="https://socialprachar.com/og/Home-image.png" />
+
+          {/* JSON-LD Structured Data */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Quiz",
+                "name": "Discover Your Dream Tech Career in Just 10 Minutes",
+                "description": "Take SocialPrachar’s 10-minute Career Quiz to unlock personalized tech career insights, see which path suits your strengths, and get actionable next steps.",
+                "url": "https://socialprachar.com/career-quiz",
+                "educationalLevel": "Beginner",
+                "audience": {
+                  "@type": "EducationalAudience",
+                  "educationalRole": "Student",
+                  "description": "Final-year students, recent graduates & early-career professionals exploring tech career options."
+                },
+                "provider": {
+                  "@type": "Organization",
+                  "name": "SocialPrachar",
+                  "url": "https://socialprachar.com"
+                },
+                "timeRequired": "PT10M",
+                "keywords": ["career quiz", "tech career assessment", "career path quiz", "free career test", "SocialPrachar career quiz"]
+              })
+            }}
+          />
+
           <link rel="canonical" href="https://socialprachar.com/career-quiz" />
         </Head>
         <div style={{

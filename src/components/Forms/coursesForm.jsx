@@ -1,15 +1,16 @@
 /** @format */
-
 "use client";
+
 import React, { useState, useEffect, Suspense } from "react";
 import styles from "@/app/scholarship-test/PopUpForm.module.css";
 import { data } from "@/app/courses/mainCoursePage/cardsSection/CardData";
 import { useParams, useRouter } from "next/navigation";
 import Loading from "../reusedComponents/Loading";
 
-const CoursesForm = ({ onClose, courseID, actionType }) => {
+const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
   const router = useRouter();
-  const { slug } = useParams();
+  const { slug: paramsSlug } = useParams();
+  const slug = propSlug || paramsSlug;
 
   const [card, setCard] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,9 +42,10 @@ const CoursesForm = ({ onClose, courseID, actionType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { fullName, email, phone, course, mode } = formData;
 
+    const { fullName, email, phone, course, mode } = formData;
     const phoneRegex = /^[6-9]\d{9}$/;
+
     if (!fullName || !email || !phone || !course || !mode) {
       alert("Please fill in all required fields.");
       return;
@@ -54,36 +56,32 @@ const CoursesForm = ({ onClose, courseID, actionType }) => {
       return;
     }
 
+    // 👇 Open a tab immediately to avoid popup blocking
+    const zoomTab = window.open("", "_blank");
+    zoomTab.document.write("<p>Loading your Zoom session...</p>");
+
     setIsLoading(true);
 
     try {
-      // Prepare form data for Google Sheets
+      // --- Submit to Google Sheet ---
       const formPayload = new FormData();
       Object.entries(formData).forEach(([key, value]) => {
         formPayload.append(key, value);
       });
 
-      // Submit to Google Sheet
       await fetch(scriptURL, {
         method: "POST",
         body: formPayload,
       });
 
-      // Submit to SalesMax CRM
+      // --- Submit to SalesMax CRM ---
       await fetch(crmTokenURL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          fullName: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-          course: formData.course,
-          mode: formData.mode,
-          pageUrl: formData.pageUrl,
-          slug: formData.slug,
-          actionType: formData.actionType,
+          ...formData,
           formType: "Courses_Form",
           timestamp: new Date().toISOString(),
         }),
@@ -92,19 +90,28 @@ const CoursesForm = ({ onClose, courseID, actionType }) => {
       alert("✅ Form submitted successfully!");
       onClose();
 
+      // --- Download Roadmap ---
       if (card?.careerRoadmap) {
         downloadRoadmap(card.careerRoadmap);
       }
 
-      // Open Zoom link in a new tab
-      window.open(zoomShareUrl, '_blank');
+      // --- Redirect pre-opened tab to Zoom ---
+      if (zoomTab) {
+        zoomTab.location.href = zoomShareUrl;
+      } else {
+        // fallback redirect
+        window.location.href = zoomShareUrl;
+      }
 
+      // --- Redirect to Thank You page ---
       setTimeout(() => {
         router.push("/thank-you");
       }, 1500);
+
     } catch (error) {
       console.error("❌ Error submitting the form:", error);
       alert("There was an error submitting the form. Please try again.");
+      if (zoomTab) zoomTab.close();
     } finally {
       setIsLoading(false);
     }
@@ -143,6 +150,7 @@ const CoursesForm = ({ onClose, courseID, actionType }) => {
         >
           &times;
         </button>
+
         <form onSubmit={handleSubmit}>
           <h2>Enroll Now</h2>
 

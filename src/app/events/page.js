@@ -54,6 +54,54 @@ const page = () => {
           <meta property="twitter:title" content="Workshops, Events & Webinars | Tech Learning at Socialprachar Hyderabad" />
           <meta property="twitter:description" content="Join live workshops, career events & webinars on tech topics like Data Science, AI, Fullstack & AWS. Learn from Hyderabad's top trainers at Socialprachar." />
           <meta property="twitter:image" content="https://socialprachar.com/og/Home-image.png" />
+          <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "SocialPrachar Workshops, Webinars & Events",
+            "description": "Join SocialPrachar’s live workshops, career events & webinars on tech topics like Data Science, Full Stack, AI and Cloud in Hyderabad and online.",
+            "url": "https://socialprachar.com/events",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "Event",
+                  "name": "Career Workshop – Data Science",
+                  "startDate": "2025-11-10T10:00:00+05:30",
+                  "endDate": "2025-11-10T17:00:00+05:30",
+                  "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+                  "url": "https://socialprachar.com/career-workshop/data-science",
+                  "description": "Deep dive into data science career paths, skills & live Q&A with industry experts.",
+                  "organizer": {
+                    "@type": "Organization",
+                    "name": "SocialPrachar",
+                    "url": "https://socialprachar.com"
+                  }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "Event",
+                  "name": "DataClash 2.0 – National Data Science Hackathon",
+                  "startDate": "2025-12-05T09:00:00+05:30",
+                  "endDate": "2025-12-06T18:00:00+05:30",
+                  "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+                  "url": "https://socialprachar.com/dataclash",
+                  "description": "Compete in teams, solve real-world data science problems and win prizes worth ₹1,50,000.",
+                  "organizer": {
+                    "@type": "Organization",
+                    "name": "SocialPrachar",
+                    "url": "https://socialprachar.com"
+                  }
+                }
+              }
+              /* Add more events similarly */
+            ]
+          })}
+          </script>
         </Head>
         <EventMainPage/>
         </>

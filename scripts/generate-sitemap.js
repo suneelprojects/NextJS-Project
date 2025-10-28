@@ -58,6 +58,10 @@ const staticUrls = [
   '/best-fullstack-institutes-hyderabad',
   '/data_science-artificial_intelligence',
   '/data-science-ai-course-training-institutes-in-hyderabad',
+  '/artificial-intelligence-course-in-hyderabad',
+  '/data-analytics-course-in-hyderabad',
+  '/data-science-course-in-hyderabad',
+
 ];
 
 const urls = [

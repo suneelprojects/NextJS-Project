@@ -127,6 +127,9 @@ const Footer = () => {
     { name: "Privacy Policy", path: "/privacy-policy" },
     // { name: "data-science-ai-course-training-institutes-in-hyderabad", path: "/data-science-ai-course-training-institutes-in-hyderabad" },
     // { name: "best-ai-institute-in-hyderabad", path: "/best-ai-institute-in-hyderabad" },
+    { name: "Artificial-Intelligence-Course-in-Hyderabad", path: "/artificial-intelligence-course-in-hyderabad" },
+    { name: "Data-Analytics-Course-in-Hyderabad", path: "/data-analytics-course-in-hyderabad" },
+    { name: "Data-Science-Course-in-Hyderabad", path: "/data-science-course-in-hyderabad" },
   ];
 
   const NavToAppleStore = () => {
