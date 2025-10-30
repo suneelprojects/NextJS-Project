@@ -1,0 +1,130 @@
+/** @format */
+
+/* ------------------ CAROUSEL SECTION ------------------ */
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+  margin: 20px 0;
+}
+
+
+.carouselImage {
+  flex: 0 0 auto;
+  width: 250px;
+  height: 350px;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.carouselImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ------------------ MEDIA QUERIES ------------------ */
+
+/* Extra small devices (up to 640px) */
+@media (max-width: 640px) {
+  .carousel {
+    border-radius: 10px;
+    margin: 15px 0;
+  }
+
+  .carouselImages {
+    gap: 12px;
+    animation: scroll-left 25s linear infinite;
+  }
+
+  .carouselImage {
+    width: 180px;
+    height: 250px;
+    border-radius: 10px;
+  }
+
+  .carouselImage img {
+    border-radius: 10px;
+  }
+}
+
+/* Small devices (641px - 768px) */
+@media (min-width: 641px) and (max-width: 768px) {
+  .carousel {
+    border-radius: 12px;
+  }
+
+  .carouselImages {
+    gap: 15px;
+    animation: scroll-left 28s linear infinite;
+  }
+
+  .carouselImage {
+    width: 200px;
+    height: 280px;
+    border-radius: 12px;
+  }
+
+  .carouselImage img {
+    border-radius: 12px;
+  }
+}
+
+/* Medium devices (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .carouselImages {
+    gap: 18px;
+    animation: scroll-left 29s linear infinite;
+  }
+
+  .carouselImage {
+    width: 220px;
+    height: 310px;
+  }
+}
+
+/* Large devices (1025px - 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .carouselImages {
+    gap: 20px;
+  }
+
+  .carouselImage {
+    width: 240px;
+    height: 340px;
+  }
+}
+
+/* Extra large devices (1441px and up) */
+@media (min-width: 1441px) {
+  .carousel {
+    border-radius: 20px;
+  }
+
+  .carouselImages {
+    gap: 25px;
+    animation: scroll-left 35s linear infinite;
+  }
+
+  .carouselImage {
+    width: 280px;
+    height: 380px;
+    border-radius: 20px;
+  }
+
+  .carouselImage img {
+    border-radius: 20px;
+  }
+}

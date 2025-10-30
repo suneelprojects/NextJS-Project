@@ -4,9 +4,13 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevents horizontal scroll bar */
+  /* overflow-x: hidden;  */
+  
 }
+
+
 .containerFluidForPadding{
+  
   padding-left: 55px;
   padding-right: 55px;
   font-family: "Hind", sans-serif;
@@ -15,6 +19,7 @@ html, body {
 /* ul li{
   list-style: none;
 } */
+
 
 
 

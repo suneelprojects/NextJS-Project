@@ -73,6 +73,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../Unlockbonuses/UnlockbonusesCustom.css';
+//importing the quick navigation buttons 
+import QuickNavigation from "@/components/QuickNavigation";
+import LeadFormDialog from "@/components/LeadFormDialog";
 
 
 const logos = [
@@ -184,6 +187,21 @@ const Header = () => {
       setIsPopupVisible(true);
     }
   };
+
+
+// quick navigation dialog state and functions
+    const [dialogOpen, setDialogOpen] = useState(false);
+    const [dialogType, setDialogType] = useState("");
+  
+    const openDialog = (type) => {
+      setDialogType(type);
+      setDialogOpen(true);
+    };
+  
+    const scrollToSection = (id) => {
+      const section = document.getElementById(id);
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    };
 
   return (
     <>
@@ -383,6 +401,19 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+
+
+      {/* quick navigation buttons  */}
+      <section className="bg-transprent sticky top-[0px] z-100  ">
+        <QuickNavigation openDialog={openDialog} scrollToSection={scrollToSection} />
+        <LeadFormDialog
+          isOpen={dialogOpen}
+          onClose={() => setDialogOpen(false)}
+          dialogType={dialogType}
+        />
+      </section>
+      {/*quick navigation buttons section  ends  */}
 
 
       {/* why socialprachar standout section  */}

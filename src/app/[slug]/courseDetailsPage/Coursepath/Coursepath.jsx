@@ -113,7 +113,7 @@ const Coursepath = () => {
       </div>
 
       {/* Certificate Section */}
-      <div className={certificateStyling.content}>
+      <div id="certifications" className={certificateStyling.content}>
         <div className={`d-flex ${certificateStyling.certificateContainer}`}>
           <div className={certificateStyling.textContainer}>
             <h3 className={certificateStyling.heading}>
@@ -125,6 +125,12 @@ const Coursepath = () => {
                   <FontAwesomeIcon icon={faCrown} />
                 </span>
                 Earn your credentials of Expertise
+              </p>
+              <p className={certificateStyling.description}>
+                <span className={certificateStyling.symbol}>
+                  <FontAwesomeIcon icon={faCircleCheck} />
+                </span>
+                 certificates From top Mnc's
               </p>
               <p className={certificateStyling.description}>
                 <span className={certificateStyling.symbol}>
