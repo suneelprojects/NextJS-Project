@@ -2,6 +2,7 @@
 
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import style from "./Header.module.css";
 import Image from "next/image";
 import google from '@/assets/successStories/google.png';
@@ -404,122 +405,26 @@ const Header = () => {
 
 
 
-      {/* quick navigation buttons  */}
-      <section className="bg-transprent sticky top-[0px] z-100  ">
-        <QuickNavigation openDialog={openDialog} scrollToSection={scrollToSection} />
-        <LeadFormDialog
-          isOpen={dialogOpen}
-          onClose={() => setDialogOpen(false)}
-          dialogType={dialogType}
-        />
-      </section>
-      {/*quick navigation buttons section  ends  */}
+      {/* quick navigation buttons */}
+{(() => {
+  const pathname = usePathname();
+  return (
+    <section
+      key={pathname}
+      className="sticky top-0 z-[100] bg-white shadow-md"
+    >
+      <QuickNavigation openDialog={openDialog} scrollToSection={scrollToSection} />
+      <LeadFormDialog
+        isOpen={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        dialogType={dialogType}
+      />
+    </section>
+  );
+})()}
 
 
-      {/* why socialprachar standout section  */}
-      <div>
-        <p
-          className="text-center mb-4"
-          style={{
-            fontSize: "24px",
-            fontWeight: "bold",
-            position: "relative",
-            top: "25px",
-          }}
-        >
-          What Makes <span style={{ color: "#ff5003" }}>SocialPrachar</span>{" "}
-          Stand Out?
-        </p>
-        <p
-          className="text-center mb-4"
-          style={{
-            fontSize: "18px",
-            fontWeight: "bold",
-            position: "relative",
-            top: "25px",
-          }}
-        >
-
-          Job-Ready <span style={{ color: "#ff5003" }}>{card ? card.text : "Your"} </span> {" "} Program – Includes{" "}
-          {card && card.internshipDuration ? card.internshipDuration : "3-Month"} Paid Internship
-        </p>
-
-        {/* Responsive Feature Grid */}
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-          <div
-            className="feature-grid-responsive"
-          >
-            {/* Feature Cards */}
-            {/* New Cards */}
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faRocket} style={{ color: '#ffc107', fontSize: 40, marginBottom: 14 }} />
-              <div className="feature-card-text">
-                <div><strong>Interview Booster Sessions</strong></div>
-                <div><small>Tailored sessions to boost interview skills for learners who need extra support.</small></div>
-              </div>
-            </div>
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faCode} style={{ color: '#0000ff', fontSize: 40, marginBottom: 14 }} />
-              <div className="feature-card-text">
-                <div><strong>Code Labs</strong></div>
-                <div><small>Daily coding labs with hands-on assignments to sharpen your programming skills.</small></div>
-              </div>
-            </div>
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faMicrophone} style={{ color: '#00ff00', fontSize: 40, marginBottom: 14 }} />
-              <div className="feature-card-text">
-                <div><strong>CRT Sessions (Free)</strong></div>
-                <div><small>Free sessions covering spoken English, aptitude tests, and logical reasoning to prepare for competitive exams.</small></div>
-              </div>
-            </div>
-            {/* 1 */}
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faChalkboardTeacher} style={featureIconStyle} />
-              <div className="feature-card-text">Job-Ready Curriculum Designed by Industry Experts from IIT & IIM Alumni</div>
-            </div>
-            {/* 2 */}
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faBriefcase} style={featureIconStyle} />
-              <div className="feature-card-text">Internship + Placement-Driven Learning Model</div>
-            </div>
-            {/* 3 */}
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faHandshake} style={featureIconStyle} />
-              <div className="feature-card-text">Unlimited Placement Support Till You Get Placed</div>
-            </div>
-            {/* 4 */}
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faAward} style={featureIconStyle} />
-              <div className="feature-card-text">Award-Winning Institute with 16,000+ Alumni</div>
-            </div>
-            {/* 5 */}
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faLaptopCode} style={featureIconStyle} />
-              <div className="feature-card-text">Flexible Learning Modes with Mentorship & Tools</div>
-            </div>
-            {/* 6 */}
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faProjectDiagram} style={featureIconStyle} />
-              <div className="feature-card-text">Real-Time Projects That Build Your Portfolio</div>
-            </div>
-            {/* 7 */}
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faMoneyBillWave} style={featureIconStyle} />
-              <div className="feature-card-text">Stipend Opportunities Up to ₹45,000 During Internship</div>
-            </div>
-            {/* 8 */}
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faUserCog} style={featureIconStyle} />
-              <div className="feature-card-text">Dedicated HR & Corporate Relations Team for Job Support</div>
-            </div>
-            {/* 9 */}
-            <div className="feature-card-hover">
-              <FontAwesomeIcon icon={faCertificate} style={featureIconStyle} />
-              <div className="feature-card-text">Access to Certifications from IBM, Microsoft & AWS</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       {/* Video Section */}
       {[

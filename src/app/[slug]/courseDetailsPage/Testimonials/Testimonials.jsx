@@ -129,9 +129,9 @@ const Testimonials = () => {
             already transformed their lives
           </h3>
 
-          <Image
+          <img
             src={blackLine}
-            alt="Decorative Line"
+            
             className={styles.line}
             data-aos="fade-right"
             data-aos-duration="1500"

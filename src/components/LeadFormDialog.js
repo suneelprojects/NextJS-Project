@@ -13,16 +13,50 @@ export default function LeadFormDialog({ isOpen, onClose, dialogType }) {
     mode: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (dialogType === "calculator") setShowCalculator(true);
+    
+    try {
+      const response = await fetch(
+        "https://integration.pqa.salesmax.ai/salesmax/leads?token=93DiKt_pTPctKviD0-K8lg",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.ok) {
+        if (dialogType === "calculator") setShowCalculator(true);
+        // Optionally show success message
+        console.log("Form submitted successfully");
+      } else {
+        console.error("Failed to submit form");
+        // Optionally show error message
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Optionally show error message
+    }
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-200 p-4">
-      <div className="bg-white w-full max-w-lg rounded-xl shadow-lg p-4 sm:p-6 relative max-h-[90vh] h-auto">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-300 p-4">
+      <div 
+        className="bg-white rounded-xl shadow-lg p-4 sm:p-6 relative" 
+        style={{ 
+          width: '65vw', 
+          height: '50vh', 
+          maxWidth: '100%', 
+          maxHeight: '90vh',
+          minWidth: '320px',
+          minHeight: '400px'
+        }}
+      >
         <button
           onClick={onClose}
           className="absolute top-2 right-2 sm:top-3 sm:right-3 text-gray-500 hover:text-black z-10"
@@ -31,19 +65,19 @@ export default function LeadFormDialog({ isOpen, onClose, dialogType }) {
         </button>
 
         {showCalculator ? (
-          <div className="h-full max-h-[calc(90vh-2rem)] sm:max-h-[calc(90vh-3rem)] grid grid-rows-[auto,1fr]">
+          <div className="h-full grid grid-rows-[auto,1fr]">
             <div>
               <h2 className="text-xl sm:text-2xl font-bold mb-2">Stipend Calculator</h2>
               <p className="text-sm sm:text-base text-gray-600 mb-4">
                 Estimate your potential earnings during the internship.
               </p>
             </div>
-            <div className="overflow-y-auto">
+            <div className="overflow-y-scroll">
               <StipendCalculator />
             </div>
           </div>
         ) : (
-          <div className="h-full max-h-[calc(90vh-2rem)] sm:max-h-[calc(90vh-3rem)] grid grid-rows-[auto,1fr]">
+          <div className="h-full grid grid-rows-[auto,1fr]">
             <div>
               <h2 className="text-xl sm:text-2xl font-bold mb-2">
                 {dialogType === "calculator"
@@ -53,7 +87,7 @@ export default function LeadFormDialog({ isOpen, onClose, dialogType }) {
               <p className="text-sm sm:text-base text-gray-600 mb-4">Fill the form below to continue.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 overflow-y-auto pr-2">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 overflow-y-scroll pr-2">
               <div>
                 <label className="block text-sm font-medium mb-1">Full Name *</label>
                 <input

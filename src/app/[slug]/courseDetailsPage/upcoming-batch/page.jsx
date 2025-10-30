@@ -6,14 +6,44 @@ import { Calendar, IndianRupee, X } from "lucide-react";
 export default function Page() {
   const [priceUnlocked, setPriceUnlocked] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    graduation: "",
+    mode: "",
+  });
 
   const handleOpenDialog = () => setIsDialogOpen(true);
   const handleCloseDialog = () => setIsDialogOpen(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsDialogOpen(false);
-    setPriceUnlocked(true);
+    
+    try {
+      const response = await fetch(
+        "https://integration.pqa.salesmax.ai/salesmax/leads?token=93DiKt_pTPctKviD0-K8lg",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.ok) {
+        setIsDialogOpen(false);
+        setPriceUnlocked(true);
+        console.log("Form submitted successfully");
+      } else {
+        console.error("Failed to submit form");
+        // Optionally show error message
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Optionally show error message
+    }
   };
 
   return (
@@ -113,97 +143,121 @@ export default function Page() {
 
       {/* Dialog Overlay */}
       {isDialogOpen && (
-        <div className="fixed  inset-0 z-100 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md mx-4 p-6 relative">
+        <div className="fixed inset-0 z-200 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div 
+            className="bg-white rounded-xl shadow-xl p-6 relative" 
+            style={{ 
+              width: '65vw', 
+              height: '50vh', 
+              maxWidth: '100%', 
+              maxHeight: '90vh',
+              minWidth: '320px',
+              minHeight: '400px'
+            }}
+          >
             <button
               onClick={handleCloseDialog}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <h3 className="text-xl font-semibold text-gray-900 mb-1">
-              Unlock Program Pricing
-            </h3>
-            <p className="text-gray-500 text-sm mb-6">
-              Fill in your details and we'll send you the information.
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="h-full grid grid-rows-[auto,1fr]">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter your full name"
-                  className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
+                <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                  Unlock Program Pricing
+                </h3>
+                <p className="text-gray-500 text-sm mb-6">
+                  Fill in your details and we'll send you the information.
+                </p>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="your.email@example.com"
-                  className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
+              <form onSubmit={handleSubmit} className="space-y-4 overflow-y-scroll pr-2">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter your full name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  />
+                </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  required
-                  placeholder="+91 1234567890"
-                  className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-              </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="your.email@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  />
+                </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Year of Passed Out *
-                </label>
-                <select
-                  required
-                  className="w-full border border-gray-300 rounded-md p-2 bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+91 1234567890"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Year of Passed Out *
+                  </label>
+                  <select
+                    required
+                    value={formData.graduation}
+                    onChange={(e) => setFormData({ ...formData, graduation: e.target.value })}
+                    className="w-full border border-gray-300 rounded-md p-2 bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  >
+                    <option value="">Select year</option>
+                    {[2025, 2024, 2023, 2022, 2021, 2020].map((year) => (
+                      <option key={year} value={year}>
+                        {year}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Class Mode *
+                  </label>
+                  <select
+                    required
+                    value={formData.mode}
+                    onChange={(e) => setFormData({ ...formData, mode: e.target.value })}
+                    className="w-full border border-gray-300 rounded-md p-2 bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  >
+                    <option value="">Select mode</option>
+                    <option value="online">Online</option>
+                    <option value="classroom">Classroom</option>
+                  </select>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-md transition"
                 >
-                  <option value="">Select year</option>
-                  {[2025, 2024, 2023, 2022, 2021, 2020].map((year) => (
-                    <option key={year} value={year}>
-                      {year}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Class Mode *
-                </label>
-                <select
-                  required
-                  className="w-full border border-gray-300 rounded-md p-2 bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                >
-                  <option value="">Select mode</option>
-                  <option value="online">Online</option>
-                  <option value="classroom">Classroom</option>
-                </select>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-md transition"
-              >
-                Submit →
-              </button>
-            </form>
+                  Submit →
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       )}
