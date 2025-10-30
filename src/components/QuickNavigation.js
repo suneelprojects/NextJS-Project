@@ -19,7 +19,7 @@ export default function QuickNavigation({ openDialog, scrollToSection }) {
   };
 
   return (
-    <section className="sticky top-[0px] bg-transparent py-3">
+    <section className=" bg-white py-3">
       <div className="bg-white">
         {/* Mobile/Tablet view (up to 770px) - Horizontal scroll with arrows */}
         <div className="max-[770px]:flex max-[770px]:items-center max-[770px]:gap-2 hidden">
