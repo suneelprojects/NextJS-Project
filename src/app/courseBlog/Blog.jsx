@@ -18,7 +18,8 @@ const Blog = () => {
     const [error, setError] = useState(null);
     const router = useRouter();
     const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = 8; // Adjust based on your total pages
+    const [totalPages, setTotalPages] = useState(1);
+    const postsPerPage = 5;
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
@@ -98,12 +99,18 @@ const Blog = () => {
                 // But sort defensively in case some documents lack createdAt or query didn't work:
                 postsData.sort((a, b) => (b.createdAtRaw || 0) - (a.createdAtRaw || 0));
 
-                setBlogPosts(postsData);
-
                 // Latest featured post is the first item after sorting
                 if (postsData.length > 0) {
                     setFeaturedPost(postsData[0]);
                 }
+
+                // Set blogPosts excluding the featured post
+                const postsWithoutFeatured = postsData.slice(1);
+                setBlogPosts(postsWithoutFeatured);
+
+                // Calculate total pages
+                const totalPagesCalc = Math.ceil(postsWithoutFeatured.length / postsPerPage);
+                setTotalPages(totalPagesCalc);
 
                 // Fetch categories (unique categories from posts)
                 const categoriesSet = new Set(postsData.map(post => post.category).filter(Boolean));
@@ -124,7 +131,7 @@ const Blog = () => {
         };
 
         fetchData();
-    }, []);
+    }, [postsPerPage]);
 
     if (loading) {
         return (
@@ -222,7 +229,7 @@ const Blog = () => {
                             </div>
                         </div>
                         <div className="space-y-8">
-                            {blogPosts.map((post, index) => (
+                            {blogPosts.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage).map((post, index) => (
                                 <article
                                     key={post.id}
                                     className="group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 cursor-pointer transform hover:-translate-y-1"

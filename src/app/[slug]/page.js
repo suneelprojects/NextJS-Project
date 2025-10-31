@@ -12,6 +12,8 @@ import ConnectUs from '@/components/ConnectUs/ConnectUs';
 import Banner from './courseDetailsPage/Banner/Banner';
 import { notFound } from 'next/navigation';
 import Datascience from './courseDetailsPage/Datascience_ai_newsection/page'
+import UpcomingBatches from './courseDetailsPage/upcoming-batch/page';
+
 
 // ✅ Generate metadata
 export async function generateMetadata({ params }) {
@@ -91,8 +93,10 @@ const Page = async ({ params }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(course.schemaJsonLd) }}
       />
 
-      <div className="px-2">
+      <div className=" postion-relative ">
         <Header />
+        
+        
         <Testimonials />
         <WhatwillYouLearn />
         <Datascience slug={slug}/>
@@ -101,6 +105,7 @@ const Page = async ({ params }) => {
         <NextcohortStarts />
         <CourseFaqs />
         <Masterclass />
+        <UpcomingBatches />
         <ConnectUs />
         <Banner />
       </div>

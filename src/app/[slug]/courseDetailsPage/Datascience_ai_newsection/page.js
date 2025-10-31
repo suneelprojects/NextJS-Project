@@ -83,8 +83,8 @@ export default function LearnDataScienceAI({ slug }) {
       </section>
 
       {/* Projects Section */}
-      <section className="py-10 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
+      <section id="projects" className="py-10 px-6 bg-white">
+        <div  className="max-w-6xl mx-auto">
           <p className="text-5xl md:text-4xl font-extrabold text-center ">💡 Featured Projects <span className="text-orange-500"> You’ll Work On</span> </p>
           <p className="text-sm font-semibold md:text-xl max-w-3xl mx-auto m-10 text-gray-800 text-center  ">
                 Hands-on projects, real-world datasets, and deployment-ready pipelines — designed to make you industry-ready.

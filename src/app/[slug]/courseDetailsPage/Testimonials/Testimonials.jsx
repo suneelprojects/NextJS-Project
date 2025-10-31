@@ -8,6 +8,8 @@ import { useParams } from "next/navigation";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+
+
 const Testimonials = () => {
     const [studentsEnrolled, setStudentsEnrolled] = useState(0);
     const [averageRating, setAverageRating] = useState(0);
@@ -127,9 +129,9 @@ const Testimonials = () => {
             already transformed their lives
           </h3>
 
-          <Image
+          <img
             src={blackLine}
-            alt="Decorative Line"
+            
             className={styles.line}
             data-aos="fade-right"
             data-aos-duration="1500"
@@ -154,7 +156,7 @@ const Testimonials = () => {
         </div>
 
         {/* Section 2 */}
-        <div className={styles.section}>
+        <div id="success-stories" className={styles.section}>
           <h3 className={`${styles.subHeading1} fw-bold`}>
             <span style={{ color: "#ff5003" }}>Numbers </span>that speak for
             themselves
@@ -179,7 +181,7 @@ const Testimonials = () => {
           </div>
 
           {/* Carousel */}
-          <div className={styles.carousel} ref={carouselRef}>
+          <div  className={styles.carousel} ref={carouselRef}>
             <div className={styles.carouselImages}>
               {studentPlacedImages.length > 0 ? (
                 studentPlacedImages

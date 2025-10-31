@@ -1,0 +1,35 @@
+  "use client";
+  import { Calculator, GraduationCap, BookOpen, Code, Star, Award, IndianRupee } from "lucide-react";
+
+  export default function QuickNavigation({ openDialog, scrollToSection }) {
+    const btn =
+      "border px-4 py-2 rounded text-sm font-bold flex items-center gap-2 hover:bg-orange-300 transition";
+
+    return (
+      <section className="  bg-white py-3">
+        <div className="flex flex-wrap justify-center gap-2  bg-white">
+          <button onClick={() => openDialog("calculator")} className={btn}>
+            <Calculator className="w-4 h-4" /> Stipend Calculator
+          </button>
+          <button onClick={() => scrollToSection("course-flow-section")} className={btn}>
+            <GraduationCap className="w-4 h-4" /> Program Overview
+          </button>
+          <button onClick={() => scrollToSection("what-will-you-learn-section")} className={btn}>
+            <BookOpen className="w-4 h-4" /> What will you learn
+          </button>
+          <button onClick={() => scrollToSection("projects")} className={btn}>
+            <Code className="w-4 h-4" /> Projects
+          </button>
+          <button onClick={() => scrollToSection("success-stories")} className={btn}>
+            <Star className="w-4 h-4" /> Success Stories
+          </button>
+          <button onClick={() => scrollToSection("certifications")} className={btn}>
+            <Award className="w-4 h-4" /> Certifications
+          </button>
+          <button onClick={() => scrollToSection("pricing")} className={btn}>
+            <IndianRupee className="w-4 h-4" /> Pricing
+          </button>
+        </div>
+      </section>
+    );
+  }

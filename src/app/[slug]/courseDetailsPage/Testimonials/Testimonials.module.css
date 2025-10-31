@@ -4,6 +4,8 @@
   overflow: hidden;
   position: relative;
   /* padding: 20px 0; */
+  border-radius: 15px;
+  /* border: 1px solid red; */
 }
 
 .carouselImages {
@@ -38,6 +40,7 @@
 }
 
 .testimonials {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
