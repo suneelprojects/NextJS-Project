@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Calendar, IndianRupee, X } from "lucide-react";
 
-
 export default function Page() {
   const [priceUnlocked, setPriceUnlocked] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -19,7 +18,7 @@ export default function Page() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const response = await fetch(
         "https://integration.pqa.salesmax.ai/salesmax/leads?token=93DiKt_pTPctKviD0-K8lg",
@@ -38,18 +37,16 @@ export default function Page() {
         console.log("Form submitted successfully");
       } else {
         console.error("Failed to submit form");
-        // Optionally show error message
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      // Optionally show error message
     }
   };
 
   return (
-    <main className="min-h-screen ">
-      {/* Batch & Pricing */}
-      <section id="pricing" className="py-12 ">
+    <main className="min-h-screen">
+      {/* Batch & Pricing Section */}
+      <section id="pricing" className="py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <p className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
@@ -69,7 +66,7 @@ export default function Page() {
                 <div className="space-y-4">
                   <div>
                     <div className="text-3xl font-bold text-blue-600 mb-2">
-                      27th October 2025
+                      12th November 2025
                     </div>
                     <p className="text-gray-600">
                       Online & Classroom (KPHB, Hyderabad)
@@ -80,19 +77,19 @@ export default function Page() {
                       Limited Seats
                     </div>
                     <div className="text-2xl font-bold text-gray-900">
-                      30 Students per Batch
+                      20 Students per Batch
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Program Investment Card */}
-              <div className="border-2 border-pink-300 rounded-2xl bg-gradient-to-br from-pink-50 to-blue-50 shadow-sm p-6">
+              <div className="border-2 border-pink-300 rounded-2xl bg-gradient-to-br from-pink-50 to-blue-50 shadow-sm p-6 relative">
                 <div className="flex flex-col items-start">
                   <div className="w-12 h-12 rounded-lg bg-pink-100 flex items-center justify-center mb-4">
                     <IndianRupee className="w-6 h-6 text-pink-500" />
                   </div>
-                  <p className="text-xl font-bold mb-4">Program Investment</p>
+                  <p className="text-xl font-bold mb-4">Program Fees</p>
                 </div>
 
                 <div className="space-y-4">
@@ -103,7 +100,7 @@ export default function Page() {
 
                     {priceUnlocked ? (
                       <div className="text-3xl font-bold text-pink-600 mb-2">
-                        ₹39,999
+                        ₹44,999
                       </div>
                     ) : (
                       <>
@@ -120,16 +117,36 @@ export default function Page() {
                     )}
                   </div>
 
-                  <div className="space-y-2 pt-4 border-t border-gray-200">
+                  <div
+                    className={`space-y-2 pt-4 border-t border-gray-200 ${
+                      priceUnlocked ? "" : "blur-sm"
+                    }`}
+                  >
                     <div className="text-sm text-gray-600">
                       Special Scholarship Test Available
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      100% Scholarship - FREE Program
                     </div>
                     <div className="text-sm text-gray-600">
                       EMI Options Available
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-gray-200">
+                  <a
+                    href="/scholarship-test"
+                    className={`text-blue-600 text-sm hover:underline ${
+                      priceUnlocked ? "" : "blur-sm"
+                    }`}
+                  >
+                    View More details
+                  </a>
+
+                  <div
+                    className={`pt-4 border-t border-gray-200 ${
+                      priceUnlocked ? "" : "blur-sm"
+                    }`}
+                  >
                     <p className="text-xs text-gray-500">
                       * Internship includes performance-based stipend up to ₹45,000
                     </p>
@@ -143,18 +160,16 @@ export default function Page() {
 
       {/* Dialog Overlay */}
       {isDialogOpen && (
-        <div className="fixed inset-0 z-200 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div 
-            className="bg-white rounded-xl shadow-xl p-6 relative" 
-            style={{ 
-              width: '65vw', 
-              height: '50vh', 
-              maxWidth: '100%', 
-              maxHeight: '90vh',
-              minWidth: '320px',
-              minHeight: '400px'
-            }}
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div
+            className="
+              bg-white rounded-xl shadow-xl relative overflow-hidden 
+              w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl 
+              max-h-[90vh] 
+              flex flex-col
+            "
           >
+            {/* Close Button */}
             <button
               onClick={handleCloseDialog}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10"
@@ -162,17 +177,22 @@ export default function Page() {
               <X className="w-5 h-5" />
             </button>
 
-            <div className="h-full grid grid-rows-[auto,1fr]">
+            {/* Dialog Content */}
+            <div className="h-full flex flex-col p-6">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-1">
                   Unlock Program Pricing
                 </h3>
-                <p className="text-gray-500 text-sm mb-6">
+                <p className="text-gray-500 text-sm md:text-base mb-6">
                   Fill in your details and we'll send you the information.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4 overflow-y-scroll pr-2">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4 overflow-y-auto pr-1 flex-1"
+              >
+                {/* Full Name */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Full Name *
@@ -182,11 +202,14 @@ export default function Page() {
                     required
                     placeholder="Enter your full name"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                   />
                 </div>
 
+                {/* Email */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Email Address *
@@ -196,11 +219,14 @@ export default function Page() {
                     required
                     placeholder="your.email@example.com"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                   />
                 </div>
 
+                {/* Phone */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Phone Number *
@@ -210,11 +236,14 @@ export default function Page() {
                     required
                     placeholder="+91 1234567890"
                     value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
                     className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                   />
                 </div>
 
+                {/* Graduation */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Year of Passed Out *
@@ -222,7 +251,9 @@ export default function Page() {
                   <select
                     required
                     value={formData.graduation}
-                    onChange={(e) => setFormData({ ...formData, graduation: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, graduation: e.target.value })
+                    }
                     className="w-full border border-gray-300 rounded-md p-2 bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                   >
                     <option value="">Select year</option>
@@ -234,6 +265,7 @@ export default function Page() {
                   </select>
                 </div>
 
+                {/* Mode */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Class Mode *
@@ -241,7 +273,9 @@ export default function Page() {
                   <select
                     required
                     value={formData.mode}
-                    onChange={(e) => setFormData({ ...formData, mode: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, mode: e.target.value })
+                    }
                     className="w-full border border-gray-300 rounded-md p-2 bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                   >
                     <option value="">Select mode</option>
@@ -250,6 +284,7 @@ export default function Page() {
                   </select>
                 </div>
 
+                {/* Submit */}
                 <button
                   type="submit"
                   className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-md transition"

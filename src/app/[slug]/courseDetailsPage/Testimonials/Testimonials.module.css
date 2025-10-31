@@ -11,7 +11,7 @@
 .carouselImages {
   display: flex;
   gap: 20px;
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left 100s linear infinite;
 }
 
 .carouselImage {

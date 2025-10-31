@@ -263,9 +263,11 @@
   }
 
   .moduleContainer {
-    width: 100%;
+    width: 90%;
     padding: 20px;
     margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .moduleTitle {
     font-size: 14px;
@@ -372,9 +374,11 @@
   }
 
   .moduleContainer {
-    width: 100%;
+    width: 90%;
     padding: 20px;
     margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .moduleSubTitle {
@@ -535,5 +539,13 @@
 
   .roleDescription {
     font-size: 18px;
+  }
+}
+
+/* Media query for screens up to 800px to center the module cards */
+@media (max-width: 800px) {
+  .moduleContainer {
+    width: 90% !important;
+    margin: 0 auto !important;
   }
 }
