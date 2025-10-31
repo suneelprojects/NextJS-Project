@@ -135,6 +135,7 @@ const stats = [
 
 const Header = () => {
   const { slug } = useParams();
+  const pathname = usePathname();
   const [card, setCard] = useState(null);
   const redLineRef = useRef(null);
   const doughtsPartRef = useRef(null);
@@ -147,11 +148,14 @@ const Header = () => {
 
   // below the screen size
   const [isMobile, setIsMobile] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth < 1025);
+      setIsSmallScreen(window.innerWidth <= 768);
       const handleResize = () => {
         setIsMobile(window.innerWidth < 1025);
+        setIsSmallScreen(window.innerWidth <= 768);
       };
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
@@ -371,7 +375,7 @@ const Header = () => {
                   <Image src={awardImage} alt="Course" className={`img-fluid ${style.headerImage} shadow`} />
                 )}
                 <div className={style.EnrollButtonContent}>
-                  {card && (
+                  {card && !isSmallScreen && (
                     <EnrollButton
                       label="Watch Free Demo"
                       courseID={card.id}
@@ -406,22 +410,14 @@ const Header = () => {
 
 
       {/* quick navigation buttons */}
-{(() => {
-  const pathname = usePathname();
-  return (
-    <section
-      key={pathname}
-      className="sticky top-0 z-[100] bg-white shadow-md"
-    >
-      <QuickNavigation openDialog={openDialog} scrollToSection={scrollToSection} />
-      <LeadFormDialog
-        isOpen={dialogOpen}
-        onClose={() => setDialogOpen(false)}
-        dialogType={dialogType}
-      />
-    </section>
-  );
-})()}
+      <section key={pathname} className="sticky top-0 z-[100] bg-white shadow-md">
+        <QuickNavigation openDialog={openDialog} scrollToSection={scrollToSection} />
+        <LeadFormDialog
+          isOpen={dialogOpen}
+          onClose={() => setDialogOpen(false)}
+          dialogType={dialogType}
+        />
+      </section>
 
 
       

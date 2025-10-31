@@ -18,7 +18,7 @@ const QuickActionNavbar = () => {
     "flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-md text-white text-xs font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg";
 
   return (
-    <div className="sticky top-0  my-4 bg-gradient-to-r from-blue-50 to-green-50 shadow-md">
+    <div className="  my-4 bg-gradient-to-r from-blue-50 to-green-50 shadow-md">
       {/* Horizontal scroll container for mobile */}
       <div className="overflow-x-auto whitespace-nowrap scrollbar-hide">
         <div className="inline-flex gap-2 py-2 px-3 md:gap-3 lg:gap-4">

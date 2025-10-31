@@ -31,7 +31,7 @@ const categories = [
 export default function CourseBlogdashboard() {
   const [title, setTitle] = useState('');
   const [excerpt, setExcerpt] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [readTime, setReadTime] = useState('');
   const [author, setAuthor] = useState('');
   const [tags, setTags] = useState('');
@@ -106,7 +106,7 @@ export default function CourseBlogdashboard() {
           title,
           excerpt,
           content,
-          category: selectedCategory,
+          categories: selectedCategories,
           readTime,
           author,
           tags,
@@ -120,7 +120,7 @@ export default function CourseBlogdashboard() {
           title,
           excerpt,
           content,
-          category: selectedCategory,
+          categories: selectedCategories,
           readTime,
           author,
           tags,
@@ -137,7 +137,7 @@ export default function CourseBlogdashboard() {
       setTitle('');
       setExcerpt('');
       setContent('');
-      setSelectedCategory('');
+      setSelectedCategories([]);
       setReadTime('');
       setAuthor('');
       setTags('');
@@ -166,7 +166,7 @@ export default function CourseBlogdashboard() {
     setTitle(blog.title);
     setExcerpt(blog.excerpt);
     setContent(blog.content || '');
-    setSelectedCategory(blog.category);
+    setSelectedCategories(blog.categories || []);
     setReadTime(blog.readTime);
     setAuthor(blog.author);
     setTags(blog.tags);
@@ -234,13 +234,25 @@ export default function CourseBlogdashboard() {
         <div className={styles.editorContainer} style={{ maxWidth: '1200px', width: '100%', margin: '0 auto' }}>
           <TiptapEditor value={content} onChange={setContent} />
         </div>
-        <label className={styles.label}>Category</label>
-        <select className={styles.input} value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)} required>
-          <option value="">Select a category</option>
+        <label className={styles.label}>Categories (select multiple)</label>
+        <div className={styles.categoryContainer}>
           {categories.map(category => (
-            <option key={category} value={category}>{category}</option>
+            <label key={category} className={styles.checkboxLabel}>
+              <input
+                type="checkbox"
+                checked={selectedCategories.includes(category)}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setSelectedCategories([...selectedCategories, category]);
+                  } else {
+                    setSelectedCategories(selectedCategories.filter(c => c !== category));
+                  }
+                }}
+              />
+              {category}
+            </label>
           ))}
-        </select>
+        </div>
         <label className={styles.label}>Read Time (minutes)</label>
         <input className={styles.input} type="number" value={readTime} onChange={e => setReadTime(e.target.value)} required />
         <label className={styles.label}>Author</label>
@@ -263,7 +275,9 @@ export default function CourseBlogdashboard() {
               <h3 style={{ fontWeight: 700, fontSize: 22, margin: 0 }}>{blog.title}</h3>
               <div style={{ color: '#6b7280', fontSize: 14 }}>{blog.excerpt}</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, margin: '8px 0' }}>
-                <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><Tag size={12} style={{ marginRight: 4 }} />{blog.category}</span>
+                {blog.categories && blog.categories.map(cat => (
+                  <span key={cat} style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><Tag size={12} style={{ marginRight: 4 }} />{cat}</span>
+                ))}
                 <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><Clock size={12} style={{ marginRight: 4 }} />{blog.readTime} min</span>
                 <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><User size={12} style={{ marginRight: 4 }} />{blog.author}</span>
               </div>

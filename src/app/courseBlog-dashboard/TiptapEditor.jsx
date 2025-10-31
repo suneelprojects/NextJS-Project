@@ -152,6 +152,9 @@ const Tiptap = ({ value, onChange }) => {
         marginBottom: 8,
         background: '#f8fafc',
         alignItems: 'center',
+        position: 'sticky',
+        top: 0,
+        zIndex: 10,
       }}>
         {/* Heading Dropdown */}
         <select

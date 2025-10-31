@@ -14,15 +14,32 @@ const Banner = () => {
   const { slug } = useParams();
   const [card, setCard] = useState(null);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
     const cardDetails = data.find((item) => item.slug === slug);
     setCard(cardDetails);
   }, [slug]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsSmallScreen(window.innerWidth <= 768);
+      const handleResize = () => {
+        setIsSmallScreen(window.innerWidth <= 768);
+      };
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
   if (!card) {
     return <div>Loading...</div>;
   }
+
+  if (isSmallScreen) {
+    return null;
+  }
+
   return (
     <>
       <div className={style.banner}>
