@@ -129,7 +129,7 @@ const Testimonials = () => {
             already transformed their lives
           </h3>
 
-          <img
+          <Image
             src={blackLine}
             
             className={styles.line}
