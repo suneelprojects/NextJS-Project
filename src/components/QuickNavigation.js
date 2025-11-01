@@ -14,9 +14,9 @@
           <button onClick={() => scrollToSection("course-flow-section")} className={btn}>
             <GraduationCap className="w-4 h-4" /> Program Overview
           </button>
-          <button onClick={() => scrollToSection("what-will-you-learn-section")} className={btn}>
+          {/* <button onClick={() => scrollToSection("what-will-you-learn-section")} className={btn}>
             <BookOpen className="w-4 h-4" /> What will you learn
-          </button>
+          </button> */}
           <button onClick={() => scrollToSection("projects")} className={btn}>
             <Code className="w-4 h-4" /> Projects
           </button>
