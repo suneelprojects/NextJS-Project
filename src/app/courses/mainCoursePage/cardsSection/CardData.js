@@ -67,6 +67,15 @@ import student61 from "@/assets/courses/StudentsPlaced/sai react js.jpg";
 import student62 from "@/assets/courses/StudentsPlaced/Nandhini react js.jpg";
 import student63 from "@/assets/courses/StudentsPlaced/venkat sai react js.jpg";
 import student64 from "@/assets/courses/StudentsPlaced/Sowmya DM.jpg";
+import student65 from "@/assets/courses/StudentsPlaced/1.png";
+import student66 from "@/assets/courses/StudentsPlaced/2.png";
+import student67 from "@/assets/courses/StudentsPlaced/3.png";
+
+
+
+
+
+
 
 import Ajay_kola_ML from '@/assets/courses/StudentsPlaced/Ajay_kola_ML.png';
 import Bhargavi_Trinee_engineer from '@/assets/courses/StudentsPlaced/Bhargavi_Trinee_engineer.png';
@@ -802,6 +811,9 @@ export const data = [
             { id: 23, image: Mohit_kopuri_ML },
             { id: 24, image: Nani_ML },
             { id: 25, image: Sai_Chand_ML },
+            { id: 26, image: student65 },
+            { id: 27, image: student66 },
+            { id: 28, image: student67 },
         ],
         bannerHeader: 'Learn Mern Stack Today',
         bannerStudentsEnrolled: '2.8k+ Students Enrolled',
@@ -1124,6 +1136,10 @@ export const data = [
             { id: 22, image: Mohit_kopuri_ML },
             { id: 23, image: Nani_ML },
             { id: 24, image: Sai_Chand_ML },
+            { id: 25, image: student64 },
+            { id: 26, image: student65 },
+            { id: 27, image: student66 },
+            { id: 28, image: student67 },
         ],
         accordionContent: [
             {
@@ -1293,6 +1309,9 @@ export const data = [
             { id: 24, image: Mohit_kopuri_ML },
             { id: 25, image: Nani_ML },
             { id: 26, image: Sai_Chand_ML },
+            { id: 27, image: student65 },
+            { id: 28, image: student66 },
+            { id: 29, image: student67 },
         ],
         moduleContent: [
             {
