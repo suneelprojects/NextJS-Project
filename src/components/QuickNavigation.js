@@ -11,8 +11,11 @@
           <button onClick={() => openDialog("calculator")} className={btn}>
             <Calculator className="w-4 h-4" /> Stipend Calculator
           </button>
+          <button onClick={() => scrollToSection("pricing")} className={btn}>
+            <IndianRupee className="w-4 h-4" /> Pricing
+          </button>
           <button onClick={() => scrollToSection("course-flow-section")} className={btn}>
-            <GraduationCap className="w-4 h-4" /> Program Overview
+            <GraduationCap className="w-4 h-4" /> Course Preview
           </button>
           {/* <button onClick={() => scrollToSection("what-will-you-learn-section")} className={btn}>
             <BookOpen className="w-4 h-4" /> What will you learn
@@ -24,11 +27,9 @@
             <Star className="w-4 h-4" /> Success Stories
           </button>
           <button onClick={() => scrollToSection("certifications")} className={btn}>
-            <Award className="w-4 h-4" /> Certifications
+            <Award className="w-4 h-4" /> Certs
           </button>
-          <button onClick={() => scrollToSection("pricing")} className={btn}>
-            <IndianRupee className="w-4 h-4" /> Pricing
-          </button>
+          
         </div>
       </section>
     );

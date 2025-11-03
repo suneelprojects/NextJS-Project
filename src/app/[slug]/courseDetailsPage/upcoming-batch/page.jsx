@@ -21,13 +21,13 @@ export default function Page() {
 
     try {
       const response = await fetch(
-        "https://integration.pqa.salesmax.ai/salesmax/leads?token=93DiKt_pTPctKviD0-K8lg",
+        "https://integration.pqa.salesmax.ai/salesmax/leads?token=gNAmGSQc15N9Nn4yZwiE4A",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({ ...formData, pageUrl: window.location.href }),
         }
       );
 
@@ -109,7 +109,7 @@ export default function Page() {
                         </div>
                         <button
                           onClick={handleOpenDialog}
-                          className="mt-2 px-4 py-2 text-sm border border-gray-300 rounded hover:bg-gray-100 transition"
+                          className="mt-2 px-4 py-2 text-sm border-3 font-bold border-orange-500 rounded hover:bg-orange-500 hover:text-white transition"
                         >
                           Click to Unlock Price
                         </button>
@@ -287,7 +287,7 @@ export default function Page() {
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-md transition"
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 mb-5 rounded-md transition"
                 >
                   Submit →
                 </button>
