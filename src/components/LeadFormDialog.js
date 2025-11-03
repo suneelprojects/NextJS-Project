@@ -17,11 +17,13 @@ export default function LeadFormDialog({ isOpen, onClose, dialogType }) {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://integration.pqa.salesmax.ai/salesmax/leads?token=93DiKt_pTPctKviD0-K8lg",
-        {
+        "https://integration.pqa.salesmax.ai/salesmax/leads?token=gNAmGSQc15N9Nn4yZwiE4A",
+         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...formData, pageUrl: window.location.href }),
         }
       );
 
