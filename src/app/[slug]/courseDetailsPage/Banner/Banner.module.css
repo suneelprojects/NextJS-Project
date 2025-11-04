@@ -94,6 +94,70 @@
 
 }
 
+
+
+/* new section added  */
+.curriculumText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Main title */
+.curriculumTitle {
+  color: red;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* Subtitle */
+.curriculumSubtitle {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+/* ✅ Responsive scaling for small screens */
+@media (max-width: 768px) {
+  .curriculumTitle {
+    font-size: 1.1rem; /* smaller on mobile */
+  }
+
+  .curriculumSubtitle {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .curriculumTitle {
+    font-size: 1rem;
+  }
+
+  .curriculumSubtitle {
+    font-size: 0.6rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* new section end  */
+
 /* media queries */
 @media (max-width: 376px) {
  .banner {
@@ -161,15 +225,16 @@
   }
   .originalPrice {
     font-size: 16px;
-    /* white-space: nowrap; */
+    white-space: normal;
+    word-wrap: break-word;
   }
   .discountedPrice {
     font-size: 16px;
     margin-left: -5px;
   }
   /* .offerText1 {
-     display: inline; margin: 0; 
+     display: inline; margin: 0;
     } */
-  
+
 
 }

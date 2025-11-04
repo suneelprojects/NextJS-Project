@@ -131,6 +131,7 @@ const Testimonials = () => {
 
           <Image
             src={blackLine}
+            alt='blackline'
             
             className={styles.line}
             data-aos="fade-right"

@@ -90,23 +90,25 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
       alert("✅ Form submitted successfully!");
       onClose();
 
-      // --- Download Roadmap ---
-      if (card?.careerRoadmap) {
-        downloadRoadmap(card.careerRoadmap);
-      }
-
-      // --- Redirect pre-opened tab to Zoom ---
-      if (zoomTab) {
-        zoomTab.location.href = zoomShareUrl;
+      if (actionType === "Button:Watch Video") {
+        // --- Only open Zoom for Watch Free Demo ---
+        if (zoomTab) {
+          zoomTab.location.href = zoomShareUrl;
+        } else {
+          // fallback redirect
+          window.location.href = zoomShareUrl;
+        }
       } else {
-        // fallback redirect
-        window.location.href = zoomShareUrl;
-      }
+        // --- For other buttons: Download Roadmap and Redirect to Thank You ---
+        if (zoomTab) zoomTab.close(); // Close the unused tab
+        if (card?.careerRoadmap) {
+          downloadRoadmap(card.careerRoadmap);
+        }
 
-      // --- Redirect to Thank You page ---
-      setTimeout(() => {
-        router.push("/thank-you");
-      }, 1500);
+        setTimeout(() => {
+          router.push("/thank-you");
+        }, 1500);
+      }
 
     } catch (error) {
       console.error("❌ Error submitting the form:", error);
