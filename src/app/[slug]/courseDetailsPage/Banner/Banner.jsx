@@ -36,10 +36,6 @@ const Banner = () => {
     return <div>Loading...</div>;
   }
 
-  if (isSmallScreen) {
-    return null;
-  }
-
   return (
     <>
       <div className={style.banner}>
@@ -57,13 +53,25 @@ const Banner = () => {
           </div>
           <div className={`${style.bannerPrice}`}>
             <span className={style.originalPrice}>
-              <h1 className={style.offerText1}>Earn while Learning</h1> 
-              {/* <br /> */}
-              &nbsp; (Stipend Based internships)
-              {/* <p>
-                Almost Full{" "}
-                <span className={style.offerText}>Only 5 Slots Left!</span>
-              </p> */}
+              {isSmallScreen ? (
+                <div className={style.curriculumText}>
+  <span className={style.curriculumTitle}>Download Curriculum</span>
+  <span className={style.curriculumSubtitle}>
+    (1 Curriculum - 10+ Job Roles Eligibility)
+  </span>
+</div>
+
+              ) : (
+                <>
+                  <h1 className={style.offerText1}>Download Curriculum</h1> 
+                  {/* <br /> */}
+                  &nbsp; (Updated for 2026 Jobs - 1 Curriculum - 10+ Job Roles Eligibility)
+                  {/* <p>
+                    Almost Full{" "}
+                    <span className={style.offerText}>Only 5 Slots Left!</span>
+                  </p> */}
+                </>
+              )}
             </span>
           </div>
           <div >
