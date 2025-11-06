@@ -95,7 +95,7 @@ export default function Page() {
                 <div className="space-y-4">
                   <div>
                     <div className="text-sm text-gray-500 line-through mb-1">
-                      Regular Price: ₹55,000
+                      Regular Price: ₹XX,X99
                     </div>
 
                     {priceUnlocked ? (
