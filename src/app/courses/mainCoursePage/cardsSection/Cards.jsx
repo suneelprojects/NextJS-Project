@@ -86,7 +86,8 @@ const cards = ({filters}) => {
   const handleCardTitleClick = (courseID) => {
     const selectedCard = data.find(card => card.courseID === courseID);
     if (selectedCard) {
-      router.push(`/${selectedCard.slug}`);
+       // Force full page reload for slug pages
+    window.location.href = `/${selectedCard.slug}`;
     }
   };
 
