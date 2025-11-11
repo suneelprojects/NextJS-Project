@@ -192,7 +192,7 @@ const Footer = () => {
                 <p className="mb-1">
                   Satyabama Complex, 301, KPHB Main Rd,<br />
                   Opp. Sai Baba Temple, Bhagya Nagar Colony,<br />
-                  Hyderabad, Telangana 500072
+                  Hyderabad, Telangana 500085
                 </p>
                 <p className="mb-2">
                   <strong>Phone:</strong>{" "}
