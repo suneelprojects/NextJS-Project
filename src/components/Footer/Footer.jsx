@@ -72,7 +72,7 @@ const Footer = () => {
     "#301, 3rd Floor,",
     "Sathyabhama Commercial Complex,",
     "Bhagya Nagar Colony,",
-    "KPHB, Hyderabad - 500072.",
+    "KPHB, Hyderabad - 500085.",
     "Contact: +91-8019 479 419",
   ];
 
