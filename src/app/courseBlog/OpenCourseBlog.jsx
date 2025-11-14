@@ -31,6 +31,17 @@ const OpenCourseBlog = () => {
         if (!querySnapshot.empty) {
           const docSnap = querySnapshot.docs[0];
           const data = docSnap.data();
+
+          // Check if the blog is published
+          const publishAt = data.publishAt;
+          const isPublished = !publishAt || (publishAt.seconds * 1000 <= Date.now());
+
+          if (!isPublished) {
+            setBlog(null); // Blog not published yet
+            setLoading(false);
+            return;
+          }
+
           setBlog(data);
           // If content is Tiptap JSON, set up a Tiptap editor in read-only mode
           if (data.content && typeof data.content === 'object') {
@@ -50,9 +61,12 @@ const OpenCourseBlog = () => {
               })
             );
           }
+        } else {
+          setBlog(null);
         }
       } catch (error) {
         console.error('Error fetching blog:', error);
+        setBlog(null);
       } finally {
         setLoading(false);
       }

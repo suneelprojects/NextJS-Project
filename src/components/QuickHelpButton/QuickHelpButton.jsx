@@ -45,7 +45,7 @@ const QuickHelpButton = () => {
         className={styles.callCardWrapper}
         style={{
           position: "fixed",
-          top: "80%",
+          top: "50%",
           left: 0,
           zIndex: 1000,
           background: "transparent",
@@ -88,7 +88,7 @@ const QuickHelpButton = () => {
       <div
         style={{
           position: "fixed",
-          top: "90%",
+          top: "55%",
           right:"10px",
           zIndex: 1000,
           background: "transparent",

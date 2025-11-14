@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { X, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 import StipendCalculator from "@/components/StipendCalculator";
 
 export default function LeadFormDialog({ isOpen, onClose, dialogType }) {
@@ -18,7 +19,7 @@ export default function LeadFormDialog({ isOpen, onClose, dialogType }) {
     try {
       const response = await fetch(
         "https://integration.pqa.salesmax.ai/salesmax/leads?token=gNAmGSQc15N9Nn4yZwiE4A",
-         {
+        {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -41,171 +42,181 @@ export default function LeadFormDialog({ isOpen, onClose, dialogType }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[300] p-3 sm:p-6">
-      <div
-        className="
-          bg-white rounded-xl shadow-xl relative 
-          w-full max-w-[95vw] sm:max-w-[600px] md:max-w-[750px] lg:max-w-[850px] xl:max-w-[950px]
-          h-auto max-h-[90vh] overflow-hidden flex flex-col
-        "
+    <motion.div
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-[300] p-2"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <motion.div
+        className="bg-white border-2 border-purple-500 shadow-2xl rounded-lg max-w-none max-h-[85vh] overflow-y-auto w-full md:w-[90%]"
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.3 }}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 sm:top-3 sm:right-3 text-gray-500 hover:text-black z-10"
+          className="absolute top-2 right-2 text-gray-500 hover:text-black bg-white rounded-full p-1 shadow-md z-10"
         >
-          <X className="w-6 h-6 sm:w-5 sm:h-5" />
+          <X className="w-5 h-5" />
         </button>
 
         {/* Conditional Rendering */}
         {showCalculator ? (
           <div className="flex flex-col h-full">
-            <div className="p-4 sm:p-6 border-b">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-1">
+            <div className="p-6 border-b border-gray-200">
+              <h2 className="text-2xl font-bold mb-2 text-gray-800">
                 Stipend Calculator
               </h2>
-              <p className="text-xs sm:text-sm text-gray-600">
+              <p className="text-gray-600">
                 Estimate your potential earnings during the internship.
               </p>
             </div>
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+            <div className="flex-1 overflow-y-auto p-6">
               <StipendCalculator />
             </div>
           </div>
         ) : (
-          <div className="flex flex-col md:flex-row h-full">
-            {/* Left Section */}
-            <div className="hidden md:flex md:flex-col justify-center bg-orange-50 p-6 md:w-[45%] lg:w-[40%] border-r border-gray-100">
-              <h2 className="text-2xl lg:text-3xl font-bold text-orange-600 mb-3">
-                {dialogType === "calculator"
-                  ? "Access the Calculator"
-                  : "Join the Program"}
-              </h2>
-              <p className="text-gray-700 text-sm lg:text-base leading-relaxed">
-                Fill out your details to explore internship opportunities,
-                estimate stipends, and get personalized insights based on your
-                graduation year and preferences.
-              </p>
+          <>
+            {/* Modal Header */}
+            <div className="border-b border-gray-200 p-4 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="p-2 bg-purple-100 rounded-full">
+                  <span className="text-2xl">💻</span>
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-gray-800">
+                    {dialogType === "calculator"
+                      ? "Access Stipend Calculator"
+                      : "Lead Registration"}
+                  </h2>
+                  <p className="text-purple-600 text-sm">
+                    Fill in your details to continue
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Right Section (Form) */}
-            <div className="flex-1 flex flex-col">
-              <div className="p-4 sm:p-6 border-b md:border-b-0">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-1">
-                  {dialogType === "calculator"
-                    ? "Access Stipend Calculator"
-                    : "Submit Your Details"}
-                </h2>
-                <p className="text-xs sm:text-sm text-gray-600">
-                  Fill the form below to continue.
-                </p>
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+              {/* Personal Information Section */}
+              <div className=" border-blue-20 rounded-lg p-4">
+                <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-4">
+                  {/* <span className="p-1  rounded-full text-sm">👥</span> */}
+                  Personal Information
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                      className="w-full border-2 border-gray-800 rounded-md p-3 text-sm focus:border-purple-500 outline-none"
+                      placeholder="Enter your full name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                      className="w-full border-2 border-gray-800 rounded-md p-3 text-sm focus:border-purple-500 outline-none"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
+                      className="w-full border-2 border-gray-800 rounded-md p-3 text-sm focus:border-purple-500 outline-none"
+                      placeholder="+91 9876543210"
+                      required
+                    />
+                  </div>
+                </div>
               </div>
 
-              <form
-                onSubmit={handleSubmit}
-                className="flex-1 overflow-y-auto p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-4"
-              >
-                {/* Full Name */}
-                <div className="col-span-1 md:col-span-2">
-                  <label className="block text-sm font-medium mb-1">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className="w-full border rounded-md p-2.5 text-sm sm:text-base focus:ring-2 focus:ring-orange-500"
-                    required
-                  />
+              {/* Academic Details Section */}
+              <div className=" border-green-200 rounded-lg p-4">
+                <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-4">
+                  {/* <span className="p-1  rounded-full text-sm">🏅</span> */}
+                  Academic Details
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Graduation Year *
+                    </label>
+                    <select
+                      value={formData.graduation}
+                      onChange={(e) =>
+                        setFormData({ ...formData, graduation: e.target.value })
+                      }
+                      className="w-full border-2 border-gray-800 rounded-md p-3 text-sm focus:border-purple-500 outline-none"
+                      required
+                    >
+                      <option value="">Select year</option>
+                      <option value="2025">2025</option>
+                      <option value="2026">2026</option>
+                      <option value="2027">2027</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Preferred Mode *
+                    </label>
+                    <select
+                      value={formData.mode}
+                      onChange={(e) =>
+                        setFormData({ ...formData, mode: e.target.value })
+                      }
+                      className="w-full border-2 border-gray-800 rounded-md p-3 text-sm focus:border-purple-500 outline-none"
+                      required
+                    >
+                      <option value="">Select mode</option>
+                      <option value="online">Online</option>
+                      <option value="offline">Offline (Hyderabad)</option>
+                    </select>
+                  </div>
                 </div>
+              </div>
 
-                {/* Email */}
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className="w-full border rounded-md p-2.5 text-sm sm:text-base focus:ring-2 focus:ring-orange-500"
-                    required
-                  />
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Phone *
-                  </label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    className="w-full border rounded-md p-2.5 text-sm sm:text-base focus:ring-2 focus:ring-orange-500"
-                    required
-                  />
-                </div>
-
-                {/* Graduation Year */}
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Graduation Year *
-                  </label>
-                  <select
-                    value={formData.graduation}
-                    onChange={(e) =>
-                      setFormData({ ...formData, graduation: e.target.value })
-                    }
-                    className="w-full border rounded-md p-2.5 text-sm sm:text-base focus:ring-2 focus:ring-orange-500"
-                    required
-                  >
-                    <option value="">Select year</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                    <option value="2027">2027</option>
-                  </select>
-                </div>
-
-                {/* Preferred Mode */}
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Preferred Mode *
-                  </label>
-                  <select
-                    value={formData.mode}
-                    onChange={(e) =>
-                      setFormData({ ...formData, mode: e.target.value })
-                    }
-                    className="w-full border rounded-md p-2.5 text-sm sm:text-base focus:ring-2 focus:ring-orange-500"
-                    required
-                  >
-                    <option value="">Select mode</option>
-                    <option value="online">Online</option>
-                    <option value="offline">Offline (Hyderabad)</option>
-                  </select>
-                </div>
-
-                {/* Submit Button (Full Width on all) */}
-                <div className="col-span-1 md:col-span-2">
-                  <button
-                    type="submit"
-                    className="w-full bg-orange-500 text-white py-2 sm:py-2.5 rounded-md font-medium hover:bg-orange-600 transition flex items-center justify-center gap-2 text-sm sm:text-base"
-                  >
-                    Submit <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+              {/* Submit Button */}
+              <div className="text-center  ">
+                <motion.button
+                  type="submit"
+                  className=" mb-5 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span>✅</span>
+                  Submit Details
+                  <ChevronRight className="w-4 h-4" />
+                </motion.button>
+              </div>
+            </form>
+          </>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

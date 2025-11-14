@@ -48,6 +48,9 @@ export default function CourseBlogdashboard() {
   const [user, setUser] = useState(null);
   const [isClient, setIsClient] = useState(false);
   const [content, setContent] = useState('');
+  const [publishDate, setPublishDate] = useState('');
+  const [publishTime, setPublishTime] = useState('');
+  const [isScheduled, setIsScheduled] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -97,8 +100,20 @@ export default function CourseBlogdashboard() {
       alert('Title is required');
       return;
     }
+    if (isScheduled && (!publishDate || !publishTime)) {
+      alert('Publish date and time are required when scheduling');
+      return;
+    }
     const baseSlug = slugify(title);
     let finalSlug;
+    let publishAt = null;
+    if (isScheduled) {
+      const publishDateTime = new Date(`${publishDate}T${publishTime}`);
+      publishAt = serverTimestamp(); // For now, use serverTimestamp, but in production, use the actual timestamp
+      // Note: Firestore doesn't support future timestamps directly, so we store the date as a string or use a different approach
+      // For simplicity, we'll store publishAt as a Firestore Timestamp
+      publishAt = publishDateTime;
+    }
     try {
       if (isEditing) {
         finalSlug = await generateUniqueSlug(baseSlug, currentBlogId);
@@ -112,6 +127,7 @@ export default function CourseBlogdashboard() {
           tags,
           imageUrl,
           slug: finalSlug,
+          publishAt,
           updatedAt: serverTimestamp(),
         });
       } else {
@@ -126,6 +142,7 @@ export default function CourseBlogdashboard() {
           tags,
           imageUrl,
           slug: finalSlug,
+          publishAt,
           createdAt: serverTimestamp(),
           updatedAt: serverTimestamp(),
         });
@@ -142,6 +159,9 @@ export default function CourseBlogdashboard() {
       setAuthor('');
       setTags('');
       setImageUrl('');
+      setIsScheduled(false);
+      setPublishDate('');
+      setPublishTime('');
       // Refresh blogs list
       const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
       const querySnapshot = await getDocs(q);
@@ -171,6 +191,15 @@ export default function CourseBlogdashboard() {
     setAuthor(blog.author);
     setTags(blog.tags);
     setImageUrl(blog.imageUrl);
+    setIsScheduled(!!blog.publishAt);
+    if (blog.publishAt) {
+      const publishDateTime = new Date(blog.publishAt.seconds * 1000);
+      setPublishDate(publishDateTime.toISOString().split('T')[0]);
+      setPublishTime(publishDateTime.toTimeString().slice(0, 5));
+    } else {
+      setPublishDate('');
+      setPublishTime('');
+    }
   };
 
   const handleImageUpload = async (e) => {
@@ -262,6 +291,22 @@ export default function CourseBlogdashboard() {
         <label className={styles.label}>Featured Image</label>
         <input className={styles.input} type="file" accept="image/*" onChange={handleImageUpload} />
         {imageUrl && <img src={imageUrl} alt="Featured" style={{ maxWidth: "100%", borderRadius: 8, marginTop: 8 }} />}
+        <div className="d-flex align-center gap-2 mt-4">
+        <label className={styles.label}>
+          <input type="checkbox" checked={isScheduled} onChange={e => setIsScheduled(e.target.checked)} />
+          Schedule for later
+        </label>
+        {isScheduled && (
+          <>
+            <label className={styles.label}>Publish Date</label>
+            <input className={styles.input} type="date" value={publishDate} onChange={e => setPublishDate(e.target.value)} required />
+            <label className={styles.label}>Publish Time</label>
+            <input className={styles.input} type="time" value={publishTime} onChange={e => setPublishTime(e.target.value)} required />
+          </>
+        )}
+        </div>
+
+        
         <button className={styles.submitBtn} type="submit">{isEditing ? 'Update Blog' : 'Create Blog'}</button>
       </form>
       {/* Blog Cards Grid */}
@@ -282,6 +327,11 @@ export default function CourseBlogdashboard() {
                 <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><User size={12} style={{ marginRight: 4 }} />{blog.author}</span>
               </div>
               <div style={{ color: '#9ca3af', fontSize: 12 }}>Tags: {blog.tags}</div>
+              {blog.publishAt && (
+                <div style={{ color: blog.publishAt.seconds * 1000 <= Date.now() ? '#10b981' : '#f59e0b', fontSize: 11, fontFamily: 'monospace', background: blog.publishAt.seconds * 1000 <= Date.now() ? '#ecfdf5' : '#fef3c7', padding: '4px 8px', borderRadius: 4, margin: '4px 0' }}>
+                  {blog.publishAt.seconds * 1000 <= Date.now() ? 'Published' : 'Scheduled'}
+                </div>
+              )}
               {blog.slug && (
                 <div style={{ color: '#10b981', fontSize: 11, fontFamily: 'monospace', background: '#ecfdf5', padding: '4px 8px', borderRadius: 4, margin: '4px 0' }}>
                   Slug: /courseBlog/{blog.slug}

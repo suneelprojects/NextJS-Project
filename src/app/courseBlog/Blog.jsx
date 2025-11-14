@@ -76,6 +76,16 @@ const Blog = () => {
 
                     createdAtMs = createdAtDate.getTime();
 
+                    // Normalize publishAt
+                    let publishAtDate = null;
+                    if (data.publishAt && typeof data.publishAt === 'object') {
+                        if (typeof data.publishAt.toDate === 'function') {
+                            publishAtDate = data.publishAt.toDate();
+                        } else if (data.publishAt.seconds) {
+                            publishAtDate = new Date(data.publishAt.seconds * 1000);
+                        }
+                    }
+
                     // Format date for display in en-IN (Asia/Kolkata-like) style
                     const formattedDate = createdAtDate.toLocaleString('en-IN', {
                         day: 'numeric',
@@ -92,20 +102,24 @@ const Blog = () => {
                         createdAtRaw: createdAtMs,
                         // human-friendly date string used in markup
                         date: formattedDate,
+                        publishAt: publishAtDate,
                     };
                 });
 
+                // Filter posts that are published (publishAt is null or in the past)
+                const publishedPosts = postsData.filter(post => !post.publishAt || post.publishAt <= new Date());
+
                 // As query already orders desc, this should be newest-first.
                 // But sort defensively in case some documents lack createdAt or query didn't work:
-                postsData.sort((a, b) => (b.createdAtRaw || 0) - (a.createdAtRaw || 0));
+                publishedPosts.sort((a, b) => (b.createdAtRaw || 0) - (a.createdAtRaw || 0));
 
                 // Latest featured post is the first item after sorting
-                if (postsData.length > 0) {
-                    setFeaturedPost(postsData[0]);
+                if (publishedPosts.length > 0) {
+                    setFeaturedPost(publishedPosts[0]);
                 }
 
                 // Set blogPosts excluding the featured post
-                const postsWithoutFeatured = postsData.slice(1);
+                const postsWithoutFeatured = publishedPosts.slice(1);
                 setBlogPosts(postsWithoutFeatured);
 
                 // Calculate total pages
