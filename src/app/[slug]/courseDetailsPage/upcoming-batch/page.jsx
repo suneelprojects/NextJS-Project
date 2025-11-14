@@ -133,6 +133,8 @@ export default function Page() {
                     </div>
                   </div>
 
+                  <div className="flex  gap-2  ">
+
                   <a
                     href="/scholarship-test"
                     className={`text-blue-600 text-sm hover:underline ${
@@ -141,6 +143,18 @@ export default function Page() {
                   >
                     View More details
                   </a>
+
+                  <a
+                    href="https://labs.socialhire.in/contest/scholarshiptest-livenow"
+                    target="_blank"
+                    className={`text-blue-600 text-sm hover:underline ${
+                      priceUnlocked ? "" : "blur-sm"
+                    }`}
+                  >
+                    Take Scholarship Test for Discount  →
+                  </a>
+
+                  </div>
 
                   <div
                     className={`pt-4 border-t border-gray-200 ${

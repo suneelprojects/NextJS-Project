@@ -40,7 +40,12 @@ const ScholarshipTest = () => {
   const router = useRouter();
 
   const togglePopup = () => {
-    setIsPopupVisible(!isPopupVisible);
+    
+
+
+    router.push("https://labs.socialhire.in/contest/scholarshiptest-livenow");
+
+    
   };
 
   const handleExploreClick = () => {
@@ -73,7 +78,7 @@ const ScholarshipTest = () => {
           </p>
           <div className={styles.heroButtons}>
             <Button className={styles.heroButtonPrimary} onClick={togglePopup}>
-              Register Now
+              Take Scholarship Test Now
             </Button>
             <Button variant="outline" className={styles.heroButtonSecondary} onClick={handleExploreClick}>
               Explore Scholarship Rewards
@@ -258,6 +263,9 @@ const ScholarshipTest = () => {
                   <div className={styles.tableCell}>₹2,000 Discount</div>
                 </div>
               </div>
+              <a href="https://labs.socialhire.in/contest/scholarshiptest-livenow" target="_blank" className=" sm:m-1 md:m-2 lg:m-3 xl:m-4  ">
+                Take the Scholarship Test Now  &rarr;
+              </a>
             </div>
           </Card>
           
