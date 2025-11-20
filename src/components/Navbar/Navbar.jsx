@@ -37,7 +37,7 @@ const NavBar = () => {
     const selectedIndex = event.target.selectedIndex;
     if (selectedIndex > 0) {
       const selectedOption = dropDownValues[selectedIndex - 1]; // Adjust for default option
-      router.push(selectedOption.path, { state: { category: selectedOption.label } });
+      window.location.href = selectedOption.path; // Force full page reload
       setSelectedValue(""); // Reset dropdown after navigation
     }
   };
@@ -97,7 +97,7 @@ const NavBar = () => {
     { hrefLink: "/codeclash", routerName: "CodeClash" },
     { hrefLink: "/scholarship-test", routerName: "Scholarship Test" },
     { hrefLink: "/socialhire", routerName: "SocialHire" },
-    { hrefLink: "/projects", routerName: "Students-Projects" },
+    { hrefLink: "/sos", routerName: "Startups of Socialprachar" },
     { hrefLink: "/career-roadmaps", routerName: "Career Roadmaps" },
     { hrefLink: "/career-quiz", routerName: "Career Quiz" },
     { hrefLink: "https://finversity.in", routerName: "Finversity" }

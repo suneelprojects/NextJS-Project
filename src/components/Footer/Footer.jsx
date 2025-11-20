@@ -95,7 +95,7 @@ const Footer = () => {
 
   const navigateToSocial = (iconLink) => window.open(iconLink, "_blank");
 
-  const handleNavigate = (path) => router.push(path);
+  const handleNavigate = (path) => window.location.href = path;
 
   return (
     <>
