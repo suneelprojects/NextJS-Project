@@ -49,8 +49,8 @@ export default function Page() {
       <section id="pricing" className="py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <p className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-              Upcoming Batch & Investment
+            <p className="text-4xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+              Upcoming Batch 
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -66,7 +66,7 @@ export default function Page() {
                 <div className="space-y-4">
                   <div>
                     <div className="text-3xl font-bold text-blue-600 mb-2">
-                      27th November 2025
+                      10th December 2025
                     </div>
                     <p className="text-gray-600">
                       Online & Classroom (KPHB, Hyderabad)
