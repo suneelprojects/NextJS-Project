@@ -70,14 +70,17 @@ const UnlockPotential = () => {
                   Your Journey To a Dream Job Starts Here
                 </p>
               </div>
-              <p className={`${homeStyle.title}`}>
-                Unlock Your Potential with SocialPrachar
-              </p>
-              <Image
+              <h1 className={`${homeStyle.title}`}>
+                Hyderabad’s No.1 Training Institute for Data Science, AI, Full Stack & Cloud
+              </h1>
+              <h2>
+                Job-Ready Courses with Real Internships, Stipends & 100% Placement Support
+              </h2>
+              {/* <Image
                 src={yellowLine}
                 alt="yellowLine"
                 className={`${homeStyle.yellowLine} `}
-              />
+              /> */}
               <br />
               <p className="greyText ">
                 Discover a world of knowledge and opportunities with our Mentor
