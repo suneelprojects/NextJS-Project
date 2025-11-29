@@ -215,7 +215,7 @@ const OpenCourseBlog = () => {
               <img 
                 src={blog.imageUrl} 
                 alt={blog.title || "Article image"} 
-                className="w-full h-full sm:h-64 md:h-96 object-cover transition-transform duration-700 hover:scale-105"
+                className="w-full h-full sm:h-64 md:h-full object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>

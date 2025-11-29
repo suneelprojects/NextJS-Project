@@ -8,7 +8,7 @@ export const metadata = {
   openGraph: {
     title: "Course Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar",
     description: "Stay updated with blogs on Data Science, AI, Fullstack, and Digital Marketing. Insights, career tips, and learning resources from Hyderabad's leading training institute.",
-    url: "https://socialprachar.com/courseBlog",
+    url: "https://socialprachar.com/Blog",
     siteName: "Socialprachar",
     images: [
       {
@@ -38,7 +38,7 @@ const page = () => {
           
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://socialprachar.com/courseBlog" />
+          <meta property="og:url" content="https://socialprachar.com/Blog" />
           <meta property="og:title" content="Course Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar" />
           <meta property="og:description" content="Stay updated with blogs on Data Science, AI, Fullstack, and Digital Marketing. Insights, career tips, and learning resources from Hyderabad's leading training institute." />
           <meta property="og:image" content="https://socialprachar.com/og/Home-image.png" />
@@ -49,11 +49,11 @@ const page = () => {
           
           {/* Twitter */}
           <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content="https://socialprachar.com/courseBlog" />
+          <meta property="twitter:url" content="https://socialprachar.com/Blog" />
           <meta property="twitter:title" content="Course Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar" />
           <meta property="twitter:description" content="Stay updated with blogs on Data Science, AI, Fullstack, and Digital Marketing. Insights, career tips, and learning resources from Hyderabad's leading training institute." />
           <meta property="twitter:image" content="https://socialprachar.com/og/Home-image.png" />
-          <link rel="canonical" href="https://socialprachar.com/courseBlog" />
+          <link rel="canonical" href="https://socialprachar.com/Blog" />
         </Head>
         <div>
             <Blog/>

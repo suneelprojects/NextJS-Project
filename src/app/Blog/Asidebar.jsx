@@ -20,7 +20,7 @@ const Asidebar = ({ featuredPost, categories, popularPosts = [] }) => {
   return (
     <aside className="space-y-8">
       {/* About Blog Section */}
-      <div className="group bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+      {/* <div className="group bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
         <div className="flex items-center space-x-3 mb-6">
           <div className="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center">
             <BookOpen className="w-5 h-5 text-white" />
@@ -45,7 +45,7 @@ const Asidebar = ({ featuredPost, categories, popularPosts = [] }) => {
             <span>Featured</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Categories Section */}
       <div className="group bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-1">

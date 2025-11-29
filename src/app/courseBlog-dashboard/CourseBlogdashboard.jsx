@@ -166,6 +166,14 @@ export default function CourseBlogdashboard() {
       const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
       const querySnapshot = await getDocs(q);
       setBlogs(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+
+      // Regenerate sitemap
+      try {
+        await fetch('/api/generate-sitemap', { method: 'POST' });
+        console.log('Sitemap updated successfully');
+      } catch (error) {
+        console.error('Error updating sitemap:', error);
+      }
     } catch (err) {
       console.error('Error saving blog:', err);
       setError(err.message);
@@ -176,6 +184,14 @@ export default function CourseBlogdashboard() {
     if (window.confirm("Are you sure you want to delete this blog?")) {
       await deleteDoc(doc(db, "blogs", id));
       setBlogs(blogs.filter(blog => blog.id !== id));
+
+      // Regenerate sitemap
+      try {
+        await fetch('/api/generate-sitemap', { method: 'POST' });
+        console.log('Sitemap updated successfully');
+      } catch (error) {
+        console.error('Error updating sitemap:', error);
+      }
     }
   };
 
@@ -334,7 +350,7 @@ export default function CourseBlogdashboard() {
               )}
               {blog.slug && (
                 <div style={{ color: '#10b981', fontSize: 11, fontFamily: 'monospace', background: '#ecfdf5', padding: '4px 8px', borderRadius: 4, margin: '4px 0' }}>
-                  Slug: /courseBlog/{blog.slug}
+                  Slug: /Blog/{blog.slug}
                 </div>
               )}
               <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>

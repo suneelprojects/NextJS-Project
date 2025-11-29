@@ -61,7 +61,7 @@ const Footer = () => {
         cursor: "pointer",
         border: "none",
       }}
-      onClick={() => handleNavigate("/courseBlog")}
+      onClick={() => handleNavigate("/Blog")}
     >
       Explore More Blogs
     </button>,

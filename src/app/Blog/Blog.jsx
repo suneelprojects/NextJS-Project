@@ -185,12 +185,12 @@ const Blog = () => {
                                 Featured Article                            </h2>
                         </div>
                         <div className="group bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500 cursor-pointer"
-                             onClick={() => router.push(`/courseBlog/${featuredPost.slug}`)}>
+                             onClick={() => router.push(`/Blog/${featuredPost.slug}`)}>
                             <div className="lg:flex">
                                 <div className="lg:w-1/2 relative overflow-hidden">
                                     {featuredPost.imageUrl && (
                                         <img
-                                            className="w-full  lg:h-96  transition-transform duration-700 group-hover:scale-110"
+                                            className="w-full  lg:h-full  transition-transform duration-700 group-hover:scale-110"
                                             src={featuredPost.imageUrl}
                                             alt="Featured post"
                                         />
@@ -247,7 +247,7 @@ const Blog = () => {
                                 <article
                                     key={post.id}
                                     className="group bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500 cursor-pointer transform hover:-translate-y-1"
-                                    onClick={() => router.push(`/courseBlog/${post.slug}`)}
+                                    onClick={() => router.push(`/Blog/${post.slug}`)}
                                     style={{
                                         animationDelay: `${index * 100}ms`,
                                         animation: 'fadeInUp 0.6s ease-out forwards'

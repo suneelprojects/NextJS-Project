@@ -29,7 +29,7 @@ const staticUrls = [
   '/thank-you',
   '/hosting',
   '/codeclash',
-  '/courseBlog',
+  '/Blog',
   '/courseBlog-dashboard',
   '/OurAchievementsDashboard',
   '/events',

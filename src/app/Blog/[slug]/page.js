@@ -4,7 +4,7 @@ import OpenCourseBlog from '../OpenCourseBlog';
 
 const page = ({ params }) => {
     const { slug } = params;
-    const canonicalUrl = `https://socialprachar.com/courseBlog/${slug}`;
+    const canonicalUrl = `https://socialprachar.com/Blog/${slug}`;
 
     return (
         <>
