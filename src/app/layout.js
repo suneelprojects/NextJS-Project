@@ -155,6 +155,22 @@ export default function RootLayout({ children }) {
         />
 
         {/* end head scripts */}
+
+
+
+        {/* Scalenut verification — keep id unique and run before interactive */}
+        <Script
+          id="scalenut-verification"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,k){w.scalenut_verification_id=k;
+      const script=d.createElement("script");
+      script.src="https://prod-cdn.webtune.ai/prod/ScalenutProdVerificationScript.js";
+      d.head.appendChild(script);})(window,document,"d33932de67280d162be2d2f0f4c514e8")`,
+          }}
+        />
+
+          
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
