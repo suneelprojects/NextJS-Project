@@ -33,11 +33,9 @@ const staticUrls = [
   '/thank-you',
   '/hosting',
   '/codeclash',
-  '/Blog',
-  '/courseBlog-dashboard',
-  '/OurAchievementsDashboard',
+  '/blog',
   '/events',
-  '/project-dashboard',
+  '/startups-of-socialprachar',
   '/projects',
   '/socialhire',
   '/dataclash',
@@ -68,40 +66,40 @@ const staticUrls = [
 ];
 
 // ============================
-// 3. Blog URLs (You Provided)
+// 3. blog URLs (You Provided)
 // ============================
 
-const blogUrls = [
-  '/Blog/how-to-become-a-data-scientist-in-2025-complete-roadmap-for-beginners',
-  '/Blog/where-can-i-find-data-science-institutes-in-hyderabad-that-offer-hands-on-learning-and-industry-mentorship',
-  '/Blog/how-full-stack-developers-are-using-ai-to-build-apps-faster-than-ever',
-  '/Blog/how-ai-is-transforming-data-driven-decision-making-across-industries-ultimate-2025-26-guide',
-  '/Blog/agentic-ai-the-future-of-automation-every-student-must-understand-202526-mega-guide',
-  '/Blog/the-rise-of-full-stack-ai-developers-why-coding-alone-isnt-enough-in-202526',
-  '/Blog/react-node-ai-the-new-super-trio-of-full-stack-development-2025-ultimate-guide',
-  '/Blog/how-generative-ai-is-reinventing-education-design-coding-creativity-ultimate-guide-for-students',
-  '/Blog/how-react-js-is-revolutionizing-full-stack-development',
-  '/Blog/why-hyderabad-is-becoming-indias-next-tech-education-hub',
-  '/Blog/ai-and-data-science-synergy-how-they-work-together',
-  '/Blog/best-online-platforms-to-practice-data-science-web-development-skills',
-  '/Blog/the-future-of-tech-jobs-why-hybrid-skills-will-rule-2025-26',
-  '/Blog/how-to-build-a-tech-career-portfolio-that-gets-you-hired',
-  '/Blog/from-html-to-ai-how-full-stack-developers-are-adapting-to-the-future',
-  '/Blog/top-10-common-questions-students-ask-before-joining-a-data-science-course-in-hyderabad',
-  '/Blog/python-vs-r-vs-sql-which-language-should-you-learn-first-for-data-science',
-  '/Blog/fullstack-ai-how-cloud-ai-data-science-are-shaping-the-future-of-tech-careers',
-  '/Blog/top-5-emerging-ai-trends-every-data-science-student-should-know-in-2025',
-  '/Blog/freshers-roadmap-from-graduate-to-data-scientist-with-internship-experience',
-  '/Blog/ai-powered-data-science-how-modern-companies-use-it-for-real-world-problems',
-  '/Blog/how-an-internship-in-data-science-ai-boosts-your-job-readiness',
-  '/Blog/frontend-vs-backend-vs-fullstack-which-path-is-right-for-you',
-  '/Blog/socialprachar-vs-top-hyderabad-full-stack-institutes-which-is-the-best-choice-for-your-career-in-2025',
-  '/Blog/generative-engine-optimization-geo',
-  '/Blog/fullstack-web-development-course-with-cloud-ai-tools-integration-complete-guide-2025',
-  '/Blog/seo-vs-ppc-vs-social-media-choosing-the-right-digital-marketing-course',
-  '/Blog/data-science-vs-artificial-intelligence-whats-the-difference',
-  '/Blog/digital-marketing-career-path-from-fresher-to-expert',
-  '/Blog/must-have-skills-for-data-science-with-ai-professionals'
+const BlogUrls = [
+  '/blog/how-to-become-a-data-scientist-in-2025-complete-roadmap-for-beginners',
+  '/blog/where-can-i-find-data-science-institutes-in-hyderabad-that-offer-hands-on-learning-and-industry-mentorship',
+  '/blog/how-full-stack-developers-are-using-ai-to-build-apps-faster-than-ever',
+  '/blog/how-ai-is-transforming-data-driven-decision-making-across-industries-ultimate-2025-26-guide',
+  '/blog/agentic-ai-the-future-of-automation-every-student-must-understand-202526-mega-guide',
+  '/blog/the-rise-of-full-stack-ai-developers-why-coding-alone-isnt-enough-in-202526',
+  '/blog/react-node-ai-the-new-super-trio-of-full-stack-development-2025-ultimate-guide',
+  '/blog/how-generative-ai-is-reinventing-education-design-coding-creativity-ultimate-guide-for-students',
+  '/blog/how-react-js-is-revolutionizing-full-stack-development',
+  '/blog/why-hyderabad-is-becoming-indias-next-tech-education-hub',
+  '/blog/ai-and-data-science-synergy-how-they-work-together',
+  '/blog/best-online-platforms-to-practice-data-science-web-development-skills',
+  '/blog/the-future-of-tech-jobs-why-hybrid-skills-will-rule-2025-26',
+  '/blog/how-to-build-a-tech-career-portfolio-that-gets-you-hired',
+  '/blog/from-html-to-ai-how-full-stack-developers-are-adapting-to-the-future',
+  '/blog/top-10-common-questions-students-ask-before-joining-a-data-science-course-in-hyderabad',
+  '/blog/python-vs-r-vs-sql-which-language-should-you-learn-first-for-data-science',
+  '/blog/fullstack-ai-how-cloud-ai-data-science-are-shaping-the-future-of-tech-careers',
+  '/blog/top-5-emerging-ai-trends-every-data-science-student-should-know-in-2025',
+  '/blog/freshers-roadmap-from-graduate-to-data-scientist-with-internship-experience',
+  '/blog/ai-powered-data-science-how-modern-companies-use-it-for-real-world-problems',
+  '/blog/how-an-internship-in-data-science-ai-boosts-your-job-readiness',
+  '/blog/frontend-vs-backend-vs-fullstack-which-path-is-right-for-you',
+  '/blog/socialprachar-vs-top-hyderabad-full-stack-institutes-which-is-the-best-choice-for-your-career-in-2025',
+  '/blog/generative-engine-optimization-geo',
+  '/blog/fullstack-web-development-course-with-cloud-ai-tools-integration-complete-guide-2025',
+  '/blog/seo-vs-ppc-vs-social-media-choosing-the-right-digital-marketing-course',
+  '/blog/data-science-vs-artificial-intelligence-whats-the-difference',
+  '/blog/digital-marketing-career-path-from-fresher-to-expert',
+  '/blog/must-have-skills-for-data-science-with-ai-professionals'
 ];
 
 // ============================
@@ -110,7 +108,7 @@ const blogUrls = [
 const urls = [
   ...staticUrls,
   ...courseSlugs.map(slug => `/${slug}`),
-  ...blogUrls
+  ...BlogUrls
 ];
 
 // ============================
@@ -128,7 +126,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
       <priority>${
         url === '/'
           ? '1.0'
-          : url.startsWith('/Blog')
+          : url.startsWith('/blog')
           ? '0.9'
           : url.includes('data') || url.includes('full-stack')
           ? '0.8'

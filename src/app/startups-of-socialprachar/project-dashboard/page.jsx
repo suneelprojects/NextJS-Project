@@ -1,10 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { db, storage } from '../../../../firebase';
-import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, serverTimestamp, Timestamp } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { Plus, Minus, Upload, X, Edit2, Trash2, ExternalLink, Github } from 'lucide-react';
+import { Plus, Minus, Upload, X, Edit2, Trash2, ExternalLink, Github, Calendar, Clock, CheckCircle, User, FileText, Save } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import { slugify } from '@/utils/slugify';
+
+const TiptapEditor = dynamic(() => import('../../courseBlog-dashboard/TiptapEditor'), { ssr: false });
 
 const ProjectDashboard = () => {
   const [projects, setProjects] = useState([]);
@@ -22,6 +26,9 @@ const ProjectDashboard = () => {
   });
   const [editingId, setEditingId] = useState(null);
   const [thumbnailPreview, setThumbnailPreview] = useState('');
+  const [isScheduled, setIsScheduled] = useState(false);
+  const [publishDate, setPublishDate] = useState('');
+  const [publishTime, setPublishTime] = useState('');
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -127,14 +134,44 @@ const ProjectDashboard = () => {
     setFormData({ ...formData, highlights: formData.highlights.filter((_, i) => i !== index) });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.title.trim()) {
+      alert('Title is required');
+      return;
+    }
+    if (isScheduled && (!publishDate || !publishTime)) {
+      alert('Publish date and time are required when scheduling');
+      return;
+    }
+    const baseSlug = slugify(formData.title);
+    let finalSlug;
+    let publishAt = null;
+    if (isScheduled) {
+      const publishDateTime = new Date(`${publishDate}T${publishTime}`);
+      publishAt = Timestamp.fromDate(publishDateTime);
+    }
+
     try {
       if (editingId) {
-        await updateDoc(doc(db, 'sosprojects', editingId), formData);
-        setEditingId(null);
+        finalSlug = await generateUniqueSlug(baseSlug, editingId);
+        await updateDoc(doc(db, 'sosprojects', editingId), {
+          ...formData,
+          slug: finalSlug,
+          publishAt,
+          updatedAt: serverTimestamp(),
+        });
       } else {
-        await addDoc(collection(db, 'sosprojects'), formData);
+        finalSlug = await generateUniqueSlug(baseSlug);
+        await addDoc(collection(db, 'sosprojects'), {
+          ...formData,
+          slug: finalSlug,
+          publishAt,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
+        });
       }
+      // Reset form
       setFormData({
         title: '',
         thumbnail: '',
@@ -148,6 +185,11 @@ const ProjectDashboard = () => {
         highlights: []
       });
       setThumbnailPreview('');
+      setIsScheduled(false);
+      setPublishDate('');
+      setPublishTime('');
+      setEditingId(null);
+      // Refresh projects list
       const querySnapshot = await getDocs(collection(db, 'sosprojects'));
       const projectsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setProjects(projectsData);
@@ -156,10 +198,53 @@ const ProjectDashboard = () => {
     }
   };
 
+  const generateUniqueSlug = async (baseSlug, excludeId = null) => {
+    let candidateSlug = baseSlug;
+    let counter = 1;
+    while (true) {
+      const q = collection(db, 'sosprojects');
+      const querySnapshot = await getDocs(q);
+      const hasConflict = querySnapshot.docs.some(doc => {
+        if (excludeId && doc.id === excludeId) return false;
+        const data = doc.data();
+        return data.slug === candidateSlug;
+      });
+      if (!hasConflict) {
+        return candidateSlug;
+      }
+      candidateSlug = `${baseSlug}-${counter}`;
+      counter++;
+    }
+  };
+
+  const getPublishDateFromValue = (value) => {
+    if (!value) return null;
+    if (typeof value.toDate === 'function') return value.toDate();
+    if (typeof value === 'object' && typeof value.seconds === 'number') {
+      return new Date(value.seconds * 1000);
+    }
+    if (typeof value === 'string') {
+      const parsed = new Date(value);
+      return isNaN(parsed.getTime()) ? null : parsed;
+    }
+    return null;
+  };
+
   const handleEdit = (project) => {
     setFormData(project);
     setEditingId(project.id);
     setThumbnailPreview(project.thumbnail);
+    setIsScheduled(!!project.publishAt);
+    if (project.publishAt) {
+      const publishDateObj = getPublishDateFromValue(project.publishAt);
+      if (publishDateObj) {
+        setPublishDate(publishDateObj.toISOString().split('T')[0]);
+        setPublishTime(publishDateObj.toTimeString().slice(0, 5));
+      }
+    } else {
+      setPublishDate('');
+      setPublishTime('');
+    }
   };
 
   const handleDelete = async (id) => {
@@ -370,14 +455,9 @@ const ProjectDashboard = () => {
             {/* Summary */}
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">Project Summary</label>
-              <textarea
-                name="summary"
-                value={formData.summary}
-                onChange={handleChange}
-                placeholder="Describe your project..."
-                rows="4"
-                className="w-full px-4 py-3 border border-slate-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition resize-none"
-              />
+              <div className="editorContainer" style={{ maxWidth: '1200px', width: '100%', margin: '0 auto' }}>
+                <TiptapEditor value={formData.summary} onChange={(value) => setFormData({ ...formData, summary: value })} />
+              </div>
             </div>
 
             {/* Category and Video */}
@@ -402,6 +482,43 @@ const ProjectDashboard = () => {
                   className="w-full px-4 py-3 border border-slate-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
                 />
               </div>
+            </div>
+
+            {/* Scheduling Options */}
+            <div className="bg-slate-50 p-4 rounded-lg">
+              <div className="flex items-center gap-4 mb-4">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={isScheduled}
+                    onChange={(e) => setIsScheduled(e.target.checked)}
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                  />
+                  <span className="text-sm font-medium text-slate-700">Schedule Publication</span>
+                </label>
+              </div>
+              {isScheduled && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Publish Date</label>
+                    <input
+                      type="date"
+                      value={publishDate}
+                      onChange={(e) => setPublishDate(e.target.value)}
+                      className="w-full px-4 py-3 border border-slate-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Publish Time</label>
+                    <input
+                      type="time"
+                      value={publishTime}
+                      onChange={(e) => setPublishTime(e.target.value)}
+                      className="w-full px-4 py-3 border border-slate-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Submit Button */}

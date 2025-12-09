@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Monitor, Users, BookOpenText, Github, ExternalLink, FileText, Briefcase, Heart, Award, Sparkles, Rocket, TrendingUp } from "lucide-react";
 import img from '@/assets/image.avif'
 import Image from "next/image";
-import styles from '@/app/sos/sos.module.css';
+import styles from '@/app/startups-of-socialprachar/sos.module.css';
 import PlacedStudents from '@/components/Homepage/PlacedStudents/PlacedStudents';
 import { db } from '../../../firebase';
 import { collection, getDocs } from 'firebase/firestore';
@@ -319,12 +319,13 @@ export default function SOSGallery() {
                           )}
                         </div>
 
-                        <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
-                          {(() => {
+                        <div className="text-slate-600 text-sm leading-relaxed line-clamp-3" dangerouslySetInnerHTML={{
+                          __html: (() => {
                             const words = (project.shortDesc || '').split(/\s+/).filter(Boolean);
-                            return words.slice(0, 20).join(' ') + (words.length > 20 ? '...' : '');
-                          })()}
-                        </p>
+                            const truncated = words.slice(0, 20).join(' ') + (words.length > 20 ? '...' : '');
+                            return truncated;
+                          })()
+                        }} />
                       </div>
 
                       {/* Team Members */}
@@ -360,7 +361,7 @@ export default function SOSGallery() {
                       {/* CTA Button */}
                       <div className="mt-auto">
                         <Link
-                          href={`/sos/projectsdetails/${project.slug}`}
+                          href={`/startups-of-socialprachar/projectsdetails/${project.slug}`}
                           className="group/btn flex items-center text-decoration-none justify-center gap-2 w-full px-4 py-3 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
                         >
                           Learn More

@@ -1,8 +1,5 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import { db } from '../../../firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
 import { CalendarDays, Clock, ArrowLeft, Share2, BookOpen, User } from 'lucide-react';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -16,63 +13,31 @@ import { createLowlight } from 'lowlight';
 
 const lowlight = createLowlight();
 
-const OpenCourseBlog = () => {
-  const { slug } = useParams();
-  const [blog, setBlog] = useState(null);
-  const [loading, setLoading] = useState(true);
+const OpenCourseBlog = ({ blog }) => {
+  const [blogData] = useState(blog);
   const [readingProgress, setReadingProgress] = useState(0);
   const [editor, setEditor] = useState(null);
 
+  // Set up Tiptap editor if content is Tiptap JSON
   useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const q = query(collection(db, 'blogs'), where('slug', '==', slug));
-        const querySnapshot = await getDocs(q);
-        if (!querySnapshot.empty) {
-          const docSnap = querySnapshot.docs[0];
-          const data = docSnap.data();
-
-          // Check if the blog is published
-          const publishAt = data.publishAt;
-          const isPublished = !publishAt || (publishAt.seconds * 1000 <= Date.now());
-
-          if (!isPublished) {
-            setBlog(null); // Blog not published yet
-            setLoading(false);
-            return;
-          }
-
-          setBlog(data);
-          // If content is Tiptap JSON, set up a Tiptap editor in read-only mode
-          if (data.content && typeof data.content === 'object') {
-            setEditor(
-              useEditor({
-                editable: false,
-                extensions: [
-                  StarterKit,
-                  Image,
-                  Highlight,
-                  Link,
-                  Underline,
-                  TextAlign.configure({ types: ['heading', 'paragraph'] }),
-                  CodeBlockLowlight.configure({ lowlight }),
-                ],
-                content: data.content,
-              })
-            );
-          }
-        } else {
-          setBlog(null);
-        }
-      } catch (error) {
-        console.error('Error fetching blog:', error);
-        setBlog(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchBlog();
-  }, [slug]);
+    if (blog?.content && typeof blog.content === 'object') {
+      setEditor(
+        useEditor({
+          editable: false,
+          extensions: [
+            StarterKit,
+            Image,
+            Highlight,
+            Link,
+            Underline,
+            TextAlign.configure({ types: ['heading', 'paragraph'] }),
+            CodeBlockLowlight.configure({ lowlight }),
+          ],
+          content: blog.content,
+        })
+      );
+    }
+  }, [blog]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,8 +53,8 @@ const OpenCourseBlog = () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: blog.title,
-          text: blog.excerpt || 'Check out this article',
+          title: blogData.title,
+          text: blogData.excerpt || 'Check out this article',
           url: window.location.href,
         });
       } catch (error) {
@@ -112,17 +77,7 @@ const OpenCourseBlog = () => {
     window.history.back();
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 text-lg">Loading article...</p>
-        </div>
-      </div>
-    );
-  }
-
+  // Fallback if blog is not provided (shouldn't happen with SSR, but safety check)
   if (!blog) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-red-50 to-pink-100 flex items-center justify-center">
@@ -176,58 +131,58 @@ const OpenCourseBlog = () => {
         {/* Article Header */} 
         <header className="mb-8 sm:mb-12 text-center px-2 sm:px-0">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-            {blog.title}
+            {blogData.title}
           </h1>
           {/* Meta Information */} 
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-600 mb-6 sm:mb-8 px-2 sm:px-0">
             <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
               <CalendarDays className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-blue-500" />
-              {blog.date}
+              {blogData.date}
             </div>
             <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
               <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-green-500" />
-              {blog.readTime}
+              {blogData.readTime}
             </div>
-            {blog.category && (
+            {blogData.category && (
               <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
                 <BookOpen className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-purple-500" />
-                {blog.category}
+                {blogData.category}
               </div>
             )}
-            {blog.author && (
+            {blogData.author && (
               <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
                 <User className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-orange-500" />
-                {blog.author}
+                {blogData.author}
               </div>
             )}
           </div>
-          {/* Excerpt */} 
-          {blog.excerpt && (
+          {/* Excerpt */}
+          {blogData.excerpt && (
             <p className="text-base sm:text-xl text-gray-600 leading-relaxed max-w-full sm:max-w-3xl mx-auto px-2 sm:px-0">
-              {blog.excerpt}
+              {blogData.excerpt}
             </p>
           )}
         </header>
-        {/* Featured Image */} 
-        {blog.imageUrl && (
+        {/* Featured Image */}
+        {blogData.imageUrl && (
           <div className="mb-8 sm:mb-12 px-2 sm:px-0">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img 
-                src={blog.imageUrl} 
-                alt={blog.title || "Article image"} 
+              <img
+                src={blogData.imageUrl}
+                alt={blogData.title || "Article image"}
                 className="w-full h-full sm:h-64 md:h-full object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
           </div>
         )}
-        {/* Article Content */} 
+        {/* Article Content */}
         <div className="max-w-none px-2 sm:px-0">
-          {blog.content && typeof blog.content === 'object' && editor ? (
+          {blogData.content && typeof blogData.content === 'object' && editor ? (
             <EditorContent editor={editor} />
           ) : (
-            <div 
-              dangerouslySetInnerHTML={{ __html: blog.content }} 
+            <div
+              dangerouslySetInnerHTML={{ __html: blogData.content }}
               className="
                 article-content
                 text-gray-700 leading-relaxed text-base sm:text-lg
@@ -268,13 +223,13 @@ const OpenCourseBlog = () => {
             />
           )}
         </div>
-        {/* Article Footer */} 
+        {/* Article Footer */}
         <footer className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-500 px-2 sm:px-0">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
             <div className="text-sm sm:text-md text-gray-500">
-              Published on {blog.date}
+              Published on {blogData.date}
             </div>
-            <button 
+            <button
               onClick={handleShare}
               className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-5 hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >

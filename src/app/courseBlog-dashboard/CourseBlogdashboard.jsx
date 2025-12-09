@@ -14,8 +14,7 @@ import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 import { lowlight } from 'lowlight';
 import { Camera, Calendar, Tag, Clock, CheckCircle, User, FileText, Upload, X, Save, Trash2, Edit, Search } from 'lucide-react';
 import styles from './CourseBlogdashboard.module.css';
-import { addDoc, collection, getDocs, deleteDoc, doc, query, orderBy, updateDoc, where } from 'firebase/firestore';
-import { serverTimestamp } from 'firebase/firestore';
+import { addDoc, collection, getDocs, deleteDoc, doc, query, orderBy, updateDoc, where, serverTimestamp, Timestamp } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from 'firebase/storage';
 import { auth, db, storage } from '../../../firebase';
 import dynamic from 'next/dynamic';
@@ -31,6 +30,8 @@ const categories = [
 export default function CourseBlogdashboard() {
   const [title, setTitle] = useState('');
   const [excerpt, setExcerpt] = useState('');
+  const [metaTitle, setMetaTitle] = useState('');
+  const [metaDescription, setMetaDescription] = useState('');
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [readTime, setReadTime] = useState('');
   const [author, setAuthor] = useState('');
@@ -51,6 +52,7 @@ export default function CourseBlogdashboard() {
   const [publishDate, setPublishDate] = useState('');
   const [publishTime, setPublishTime] = useState('');
   const [isScheduled, setIsScheduled] = useState(false);
+  const [schemaJsonLd, setSchemaJsonLd] = useState('');
 
   useEffect(() => {
     setIsClient(true);
@@ -94,6 +96,19 @@ export default function CourseBlogdashboard() {
     }
   };
 
+  const getPublishDateFromValue = (value) => {
+    if (!value) return null;
+    if (typeof value.toDate === 'function') return value.toDate();
+    if (typeof value === 'object' && typeof value.seconds === 'number') {
+      return new Date(value.seconds * 1000);
+    }
+    if (typeof value === 'string') {
+      const parsed = new Date(value);
+      return isNaN(parsed.getTime()) ? null : parsed;
+    }
+    return null;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title.trim()) {
@@ -109,10 +124,32 @@ export default function CourseBlogdashboard() {
     let publishAt = null;
     if (isScheduled) {
       const publishDateTime = new Date(`${publishDate}T${publishTime}`);
-      publishAt = serverTimestamp(); // For now, use serverTimestamp, but in production, use the actual timestamp
-      // Note: Firestore doesn't support future timestamps directly, so we store the date as a string or use a different approach
-      // For simplicity, we'll store publishAt as a Firestore Timestamp
-      publishAt = publishDateTime;
+      publishAt = Timestamp.fromDate(publishDateTime);
+    }
+
+    let parsedSchema = null;
+    if (schemaJsonLd.trim()) {
+      try {
+        parsedSchema = JSON.parse(schemaJsonLd);
+      } catch (jsonErr) {
+        alert("Schema JSON-LD must be valid JSON");
+        return;
+      }
+    }
+
+    const tagsArray = tags
+      .split(',')
+      .map(tag => tag.trim())
+      .filter(Boolean);
+
+    if (!metaTitle.trim()) {
+      alert('Meta title is required for SEO');
+      return;
+    }
+
+    if (!metaDescription.trim()) {
+      alert('Meta description is required for SEO');
+      return;
     }
     try {
       if (isEditing) {
@@ -124,11 +161,14 @@ export default function CourseBlogdashboard() {
           categories: selectedCategories,
           readTime,
           author,
-          tags,
+          tags: tagsArray,
           imageUrl,
           slug: finalSlug,
           publishAt,
           updatedAt: serverTimestamp(),
+          metaTitle,
+          metaDescription,
+          schemaJsonLd: parsedSchema,
         });
       } else {
         finalSlug = await generateUniqueSlug(baseSlug);
@@ -139,12 +179,15 @@ export default function CourseBlogdashboard() {
           categories: selectedCategories,
           readTime,
           author,
-          tags,
+          tags: tagsArray,
           imageUrl,
           slug: finalSlug,
           publishAt,
           createdAt: serverTimestamp(),
           updatedAt: serverTimestamp(),
+          metaTitle,
+          metaDescription,
+          schemaJsonLd: parsedSchema,
         });
       }
       // Reset form
@@ -162,6 +205,9 @@ export default function CourseBlogdashboard() {
       setIsScheduled(false);
       setPublishDate('');
       setPublishTime('');
+      setMetaTitle('');
+      setMetaDescription('');
+      setSchemaJsonLd('');
       // Refresh blogs list
       const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
       const querySnapshot = await getDocs(q);
@@ -205,13 +251,23 @@ export default function CourseBlogdashboard() {
     setSelectedCategories(blog.categories || []);
     setReadTime(blog.readTime);
     setAuthor(blog.author);
-    setTags(blog.tags);
+    setTags(Array.isArray(blog.tags) ? blog.tags.join(', ') : (blog.tags || ''));
     setImageUrl(blog.imageUrl);
+    setMetaTitle(blog.metaTitle || '');
+    setMetaDescription(blog.metaDescription || '');
+    setSchemaJsonLd(
+      blog.schemaJsonLd ? JSON.stringify(blog.schemaJsonLd, null, 2) : ''
+    );
     setIsScheduled(!!blog.publishAt);
     if (blog.publishAt) {
-      const publishDateTime = new Date(blog.publishAt.seconds * 1000);
+      const publishDateTime = getPublishDateFromValue(blog.publishAt);
+      if (publishDateTime) {
       setPublishDate(publishDateTime.toISOString().split('T')[0]);
       setPublishTime(publishDateTime.toTimeString().slice(0, 5));
+      } else {
+        setPublishDate('');
+        setPublishTime('');
+      }
     } else {
       setPublishDate('');
       setPublishTime('');
@@ -275,6 +331,10 @@ export default function CourseBlogdashboard() {
         <input className={styles.input} type="text" value={title} onChange={e => setTitle(e.target.value)} required />
         <label className={styles.label}>Excerpt</label>
         <textarea className={styles.textarea} value={excerpt} onChange={e => setExcerpt(e.target.value)} required />
+        <label className={styles.label}>Meta Title</label>
+        <input className={styles.input} type="text" value={metaTitle} onChange={e => setMetaTitle(e.target.value)} required />
+        <label className={styles.label}>Meta Description</label>
+        <textarea className={styles.textarea} value={metaDescription} onChange={e => setMetaDescription(e.target.value)} required />
         <label className={styles.label}>Content</label>
         <div className={styles.editorContainer} style={{ maxWidth: '1200px', width: '100%', margin: '0 auto' }}>
           <TiptapEditor value={content} onChange={setContent} />
@@ -307,6 +367,13 @@ export default function CourseBlogdashboard() {
         <label className={styles.label}>Featured Image</label>
         <input className={styles.input} type="file" accept="image/*" onChange={handleImageUpload} />
         {imageUrl && <img src={imageUrl} alt="Featured" style={{ maxWidth: "100%", borderRadius: 8, marginTop: 8 }} />}
+        <label className={styles.label}>Schema JSON-LD (paste valid JSON)</label>
+        <textarea
+          className={styles.textarea}
+          value={schemaJsonLd}
+          onChange={e => setSchemaJsonLd(e.target.value)}
+          placeholder='{"@context": "https://schema.org", "@type": "Article", ...}'
+        />
         <div className="d-flex align-center gap-2 mt-4">
         <label className={styles.label}>
           <input type="checkbox" checked={isScheduled} onChange={e => setIsScheduled(e.target.checked)} />
@@ -330,7 +397,11 @@ export default function CourseBlogdashboard() {
         {blogs.length === 0 ? (
           <div style={{ gridColumn: '1/-1', textAlign: 'center', color: '#6b7280' }}>No blogs yet. Create a new one!</div>
         ) : (
-          blogs.map(blog => (
+          blogs.map(blog => {
+            const publishDateValue = getPublishDateFromValue(blog.publishAt);
+            const isPublished = publishDateValue ? publishDateValue.getTime() <= Date.now() : true;
+            const tagLabel = Array.isArray(blog.tags) ? blog.tags.join(', ') : blog.tags;
+            return (
             <div key={blog.id} style={{ background: '#fff', borderRadius: 16, boxShadow: '0 4px 16px rgba(0,0,0,0.07)', padding: 24, display: 'flex', flexDirection: 'column', gap: 12, position: 'relative' }}>
               {blog.imageUrl && <img src={blog.imageUrl} alt={blog.title} style={{ width: '100%', height: 180, objectFit: 'cover', borderRadius: 12, marginBottom: 12 }} />}
               <h3 style={{ fontWeight: 700, fontSize: 22, margin: 0 }}>{blog.title}</h3>
@@ -342,15 +413,15 @@ export default function CourseBlogdashboard() {
                 <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><Clock size={12} style={{ marginRight: 4 }} />{blog.readTime} min</span>
                 <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><User size={12} style={{ marginRight: 4 }} />{blog.author}</span>
               </div>
-              <div style={{ color: '#9ca3af', fontSize: 12 }}>Tags: {blog.tags}</div>
-              {blog.publishAt && (
-                <div style={{ color: blog.publishAt.seconds * 1000 <= Date.now() ? '#10b981' : '#f59e0b', fontSize: 11, fontFamily: 'monospace', background: blog.publishAt.seconds * 1000 <= Date.now() ? '#ecfdf5' : '#fef3c7', padding: '4px 8px', borderRadius: 4, margin: '4px 0' }}>
-                  {blog.publishAt.seconds * 1000 <= Date.now() ? 'Published' : 'Scheduled'}
+              <div style={{ color: '#9ca3af', fontSize: 12 }}>Tags: {tagLabel}</div>
+              {publishDateValue && (
+                <div style={{ color: isPublished ? '#10b981' : '#f59e0b', fontSize: 11, fontFamily: 'monospace', background: isPublished ? '#ecfdf5' : '#fef3c7', padding: '4px 8px', borderRadius: 4, margin: '4px 0' }}>
+                  {isPublished ? 'Published' : `Scheduled (${publishDateValue.toLocaleString()})`}
                 </div>
               )}
               {blog.slug && (
                 <div style={{ color: '#10b981', fontSize: 11, fontFamily: 'monospace', background: '#ecfdf5', padding: '4px 8px', borderRadius: 4, margin: '4px 0' }}>
-                  Slug: /Blog/{blog.slug}
+                  Slug: /blog/{blog.slug}
                 </div>
               )}
               <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
@@ -358,7 +429,7 @@ export default function CourseBlogdashboard() {
                 <button className={styles.resetBtn} onClick={() => handleDelete(blog.id)}><Trash2 size={14} /> Delete</button>
               </div>
             </div>
-          ))
+          )})
         )}
       </div>
     </div>

@@ -1,14 +1,17 @@
-import React from 'react';
-import Blog from './Blog';
-import Head from 'next/head';
+import { getAllBlogs } from "@/lib/getBlogsServer";
+import BlogClient from "./BlogClient";
 
-export const metadata = {
-  title: "Course Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar",
+export const dynamic = "force-dynamic"; // Always fetch fresh data
+export const revalidate = 3600; // Revalidate once per hour
+
+export async function generateMetadata() {  
+  return {
+  title: " Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar",
   description: "Stay updated with blogs on Data Science, AI, Fullstack, and Digital Marketing. Insights, career tips, and learning resources from Hyderabad's leading training institute.",
   openGraph: {
-    title: "Course Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar",
+    title: " Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar",
     description: "Stay updated with blogs on Data Science, AI, Fullstack, and Digital Marketing. Insights, career tips, and learning resources from Hyderabad's leading training institute.",
-    url: "https://socialprachar.com/Blog",
+    url: "https://socialprachar.com/blog",
     siteName: "Socialprachar",
     images: [
       {
@@ -23,43 +26,18 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Course Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar",
+    title: " Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar",
     description: "Stay updated with blogs on Data Science, AI, Fullstack, and Digital Marketing. Insights, career tips, and learning resources from Hyderabad's leading training institute.",
     images: ["https://socialprachar.com/og/Home-image.png"],
   },
 };
+}
+export default async function BlogPage() {
+  const blogs = await getAllBlogs(); // Server-side fetch
 
-const page = () => {
-    return (
-        <>
-        <Head>
-          <title>Course Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar</title>
-          <meta name="description" content="Stay updated with blogs on Data Science, AI, Fullstack, and Digital Marketing. Insights, career tips, and learning resources from Hyderabad's leading training institute." />
-          
-          {/* Open Graph / Facebook */}
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://socialprachar.com/Blog" />
-          <meta property="og:title" content="Course Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar" />
-          <meta property="og:description" content="Stay updated with blogs on Data Science, AI, Fullstack, and Digital Marketing. Insights, career tips, and learning resources from Hyderabad's leading training institute." />
-          <meta property="og:image" content="https://socialprachar.com/og/Home-image.png" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-          <meta property="og:site_name" content="Socialprachar" />
-          <meta property="og:locale" content="en_US" />
-          
-          {/* Twitter */}
-          <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content="https://socialprachar.com/Blog" />
-          <meta property="twitter:title" content="Course Blogs | Tips, Trends & Insights on Top Tech Skills – Socialprachar" />
-          <meta property="twitter:description" content="Stay updated with blogs on Data Science, AI, Fullstack, and Digital Marketing. Insights, career tips, and learning resources from Hyderabad's leading training institute." />
-          <meta property="twitter:image" content="https://socialprachar.com/og/Home-image.png" />
-          <link rel="canonical" href="https://socialprachar.com/Blog" />
-        </Head>
-        <div>
-            <Blog/>
-        </div>
-        </>
-    );
-};
-
-export default page;
+  return (
+    <div className="min-h-screen">
+      <BlogClient blogs={blogs} />
+    </div>
+  );
+}

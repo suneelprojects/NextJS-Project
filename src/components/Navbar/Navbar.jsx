@@ -91,13 +91,13 @@ const NavBar = () => {
   const secondDDrouters = [
     { hrefLink: "/aboutUs", routerName: "About us" },
     { hrefLink: "/preplacement", routerName: "Pre-Placement" },
-    { hrefLink: "/Blog", routerName: "Our-Blogs" },
+    { hrefLink: "/blog", routerName: "Our-Blogs" },
     { hrefLink: "/events", routerName: "Events" },
     { hrefLink: "/dataclash", routerName: "DataClash" },
     { hrefLink: "/codeclash", routerName: "CodeClash" },
     { hrefLink: "/scholarship-test", routerName: "Scholarship Test" },
     { hrefLink: "/socialhire", routerName: "SocialHire" },
-    { hrefLink: "/sos", routerName: "Startups of Socialprachar" },
+    { hrefLink: "/startups-of-socialprachar", routerName: "Startups of Socialprachar" },
     { hrefLink: "/career-roadmaps", routerName: "Career Roadmaps" },
     { hrefLink: "/career-quiz", routerName: "Career Quiz" },
     { hrefLink: "https://finversity.in", routerName: "Finversity" }
