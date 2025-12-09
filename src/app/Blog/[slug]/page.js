@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 60;
 
 import { getBlog } from "@/lib/getBlog";
-import OpenCourseBlog from "../OpenCourseblog";
+import OpenCourseBlog from "../OpenCourseBlog";
 
 // --------------------------
 // DYNAMIC META TAGS + JSON-LD
