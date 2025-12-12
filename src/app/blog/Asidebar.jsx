@@ -5,7 +5,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { Tag, ChevronRight, BookOpen, TrendingUp, Star, Eye, Calendar, User } from 'lucide-react';
 
-const Asidebar = ({ featuredPost, categories, popularPosts = [] }) => {
+const Asidebar = ({ featuredPost, categories, popularPosts = [], onCategoryClick, onClearFilter }) => {
   const router = useRouter();
 
   // Mock popular posts if not provided
@@ -57,10 +57,31 @@ const Asidebar = ({ featuredPost, categories, popularPosts = [] }) => {
         </div>
         
         <div className="space-y-3">
+          {/* All Categories Option */}
+          <div
+            onClick={onClearFilter}
+            className="group/item flex items-center justify-between p-3 rounded-xl hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 cursor-pointer transition-all duration-300 border border-transparent hover:border-indigo-100"
+          >
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center group-hover/item:from-indigo-200 group-hover/item:to-purple-200 transition-all duration-300">
+                <Tag className="w-4 h-4 text-indigo-600" />
+              </div>
+              <span className="text-gray-700 font-medium group-hover/item:text-indigo-600 transition-colors duration-300">
+                All Categories
+              </span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full group-hover/item:bg-indigo-100 group-hover/item:text-indigo-600 transition-all duration-300">
+                {categories.reduce((sum, cat) => sum + (cat.count || 0), 0)}
+              </span>
+              <ChevronRight className="w-4 h-4 text-gray-400 transform group-hover/item:translate-x-1 group-hover/item:text-indigo-500 transition-all duration-300" />
+            </div>
+          </div>
           {categories.length > 0 ? (
             categories.map((cat, index) => (
               <div
                 key={cat.id || cat.name || index}
+                onClick={() => onCategoryClick(cat.category || cat.name)}
                 className="group/item flex items-center justify-between p-3 rounded-xl hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 cursor-pointer transition-all duration-300 border border-transparent hover:border-indigo-100"
               >
                 <div className="flex items-center space-x-3">

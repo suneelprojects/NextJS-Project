@@ -11,6 +11,7 @@ export default function BlogClient({ blogs }) {
   const [blogPosts, setBlogPosts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     if (!blogs || blogs.length === 0) return;
@@ -38,8 +39,26 @@ export default function BlogClient({ blogs }) {
   }, [blogs]);
 
   const handlePageChange = (page) => setCurrentPage(page);
-  const handleNext = () => currentPage < totalPages && setCurrentPage(currentPage + 1);
+  const handleNext = () => currentPage < filteredTotalPages && setCurrentPage(currentPage + 1);
   const handlePrevious = () => currentPage > 1 && setCurrentPage(currentPage - 1);
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    setCurrentPage(1); // Reset to first page when category changes
+  };
+
+  const handleClearFilter = () => {
+    setSelectedCategory(null);
+    setCurrentPage(1); // Reset to first page when clearing filter
+  };
+
+  // Filter posts based on selected category
+  const filteredPosts = selectedCategory
+    ? blogPosts.filter(post => post.category === selectedCategory)
+    : blogPosts;
+
+  // Calculate filtered total pages
+  const filteredTotalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
   if (!blogs || blogs.length === 0) {
     return (
@@ -131,7 +150,7 @@ export default function BlogClient({ blogs }) {
               </div>
             </div>
             <div className="space-y-8">
-              {blogPosts
+              {filteredPosts
                 .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
                 .map((post, index) => (
                   <a
@@ -206,9 +225,9 @@ export default function BlogClient({ blogs }) {
               <div className="flex space-x-2">
                 {(() => {
                   const getPaginationRange = () => {
-                    if (totalPages <= 3) return Array.from({ length: totalPages }, (_, i) => i + 1);
+                    if (filteredTotalPages <= 3) return Array.from({ length: filteredTotalPages }, (_, i) => i + 1);
                     if (currentPage <= 2) return [1, 2, 3];
-                    if (currentPage >= totalPages - 1) return [totalPages - 2, totalPages - 1, totalPages];
+                    if (currentPage >= filteredTotalPages - 1) return [filteredTotalPages - 2, filteredTotalPages - 1, filteredTotalPages];
                     return [currentPage - 1, currentPage, currentPage + 1];
                   };
                   return getPaginationRange().map((pageNumber) => (
@@ -225,13 +244,13 @@ export default function BlogClient({ blogs }) {
                     </button>
                   ));
                 })()}
-                {currentPage < totalPages - 2 && totalPages > 3 && (
+                {currentPage < filteredTotalPages - 2 && filteredTotalPages > 3 && (
                   <span className="flex items-center px-2 text-gray-400">...</span>
                 )}
               </div>
               <button
                 onClick={handleNext}
-                disabled={currentPage === totalPages}
+                disabled={currentPage === filteredTotalPages}
                 className="flex items-center justify-center w-12 h-12 border border-gray-300 text-sm font-medium rounded-5 text-gray-700 bg-white hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-lg"
               >
                 <ArrowRight className="h-4 w-4" />
@@ -241,7 +260,13 @@ export default function BlogClient({ blogs }) {
 
           {/* Sidebar */}
           <div className="xl:w-1/3">
-            <Asidebar featuredPost={featuredPost} categories={categories} />
+            <Asidebar
+              featuredPost={featuredPost}
+              categories={categories}
+              onCategoryClick={handleCategoryClick}
+              onClearFilter={handleClearFilter}
+              selectedCategory={selectedCategory}
+            />
           </div>
         </div>
       </main>

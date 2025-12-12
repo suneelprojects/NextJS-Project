@@ -127,22 +127,26 @@ const OpenCourseBlog = ({ blog }) => {
       </div>
 
       {/* Main Content */}
-      <article className="max-w-full sm:max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 bg-white rounded-2xl shadow-lg">
+      <article className="max-w-full sm:max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 bg-white rounded-2xl shadow-lg  my-3">
         {/* Article Header */} 
         <header className="mb-8 sm:mb-12 text-center px-2 sm:px-0">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
             {blogData.title}
           </h1>
           {/* Meta Information */} 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-600 mb-6 sm:mb-8 px-2 sm:px-0">
+          <div className="flex flex-wrap font-semibold items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-600 mb-6 sm:mb-8 px-2 sm:px-0">
             <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
               <CalendarDays className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-blue-500" />
-              {blogData.date}
+              {new Date(blogData.date).toLocaleDateString("en-IN", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
             </div>
-            <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
+            {/* <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
               <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-green-500" />
               {blogData.readTime}
-            </div>
+            </div> */}
             {blogData.category && (
               <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
                 <BookOpen className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-purple-500" />
@@ -227,18 +231,23 @@ const OpenCourseBlog = ({ blog }) => {
         <footer className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-500 px-2 sm:px-0">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
             <div className="text-sm sm:text-md text-gray-500">
-              Published on {blogData.date}
+              Published on {new Date(blogData.date).toLocaleDateString("en-IN", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
             </div>
             <button
               onClick={handleShare}
               className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-5 hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
+              
               Share this article
             </button>
           </div>
         </footer>
       </article>
-      {/* Floating Action Button for Mobile */} 
+      {/* Floating Action Button for Mobile 
       <div className="fixed bottom-6 right-6 sm:hidden">
         <button 
           onClick={handleShare}
@@ -246,7 +255,7 @@ const OpenCourseBlog = ({ blog }) => {
         >
           <Share2 className="w-6 h-6" />
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

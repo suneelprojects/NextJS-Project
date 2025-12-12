@@ -3,6 +3,7 @@
 // IMPORTANT: Requires lowlight@2.x for Tiptap CodeBlockLowlight compatibility.
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import { parseFullHtml } from '../../utils/htmlProcessor';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
@@ -23,7 +24,7 @@ import { slugify } from '../../utils/slugify';
 const TiptapEditor = dynamic(() => import('./TiptapEditor'), { ssr: false });
 
 const categories = [
-  "Development", "Design", "Marketing", "Business", "Technology", "Programming", 
+  "Development", "Design", "Marketing", "Business", "Technology", "Programming",
   "Web Development", "Mobile Development", "Data Science", "AI/ML", "DevOps", "UI/UX"
 ];
 
@@ -53,6 +54,8 @@ export default function CourseBlogdashboard() {
   const [publishTime, setPublishTime] = useState('');
   const [isScheduled, setIsScheduled] = useState(false);
   const [schemaJsonLd, setSchemaJsonLd] = useState('');
+  const [useRawHtml, setUseRawHtml] = useState(false);
+  const [rawHtmlInput, setRawHtmlInput] = useState('');
 
   useEffect(() => {
     setIsClient(true);
@@ -111,119 +114,85 @@ export default function CourseBlogdashboard() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title.trim()) {
-      alert('Title is required');
-      return;
-    }
-    if (isScheduled && (!publishDate || !publishTime)) {
-      alert('Publish date and time are required when scheduling');
-      return;
-    }
-    const baseSlug = slugify(title);
-    let finalSlug;
-    let publishAt = null;
-    if (isScheduled) {
-      const publishDateTime = new Date(`${publishDate}T${publishTime}`);
-      publishAt = Timestamp.fromDate(publishDateTime);
-    }
 
-    let parsedSchema = null;
-    if (schemaJsonLd.trim()) {
-      try {
-        parsedSchema = JSON.parse(schemaJsonLd);
-      } catch (jsonErr) {
-        alert("Schema JSON-LD must be valid JSON");
-        return;
-      }
-    }
+    // If manager pasted raw HTML, parse & set fields
+    let finalContent = content;
+    let autoMetaTitle = metaTitle;
+    let autoMetaDescription = metaDescription;
+    let autoImage = imageUrl;
 
-    const tagsArray = tags
-      .split(',')
-      .map(tag => tag.trim())
-      .filter(Boolean);
+    if (useRawHtml && rawHtmlInput.trim()) {
+      const parsed = parseFullHtml(rawHtmlInput);
 
-    if (!metaTitle.trim()) {
-      alert('Meta title is required for SEO');
-      return;
-    }
+      finalContent = parsed.bodyHtml; // sanitized extracted body HTML
 
-    if (!metaDescription.trim()) {
-      alert('Meta description is required for SEO');
-      return;
+      if (!metaTitle && parsed.title) autoMetaTitle = parsed.title;
+      if (!metaDescription && parsed.metaDescription) autoMetaDescription = parsed.metaDescription;
+      if (!imageUrl && parsed.firstImg) autoImage = parsed.firstImg;
     }
+    
+  const finalSlug = await generateUniqueSlug(slugify(title), isEditing ? currentBlogId : null);
+
+  // Set publishAt
+  let publishAt = null;
+  if (isScheduled && publishDate && publishTime) {
+    const dateTimeString = `${publishDate}T${publishTime}:00`;
+    publishAt = new Date(dateTimeString);
+  }
+
+  // Parse schema
+  let parsedSchema = null;
+  if (schemaJsonLd.trim()) {
     try {
-      if (isEditing) {
-        finalSlug = await generateUniqueSlug(baseSlug, currentBlogId);
-        await updateDoc(doc(db, "blogs", currentBlogId), {
-          title,
-          excerpt,
-          content,
-          categories: selectedCategories,
-          readTime,
-          author,
-          tags: tagsArray,
-          imageUrl,
-          slug: finalSlug,
-          publishAt,
-          updatedAt: serverTimestamp(),
-          metaTitle,
-          metaDescription,
-          schemaJsonLd: parsedSchema,
-        });
-      } else {
-        finalSlug = await generateUniqueSlug(baseSlug);
-        await addDoc(collection(db, "blogs"), {
-          title,
-          excerpt,
-          content,
-          categories: selectedCategories,
-          readTime,
-          author,
-          tags: tagsArray,
-          imageUrl,
-          slug: finalSlug,
-          publishAt,
-          createdAt: serverTimestamp(),
-          updatedAt: serverTimestamp(),
-          metaTitle,
-          metaDescription,
-          schemaJsonLd: parsedSchema,
-        });
-      }
-      // Reset form
-      setIsEditing(false);
-      setCurrentBlogId(null);
-      setCurrentBlogSlug(null);
-      setTitle('');
-      setExcerpt('');
-      setContent('');
-      setSelectedCategories([]);
-      setReadTime('');
-      setAuthor('');
-      setTags('');
-      setImageUrl('');
-      setIsScheduled(false);
-      setPublishDate('');
-      setPublishTime('');
-      setMetaTitle('');
-      setMetaDescription('');
-      setSchemaJsonLd('');
-      // Refresh blogs list
-      const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
-      const querySnapshot = await getDocs(q);
-      setBlogs(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-
-      // Regenerate sitemap
-      try {
-        await fetch('/api/generate-sitemap', { method: 'POST' });
-        console.log('Sitemap updated successfully');
-      } catch (error) {
-        console.error('Error updating sitemap:', error);
-      }
-    } catch (err) {
-      console.error('Error saving blog:', err);
-      setError(err.message);
+      parsedSchema = JSON.parse(schemaJsonLd);
+    } catch (e) {
+      alert('Invalid JSON in Schema JSON-LD');
+      return;
     }
+  }
+
+  // Prepare tags array
+  const tagsArray = tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [];
+
+
+    // Saving (editing or new)
+    if (isEditing) {
+      await updateDoc(doc(db, "blogs", currentBlogId), {
+        title,
+        excerpt,
+        content: finalContent,
+        categories: selectedCategories,
+        readTime,
+        author,
+        tags: tagsArray,
+        imageUrl: autoImage,
+        slug: finalSlug,
+        publishAt,
+        updatedAt: serverTimestamp(),
+        metaTitle: metaTitle || autoMetaTitle,
+        metaDescription: metaDescription || autoMetaDescription,
+        schemaJsonLd: parsedSchema,
+      });
+    } else {
+      await addDoc(collection(db, "blogs"), {
+        title,
+        excerpt,
+        content: finalContent,
+        categories: selectedCategories,
+        readTime,
+        author,
+        tags: tagsArray,
+        imageUrl: autoImage,
+        slug: finalSlug,
+        publishAt,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+        metaTitle: metaTitle || autoMetaTitle,
+        metaDescription: metaDescription || autoMetaDescription,
+        schemaJsonLd: parsedSchema,
+      });
+    }
+
   };
 
   const handleDelete = async (id) => {
@@ -262,8 +231,8 @@ export default function CourseBlogdashboard() {
     if (blog.publishAt) {
       const publishDateTime = getPublishDateFromValue(blog.publishAt);
       if (publishDateTime) {
-      setPublishDate(publishDateTime.toISOString().split('T')[0]);
-      setPublishTime(publishDateTime.toTimeString().slice(0, 5));
+        setPublishDate(publishDateTime.toISOString().split('T')[0]);
+        setPublishTime(publishDateTime.toTimeString().slice(0, 5));
       } else {
         setPublishDate('');
         setPublishTime('');
@@ -336,9 +305,35 @@ export default function CourseBlogdashboard() {
         <label className={styles.label}>Meta Description</label>
         <textarea className={styles.textarea} value={metaDescription} onChange={e => setMetaDescription(e.target.value)} required />
         <label className={styles.label}>Content</label>
-        <div className={styles.editorContainer} style={{ maxWidth: '1200px', width: '100%', margin: '0 auto' }}>
-          <TiptapEditor value={content} onChange={setContent} />
+
+        {/* Toggle button */}
+        <div style={{ margin: '8px 0' }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <input type="checkbox" checked={useRawHtml} onChange={e => setUseRawHtml(e.target.checked)} />
+            Paste full HTML instead of using editor
+          </label>
         </div>
+
+        {/* Editor or raw HTML textarea */}
+        {useRawHtml ? (
+          <>
+            <label className={styles.label}>Paste full HTML</label>
+            <textarea
+              className={styles.textarea}
+              value={rawHtmlInput}
+              onChange={e => setRawHtmlInput(e.target.value)}
+              placeholder="Paste <!DOCTYPE html>… here"
+              rows={12}
+            />
+            <div style={{ fontSize: 12, color: '#6b7280', marginTop: 6 }}>
+              Tip: we will extract body, sanitize it, and populate meta fields automatically on save.
+            </div>
+          </>
+        ) : (
+          <div className={styles.editorContainer}>
+            <TiptapEditor value={content} onChange={setContent} />
+          </div>
+        )}
         <label className={styles.label}>Categories (select multiple)</label>
         <div className={styles.categoryContainer}>
           {categories.map(category => (
@@ -375,21 +370,21 @@ export default function CourseBlogdashboard() {
           placeholder='{"@context": "https://schema.org", "@type": "Article", ...}'
         />
         <div className="d-flex align-center gap-2 mt-4">
-        <label className={styles.label}>
-          <input type="checkbox" checked={isScheduled} onChange={e => setIsScheduled(e.target.checked)} />
-          Schedule for later
-        </label>
-        {isScheduled && (
-          <>
-            <label className={styles.label}>Publish Date</label>
-            <input className={styles.input} type="date" value={publishDate} onChange={e => setPublishDate(e.target.value)} required />
-            <label className={styles.label}>Publish Time</label>
-            <input className={styles.input} type="time" value={publishTime} onChange={e => setPublishTime(e.target.value)} required />
-          </>
-        )}
+          <label className={styles.label}>
+            <input type="checkbox" checked={isScheduled} onChange={e => setIsScheduled(e.target.checked)} />
+            Schedule for later
+          </label>
+          {isScheduled && (
+            <>
+              <label className={styles.label}>Publish Date</label>
+              <input className={styles.input} type="date" value={publishDate} onChange={e => setPublishDate(e.target.value)} required />
+              <label className={styles.label}>Publish Time</label>
+              <input className={styles.input} type="time" value={publishTime} onChange={e => setPublishTime(e.target.value)} required />
+            </>
+          )}
         </div>
 
-        
+
         <button className={styles.submitBtn} type="submit">{isEditing ? 'Update Blog' : 'Create Blog'}</button>
       </form>
       {/* Blog Cards Grid */}
@@ -402,34 +397,35 @@ export default function CourseBlogdashboard() {
             const isPublished = publishDateValue ? publishDateValue.getTime() <= Date.now() : true;
             const tagLabel = Array.isArray(blog.tags) ? blog.tags.join(', ') : blog.tags;
             return (
-            <div key={blog.id} style={{ background: '#fff', borderRadius: 16, boxShadow: '0 4px 16px rgba(0,0,0,0.07)', padding: 24, display: 'flex', flexDirection: 'column', gap: 12, position: 'relative' }}>
-              {blog.imageUrl && <img src={blog.imageUrl} alt={blog.title} style={{ width: '100%', height: 180, objectFit: 'cover', borderRadius: 12, marginBottom: 12 }} />}
-              <h3 style={{ fontWeight: 700, fontSize: 22, margin: 0 }}>{blog.title}</h3>
-              <div style={{ color: '#6b7280', fontSize: 14 }}>{blog.excerpt}</div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, margin: '8px 0' }}>
-                {blog.categories && blog.categories.map(cat => (
-                  <span key={cat} style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><Tag size={12} style={{ marginRight: 4 }} />{cat}</span>
-                ))}
-                <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><Clock size={12} style={{ marginRight: 4 }} />{blog.readTime} min</span>
-                <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><User size={12} style={{ marginRight: 4 }} />{blog.author}</span>
-              </div>
-              <div style={{ color: '#9ca3af', fontSize: 12 }}>Tags: {tagLabel}</div>
-              {publishDateValue && (
-                <div style={{ color: isPublished ? '#10b981' : '#f59e0b', fontSize: 11, fontFamily: 'monospace', background: isPublished ? '#ecfdf5' : '#fef3c7', padding: '4px 8px', borderRadius: 4, margin: '4px 0' }}>
-                  {isPublished ? 'Published' : `Scheduled (${publishDateValue.toLocaleString()})`}
+              <div key={blog.id} style={{ background: '#fff', borderRadius: 16, boxShadow: '0 4px 16px rgba(0,0,0,0.07)', padding: 24, display: 'flex', flexDirection: 'column', gap: 12, position: 'relative' }}>
+                {blog.imageUrl && <img src={blog.imageUrl} alt={blog.title} style={{ width: '100%', height: 180, objectFit: 'cover', borderRadius: 12, marginBottom: 12 }} />}
+                <h3 style={{ fontWeight: 700, fontSize: 22, margin: 0 }}>{blog.title}</h3>
+                <div style={{ color: '#6b7280', fontSize: 14 }}>{blog.excerpt}</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, margin: '8px 0' }}>
+                  {blog.categories && blog.categories.map(cat => (
+                    <span key={cat} style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><Tag size={12} style={{ marginRight: 4 }} />{cat}</span>
+                  ))}
+                  <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><Clock size={12} style={{ marginRight: 4 }} />{blog.readTime} min</span>
+                  <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><User size={12} style={{ marginRight: 4 }} />{blog.author}</span>
                 </div>
-              )}
-              {blog.slug && (
-                <div style={{ color: '#10b981', fontSize: 11, fontFamily: 'monospace', background: '#ecfdf5', padding: '4px 8px', borderRadius: 4, margin: '4px 0' }}>
-                  Slug: /blog/{blog.slug}
+                <div style={{ color: '#9ca3af', fontSize: 12 }}>Tags: {tagLabel}</div>
+                {publishDateValue && (
+                  <div style={{ color: isPublished ? '#10b981' : '#f59e0b', fontSize: 11, fontFamily: 'monospace', background: isPublished ? '#ecfdf5' : '#fef3c7', padding: '4px 8px', borderRadius: 4, margin: '4px 0' }}>
+                    {isPublished ? 'Published' : `Scheduled (${publishDateValue.toLocaleString()})`}
+                  </div>
+                )}
+                {blog.slug && (
+                  <div style={{ color: '#10b981', fontSize: 11, fontFamily: 'monospace', background: '#ecfdf5', padding: '4px 8px', borderRadius: 4, margin: '4px 0' }}>
+                    Slug: /blog/{blog.slug}
+                  </div>
+                )}
+                <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
+                  <button className={styles.draftBtn} onClick={() => handleEdit(blog)}><Edit size={14} /> Edit</button>
+                  <button className={styles.resetBtn} onClick={() => handleDelete(blog.id)}><Trash2 size={14} /> Delete</button>
                 </div>
-              )}
-              <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-                <button className={styles.draftBtn} onClick={() => handleEdit(blog)}><Edit size={14} /> Edit</button>
-                <button className={styles.resetBtn} onClick={() => handleDelete(blog.id)}><Trash2 size={14} /> Delete</button>
               </div>
-            </div>
-          )})
+            )
+          })
         )}
       </div>
     </div>

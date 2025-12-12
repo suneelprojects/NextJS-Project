@@ -3,6 +3,7 @@ export const revalidate = 60;
 
 import { getBlog } from "@/lib/getBlog";
 import OpenCourseBlog from "../OpenCourseBlog";
+import { sanitizeBlogHtml } from '@/utils/sanitizeHtmlServer';
 
 // --------------------------
 // DYNAMIC META TAGS + JSON-LD
@@ -59,6 +60,9 @@ export default async function BlogPage({ params }) {
   const blog = await getBlog(slug);
 
   if (!blog) return <div>Blog Not Found</div>;
+
+  // sanitize BEFORE passing to the component (server-side)
+  blog.content = sanitizeBlogHtml(blog.content || '');
 
   return <OpenCourseBlog blog={blog} />;
 }
