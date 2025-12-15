@@ -181,53 +181,52 @@ const OpenCourseBlog = ({ blog }) => {
           </div>
         )}
         {/* Article Content */}
-<div className="max-w-none px-2 sm:px-0">
-  {typeof blogData.content === "string" ? (
-    <div
-      dangerouslySetInnerHTML={{ __html: blogData.content }}
-      className="
-        article-content
-        text-gray-700 leading-relaxed text-base sm:text-lg
-        [&>h1]:text-2xl sm:[&>h1]:text-3xl md:[&>h1]:text-4xl [&>h1]:font-bold [&>h1]:text-gray-900 [&>h1]:mb-4 sm:[&>h1]:mb-6 [&>h1]:mt-8 sm:[&>h1]:mt-12
-        [&>h2]:text-xl sm:[&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mb-3 sm:[&>h2]:mb-4 [&>h2]:mt-6 sm:[&>h2]:mt-10
-        [&>h3]:text-lg sm:[&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-gray-900 [&>h3]:mb-2 sm:[&>h3]:mb-3 [&>h3]:mt-4 sm:[&>h3]:mt-8
-        [&>h4]:text-base sm:[&>h4]:text-lg [&>h4]:font-semibold [&>h4]:text-gray-900 [&>h4]:mb-1 sm:[&>h4]:mb-2 [&>h4]:mt-3 sm:[&>h4]:mt-6
-        [&>h5]:text-sm sm:[&>h5]:text-base [&>h5]:font-semibold [&>h5]:text-gray-900 [&>h5]:mb-1 sm:[&>h5]:mb-2 [&>h5]:mt-2 sm:[&>h5]:mt-4
-        [&>h6]:text-xs sm:[&>h6]:text-sm [&>h6]:font-semibold [&>h6]:text-gray-900 [&>h6]:mb-1 sm:[&>h6]:mb-2 [&>h6]:mt-2 sm:[&>h6]:mt-4
-        [&>p]:mb-4 sm:[&>p]:mb-6 [&>p]:leading-relaxed
-        [&>a]:text-blue-600 [&>a]:no-underline hover:[&>a]:underline hover:[&>a]:text-blue-700
-        [&>strong]:text-gray-900 [&>strong]:font-semibold
-        [&>em]:italic [&>em]:text-gray-600
-        [&>ul]:my-4 sm:[&>ul]:my-6 [&>ul]:pl-0 [&>ul]:list-none
-        [&>ul>li]:mb-2 sm:[&>ul>li]:mb-3 [&>ul>li]:pl-6 [&>ul>li]:relative
-        [&>ul>li]:before:content-['\2022'] [&>ul>li]:before:absolute 
-        [&>ul>li]:before:left-0 [&>ul>li]:before:text-black
-        [&>ul>li]:before:font-bold [&>ul>li]:before:text-lg
-        [&>ol]:my-4 sm:[&>ol]:my-6 [&>ol]:pl-0 [&>ol]:list-decimal [&>ol]:list-inside
-        [&>ol>li]:mb-2 sm:[&>ol>li]:mb-3 [&>ol>li]:pl-2
-        [&>ol>li]:marker:text-black [&>ol>li]:marker:font-semibold
-        [&>blockquote]:border-l-4 [&>blockquote]:border-blue-500 
-        [&>blockquote]:bg-blue-50 [&>blockquote]:py-3 [&>blockquote]:px-4 
-        [&>blockquote]:my-6 [&>blockquote]:rounded-r-lg [&>blockquote]:italic
-        [&>code]:bg-gray-100 [&>code]:px-2 [&>code]:py-1 [&>code]:rounded 
-        [&>code]:text-sm [&>code]:font-mono [&>code]:text-gray-800
-        [&>pre]:bg-gray-900 [&>pre]:text-gray-100 [&>pre]:p-3 
-        [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:my-4
-        [&>pre>code]:bg-transparent [&>pre>code]:p-0
-        [&>img]:rounded-lg [&>img]:shadow-lg [&>img]:my-6 [&>img]:w-full
-        [&>hr]:my-6 [&>hr]:border-gray-300
-        [&>table]:w-full [&>table]:border-collapse [&>table]:my-4
-        [&>table>thead>tr>th]:bg-gray-100 [&>table>thead>tr>th]:p-2 
-        [&>table>thead>tr>th]:text-left [&>table>thead>tr>th]:font-semibold
-        [&>table>tbody>tr>td]:p-2 [&>table>tbody>tr>td]:border-t 
-        [&>table>tbody>tr>td]:border-gray-200
-      "
-    />
-  ) : (
-    editor && <EditorContent editor={editor} />
-  )}
-</div>
-
+        <div className="max-w-none px-2 sm:px-0">
+          {blogData.content && typeof blogData.content === 'object' && editor ? (
+            <EditorContent editor={editor} />
+          ) : (
+            <div
+              dangerouslySetInnerHTML={{ __html: blogData.content }}
+              className="
+                article-content
+                text-gray-700 leading-relaxed text-base sm:text-lg
+                [&>h1]:text-2xl sm:[&>h1]:text-3xl md:[&>h1]:text-4xl [&>h1]:font-bold [&>h1]:text-gray-900 [&>h1]:mb-4 sm:[&>h1]:mb-6 [&>h1]:mt-8 sm:[&>h1]:mt-12
+                [&>h2]:text-xl sm:[&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mb-3 sm:[&>h2]:mb-4 [&>h2]:mt-6 sm:[&>h2]:mt-10
+                [&>h3]:text-lg sm:[&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-gray-900 [&>h3]:mb-2 sm:[&>h3]:mb-3 [&>h3]:mt-4 sm:[&>h3]:mt-8
+                [&>h4]:text-base sm:[&>h4]:text-lg [&>h4]:font-semibold [&>h4]:text-gray-900 [&>h4]:mb-1 sm:[&>h4]:mb-2 [&>h4]:mt-3 sm:[&>h4]:mt-6
+                [&>h5]:text-sm sm:[&>h5]:text-base [&>h5]:font-semibold [&>h5]:text-gray-900 [&>h5]:mb-1 sm:[&>h5]:mb-2 [&>h5]:mt-2 sm:[&>h5]:mt-4
+                [&>h6]:text-xs sm:[&>h6]:text-sm [&>h6]:font-semibold [&>h6]:text-gray-900 [&>h6]:mb-1 sm:[&>h6]:mb-2 [&>h6]:mt-2 sm:[&>h6]:mt-4
+                [&>p]:mb-4 sm:[&>p]:mb-6 [&>p]:leading-relaxed
+                [&>a]:text-blue-600 [&>a]:no-underline hover:[&>a]:underline hover:[&>a]:text-blue-700
+                [&>strong]:text-gray-900 [&>strong]:font-semibold
+                [&>em]:italic [&>em]:text-gray-600
+                [&>ul]:my-4 sm:[&>ul]:my-6 [&>ul]:pl-0 [&>ul]:list-none
+                [&>ul>li]:mb-2 sm:[&>ul>li]:mb-3 [&>ul>li]:pl-6 [&>ul>li]:relative
+                [&>ul>li]:before:content-['\2022'] [&>ul>li]:before:absolute 
+                [&>ul>li]:before:left-0 [&>ul>li]:before:text-black
+                [&>ul>li]:before:font-bold [&>ul>li]:before:text-lg
+                [&>ol]:my-4 sm:[&>ol]:my-6 [&>ol]:pl-0 [&>ol]:list-decimal [&>ol]:list-inside
+                [&>ol>li]:mb-2 sm:[&>ol>li]:mb-3 [&>ol>li]:pl-2
+                [&>ol>li]:marker:text-black [&>ol>li]:marker:font-semibold
+                [&>blockquote]:border-l-4 [&>blockquote]:border-blue-500 
+                [&>blockquote]:bg-blue-50 [&>blockquote]:py-3 [&>blockquote]:px-4 
+                [&>blockquote]:my-6 [&>blockquote]:rounded-r-lg [&>blockquote]:italic
+                [&>code]:bg-gray-100 [&>code]:px-2 [&>code]:py-1 [&>code]:rounded 
+                [&>code]:text-sm [&>code]:font-mono [&>code]:text-gray-800
+                [&>pre]:bg-gray-900 [&>pre]:text-gray-100 [&>pre]:p-3 
+                [&>pre]:rounded-lg [&>pre]:overflow-x-auto [&>pre]:my-4
+                [&>pre>code]:bg-transparent [&>pre>code]:p-0
+                [&>img]:rounded-lg [&>img]:shadow-lg [&>img]:my-6 [&>img]:w-full
+                [&>hr]:my-6 [&>hr]:border-gray-300
+                [&>table]:w-full [&>table]:border-collapse [&>table]:my-4
+                [&>table>thead>tr>th]:bg-gray-100 [&>table>thead>tr>th]:p-2 
+                [&>table>thead>tr>th]:text-left [&>table>thead>tr>th]:font-semibold
+                [&>table>tbody>tr>td]:p-2 [&>table>tbody>tr>td]:border-t 
+                [&>table>tbody>tr>td]:border-gray-200
+              "
+            />
+          )}
+        </div>
         {/* Article Footer */}
         <footer className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-500 px-2 sm:px-0">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">

@@ -93,36 +93,30 @@ function serializeFirestoreData(data) {
 }
 
 export async function getBlog(slug) {
-  const q = query(collection(db, "blogs"), where("slug", "==", slug));
-  const snap = await getDocs(q);
+	// Query Firestore for a blog with the given slug
+	const q = query(collection(db, "blogs"), where("slug", "==", slug));
+	const snap = await getDocs(q);
 
-  if (snap.empty) return null;
-
-  const data = snap.docs[0].data();
-
-  // publish check
-  const publishAt = data.publishAt;
-  let publishTime = null;
-
-  if (publishAt) {
-    if (publishAt.toDate) {
-      publishTime = publishAt.toDate().getTime();
-    } else if (publishAt.seconds) {
-      publishTime = publishAt.seconds * 1000;
-    }
-  }
-
-  const isPublished = !publishAt || (publishTime && publishTime <= Date.now());
-  if (!isPublished) return null;
-
-  // ✅ SERIALIZE
-  const serialized = serializeFirestoreData(data);
-
-  // ✅ STEP 3 FIX HERE
-  return {
-    ...serialized,
-    category: Array.isArray(serialized.categories)
-      ? serialized.categories[0]
-      : serialized.category || "General",
-  };
+	if (snap.empty) return null;
+	
+	const data = snap.docs[0].data();
+	
+	// Check if the blog is published (handle scheduled posts)
+	const publishAt = data.publishAt;
+	let publishTime = null;
+	
+	if (publishAt) {
+		if (publishAt.toDate) {
+			publishTime = publishAt.toDate().getTime();
+		} else if (publishAt.seconds) {
+			publishTime = publishAt.seconds * 1000;
+		}
+	}
+	
+	const isPublished = !publishAt || (publishTime && publishTime <= Date.now());
+	
+	if (!isPublished) return null;
+	
+	// Serialize Firestore data to plain object before returning
+	return serializeFirestoreData(data);
 }
