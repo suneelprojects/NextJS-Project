@@ -2,8 +2,11 @@ const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 🔒 Force Webpack (disable Turbopack)
+  
+
   images: {
-    unoptimized: true,
+    unoptimized: false,
     remotePatterns: [
       {
         protocol: 'https',
@@ -23,7 +26,7 @@ const nextConfig = {
     return config;
   },
 
-  // ✅ Add redirect from www → non-www
+  // ✅ Redirect www → non-www
   async redirects() {
     return [
       {
