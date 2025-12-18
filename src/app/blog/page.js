@@ -1,7 +1,7 @@
 import { getAllBlogs } from "@/lib/getBlogsServer";
 import BlogClient from "./BlogClient";
 
-export const dynamic = "force-dynamic"; // Always fetch fresh data
+
 export const revalidate = 3600; // Revalidate once per hour
 
 export async function generateMetadata() {  

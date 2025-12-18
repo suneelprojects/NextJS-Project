@@ -18,6 +18,11 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
         pathname: '/**',
       },
+      {
+        protocol: "https",
+        hostname: "storage.scalenut.com", // ✅ ADD THIS
+        pathname: "/**",
+      },
     ],
   },
 

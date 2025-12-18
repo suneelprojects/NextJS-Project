@@ -1,16 +1,14 @@
-export const dynamic = "force-dynamic";
-export const revalidate = 60;
+export const revalidate = 3600;
 
 import { getBlog } from "@/lib/getBlog";
 import OpenCourseBlog from "../OpenCourseBlog";
-import { sanitizeBlogHtml } from '@/utils/sanitizeHtmlServer';
+import { sanitizeBlogHtml } from "@/utils/sanitizeHtmlServer";
 
 // --------------------------
-// DYNAMIC META TAGS + JSON-LD
+// METADATA ONLY
 // --------------------------
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-
   const blog = await getBlog(slug);
 
   if (!blog) {
@@ -20,49 +18,55 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // JSON-LD Schema
-  const schema = blog.schemaJsonLd ? JSON.stringify(blog.schemaJsonLd) : "";
-
   return {
     title: blog.metaTitle || blog.title,
     description: blog.metaDescription || blog.excerpt,
-
     alternates: {
       canonical: `https://socialprachar.com/blog/${blog.slug}`,
     },
-
     openGraph: {
       title: blog.metaTitle || blog.title,
       description: blog.metaDescription || blog.excerpt,
       url: `https://socialprachar.com/blog/${blog.slug}`,
-      images: [{ url: blog.imageUrl }],
       type: "article",
+      images: blog.imageUrl
+        ? [
+            {
+              url: blog.imageUrl,
+              width: 1200,
+              height: 630,
+            },
+          ]
+        : [],
     },
-
-    // ⭐⭐⭐ Correct JSON-LD injection — Google-friendly
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: schema,
-      },
-    ],
   };
 }
-
 
 // --------------------------
 // PAGE CONTENT
 // --------------------------
 export default async function BlogPage({ params }) {
-  // await params before using its properties
   const { slug } = await params;
-
   const blog = await getBlog(slug);
 
-  if (!blog) return <div>Blog Not Found</div>;
+  if (!blog) {
+    return <div>Blog Not Found</div>;
+  }
 
-  // sanitize BEFORE passing to the component (server-side)
-  blog.content = sanitizeBlogHtml(blog.content || '');
+  blog.content = sanitizeBlogHtml(blog.content || "");
 
-  return <OpenCourseBlog blog={blog} />;
+  return (
+    <>
+      {blog.schemaJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(blog.schemaJsonLd),
+          }}
+        />
+      )}
+
+      <OpenCourseBlog blog={blog} />
+    </>
+  );
 }
