@@ -1,5 +1,11 @@
 import { initializeApp, getApps } from "firebase/app";
-import { getFirestore, collection, getDocs, orderBy, query } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -20,25 +26,29 @@ if (!getApps().length) {
 
 const db = getFirestore(app);
 
-// Helper to serialize Firestore timestamps
-function serializeBlog(doc) {
+// ✅ LISTING-SAFE SERIALIZER
+function serializeBlogForListing(doc) {
   const data = doc.data();
 
   const convert = (field) => {
     if (!data[field]) return null;
     if (data[field].toDate) return data[field].toDate().toISOString();
-    if (data[field].seconds) return new Date(data[field].seconds * 1000).toISOString();
+    if (data[field].seconds)
+      return new Date(data[field].seconds * 1000).toISOString();
     return data[field];
   };
 
   return {
     id: doc.id,
-    ...data,
+    title: data.title || "",
+    slug: data.slug || "",
+    imageUrl: data.imageUrl || "",
+    excerpt: data.excerpt || "",
+    metaDescription: data.metaDescription || "",
+    category: data.category || "",
+    readTime: data.readTime || "",
+    author: data.author || "",
     createdAt: convert("createdAt"),
-    updatedAt: convert("updatedAt"),
-    publishAt: convert("publishAt"),
-    date: convert("publishAt") || convert("createdAt"),
-    tags: Array.isArray(data.tags) ? data.tags : data.tags ? [data.tags] : [],
   };
 }
 
@@ -46,5 +56,5 @@ export async function getAllBlogs() {
   const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
   const snap = await getDocs(q);
 
-  return snap.docs.map((doc) => serializeBlog(doc));
+  return snap.docs.map((doc) => serializeBlogForListing(doc));
 }

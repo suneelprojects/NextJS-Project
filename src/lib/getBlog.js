@@ -1,5 +1,7 @@
 import { initializeApp, getApps } from "firebase/app";
 import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
+import { cache } from "react";
+
 
 // Initialize Firebase for server-side use
 const firebaseConfig = {
@@ -92,7 +94,7 @@ function serializeFirestoreData(data) {
 	return serialized;
 }
 
-export async function getBlog(slug) {
+async function _getBlog(slug) {
 	// Query Firestore for a blog with the given slug
 	const q = query(collection(db, "blogs"), where("slug", "==", slug));
 	const snap = await getDocs(q);
@@ -120,3 +122,5 @@ export async function getBlog(slug) {
 	// Serialize Firestore data to plain object before returning
 	return serializeFirestoreData(data);
 }
+
+export const getBlog = cache(_getBlog);

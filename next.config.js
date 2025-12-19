@@ -2,8 +2,11 @@ const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 🔒 Force Webpack (disable Turbopack)
+  
+
   images: {
-    unoptimized: true,
+    unoptimized: false,
     remotePatterns: [
       {
         protocol: 'https',
@@ -15,6 +18,11 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
         pathname: '/**',
       },
+      {
+        protocol: "https",
+        hostname: "storage.scalenut.com", // ✅ ADD THIS
+        pathname: "/**",
+      },
     ],
   },
 
@@ -23,7 +31,7 @@ const nextConfig = {
     return config;
   },
 
-  // ✅ Add redirect from www → non-www
+  // ✅ Redirect www → non-www
   async redirects() {
     return [
       {
