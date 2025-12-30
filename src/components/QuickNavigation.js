@@ -3,12 +3,15 @@
 
   export default function QuickNavigation({ openDialog, scrollToSection }) {
     const btn =
-      "border px-4 py-2 rounded text-sm font-bold flex items-center gap-2 bg-[#553CDF] text-white hover:bg-[#35258f] hover:text-dark transition";
+      "border px-4 py-2 rounded text-sm font-bold flex items-center gap-2   hover:bg-orange-200  transition";
+
+    const btns = "border px-4 py-2 rounded text-sm font-bold flex items-center gap-2 bg-[#553CDF] text-white hover:bg-[#35258f]  transition";
+
 
     return (
       <section className="  bg-white py-3">
         <div className="flex flex-wrap justify-center gap-2  bg-white">
-          <button onClick={() => openDialog("calculator")} className={btn}>
+          <button onClick={() => openDialog("calculator")} className={btns}>
             <Calculator className="w-4 h-4" /> Stipend Calculator
           </button>
           <button onClick={() => scrollToSection("pricing")} className={btn}>
@@ -20,7 +23,7 @@
           {/* <button onClick={() => scrollToSection("what-will-you-learn-section")} className={btn}>
             <BookOpen className="w-4 h-4" /> What will you learn
           </button> */}
-          <button onClick={() => scrollToSection("projects")} className={btn}>
+          <button onClick={() => scrollToSection("projects")} className={btns}>
             <Code className="w-4 h-4" /> Projects
           </button>
           <button onClick={() => scrollToSection("success-stories")} className={btn}>
