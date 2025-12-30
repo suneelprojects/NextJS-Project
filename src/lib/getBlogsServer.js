@@ -1,3 +1,5 @@
+// Server-side blog fetching - Firebase Web SDK (server-only, won't be bundled)
+// Using dynamic import ensures Firebase is only loaded server-side
 import { initializeApp, getApps } from "firebase/app";
 import {
   getFirestore,
@@ -16,7 +18,7 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
+// Initialize Firebase (server-side only)
 let app;
 if (!getApps().length) {
   app = initializeApp(firebaseConfig);

@@ -1,24 +1,31 @@
 /** @format */
 
+"use client";
+
 import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import BulbText from "@/components/reusedComponents/bulbText";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
 import newsStyle from "@/components/Homepage/newsArticle/news.module.css";
 import AchievementCard from "@/app/success-stories/ourAchievements/AchievementCard";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../../../firebase";
 
 const PlacedStudents = () => {
   const [achievements, setAchievements] = useState([]);
   const [selectedRole, setSelectedRole] = useState("all");
   const [selectedSection, setSelectedSection] = useState("all");
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    rootMargin: "100px",
+  });
 
   const handleRedirect = () => {
     window.location.href = "success-stories";
   };
 
-  // fetching Achievements
+  // fetching Achievements - Only fetch when component becomes visible
   const filteredAchievements = achievements.filter((achievement) => {
     const roleMatch =
       selectedRole === "all" || achievement.role === selectedRole;
@@ -29,15 +36,28 @@ const PlacedStudents = () => {
   });
 
   useEffect(() => {
+    // Only fetch when component is in view
+    if (!inView) return;
+
     const fetchAchievements = async () => {
-      const snapshot = await getDocs(
-        collection(db, "successStories-studentAchievements")
-      );
-      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setAchievements(data);
+      try {
+        setIsLoading(true);
+        const response = await fetch("/api/placed-students");
+        if (!response.ok) {
+          throw new Error("Failed to fetch achievements");
+        }
+        const data = await response.json();
+        setAchievements(data.achievements || []);
+      } catch (error) {
+        console.error("Error fetching achievements:", error);
+        setAchievements([]);
+      } finally {
+        setIsLoading(false);
+      }
     };
+
     fetchAchievements();
-  }, []);
+  }, [inView]);
 
   const groupAchievementsByCategory = (achievements) => {
     return achievements.reduce((acc, achievement) => {
@@ -53,7 +73,7 @@ const PlacedStudents = () => {
   const groupedAchievements = groupAchievementsByCategory(filteredAchievements);
 
   return (
-    <div className="containerFluidForPadding my-5">
+    <div ref={ref} className="containerFluidForPadding my-5">
       <div className={newsStyle.marqueeAchievements}>
         <div className={newsStyle.BulbTextStyle}>
           <BulbText
@@ -62,13 +82,16 @@ const PlacedStudents = () => {
             GreyText="Are You Ready to Be the Next?"
           />
         </div>
-        <div className={`${newsStyle.marquee} marquee`}>
-          <div className="py-4">
-            <div
-              className={`d-flex flex-column ${newsStyle.hide_scrollbar}`}
-              style={{ maxHeight: "90vh", overflowY: "auto" }}
-            >
-              <Marquee direction="left" speed={120}>
+        {isLoading ? (
+          <div className="text-center py-5">Loading achievements...</div>
+        ) : (
+          <div className={`${newsStyle.marquee} marquee`}>
+            <div className="py-4">
+              <div
+                className={`d-flex flex-column ${newsStyle.hide_scrollbar}`}
+                style={{ maxHeight: "90vh", overflowY: "auto" }}
+              >
+                <Marquee direction="left" speed={120} play={inView}>
                 {Object.keys(groupedAchievements).map((category) => {
                   const achievements = groupedAchievements[category];
                   const mid = Math.ceil(achievements.length / 2);
@@ -111,10 +134,11 @@ const PlacedStudents = () => {
                     </div>
                   );
                 })}
-              </Marquee>
+                </Marquee>
+              </div>
             </div>
           </div>
-        </div>
+        )}
         <div className="d-flex justify-content-center align-items-center">
           {/* <button
             className="btn fw-bold"

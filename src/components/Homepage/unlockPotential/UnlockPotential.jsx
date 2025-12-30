@@ -151,6 +151,9 @@ const UnlockPotential = () => {
               className={`${homeStyle.homePic}`}
               alt="AwardImg"
               priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+              quality={75}
+              placeholder="blur"
             />
           </div>
         </div>

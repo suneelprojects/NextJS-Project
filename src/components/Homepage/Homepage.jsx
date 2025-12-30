@@ -1,37 +1,69 @@
 'use client';
 
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import "@/components/Homepage/index.css";
-import Loading from '@/components/reusedComponents/Loading';
+import LazySection from '@/components/reusedComponents/LazySection';
 
-// Lazy load components
-const UnlockPotential = lazy(() => import('./unlockPotential/UnlockPotential'));
-const HomeBadge = lazy(() => import('./HomeBadge/HomeBadge'));
-const Clients = lazy(() => import('./clients/clients'));
-const EnrollDetails = lazy(() => import('./EnrollDetails/EnrollDetails'));
-const NewsOnUs = lazy(() => import('./newsArticle/newsOnUs'));
-const PlacedStudents = lazy(() => import('./PlacedStudents/PlacedStudents'));
-const TopCatogery = lazy(() => import('./TopCatogery/TopCatogery'));
-const HomeCourses = lazy(() => import('./HomeCardComp/HomeCourses'));
-const PathToExcellence = lazy(() => import('./sp_pathToExcellence/PathToExcellence'));
-const UpComming = lazy(() => import('./UpComming/UpComming'));
-const Comments = lazy(() => import('./comments/Comments'));
+// Import components directly (no lazy loading - LazySection handles visibility)
+import UnlockPotential from './unlockPotential/UnlockPotential';
+import HomeBadge from './HomeBadge/HomeBadge';
+import Clients from './clients/clients';
+import EnrollDetails from './EnrollDetails/EnrollDetails';
+import NewsOnUs from './newsArticle/newsOnUs';
+import PlacedStudents from './PlacedStudents/PlacedStudents';
+import TopCatogery from './TopCatogery/TopCatogery';
+import HomeCourses from './HomeCardComp/HomeCourses';
+import PathToExcellence from './sp_pathToExcellence/PathToExcellence';
+import UpComming from './UpComming/UpComming';
+import Comments from './comments/Comments';
 
 const Homepage = () => {
     return (
-        <Suspense fallback={<Loading />}>
+        <>
+            {/* HERO - Always render immediately */}
             <UnlockPotential />
-            <HomeBadge />
-            <Clients />
-            <EnrollDetails />
-            <NewsOnUs />
-            <PlacedStudents/>
-            <TopCatogery />
-            <HomeCourses/>
-            <PathToExcellence />
-            <UpComming />
-            <Comments />
-        </Suspense>
+            
+            {/* Everything else - Load on scroll */}
+            <LazySection>
+                <HomeBadge />
+            </LazySection>
+            
+            <LazySection>
+                <Clients />
+            </LazySection>
+            
+            <LazySection>
+                <EnrollDetails />
+            </LazySection>
+            
+            <LazySection>
+                <NewsOnUs />
+            </LazySection>
+            
+            <LazySection>
+                <PlacedStudents />
+            </LazySection>
+            
+            <LazySection>
+                <TopCatogery />
+            </LazySection>
+            
+            <LazySection>
+                <HomeCourses />
+            </LazySection>
+            
+            <LazySection>
+                <PathToExcellence />
+            </LazySection>
+            
+            <LazySection>
+                <UpComming />
+            </LazySection>
+            
+            <LazySection>
+                <Comments />
+            </LazySection>
+        </>
     );
 };
 

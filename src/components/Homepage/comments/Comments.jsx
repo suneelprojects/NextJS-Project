@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useInView } from "react-intersection-observer";
 
 import BulbText from "@/components/reusedComponents/bulbText";
 import MarqueeComp from "@/components/reusedComponents/MarqueeComp";
@@ -16,6 +19,11 @@ import commentNine from "@/assets/homepage/comments/comments (9).png";
 import commentsStyle from "@/components/Homepage/comments/comments.module.css";
 
 const Comments = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    rootMargin: "100px",
+  });
+
   const CommentsArray = [
     commentOne,
     commentTwo,
@@ -29,7 +37,7 @@ const Comments = () => {
   ];
 
   return (
-    <div className="containerFluidForPadding my-5">
+    <div ref={ref} className="containerFluidForPadding my-5">
       <div className={commentsStyle.BulbTextStyle}>
         <BulbText
           BulbText="Our Top Comments"
@@ -38,7 +46,7 @@ const Comments = () => {
         />
       </div>
       <div>
-        <MarqueeComp MarqueeArray={CommentsArray} />
+        <MarqueeComp MarqueeArray={CommentsArray} play={inView} />
       </div>
     </div>
   );

@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useInView } from "react-intersection-observer";
 
 import ImgOne from "@/assets/homepage/clients/one.png";
 import ImgTwo from "@/assets/homepage/clients/two.png";
@@ -21,6 +24,11 @@ import MarqueeComp from "@/components/reusedComponents/MarqueeComp";
 import PartnerStyle from "@/components/Homepage/clients/clients.module.css";
 
 const Clients = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    rootMargin: "100px",
+  });
+
   const PartnersArray = [
     ImgOne,
     ImgTwo,
@@ -39,7 +47,7 @@ const Clients = () => {
     ImgFifteen,
   ];
   return (
-    <div className="containerFluidForPadding my-5">
+    <div ref={ref} className="containerFluidForPadding my-5">
       <div className={PartnerStyle.BulbTextStyle}>
         <BulbText
           BulbText="Our Top Clients"
@@ -49,7 +57,7 @@ const Clients = () => {
       </div>
 
       <div className={PartnerStyle.ImagesSize}>
-        <MarqueeComp MarqueeArray={PartnersArray} />
+        <MarqueeComp MarqueeArray={PartnersArray} play={inView} />
       </div>
     </div>
   );
