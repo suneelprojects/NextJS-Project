@@ -3,7 +3,7 @@
 
   export default function QuickNavigation({ openDialog, scrollToSection }) {
     const btn =
-      "border px-4 py-2 rounded text-sm font-bold flex items-center gap-2 hover:bg-orange-300 transition";
+      "border px-4 py-2 rounded text-sm font-bold flex items-center gap-2 bg-[#553CDF] text-white hover:bg-[#35258f] hover:text-dark transition";
 
     return (
       <section className="  bg-white py-3">
