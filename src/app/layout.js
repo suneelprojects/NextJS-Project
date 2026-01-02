@@ -159,11 +159,11 @@ export default function RootLayout({ children }) {
 
 
         {/* Scalenut verification — keep id unique and run before interactive */}
-      <Script
-  id="scalenut-verification"
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: `
+        <Script
+          id="scalenut-verification"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
       (function(w,d,k){
         try {
           w.scalenut_verification_id = k;
@@ -176,11 +176,28 @@ export default function RootLayout({ children }) {
         }
       })(window, document, "d33932de67280d162be2d2f0f4c514e8");
     `,
-  }}
-/>
+          }}
+        />
 
-
-          
+        {/* Educational Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "EducationalOrganization",
+              "name": "SocialPrachar",
+              "url": "https://socialprachar.com",
+              "description": "EdTech training institute offering Data Science, AI, Full Stack and Digital Marketing programs.",
+              "areaServed": "India",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Hyderabad",
+                "addressCountry": "IN"
+              }
+            })
+          }}
+        />
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
