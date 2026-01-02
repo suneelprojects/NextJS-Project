@@ -324,7 +324,7 @@ const Header = () => {
               {/* Highlighted Text */}
               <p className={`mt-3 ${style.highlightedText}`}>
 
-                Built for 2025  - <span className={style.tagline} > Curriculum That Gets You Hired </span>
+                Built for 2026  - <span className={style.tagline} > Curriculum That Gets You Hired </span>
               </p>
 
               {/* Symbol Items */}
