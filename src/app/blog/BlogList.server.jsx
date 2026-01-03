@@ -23,6 +23,7 @@ export default function BlogList({ blogs, currentPage, postsPerPage }) {
           key={post.id}
           href={`/blog/${post.slug}`}
           className="group block bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow no-underline hover:no-underline text-inherit"
+          style={{ textDecoration: "none" }}
         >
           <div className="md:flex">
             <div className="md:w-80 relative">

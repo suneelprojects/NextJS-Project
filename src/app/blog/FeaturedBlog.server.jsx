@@ -13,6 +13,7 @@ export default function FeaturedBlog({ featuredPost }) {
       <Link
         href={`/blog/${featuredPost.slug}`}
         className="block bg-white rounded-3xl shadow-xl overflow-hidden no-underline hover:no-underline text-inherit"
+        style={{ textDecoration: "none" }}
       >
         <div className="lg:flex">
           <div className="lg:w-1/2 relative">
