@@ -62,71 +62,78 @@ const Thankyou = () => {
     };
 
     const [dropdown, setDropdown] = useState(false);
-    
-      const toggleDropdown = () => {
-        setDropdown(!dropdown);
-      };
 
-  return (
-    <>
-      {/* Google tag (gtag.js) */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=AW-930111032"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
+    const toggleDropdown = () => {
+        setDropdown(!dropdown);
+    };
+
+    return (
+        <>
+            {/* Google tag (gtag.js) */}
+            <Script
+                src="https://www.googletagmanager.com/gtag/js?id=AW-930111032"
+                strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+                {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'AW-930111032');
         `}
-      </Script>
-      
-      <div style={styles.container}>
-    <div style={styles.thankyouWrapper}>
-        <div style={styles.contentBox}>
-            <h1 style={styles.heading}>
-                Thanks for Enquiring!
-            </h1>
-            <p style={styles.paragraph}>
-                Thank you for enquiring at <span style={styles.highlight}>Socialprachar.com</span> for your course requirement.
-            </p>
-            <p style={styles.paragraph}>
-                Our friendly team will connect with you shortly.
-            </p>
-            <p style={styles.paragraph}>
-                In case of quick support, call <strong style={styles.phoneNumber}> 8019 479 419 .</strong>
-            </p>
-            <div className="dropdown">
-                <button className={`${Buttonstyle.shinebtn} btn btn-secondary dropdown-toggle`} type="button"  onClick={() => toggleDropdown()} >
-                    Download Curriculums
-                </button>
-                <ul className={`dropdown-menu ${dropdown ? "show" : ""}`}>
-                    <li>
-                        <a className="dropdown-item" href="/curriculum_pdfs/full_stack_curriculum.pdf" download="full_stack_curriculum.pdf">
-                            Full Stack Curriculum
-                        </a>
-                    </li>
-                    <li>
-                        <a className="dropdown-item" href="/curriculum_pdfs/Data Science & AI Curriculum 2025.pdf" download="Data_Science_Curriculum.pdf">
-                            Data Science Curriculum
-                        </a>
-                    </li>
-                    <li>
-                        <a className="dropdown-item" href="/curriculum_pdfs/DM_Advanced_Curriculum_Hyd.pdf" download="DM_Advanced_Curriculum_Hyd.pdf">
-                            Digital Marketing Curriculum
-                        </a>
-                    </li>
-                </ul>
+            </Script>
 
+            <div style={styles.container}>
+                <div style={styles.thankyouWrapper}>
+                    <div style={styles.contentBox}>
+                        <h1 style={styles.heading}>
+                            Thanks for Enquiring!
+                        </h1>
+                        <p style={styles.paragraph}>
+                            Thank you for enquiring at <span style={styles.highlight}>Socialprachar.com</span> for your course requirement.
+                        </p>
+                        <p style={styles.paragraph}>
+                            Our friendly team will connect with you shortly.
+                        </p>
+                        <p style={styles.paragraph}>
+                            In case of quick support, call <strong style={styles.phoneNumber}> 8019 479 419 .</strong>
+                        </p>
+                        <div className="dropdown">
+                            <button className={`${Buttonstyle.shinebtn} btn btn-secondary dropdown-toggle`} type="button" onClick={() => toggleDropdown()} >
+                                Download Curriculums
+                            </button>
+                            <ul className={`dropdown-menu ${dropdown ? "show" : ""}`}>
+                                <li>
+                                    <a className="dropdown-item" href="/curriculum_pdfs/full_stack_curriculum.pdf" download="full_stack_curriculum.pdf">
+                                        Full Stack Curriculum
+                                    </a>
+                                </li>
+                                <li>
+                                    <a className="dropdown-item" href="/curriculum_pdfs/Data Science & AI Curriculum 2025.pdf" download="Data_Science_Curriculum.pdf">
+                                        Data Science Curriculum
+                                    </a>
+                                </li>
+                                <li>
+                                    <a className="dropdown-item" href="/curriculum_pdfs/DM_Advanced_Curriculum_Hyd.pdf" download="DM_Advanced_Curriculum_Hyd.pdf">
+                                        Digital Marketing Curriculum
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a className="dropdown-item" href="/curriculum_pdfs/gen_ai_course_ciruculm.pdf" download="Generative_AI_Curriculum_Hyd.pdf">
+                                        Generative AI Curriculum
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
-
-        </div>
-    </div>
-</div>
-    </>
-  )
+        </>
+    )
 }
 
 export default Thankyou;

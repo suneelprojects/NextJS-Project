@@ -300,7 +300,7 @@ const Testimonials = () => {
                   studentPlacedImages
                     .concat(studentPlacedImages)
                     .map((student, index) => (
-                      <div key={index} className="flex-shrink-0 w-48 h-64 relative rounded-2xl overflow-hidden shadow-sm group-hover:shadow-md transition-shadow grayscale hover:grayscale-0">
+                      <div key={index} className="flex-shrink-0 w-48 h-64 relative rounded-2xl overflow-hidden shadow-sm group-hover:shadow-md transition-shadow ">
                         <Image
                           src={student.image}
                           alt={`Success Story ${index + 1}`}
