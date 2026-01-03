@@ -42,9 +42,9 @@ export default function ClientLayoutWrapper({ children }) {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <ScrollToTop />
+        {/* <ScrollToTop /> */}
         <Navbar />
-        <QuickHelpButton />
+        {/* <QuickHelpButton /> */}
         {/* Popup disabled globally */}
         {/* {!excludedPaths.some((path) => pathname?.startsWith(path)) &&
           showPopup && <Popup setShowPopup={setShowPopup} />} */}

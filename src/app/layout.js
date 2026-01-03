@@ -1,6 +1,7 @@
 // src/app/layout.js
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import Script from "next/script";
 import DynamicHeaderManager from "@/components/DynamicHeaderManager/DynamicHeaderManager";
@@ -240,6 +241,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </body>
+      <Analytics />
     </html>
   );
 }
