@@ -1,8 +1,10 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Testimonials.module.css';
 import blackLine from '@/assets/courses/blackLine.svg';
+import { ChevronDown } from 'lucide-react';
 import { data } from "@/app/courses/mainCoursePage/cardsSection/CardData";
 import { useParams } from "next/navigation";
 import AOS from "aos";
@@ -78,6 +80,7 @@ const Testimonials = () => {
   const [studentsEnrolled, setStudentsEnrolled] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
   const [completionRating, setCompletionRating] = useState(0);
+  const [showAll, setShowAll] = useState(false);
   const [screenWidth, setScreenWidth] = useState(
     typeof window !== 'undefined' ? window.innerWidth : 1024
   );
@@ -164,6 +167,8 @@ const Testimonials = () => {
     return () => clearInterval(scrollInterval);
   }, [studentPlacedImages]);
 
+  const visibleTestimonials = showAll ? testimonialData : testimonialData.slice(0, 3);
+
   // SEO Schema
   const schemaData = {
     "@context": "https://schema.org",
@@ -227,40 +232,57 @@ const Testimonials = () => {
         </div>
 
         {/* Testimonial Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {testimonialData.map((testimonial, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow duration-300"
-              data-aos="fade-up"
-              data-aos-delay={idx * 100}
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">
-                  {testimonial.name.charAt(0)}
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 text-base">{testimonial.name}</h4>
-                  <div className="flex items-center gap-1">
-                    <div className="flex text-yellow-400 text-sm">
-                      {"★".repeat(testimonial.rating)}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <AnimatePresence mode="popLayout">
+            {visibleTestimonials.map((testimonial, idx) => (
+              <motion.div
+                key={testimonial.name + idx}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow duration-300"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">
+                    {testimonial.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-base">{testimonial.name}</h4>
+                    <div className="flex items-center gap-1">
+                      <div className="flex text-yellow-400 text-sm">
+                        {"★".repeat(testimonial.rating)}
+                      </div>
+                      <span className="text-xs text-gray-500">• {testimonial.time}</span>
                     </div>
-                    <span className="text-xs text-gray-500">• {testimonial.time}</span>
                   </div>
                 </div>
-              </div>
-              <p className="text-gray-600 text-sm leading-relaxed italic flex-grow">
-                "{testimonial.content}"
-              </p>
-              <div className="mt-4 pt-4 border-t border-gray-50 flex items-center justify-between">
-                <span className="text-xs font-medium text-gray-400">{testimonial.reviews} Google reviews</span>
-                <div className="flex items-center gap-1 grayscale opacity-50">
-                  <span className="text-[10px] font-bold text-gray-400">Google</span>
+                <p className="text-gray-600 text-sm leading-relaxed italic flex-grow">
+                  "{testimonial.content}"
+                </p>
+                <div className="mt-4 pt-4 border-t border-gray-50 flex items-center justify-between">
+                  <span className="text-xs font-medium text-gray-400">{testimonial.reviews} Google reviews</span>
+                  <div className="flex items-center gap-1 grayscale opacity-50">
+                    <span className="text-[10px] font-bold text-gray-400">Google</span>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
+
+        {!showAll && testimonialData.length > 3 && (
+          <div className="flex justify-center mb-20">
+            <button
+              onClick={() => setShowAll(true)}
+              className="group flex items-center gap-2 px-8 py-2 bg-orange-600 text-white font-bold rounded hover:bg-orange-700 transition-all shadow-lg hover:shadow-orange-200 hover:-translate-y-1 active:translate-y-0"
+            >
+              View More
+
+            </button>
+          </div>
+        )}
 
         {/* Stats Section */}
         <div id="success-stories" className="border-t border-gray-200 pt-16">
