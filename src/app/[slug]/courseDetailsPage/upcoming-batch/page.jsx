@@ -50,7 +50,7 @@ export default function Page() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <p className="text-4xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-              Upcoming Batch 
+              Upcoming Batch
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -66,7 +66,7 @@ export default function Page() {
                 <div className="space-y-4">
                   <div>
                     <div className="text-3xl font-bold text-blue-600 mb-2">
-                      10th December 2025
+                      16th January 2026
                     </div>
                     <p className="text-gray-600">
                       Online & Classroom (KPHB, Hyderabad)
@@ -118,9 +118,8 @@ export default function Page() {
                   </div>
 
                   <div
-                    className={`space-y-2 pt-4 border-t border-gray-200 ${
-                      priceUnlocked ? "" : "blur-sm"
-                    }`}
+                    className={`space-y-2 pt-4 border-t border-gray-200 ${priceUnlocked ? "" : "blur-sm"
+                      }`}
                   >
                     <div className="text-sm text-gray-600">
                       Special Scholarship Test Available
@@ -135,31 +134,28 @@ export default function Page() {
 
                   <div className="flex  gap-2  ">
 
-                  <a
-                    href="/scholarship-test"
-                    className={`text-blue-600 text-sm hover:underline ${
-                      priceUnlocked ? "" : "blur-sm"
-                    }`}
-                  >
-                    View More details
-                  </a>
+                    <a
+                      href="/scholarship-test"
+                      className={`text-blue-600 text-sm hover:underline ${priceUnlocked ? "" : "blur-sm"
+                        }`}
+                    >
+                      View More details
+                    </a>
 
-                  <a
-                    href="https://labs.socialhire.in/contest/scholarshiptest-livenow"
-                    target="_blank"
-                    className={`text-blue-600 text-sm hover:underline ${
-                      priceUnlocked ? "" : "blur-sm"
-                    }`}
-                  >
-                    Take Scholarship Test for Discount  →
-                  </a>
+                    <a
+                      href="https://labs.socialhire.in/contest/scholarshiptest-livenow"
+                      target="_blank"
+                      className={`text-blue-600 text-sm hover:underline ${priceUnlocked ? "" : "blur-sm"
+                        }`}
+                    >
+                      Take Scholarship Test for Discount  →
+                    </a>
 
                   </div>
 
                   <div
-                    className={`pt-4 border-t border-gray-200 ${
-                      priceUnlocked ? "" : "blur-sm"
-                    }`}
+                    className={`pt-4 border-t border-gray-200 ${priceUnlocked ? "" : "blur-sm"
+                      }`}
                   >
                     <p className="text-xs text-gray-500">
                       * Internship includes performance-based stipend up to ₹45,000
