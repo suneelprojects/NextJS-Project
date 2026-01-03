@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useInView } from "react-intersection-observer";
 
 import BulbText from "@/components/reusedComponents/bulbText";
 import MarqueeComp from "@/components/reusedComponents/MarqueeComp";
@@ -18,6 +21,11 @@ import newsStyle from "./news.module.css";
 
 
 const NewsOnUs = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    rootMargin: "100px",
+  });
+
   const newsArticles = [
     newsArticleOne,
     newsArticleTwo,
@@ -33,7 +41,7 @@ const NewsOnUs = () => {
 
 
   return (
-    <div className="containerFluidForPadding my-5">
+    <div ref={ref} className="containerFluidForPadding my-5">
       <div className={newsStyle.BulbTextStyle}>
         <BulbText
           BulbText="Top News Channels"
@@ -43,7 +51,7 @@ const NewsOnUs = () => {
       </div>
 
       <div className={newsStyle.ImagesSize}>
-        <MarqueeComp MarqueeArray={newsArticles} />
+        <MarqueeComp MarqueeArray={newsArticles} play={inView} />
       </div>
 
       

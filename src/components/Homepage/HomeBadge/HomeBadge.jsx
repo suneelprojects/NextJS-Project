@@ -2,7 +2,8 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 
 import fourImageOne from "@/assets/homepage/HomeBadge/fourStep (1).png";
 import fourImageTwo from "@/assets/homepage/HomeBadge/fourStep (2).png";
@@ -17,29 +18,30 @@ import ParallaxEffect from "@/components/reusedComponents/ParallaxEffect";
 import fourStepsStyle from "@/components/Homepage/HomeBadge/HomeBadge.module.css";
 import Image from "next/image";
 
+const fourStepsArray = [
+  {
+    fourImg: fourImageOne,
+    fourFirstText: 155000,
+    fourSecondText: `Hours Classes \n Delivered`,
+  },
+  {
+    fourImg: fourImageTwo,
+    fourFirstText: 530,
+    fourSecondText: "Batches Completed",
+  },
+  {
+    fourImg: fourImageThree,
+    fourFirstText: 16000,
+    fourSecondText: "Students Trained",
+  },
+  {
+    fourImg: fourImageFour,
+    fourFirstText: 9,
+    fourSecondText: `Prestigious EdTech \n Award Received`,
+  },
+];
+
 const HomeBadge = () => {
-  const fourStepsArray = [
-    {
-      fourImg: fourImageOne,
-      fourFirstText: 155000,
-      fourSecondText: `Hours Classes \n Delivered`,
-    },
-    {
-      fourImg: fourImageTwo,
-      fourFirstText: 530,
-      fourSecondText: "Batches Completed",
-    },
-    {
-      fourImg: fourImageThree,
-      fourFirstText: 16000,
-      fourSecondText: "Students Trained",
-    },
-    {
-      fourImg: fourImageFour,
-      fourFirstText: 9,
-      fourSecondText: `Prestigious EdTech \n Award Received`,
-    },
-  ];
 
   const images = [
     { src: wavesPic, className: "objectOne", dataValue: "5", alt: "Image 1" },
@@ -50,30 +52,57 @@ const HomeBadge = () => {
     fourStepsArray.map(() => 0)
   );
 
-  useEffect(() => {
-    const intervals = fourStepsArray.map((step, index) => {
-      return setInterval(() => {
-        setCurrentNumbers((prevNumbers) => {
-          const newNumbers = [...prevNumbers];
-          if (newNumbers[index] < step.fourFirstText) {
-            newNumbers[index] += 100;
-            if (newNumbers[index] > step.fourFirstText) {
-              newNumbers[index] = step.fourFirstText;
-            }
-          } else {
-            clearInterval(intervals[index]);
-          }
-          return newNumbers;
-        });
-      }, 1);
-    });
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    rootMargin: "100px",
+  });
 
-    return () => intervals.forEach((interval) => clearInterval(interval));
-  }, [fourStepsArray]);
+  const animationFrameRef = useRef(null);
+  const hasAnimatedRef = useRef(false);
+
+  useEffect(() => {
+    // Only animate when in view and hasn't animated yet
+    if (!inView || hasAnimatedRef.current) return;
+
+    const startTime = Date.now();
+    const duration = 2000; // 2 seconds animation
+    const targetValues = fourStepsArray.map(step => step.fourFirstText);
+
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+
+      setCurrentNumbers(() => {
+        const newNumbers = targetValues.map((targetValue) => {
+          const currentValue = Math.floor(targetValue * easeOutQuart);
+          return Math.min(currentValue, targetValue);
+        });
+
+        if (progress < 1) {
+          animationFrameRef.current = requestAnimationFrame(animate);
+        } else {
+          hasAnimatedRef.current = true;
+        }
+
+        return newNumbers;
+      });
+    };
+
+    animationFrameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [inView]);
 
   return (
     <>
-      <div className="fourStepsHover container-fluid mt-5">
+      <div ref={ref} className="fourStepsHover container-fluid mt-5">
         <div
           className={` row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 ${fourStepsStyle.fourStepContainer} py-4 `}
         >

@@ -79,6 +79,14 @@ export async function generateMetadata({ params }) {
   };
 }
 
+import SpecialFaqs from './courseDetailsPage/courseFAQs/SpecialFaqs';
+
+const specialSlugs = [
+  'data-science',
+  'generative-ai-course-training-institute-hyderabad',
+  'artificial-intelligence-course-training-institute-in-hyderabad'
+];
+
 // ✅ Page Component with JSON-LD injection
 const Page = async ({ params }) => {
   const { slug } = await params;
@@ -95,15 +103,15 @@ const Page = async ({ params }) => {
 
       <div className=" postion-relative ">
         <Header />
-        
-        
+
+
         <Testimonials />
         <WhatwillYouLearn />
-        <Datascience slug={slug}/>
+        <Datascience slug={slug} />
         <Unlockbonuses />
         <Coursepath />
         <NextcohortStarts />
-        <CourseFaqs />
+        {specialSlugs.includes(slug) ? <SpecialFaqs slug={slug} /> : <CourseFaqs />}
         <Masterclass />
         <UpcomingBatches />
         <ConnectUs />

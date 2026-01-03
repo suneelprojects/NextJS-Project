@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
+import dynamic from "next/dynamic";
 
 import BulbText from "@/components/reusedComponents/bulbText";
-import SwipperTop from "@/components/Homepage/TopCatogery/SwipperTop";
 import ParallaxEffect from "@/components/reusedComponents/ParallaxEffect";
 
 import topCatogeryStyle from "@/components/Homepage/TopCatogery/topCatogery.module.css";
@@ -9,6 +11,11 @@ import topCatogeryStyle from "@/components/Homepage/TopCatogery/topCatogery.modu
 import SvgBulb from "@/assets/homepage/reUsed_Pics/bulbSvg.png";
 import wavesPic from "@/assets/homepage/reUsed_Pics/waves.png";
 import BookSvg from "@/assets/homepage/reUsed_Pics/book.png";
+
+// Lazy load Swiper component - heavy JS & CSS
+const SwipperTop = dynamic(() => import("./SwipperTop"), {
+  ssr: false,
+});
 
 const TopCatogery = () => {
   const images = [

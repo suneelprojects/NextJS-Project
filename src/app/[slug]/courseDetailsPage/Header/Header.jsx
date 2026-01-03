@@ -194,19 +194,19 @@ const Header = () => {
   };
 
 
-// quick navigation dialog state and functions
-    const [dialogOpen, setDialogOpen] = useState(false);
-    const [dialogType, setDialogType] = useState("");
-  
-    const openDialog = (type) => {
-      setDialogType(type);
-      setDialogOpen(true);
-    };
-  
-    const scrollToSection = (id) => {
-      const section = document.getElementById(id);
-      if (section) section.scrollIntoView({ behavior: "smooth" });
-    };
+  // quick navigation dialog state and functions
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogType, setDialogType] = useState("");
+
+  const openDialog = (type) => {
+    setDialogType(type);
+    setDialogOpen(true);
+  };
+
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) section.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
@@ -420,7 +420,7 @@ const Header = () => {
       </section>
 
 
-      
+
 
       {/* Video Section */}
       {[
