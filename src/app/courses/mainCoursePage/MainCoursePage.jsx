@@ -24,21 +24,21 @@ export const items = [
 export const Tag = ["Web Development", "Job Guarantee Programs", "Cloud"];
 const mainCoursePage = () => {
     const [searchQuery, setSearchQuery] = useState("");
-     const [checked, setChecked] = useState(
-       new Array(items.length).fill(false)
-     );
-     const [showUncheckedShadow, setShowUncheckedShadow] = useState(
-       new Array(items.length).fill(false)
-     );
+    const [checked, setChecked] = useState(
+        new Array(items.length).fill(false)
+    );
+    const [showUncheckedShadow, setShowUncheckedShadow] = useState(
+        new Array(items.length).fill(false)
+    );
 
-     const [checkedTags, setCheckedTags] = useState(
-       new Array(Tag.length).fill(false)
-     );
-     const [showUncheckedShadowTags, setShowUncheckedShadowTags] = useState(
-       new Array(Tag.length).fill(false)
-     );
+    const [checkedTags, setCheckedTags] = useState(
+        new Array(Tag.length).fill(false)
+    );
+    const [showUncheckedShadowTags, setShowUncheckedShadowTags] = useState(
+        new Array(Tag.length).fill(false)
+    );
 
-      const clearFilters = () => {
+    const clearFilters = () => {
         setChecked(new Array(items.length).fill(false));
         setCheckedTags(new Array(Tag.length).fill(false));
         setRefreshCards(true);
@@ -49,14 +49,14 @@ const mainCoursePage = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-     const [showButton, setShowButton] = useState(false);
-     const [refreshCards, setRefreshCards] = useState([]);
-     const [filteredCards, setFilteredCards] = useState([]);
-     const containerRef = useRef(null);
+    const [showButton, setShowButton] = useState(false);
+    const [refreshCards, setRefreshCards] = useState([]);
+    const [filteredCards, setFilteredCards] = useState([]);
+    const containerRef = useRef(null);
 
     return (
         <>
-          <div className={courseCSS.categorypage}>
+            <div className={courseCSS.categorypage}>
                 <div className={courseCSS.cover_img}>
                     <Image src={banner} className={courseCSS.thumbnail} alt="" />
                     <h1>Courses</h1>
@@ -78,10 +78,10 @@ const mainCoursePage = () => {
                     setSearchQuery={setSearchQuery}
                 />
 
-               <div className={courseCSS.EntirePage}>
+                <div className={courseCSS.EntirePage}>
                     <div className={courseCSS.category}>
                         {/* Duplicate filter section for non-toggle bar view */}
-                            <div className={courseCSS.checkbox}>
+                        <div className={courseCSS.checkbox}>
                             <div className={courseCSS.search}>
                                 <p>Search</p>
                                 <div className={courseCSS.searchBar}>
@@ -146,7 +146,7 @@ const mainCoursePage = () => {
                     )}
                 </div>
             </div>
-            
+
         </>
     );
 };

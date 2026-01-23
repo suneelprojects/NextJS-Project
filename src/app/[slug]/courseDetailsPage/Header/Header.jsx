@@ -77,6 +77,7 @@ import '../Unlockbonuses/UnlockbonusesCustom.css';
 //importing the quick navigation buttons 
 import QuickNavigation from "@/components/QuickNavigation";
 import LeadFormDialog from "@/components/LeadFormDialog";
+import EmiFormDialog from "@/components/EmiFormDialog";
 
 
 const logos = [
@@ -412,11 +413,18 @@ const Header = () => {
       {/* quick navigation buttons */}
       <section key={pathname} className="sticky top-0 z-[100] bg-white shadow-md">
         <QuickNavigation openDialog={openDialog} scrollToSection={scrollToSection} />
-        <LeadFormDialog
-          isOpen={dialogOpen}
-          onClose={() => setDialogOpen(false)}
-          dialogType={dialogType}
-        />
+        {dialogType === "emi" ? (
+          <EmiFormDialog
+            isOpen={dialogOpen}
+            onClose={() => setDialogOpen(false)}
+          />
+        ) : (
+          <LeadFormDialog
+            isOpen={dialogOpen}
+            onClose={() => setDialogOpen(false)}
+            dialogType={dialogType}
+          />
+        )}
       </section>
 
 
