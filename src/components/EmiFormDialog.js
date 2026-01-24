@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "@/app/scholarship-test/PopUpForm.module.css";
 import StipendCalculator from "@/components/StipendCalculator";
 
@@ -11,13 +11,20 @@ export default function EmiFormDialog({ isOpen, onClose }) {
         phone: "",
         graduation: "",
         mode: "",
+        Page_Url: "",
     });
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setFormData((prev) => ({ ...prev, Page_Url: window.location.href }));
+        }
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await fetch(
-                "https://integration.pqa.salesmax.ai/salesmax/leads?token=gNAmGSQc15N9Nn4yZwiE4A",
+                "https://integration.pqa.salesmax.ai/salesmax/leads?token=dUi0kkBphtCG78rBsKr3Fg",
                 {
                     method: "POST",
                     headers: {
@@ -75,6 +82,7 @@ export default function EmiFormDialog({ isOpen, onClose }) {
 
                 <form onSubmit={handleSubmit}>
                     <h2>Enroll for EMI Details</h2>
+                    <input type="hidden" name="Page_Url" value={formData.Page_Url} />
 
                     <div className={styles.formGroup}>
                         <input
