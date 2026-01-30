@@ -211,12 +211,17 @@ const Header = () => {
 
   return (
     <>
-      {/* Offer Banner */}
-      <div className={style.headerContainer}>
-        <Image src={BackgroundImg} alt="Background" className={style.backgroundImage} />
+      
+        <div className={style.headerContainer}>
+          <Image 
+            src={BackgroundImg} 
+            alt="Background" 
+            className={style.backgroundImage}
+            loading="lazy"
+          />
 
-        <div className="row d-flex justify-content-center mt-4">
-          {/* Offer Banner inside the card at top */}
+          <div className="row d-flex justify-content-center mt-4">
+            {/* Offer Banner inside the card at top */}
           <div
             className={`px-5 py-4 d-flex flex-column flex-md-row col-11 col-md-12 col-lg-10 col-xl-8 bg-white vh-75 rounded-4 shadow position-relative ${style.card}`}
             style={{ zIndex: 10 }}
@@ -373,7 +378,7 @@ const Header = () => {
             <div className="col-md-6 d-flex justify-content-center align-items-center mt-5">
               <div className={`${style.HeaderPicture} text-center`}>
                 {card && (
-                  <Image src={awardImage} alt="Course" className={`img-fluid ${style.headerImage} shadow`} />
+                  <Image src={awardImage} alt="Course" className={`img-fluid ${style.headerImage} shadow`} loading="lazy" />
                 )}
                 <div className={style.EnrollButtonContent}>
                   {card && !isSmallScreen && (
@@ -385,7 +390,7 @@ const Header = () => {
                     />
                   )}
                   <span>
-                    <Image src={FollowerImg} alt="Follower group" className={style.FollowerImage} />
+                    <Image src={FollowerImg} alt="Follower group" className={style.FollowerImage} loading="lazy" />
                   </span>
                   <div className={style.reviewContainer}>
                     <div className={style.FollowerStars}>
@@ -396,6 +401,7 @@ const Header = () => {
                           alt="Star"
                           className={style.star}
                           style={{ color: 'gold' }}
+                          loading="lazy"
                         />
                       ))}
                     </div>
