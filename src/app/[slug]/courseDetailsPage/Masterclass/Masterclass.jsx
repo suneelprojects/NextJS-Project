@@ -13,7 +13,7 @@ import Image from "next/image";
 
 
 const Masterclass = () => {
-   const router = useRouter();
+  const router = useRouter();
   const { slug } = useParams();
   const [card, setCard] = useState(null);
   const doughtsPartRef = useRef(null);
@@ -46,6 +46,22 @@ const Masterclass = () => {
     const cardDetails = data.find((item) => item.slug === slug);
     setCard(cardDetails);
   }, [slug]);
+
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsMobile(window.innerWidth < 1025);
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 1025);
+      };
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <>

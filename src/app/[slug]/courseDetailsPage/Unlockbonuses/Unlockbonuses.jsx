@@ -41,6 +41,18 @@ const Unlockbonuses = () => {
     setCard(cardDetails);
   }, [slug]);
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsMobile(window.innerWidth < 1025);
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 1025);
+      };
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
   const images = [image1, image2, image3];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const autoSlideInterval = 4000;
@@ -75,7 +87,11 @@ const Unlockbonuses = () => {
 
           <div className={styles.cards}>
             <div className="row justify-content-center">
-              {[image1, image2, image3].map((image, index) => (
+              {[
+                "Get an exclusive free subscription to AI powered job portal",
+                "Free soft skills & communication preparation.",
+                "Get a free career development 1:1 mentorship session",
+              ].map((text, index) => (
                 <div key={index} className="col-12 col-sm-6 col-md-4 mb-4">
                   <div
                     className="text-center p-2 mb-0"
@@ -86,11 +102,30 @@ const Unlockbonuses = () => {
                     </strong>
                   </div>
                   <div className="card" style={bonusCardStyle}>
-                    <Image
-                      src={image}
-                      className="card-img-top"
-                      alt={`Bonus ${index + 1}`}
-                    />
+                    {!isMobile ? (
+                      <Image
+                        src={images[index]}
+                        className="card-img-top"
+                        alt={`Bonus ${index + 1}`}
+                      />
+                    ) : (
+                      <div
+                        className="d-flex align-items-center justify-content-center p-4"
+                        style={{ minHeight: "200px", backgroundColor: "#fff" }}
+                      >
+                        <h4
+                          className="text-center"
+                          style={{
+                            color: "#553cdf",
+                            fontWeight: "bold",
+                            fontSize: "1.2rem",
+                            lineHeight: "1.4",
+                          }}
+                        >
+                          {text}
+                        </h4>
+                      </div>
+                    )}
                     <div
                       className="card-body text-center"
                       style={{ backgroundColor: "#e5e0ff" }}
