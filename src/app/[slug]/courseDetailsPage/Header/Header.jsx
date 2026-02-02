@@ -211,17 +211,19 @@ const Header = () => {
 
   return (
     <>
-      
-        <div className={style.headerContainer}>
-          <Image 
-            src={BackgroundImg} 
-            alt="Background" 
+
+      <div className={style.headerContainer}>
+        {!isMobile && (
+          <Image
+            src={BackgroundImg}
+            alt="Background"
             className={style.backgroundImage}
             loading="lazy"
           />
+        )}
 
-          <div className="row d-flex justify-content-center mt-4">
-            {/* Offer Banner inside the card at top */}
+        <div className="row d-flex justify-content-center mt-4">
+          {/* Offer Banner inside the card at top */}
           <div
             className={`px-5 py-4 d-flex flex-column flex-md-row col-11 col-md-12 col-lg-10 col-xl-8 bg-white vh-75 rounded-4 shadow position-relative ${style.card}`}
             style={{ zIndex: 10 }}
@@ -389,24 +391,28 @@ const Header = () => {
                       actionType="Button:Enroll Now"
                     />
                   )}
-                  <span>
-                    <Image src={FollowerImg} alt="Follower group" className={style.FollowerImage} loading="lazy" />
-                  </span>
-                  <div className={style.reviewContainer}>
-                    <div className={style.FollowerStars}>
-                      {[...Array(5)].map((_, index) => (
-                        <Image
-                          key={index}
-                          src={starSymbol}
-                          alt="Star"
-                          className={style.star}
-                          style={{ color: 'gold' }}
-                          loading="lazy"
-                        />
-                      ))}
-                    </div>
-                    <span className={style.FollowerCount}>426 reviews (4.7 of 5)</span>
-                  </div>
+                  {!isMobile && (
+                    <>
+                      <span>
+                        <Image src={FollowerImg} alt="Follower group" className={style.FollowerImage} loading="lazy" />
+                      </span>
+                      <div className={style.reviewContainer}>
+                        <div className={style.FollowerStars}>
+                          {[...Array(5)].map((_, index) => (
+                            <Image
+                              key={index}
+                              src={starSymbol}
+                              alt="Star"
+                              className={style.star}
+                              style={{ color: 'gold' }}
+                              loading="lazy"
+                            />
+                          ))}
+                        </div>
+                        <span className={style.FollowerCount}>426 reviews (4.7 of 5)</span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
