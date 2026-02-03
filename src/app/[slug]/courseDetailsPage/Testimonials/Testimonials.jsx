@@ -203,6 +203,15 @@ const Testimonials = () => {
     "publisher": {
       "@type": "Organization",
       "name": "Google / Student Review"
+    },
+    "itemReviewed": {
+      "@type": "Course",
+      "name": card?.courseTitle || "Professional Training Programs",
+      "provider": {
+        "@type": "Organization",
+        "name": "SocialPrachar",
+        "url": "https://socialprachar.com"
+      }
     }
   }));
 

@@ -66,7 +66,11 @@ export default function Page() {
                 <div className="space-y-4">
                   <div>
                     <div className="text-3xl font-bold text-blue-600 mb-2">
+
                       16th February 2026
+
+
+                      
                     </div>
                     <p className="text-gray-600">
                       Online & Classroom (KPHB, Hyderabad)
