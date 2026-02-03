@@ -1,41 +1,47 @@
-.footerCertificate{
+.footerCertificate {
     background-color: #553cdf;
     border-radius: 8px;
     align-items: center;
 }
-.certificateText{
+
+.certificateText {
     display: flex;
     justify-content: center;
 }
-.whiteBulb img{
+
+.whiteBulb img {
     width: 20px;
     height: 25px;
     margin-right: 10px;
     margin-bottom: 10px;
 }
-.certificateText h4{
+
+.certificateText h4 {
     color: white;
     display: flex;
     align-items: end;
 }
-.footerCertificate div p{
-    font-size:38px;
+
+.footerCertificate div p {
+    font-size: 38px;
     line-height: 58px;
     color: white;
     font-family: sans-serif;
     font-weight: 600;
 }
+
 .StoreBtns {
     display: flex;
-    justify-content: start!important;
+    justify-content: start !important;
 }
 
-.StoreBtns img{
+.StoreBtns img {
     width: 135px;
     height: 40px;
     border-radius: 5px;
 }
-.spLogo img{
+
+.spLogo img {
     height: auto;
     width: 250px;
 }
@@ -44,42 +50,50 @@
 
 /* fotterList code starts */
 
-.fotterList{
+.fotterList {
     padding: 72px 0px 72px 0px;
 }
-.fotterList .Explore,.useFullLink {
+
+.fotterList .Explore,
+.useFullLink {
     line-height: 35px;
     font-weight: 500;
     color: gray;
     cursor: pointer;
 }
-.fotterList b{
+
+.fotterList b {
     line-height: 42px;
     font-size: 18px;
     color: #221859;
 }
-.fotterList p{
+
+.fotterList p {
     margin: 13px 0px 13px 0px;
     line-height: 26px;
     font-weight: 500;
     color: gray;
 }
-.certificateImg img{
-   max-width: 260px;
+
+.certificateImg img {
+    max-width: 260px;
 }
 
-.mediaIcon i{
+.mediaIcon i {
     color: #221859;
-    font-size: 17px!important;
+    font-size: 17px !important;
 }
-.fotterList .useFullLink:hover ,.fotterList .Explore:hover ,.mediaIcon i:hover{
+
+.fotterList .useFullLink:hover,
+.fotterList .Explore:hover,
+.mediaIcon i:hover {
     color: #553cdf;
 }
 
 
 /* copyRight code starts */
 
-.copyRight{
+.copyRight {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,48 +102,73 @@
 }
 
 /* copyRight code ends */
-@media (max-width:768px){
-    .certificateText h4{
+@media (max-width:768px) {
+    .certificateText h4 {
         font-size: 17px;
     }
-    .footerCertificate div p{
+
+    .footerCertificate div p {
         font-size: 26px;
         line-height: 38px;
     }
 }
+
 @media (min-width:375px) {
-    .AppleStore{
+    .AppleStore {
         margin-right: 10px;
     }
 }
-@media (min-width:1200px){
-    .footerCertificate div{
+
+@media (min-width:1200px) {
+    .footerCertificate div {
         display: flex;
         justify-content: center;
         padding-top: 30px;
     }
 }
 
-@media (min-width:992px){
-    .fotterListMediaQuery{
+@media (min-width:992px) {
+    .fotterListMediaQuery {
         display: flex;
         justify-content: center;
     }
 }
 
-    
-    @media (min-width:1300px) {
-        .containerXl{
-          max-width: 1200px;
-        }
-      }
-      @media (min-width:1400px) {
-        .containerXl{
-          max-width: 1300px;
-        }
-      }
-      @media (min-width:1500px) {
-        .containerXl{
-          max-width: 1420px;
-        }
-      }
+
+@media (min-width:1300px) {
+    .containerXl {
+        max-width: 1200px;
+    }
+}
+
+@media (min-width:1400px) {
+    .containerXl {
+        max-width: 1300px;
+    }
+}
+
+@media (min-width:1500px) {
+    .containerXl {
+        max-width: 1420px;
+    }
+}
+
+/* Map Responsive Styles */
+.mapDesktop {
+    display: block;
+}
+
+.mapMobile {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .mapDesktop {
+        display: none;
+    }
+
+    .mapMobile {
+        display: block;
+        cursor: pointer;
+    }
+}

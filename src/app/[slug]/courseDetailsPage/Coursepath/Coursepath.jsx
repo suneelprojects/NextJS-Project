@@ -62,10 +62,7 @@ const Coursepath = () => {
         id="course-flow-section"
         ref={timelineRef}
         style={{
-          backgroundImage: `url(${background.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          "--bg-image": `url(${background.src})`,
         }}
       >
         <div className={styles.timelineHeading}>
@@ -112,6 +109,11 @@ const Coursepath = () => {
         </div>
       </div>
 
+
+
+
+
+
       {/* Certificate Section */}
       <div id="certifications" className={certificateStyling.content}>
         <div className={`d-flex ${certificateStyling.certificateContainer}`}>
@@ -130,7 +132,7 @@ const Coursepath = () => {
                 <span className={certificateStyling.symbol}>
                   <FontAwesomeIcon icon={faCircleCheck} />
                 </span>
-                 certificates From top Mnc's
+                certificates From top Mnc's
               </p>
               <p className={certificateStyling.description}>
                 <span className={certificateStyling.symbol}>

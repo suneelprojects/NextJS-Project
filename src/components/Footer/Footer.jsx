@@ -157,7 +157,7 @@ const Footer = () => {
               ))}
 
 
-              
+
 
               {/* Social Icons */}
               <div className="d-flex gap-4 mt-3">
@@ -184,7 +184,7 @@ const Footer = () => {
 
             {/* Column 3 - Training Center */}
             <div className="col-12 col-md-3">
-             
+
               {/* NAP + Google Map */}
               <div className="mt-3">
                 <h5 className="fw-bold mb-2">Address:</h5>
@@ -198,18 +198,10 @@ const Footer = () => {
                   <strong>Phone:</strong>{" "}
                   <a href="tel:08019479419">080194 79419</a>
                 </p>
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=17.491839,78.3910161"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary btn-sm mb-3"
-                  style={{ borderRadius: "20px", backgroundColor: "#1C45E8" }}
-                >
-                  Get Directions
-                </a>
+
 
                 {/* Embedded Google Map */}
-                <div className="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
+                <div className={`${footerStyle.mapDesktop} ratio ratio-16x9 rounded overflow-hidden shadow-sm`}>
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.453265774153!2d78.3910161!3d17.491839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91f20663c46d%3A0x846796db82f76735!2sSocial%20Prachar!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
                     allowFullScreen
@@ -217,7 +209,29 @@ const Footer = () => {
                     referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </div>
+
+                <div
+                  className={`${footerStyle.mapMobile} ratio ratio-16x9 rounded overflow-hidden shadow-sm position-relative`}
+                  onClick={() => window.open("https://www.google.com/maps/dir/?api=1&destination=Social+Prachar+Kukatpally+Hyderabad", "_blank")}
+                >
+                  <Image
+                    src="/sp-map-static.png"
+                    alt="Social Prachar Map Location"
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
               </div>
+
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=Social+Prachar+Kukatpally+Hyderabad"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary btn-md m-3"
+                style={{ borderRadius: "20px", backgroundColor: "#1C45E8" }}
+              >
+                Get Directions
+              </a>
             </div>
 
             {/* Column 4 - Quick Links */}
