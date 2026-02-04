@@ -156,7 +156,20 @@ const OpenCourseBlog = ({ blog }) => {
             {blogData.author && (
               <div className="flex items-center bg-white px-3 py-1 rounded-full shadow-sm">
                 <User className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-orange-500" />
-                {blogData.author}
+                {blogData.authorUrl ? (
+                  <a
+                    href={blogData.authorUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}
+                    onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
+                    onMouseLeave={(e) => e.target.style.textDecoration = 'none'}
+                  >
+                    {blogData.author}
+                  </a>
+                ) : (
+                  blogData.author
+                )}
               </div>
             )}
           </div>

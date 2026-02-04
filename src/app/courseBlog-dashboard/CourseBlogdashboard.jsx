@@ -36,6 +36,7 @@ export default function CourseBlogdashboard() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [readTime, setReadTime] = useState('');
   const [author, setAuthor] = useState('');
+  const [authorUrl, setAuthorUrl] = useState('');
   const [tags, setTags] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [isEditing, setIsEditing] = useState(false);
@@ -130,29 +131,29 @@ export default function CourseBlogdashboard() {
       if (!metaDescription && parsed.metaDescription) autoMetaDescription = parsed.metaDescription;
       if (!imageUrl && parsed.firstImg) autoImage = parsed.firstImg;
     }
-    
-  const finalSlug = await generateUniqueSlug(slugify(title), isEditing ? currentBlogId : null);
 
-  // Set publishAt
-  let publishAt = null;
-  if (isScheduled && publishDate && publishTime) {
-    const dateTimeString = `${publishDate}T${publishTime}:00`;
-    publishAt = new Date(dateTimeString);
-  }
+    const finalSlug = await generateUniqueSlug(slugify(title), isEditing ? currentBlogId : null);
 
-  // Parse schema
-  let parsedSchema = null;
-  if (schemaJsonLd.trim()) {
-    try {
-      parsedSchema = JSON.parse(schemaJsonLd);
-    } catch (e) {
-      alert('Invalid JSON in Schema JSON-LD');
-      return;
+    // Set publishAt
+    let publishAt = null;
+    if (isScheduled && publishDate && publishTime) {
+      const dateTimeString = `${publishDate}T${publishTime}:00`;
+      publishAt = new Date(dateTimeString);
     }
-  }
 
-  // Prepare tags array
-  const tagsArray = tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [];
+    // Parse schema
+    let parsedSchema = null;
+    if (schemaJsonLd.trim()) {
+      try {
+        parsedSchema = JSON.parse(schemaJsonLd);
+      } catch (e) {
+        alert('Invalid JSON in Schema JSON-LD');
+        return;
+      }
+    }
+
+    // Prepare tags array
+    const tagsArray = tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [];
 
 
     // Saving (editing or new)
@@ -164,6 +165,7 @@ export default function CourseBlogdashboard() {
         categories: selectedCategories,
         readTime,
         author,
+        authorUrl,
         tags: tagsArray,
         imageUrl: autoImage,
         slug: finalSlug,
@@ -181,6 +183,7 @@ export default function CourseBlogdashboard() {
         categories: selectedCategories,
         readTime,
         author,
+        authorUrl,
         tags: tagsArray,
         imageUrl: autoImage,
         slug: finalSlug,
@@ -220,6 +223,7 @@ export default function CourseBlogdashboard() {
     setSelectedCategories(blog.categories || []);
     setReadTime(blog.readTime);
     setAuthor(blog.author);
+    setAuthorUrl(blog.authorUrl || '');
     setTags(Array.isArray(blog.tags) ? blog.tags.join(', ') : (blog.tags || ''));
     setImageUrl(blog.imageUrl);
     setMetaTitle(blog.metaTitle || '');
@@ -357,6 +361,8 @@ export default function CourseBlogdashboard() {
         <input className={styles.input} type="number" value={readTime} onChange={e => setReadTime(e.target.value)} required />
         <label className={styles.label}>Author</label>
         <input className={styles.input} type="text" value={author} onChange={e => setAuthor(e.target.value)} required />
+        <label className={styles.label}>Author Profile URL</label>
+        <input className={styles.input} type="url" value={authorUrl} onChange={e => setAuthorUrl(e.target.value)} placeholder="https://..." />
         <label className={styles.label}>Tags (comma-separated)</label>
         <input className={styles.input} type="text" value={tags} onChange={e => setTags(e.target.value)} />
         <label className={styles.label}>Featured Image</label>
@@ -406,7 +412,23 @@ export default function CourseBlogdashboard() {
                     <span key={cat} style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><Tag size={12} style={{ marginRight: 4 }} />{cat}</span>
                   ))}
                   <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><Clock size={12} style={{ marginRight: 4 }} />{blog.readTime} min</span>
-                  <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}><User size={12} style={{ marginRight: 4 }} />{blog.author}</span>
+                  <span style={{ background: '#f3f4f6', borderRadius: 6, padding: '2px 8px', fontSize: 12 }}>
+                    <User size={12} style={{ marginRight: 4 }} />
+                    {blog.authorUrl ? (
+                      <a
+                        href={blog.authorUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}
+                        onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
+                        onMouseLeave={(e) => e.target.style.textDecoration = 'none'}
+                      >
+                        {blog.author}
+                      </a>
+                    ) : (
+                      blog.author
+                    )}
+                  </span>
                 </div>
                 <div style={{ color: '#9ca3af', fontSize: 12 }}>Tags: {tagLabel}</div>
                 {publishDateValue && (
