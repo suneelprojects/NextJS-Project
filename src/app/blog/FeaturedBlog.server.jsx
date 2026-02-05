@@ -33,7 +33,7 @@ export default function FeaturedBlog({ featuredPost }) {
 
           <div className="lg:w-1/2 p-8 flex flex-col justify-center">
             <span className="text-indigo-600 font-semibold mb-2">
-              {featuredPost.category}
+              {featuredPost.category[0]}
             </span>
 
             <h2 className="text-2xl font-bolder mb-4">

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, ChevronRight } from "lucide-react";
 
-export default function BlogList({ blogs, currentPage, postsPerPage }) {
+export default function BlogList({ blogs, currentPage, postsPerPage, selectedCategory }) {
   const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
   const paginatedBlogs = blogs.slice(startIndex, endIndex);
@@ -41,7 +41,11 @@ export default function BlogList({ blogs, currentPage, postsPerPage }) {
 
             <div className="p-6 flex-1">
               <span className="text-indigo-600 text-xs font-semibold">
-                {post.category}
+                {selectedCategory
+                  ? selectedCategory
+                  : Array.isArray(post.category[0])
+                    ? post.category[0].join(", ")
+                    : post.category[0]}
               </span>
 
               <h3 className="text-xl font-bold mt-2 mb-3 text-indigo-600">

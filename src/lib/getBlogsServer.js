@@ -5,7 +5,6 @@ import {
   getFirestore,
   collection,
   getDocs,
-  orderBy,
   query,
 } from "firebase/firestore";
 
@@ -47,7 +46,7 @@ function serializeBlogForListing(doc) {
     imageUrl: data.imageUrl || "",
     excerpt: data.excerpt || "",
     metaDescription: data.metaDescription || "",
-    category: data.category || "",
+    category: data.categories || data.category || "",
     readTime: data.readTime || "",
     author: data.author || "",
     createdAt: convert("createdAt"),
@@ -55,8 +54,15 @@ function serializeBlogForListing(doc) {
 }
 
 export async function getAllBlogs() {
-  const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
+  const q = query(collection(db, "blogs"));
   const snap = await getDocs(q);
 
-  return snap.docs.map((doc) => serializeBlogForListing(doc));
+  const blogs = snap.docs.map((doc) => serializeBlogForListing(doc));
+
+  // Sort by createdAt descending manually to include all docs
+  return blogs.sort((a, b) => {
+    const dateA = a.createdAt ? new Date(a.createdAt) : new Date(0);
+    const dateB = b.createdAt ? new Date(b.createdAt) : new Date(0);
+    return dateB - dateA;
+  });
 }
