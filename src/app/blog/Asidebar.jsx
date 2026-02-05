@@ -5,7 +5,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { Tag, ChevronRight, BookOpen, TrendingUp, Star, Eye, Calendar, User } from 'lucide-react';
 
-const Asidebar = ({ featuredPost, categories, popularPosts = [], onCategoryClick, onClearFilter }) => {
+const Asidebar = ({ featuredPost, categories, popularPosts = [], onCategoryClick, onClearFilter, totalCount }) => {
   const router = useRouter();
 
   // Mock popular posts if not provided
@@ -55,7 +55,7 @@ const Asidebar = ({ featuredPost, categories, popularPosts = [], onCategoryClick
           </div>
           <h3 className="text-xl font-bold text-gray-900">Categories</h3>
         </div>
-        
+
         <div className="space-y-3">
           {/* All Categories Option */}
           <div
@@ -72,7 +72,7 @@ const Asidebar = ({ featuredPost, categories, popularPosts = [], onCategoryClick
             </div>
             <div className="flex items-center space-x-2">
               <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full group-hover/item:bg-indigo-100 group-hover/item:text-indigo-600 transition-all duration-300">
-                {categories.reduce((sum, cat) => sum + (cat.count || 0), 0)}
+                {typeof totalCount === 'number' ? totalCount : categories.reduce((sum, cat) => sum + (cat.count || 0), 0)}
               </span>
               <ChevronRight className="w-4 h-4 text-gray-400 transform group-hover/item:translate-x-1 group-hover/item:text-indigo-500 transition-all duration-300" />
             </div>

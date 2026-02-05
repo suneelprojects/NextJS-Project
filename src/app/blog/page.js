@@ -53,12 +53,22 @@ export default async function BlogPage() {
   const blogPosts = blogs.slice(1);
 
   const categories = Array.from(
-    new Set(blogPosts.map((post) => post.category).filter(Boolean))
+    new Set(
+      blogPosts
+        .flatMap((post) => {
+          if (Array.isArray(post.category)) return post.category;
+          return [post.category];
+        })
+        .filter(Boolean)
+    )
   ).map((cat, i) => ({
     id: i,
     name: cat,
     category: cat,
-    count: blogPosts.filter((p) => p.category === cat).length,
+    count: blogPosts.filter((p) => {
+      if (Array.isArray(p.category)) return p.category.includes(cat);
+      return p.category === cat;
+    }).length,
   }));
 
   return (
@@ -68,8 +78,8 @@ export default async function BlogPage() {
         <FeaturedBlog featuredPost={featuredPost} />
 
         {/* BLOG LIST + SIDEBAR - Client handles state */}
-        <BlogClient 
-          blogs={blogPosts} 
+        <BlogClient
+          blogs={blogPosts}
           featuredPost={featuredPost}
           categories={categories}
         />
