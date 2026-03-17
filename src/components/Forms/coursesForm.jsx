@@ -38,7 +38,7 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
     "https://integration.pqa.salesmax.ai/salesmax/leads?token=ZFLXQw9q0qT-FJn11iRc2w";
 
   const zoomShareUrl =
-    "https://us06web.zoom.us/rec/share/FciY-bGPip_icmBZYLDqDELz1nrecWlYTD0MP7tuHnzUDym5ydzKJKXcYbB3U7Pz.xI0jz2vDEWr2zBFt?startTime=1755605186000";
+    "https://us06web.zoom.us/rec/share/-SH5ryRwDPak1YKyJ409GKHInxkveFrLBqRW7mqjesqvofau6K8R_xt6L3EthO8_.vLMldI8ibtOvyiF0 ";
 
   const handleSubmit = async (e) => {
     e.preventDefault();

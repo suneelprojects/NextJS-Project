@@ -128,15 +128,30 @@ export const data = [
         categoryIndex: 0,
         tagIndex: 1,
         slug: 'data-science',
-        Duration: ' 6 months',
+
+        students: '16000+ Students',
+        Header: "#India’s 1st Data Science Program with Career Intelligence",
+        subText: "Don’t just learn Data Science - ",
+        subTextHighlits: "Build real Data Science Applications, Track your skills",
+        highlights: [
+            "AI-Powered Data Science Practice Labs",
+            "Weekly Skill Assessments & Performance Reports",
+            "Personal Skill Score Dashboard",
+            "30+ Real Data Science Projects",
+            "3-Month Industry Internship",
+            "7 Global Certifications ",
+            "Eligible for 10+ High-Demand Job Roles"
+        ],
+        socialProof: "Join 16,000+ Students Trained",
+        placementNote: "95% Placement Support | Industry Mentors",
+        Duration: ' 8 months',
         imageSrc: DS,
         careerRoadmap: '/curriculum_pdfs/Transform-Your-Career-with-SocialPrachars-Data-Science-and-AI-Program.pdf',
         TestmonialsCommentsImage1: testmonialsCommentImageDS,
         TestmonialsCommentsImage2: testmonialsCommentImageSSDS,
         courseTitle: 'Development',
-        students: '1600+ Students',
         text: 'Data Science & AI',
-        Header: 'Learn DataScience AI course & Become a Certified Professional in',
+
         internshipDuration: "3-Month",
         questions: [
             "You want to explore career opportunitiees in Data Science and AI?",
@@ -346,8 +361,7 @@ export const data = [
                 content: 'You can register on their website or contact their admissions team for detailed information on batch timings and enrollment procedures.'
             }
         ],
-        bannerHeader: 'Learn Data Science Today',
-        bannerStudentsEnrolled: '6k+ Students Enrolled',
+        bannerbannerStudentsEnrolled: '6k+ Students Enrolled',
         timeLineHeading: 'Data Scientist',
         levelcardIndex: [
             {
@@ -485,6 +499,22 @@ export const data = [
         categoryIndex: 1, // Development
         tagIndex: 1,      // Web Development
         slug: 'full-stack-developer-course',
+
+        students: '16000+ Students',
+        Header: "#India’s 1st Advanced Full Stack Program with Career Intelligence",
+        subText: "Don’t just learn Advanced Full Stack - ",
+        subTextHighlits: "Build real Advanced Full Stack Applications, Track your skills",
+        highlights: [
+            "AI-Powered Advanced Full Stack Practice Labs",
+            "Weekly Skill Assessments & Performance Reports",
+            "Personal Skill Score Dashboard",
+            "30+ Real Advanced Full Stack Projects",
+            "3-Month Industry Internship",
+            "7 Global Certifications ",
+            "Eligible for 10+ High-Demand Job Roles"
+        ],
+        socialProof: "Join 16,000+ Students Trained",
+        placementNote: "95% Placement Support | Industry Mentors",
         courseTitle: 'Development',
         imageSrc: mern,
         careerRoadmap: '/curriculum_pdfs/Learn Till You Get Placed SocialPrachar.pdf',
@@ -492,11 +522,10 @@ export const data = [
         TestmonialsCommentsImage1: testmonialsCommentImageFSW,
         TestmonialsCommentsImage2: testmonialsCommentImageFSWSS,
         Duration: '6 months',
-        students: '2800+ students',
         text: 'Advanced Full Stack',
+
         rating: 4.3,
         internshipDuration: "3-Month",
-        Header: 'Master Full Stack Java / Python With Mern Stack Course in ',
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Advanced Full stack' },
         ],
@@ -815,8 +844,7 @@ export const data = [
             { id: 27, image: student66 },
             { id: 28, image: student67 },
         ],
-        bannerHeader: 'Learn Mern Stack Today',
-        bannerStudentsEnrolled: '2.8k+ Students Enrolled',
+        bannerbannerStudentsEnrolled: '2.8k+ Students Enrolled',
         schemaJsonLd: {
             "@context": "https://schema.org",
             "@type": "Course",
@@ -839,13 +867,28 @@ export const data = [
         categoryIndex: 2,
         tagIndex: 0,
         slug: 'python-full-stack-development-course',
+
+        students: '16000+ Students',
+        Header: "#India’s 1st Python Full Stack Program with Career Intelligence",
+        subText: "Don’t just learn Python Full Stack - ",
+        subTextHighlits: "Build real Python Full Stack Applications, Track your skills",
+        highlights: [
+            "AI-Powered Python Full Stack Practice Labs",
+            "Weekly Skill Assessments & Performance Reports",
+            "Personal Skill Score Dashboard",
+            "30+ Real Python Full Stack Projects",
+            "3-Month Industry Internship",
+            "7 Global Certifications ",
+            "Eligible for 10+ High-Demand Job Roles"
+        ],
+        socialProof: "Join 16,000+ Students Trained",
+        placementNote: "95% Placement Support | Industry Mentors",
         imageSrc: python,
         careerRoadmap: '/roadmaps/ai-data-scientist.pdf',
         TestmonialsCommentsImage1: testmonialsCommentImageFSW,
         TestmonialsCommentsImage2: testmonialsCommentImageFSWSS,
         Duration: ' 6 months',
         courseTitle: 'Development',
-        students: '2900+ students',
         selfQuestioning: 'starting your Python Full Stack Career?',
         internshipDuration: "3-Month",
         questions: [
@@ -873,14 +916,13 @@ export const data = [
                 alt: 'Business Owner'
             }
         ],
-        text: 'Full Stack Python Development',
-        Header: 'Learn Python Full Stack Development & Become a Certified Professional in',
+        text: 'Python Full Stack',
+
         name: 'Balu',
         rating: 4.8,
         authorImage: authorPhoto,
         certificate: defaultCertificate,
-        bannerHeader: 'Learn Full stack Python Today',
-        bannerStudentsEnrolled: '6k+ Students Enrolled',
+        bannerbannerStudentsEnrolled: '6k+ Students Enrolled',
         timeLineHeading: 'Full Stack Python Developer',
         no_of_ratings: 1,
         Description: 'Full Stack Python Developers are in high demand across various industries, from startups to tech giants like Google, Amazon, Microsoft, and Facebook. As businesses increasingly rely on web applications, the need for skilled developers who can build and maintain both the frontend and backend has skyrocketed. This comprehensive course covers essential technologies for Full Stack Development, including Frontend Development (HTML, CSS, JavaScript, React.js), Backend Development (Python, Flask, Django, REST APIs), Databases (MySQL, PostgreSQL, MongoDB), Version Control (Git, GitHub), Cloud Deployment (Heroku, AWS), and Testing & Debugging (PyTest, Selenium). By mastering these skills, you will be equipped to develop, deploy, and manage robust, scalable web applications, making you a sought- after professional in the tech industry.',
@@ -1234,13 +1276,27 @@ export const data = [
         imageSrc: java,
         careerRoadmap: '/curriculum_pdfs/Learn Till You Get Placed SocialPrachar.pdf',
         slug: 'java-full-stack-development-course',
+
+        students: '16000+ Students',
+        Header: "#India’s 1st Java Full Stack Program with Career Intelligence",
+        subText: "Don’t just learn Java Full Stack - ",
+        subTextHighlits: "Build real Java Full Stack Applications, Track your skills",
+        highlights: [
+            "AI-Powered Java Full Stack Practice Labs",
+            "Weekly Skill Assessments & Performance Reports",
+            "Personal Skill Score Dashboard",
+            "30+ Real Java Full Stack Projects",
+            "3-Month Industry Internship",
+            "7 Global Certifications ",
+            "Eligible for 10+ High-Demand Job Roles"
+        ],
+        socialProof: "Join 16,000+ Students Trained",
+        placementNote: "95% Placement Support | Industry Mentors",
         courseTitle: 'Development',
         Duration: ' 6 months',
-        students: '2600+ Students',
         TestmonialsCommentsImage1: testmonialsCommentImageFSW,
         TestmonialsCommentsImage2: testmonialsCommentImageFSWSS,
         certificate: defaultCertificate,
-        Header: 'Learn Java Full Stack Development & Become a Certified Professional in',
         selfQuestioning: 'starting your Java Full Stack Career?',
         internshipDuration: "3-Month",
         questions: [
@@ -1268,13 +1324,13 @@ export const data = [
                 alt: 'Business Owner'
             }
         ],
-        text: 'Full Stack Java Development',
+        text: 'Java Full Stack',
+
         name: 'Balu',
         rating: 4.7,
         authorImage: authorPhoto,
         no_of_ratings: 2,
-        bannerHeader: 'Learn Full stack Java Today',
-        bannerStudentsEnrolled: '6k+ Students Enrolled',
+        bannerbannerStudentsEnrolled: '6k+ Students Enrolled',
         timeLineHeading: 'Full Stack Java Developer',
         Description: 'Full Stack Java Developers are in high demand as businesses scale web applications. This course covers key technologies like Frontend (HTML, CSS, JavaScript, React.js), Backend (Java, Spring Boot, REST APIs), Databases (MySQL, PostgreSQL, MongoDB), Version Control (Git), Cloud Deployment (AWS, Heroku), and Testing (JUnit, Mockito). By mastering these skills, you\'ll be prepared to build and maintain scalable web applications, making you a valuable asset in the tech industry.',
         popUpDropDownCourses: [
@@ -1661,15 +1717,30 @@ export const data = [
         categoryIndex: 5, // Development
         tagIndex: 3,      // Web Development
         slug: 'awsdevopscourse',
+
+        students: '16000+ Students',
+        Header: "#India’s 1st AWS DevOps Program with Career Intelligence",
+        subText: "Don’t just learn AWS DevOps - ",
+        subTextHighlits: "Build real AWS DevOps Applications, Track your skills",
+        highlights: [
+            "AI-Powered AWS DevOps Practice Labs",
+            "Weekly Skill Assessments & Performance Reports",
+            "Personal Skill Score Dashboard",
+            "30+ Real AWS DevOps Projects",
+            "3-Month Industry Internship",
+            "7 Global Certifications ",
+            "Eligible for 10+ High-Demand Job Roles"
+        ],
+        socialProof: "Join 16,000+ Students Trained",
+        placementNote: "95% Placement Support | Industry Mentors",
         courseTitle: 'Cloud Development',
         imageSrc: AWS_multiCloud,
         careerRoadmap: '/curriculum_pdfs/Transform-Your-Career-with-SocialPrachars-Data-Science-and-AI-Program.pdf',
         certificate: defaultCertificate,
         Duration: '6 months',
-        students: '2800+ students',
         text: 'AWS With DevOps',
+
         rating: 4.7,
-        Header: 'Learn AWS DevOps Course & Become a Certified Professional in ',
         TestmonialsCommentsImage1: testmonialsCommentImageDevOps,
         TestmonialsCommentsImage2: testmonialsCommentImageDevOps,
         internshipDuration: "3-Month",
@@ -1973,8 +2044,7 @@ export const data = [
             { id: 31, image: Nani_ML },
             { id: 32, image: Sai_Chand_ML },
         ],
-        bannerHeader: 'Learn AWS DevOps Today',
-        bannerStudentsEnrolled: '6k+ Students Enrolled',
+        bannerbannerStudentsEnrolled: '6k+ Students Enrolled',
         bannerDescription: 'Join our AWS DevOps course and master cloud computing, automation, and CI/CD pipelines. Enroll now to kickstart your career!',
         schemaJsonLd: {
             "@context": "https://schema.org",
@@ -1997,6 +2067,22 @@ export const data = [
         categoryIndex: 7,
         tagIndex: 1,
         slug: 'artificial-intelligence-course-training-institute-in-hyderabad',
+
+        students: '16000+ Students',
+        Header: "#India’s 1st Artificial Intelligence Program with Career Intelligence",
+        subText: "Don’t just learn Artificial Intelligence - ",
+        subTextHighlits: "Build real Artificial Intelligence Applications, Track your skills",
+        highlights: [
+            "AI-Powered Artificial Intelligence Practice Labs",
+            "Weekly Skill Assessments & Performance Reports",
+            "Personal Skill Score Dashboard",
+            "30+ Real Artificial Intelligence Projects",
+            "3-Month Industry Internship",
+            "7 Global Certifications ",
+            "Eligible for 10+ High-Demand Job Roles"
+        ],
+        socialProof: "Join 16,000+ Students Trained",
+        placementNote: "95% Placement Support | Industry Mentors",
         courseTitle: 'AI Development',
         imageSrc: AI,
         careerRoadmap: '/curriculum_pdfs/Transform-Your-Career-with-SocialPrachars-Data-Science-and-AI-Program.pdf',
@@ -2004,10 +2090,9 @@ export const data = [
         TestmonialsCommentsImage1: testmonialsCommentImageDS,
         TestmonialsCommentsImage2: testmonialsCommentImageSSDS,
         Duration: '6 months',
-        students: '3800+ students',
         text: 'Artificial Intelligence',
+
         rating: 4.2,
-        Header: 'Learn Artificial Intelligence Course & Become a Certified Professional in ',
         internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Artificial Intelligence' },
@@ -2330,8 +2415,7 @@ export const data = [
             { id: 31, image: Nani_ML },
             { id: 32, image: Sai_Chand_ML },
         ],
-        bannerHeader: 'Learn Artificial Intelligence Today',
-        bannerStudentsEnrolled: '6k+ Students Enrolled',
+        bannerbannerStudentsEnrolled: '6k+ Students Enrolled',
         bannerDescription: 'Join our Artificial Intelligence course and master AI, machine learning, and deep learning. Enroll now to kickstart your career!',
         schemaJsonLd: {
             "@context": "https://schema.org",
@@ -2354,15 +2438,30 @@ export const data = [
         categoryIndex: 6, // Development
         tagIndex: 1,      // Web Development
         slug: 'digital-marketing-course-training-institute-hyderabad',
+
+        students: '16000+ Students',
+        Header: "#India’s 1st Digital Marketing Program with Career Intelligence",
+        subText: "Don’t just learn Digital Marketing - ",
+        subTextHighlits: "Build real Digital Marketing Applications, Track your skills",
+        highlights: [
+            "AI-Powered Digital Marketing Practice Labs",
+            "Weekly Skill Assessments & Performance Reports",
+            "Personal Skill Score Dashboard",
+            "30+ Real Digital Marketing Projects",
+            "3-Month Industry Internship",
+            "7 Global Certifications ",
+            "Eligible for 10+ High-Demand Job Roles"
+        ],
+        socialProof: "Join 16,000+ Students Trained",
+        placementNote: "95% Placement Support | Industry Mentors",
         courseTitle: 'Marketing',
         imageSrc: Digital_M,
         careerRoadmap: '/curriculum_pdfs/Learn Till You Get Placed SocialPrachar.pdf',
         certificate: defaultCertificate,
         Duration: '4 months',
-        students: '3200+ students',
         text: 'Digital Marketing',
+
         rating: 4.0,
-        Header: 'Learn Digital Marketing Course & Become a Certified Professional in ',
         TestmonialsCommentsImage1: testmonialsCommentImageDM,
         TestmonialsCommentsImage2: testmonialsCommentImageDM,
         internshipDuration: "3-Month",
@@ -2646,8 +2745,7 @@ export const data = [
             { id: 20, image: Nani_ML },
             { id: 21, image: Sai_Chand_ML },
         ],
-        bannerHeader: 'Learn Digital Marketing Today',
-        bannerStudentsEnrolled: '6k+ Students Enrolled',
+        bannerbannerStudentsEnrolled: '6k+ Students Enrolled',
         bannerDescription: 'Join our Digital Marketing course and master SEO, SEM, social media, and content marketing. Enroll now to kickstart your career!',
         schemaJsonLd: {
             "@context": "https://schema.org",
@@ -2671,6 +2769,22 @@ export const data = [
         categoryIndex: 8,
         tagIndex: 1,
         slug: 'generative-ai-course-training-institute-hyderabad',
+
+        students: '16000+ Students',
+        Header: "#India’s 1st Generative AI Program with Career Intelligence",
+        subText: "Don’t just learn Generative AI - ",
+        subTextHighlits: "Build real Generative AI Applications, Track your skills",
+        highlights: [
+            "AI-Powered Generative AI Practice Labs",
+            "Weekly Skill Assessments & Performance Reports",
+            "Personal Skill Score Dashboard",
+            "30+ Real Generative AI Projects",
+            "3-Month Industry Internship",
+            "7 Global Certifications ",
+            "Eligible for 10+ High-Demand Job Roles"
+        ],
+        socialProof: "Join 16,000+ Students Trained",
+        placementNote: "95% Placement Support | Industry Mentors",
         courseTitle: 'Generative AI Development',
         imageSrc: AI,
         careerRoadmap: '/curriculum_pdfs/Transform-Your-Career-with-SocialPrachars-Data-Science-and-AI-Program.pdf',
@@ -2678,10 +2792,9 @@ export const data = [
         TestmonialsCommentsImage1: testmonialsCommentImageDS,
         TestmonialsCommentsImage2: testmonialsCommentImageSSDS,
         Duration: '4 months',
-        students: '1600+ students',
         text: 'Generative AI',
+
         rating: 4.3,
-        Header: 'Learn Generative AI Course & Become a Certified Professional in ',
         internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Generative AI' },
@@ -3001,8 +3114,7 @@ export const data = [
             { id: 31, image: Nani_ML },
             { id: 32, image: Sai_Chand_ML },
         ],
-        bannerHeader: 'Learn Generative AI Today',
-        bannerStudentsEnrolled: '6k+ Students Enrolled',
+        bannerbannerStudentsEnrolled: '6k+ Students Enrolled',
         bannerDescription: 'Join our Generative AI course and master LLMs, prompt engineering, and AI applications. Enroll now to kickstart your career!',
         schemaJsonLd: {
             "@context": "https://schema.org",
@@ -3026,15 +3138,30 @@ export const data = [
         categoryIndex: 4, // Development
         tagIndex: 1,      // Web Development
         slug: 'data-analytics-course-training-hyderabad',
+
+        students: '16000+ Students',
+        Header: "#India’s 1st Data Analytics Program with Career Intelligence",
+        subText: "Don’t just learn Data Analytics - ",
+        subTextHighlits: "Build real Data Analytics Applications, Track your skills",
+        highlights: [
+            "AI-Powered Data Analytics Practice Labs",
+            "Weekly Skill Assessments & Performance Reports",
+            "Personal Skill Score Dashboard",
+            "30+ Real Data Analytics Projects",
+            "3-Month Industry Internship",
+            "7 Global Certifications ",
+            "Eligible for 10+ High-Demand Job Roles"
+        ],
+        socialProof: "Join 16,000+ Students Trained",
+        placementNote: "95% Placement Support | Industry Mentors",
         courseTitle: 'Data Science',
         imageSrc: DA,
         careerRoadmap: '/curriculum_pdfs/Transform-Your-Career-with-SocialPrachars-Data-Science-and-AI-Program.pdf',
         certificate: defaultCertificate,
         Duration: '5 months',
-        students: '2700+ students',
         text: 'Data Analytics',
+
         rating: 4.5,
-        Header: 'Learn Data Analytics Course & Become a Certified Professional in ',
         TestmonialsCommentsImage1: testmonialsCommentImageDA,
         TestmonialsCommentsImage2: testmonialsCommentImageDA,
         internshipDuration: "3-Month",
@@ -3335,8 +3462,7 @@ export const data = [
             { id: 23, image: Nani_ML },
             { id: 24, image: Sai_Chand_ML },
         ],
-        bannerHeader: 'Learn Data Analytics Today',
-        bannerStudentsEnrolled: '2.7k+ Students Enrolled',
+        bannerbannerStudentsEnrolled: '2.7k+ Students Enrolled',
         bannerDescription: 'Join our Data Analytics course and master data visualization, SQL, and Tableau. Enroll now to kickstart your career!',
         schemaJsonLd: {
             "@context": "https://schema.org",
@@ -3360,6 +3486,22 @@ export const data = [
         categoryIndex: 9, // Development
         tagIndex: 2,      // Web Development
         slug: 'snowflake-training-in-hyderabad',
+
+        students: '16000+ Students',
+        Header: "#India’s 1st Snowflake Program with Career Intelligence",
+        subText: "Don’t just learn Snowflake - ",
+        subTextHighlits: "Build real Snowflake Applications, Track your skills",
+        highlights: [
+            "AI-Powered Snowflake Practice Labs",
+            "Weekly Skill Assessments & Performance Reports",
+            "Personal Skill Score Dashboard",
+            "30+ Real Snowflake Projects",
+            "3-Month Industry Internship",
+            "7 Global Certifications ",
+            "Eligible for 10+ High-Demand Job Roles"
+        ],
+        socialProof: "Join 16,000+ Students Trained",
+        placementNote: "95% Placement Support | Industry Mentors",
         courseTitle: 'Cloud',
         imageSrc: SnowFlake,
         careerRoadmap: '/curriculum_pdfs/Learn Till You Get Placed SocialPrachar.pdf',
@@ -3367,10 +3509,9 @@ export const data = [
         TestmonialsCommentsImage1: testmonialsCommentImageFSW,
         TestmonialsCommentsImage2: testmonialsCommentImageFSWSS,
         Duration: '5 months',
-        students: '2700+ students',
         text: 'SnowFlake Course',
+
         rating: 4.1,
-        Header: 'Learn Snow Flake Course & Become a Certified Professional in ',
         internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'SnowFlake' },
@@ -3705,8 +3846,7 @@ export const data = [
             { id: 23, image: Nani_ML },
             { id: 24, image: Sai_Chand_ML },
         ],
-        bannerHeader: 'Learn Snow Flake Today',
-        bannerStudentsEnrolled: '2.7k+ Students Enrolled',
+        bannerbannerStudentsEnrolled: '2.7k+ Students Enrolled',
         bannerDescription: 'Join our Snow Flake course and master cloud data warehousing, SQL, and data modeling. Enroll now to kickstart your career!',
         schemaJsonLd: {
             "@context": "https://schema.org",
@@ -3730,6 +3870,22 @@ export const data = [
         categoryIndex: 10,
         tagIndex: 2,
         slug: 'salesforce-course',
+
+        students: '16000+ Students',
+        Header: "#India’s 1st Salesforce Program with Career Intelligence",
+        subText: "Don’t just learn Salesforce - ",
+        subTextHighlits: "Build real Salesforce Applications, Track your skills",
+        highlights: [
+            "AI-Powered Salesforce Practice Labs",
+            "Weekly Skill Assessments & Performance Reports",
+            "Personal Skill Score Dashboard",
+            "30+ Real Salesforce Projects",
+            "3-Month Industry Internship",
+            "7 Global Certifications ",
+            "Eligible for 10+ High-Demand Job Roles"
+        ],
+        socialProof: "Join 16,000+ Students Trained",
+        placementNote: "95% Placement Support | Industry Mentors",
         courseTitle: 'Cloud',
         imageSrc: salesForce,
         careerRoadmap: '/curriculum_pdfs/Learn Till You Get Placed SocialPrachar.pdf',
@@ -3737,10 +3893,9 @@ export const data = [
         TestmonialsCommentsImage1: testmonialsCommentImageFSW,
         TestmonialsCommentsImage2: testmonialsCommentImageFSWSS,
         Duration: '5 months',
-        students: '2700+ students',
         text: 'SalesForce Course',
+
         rating: 4.2,
-        Header: 'Learn Sales Force Course & Become a Certified Professional in ',
         internshipDuration: "3-Month",
         popUpDropDownCourses: [
             { dropDownid: 0, courseName: 'Sales Force Development' },
@@ -4075,8 +4230,7 @@ export const data = [
             { id: 23, image: Nani_ML },
             { id: 24, image: Sai_Chand_ML },
         ],
-        bannerHeader: 'Learn Sales Force Today',
-        bannerStudentsEnrolled: '2.7k+ Students Enrolled',
+        bannerbannerStudentsEnrolled: '2.7k+ Students Enrolled',
         bannerDescription: 'Join our Sales Force course and master CRM, automation, and customer relationship management. Enroll now to kickstart your career!',
         schemaJsonLd: {
             "@context": "https://schema.org",

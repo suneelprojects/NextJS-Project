@@ -320,60 +320,65 @@ const Header = () => {
             {/* LEFT CONTENT */}
             <div className="col-md-6 d-flex flex-column justify-content-center px-2 mt-5">
               {/* Added mt-5 to push down content below banner */}
-              <h2 className={`${style.headerText}`}>
-                {card && (
-                  <>
-                    {card.Header}
-                    <span style={{ color: '#ff5003', textWrap: 'nowrap' }}>{card.Duration}</span>
-                  </>
-                )}
-              </h2>
+              {card && (
+                <>
+                  <h2 className={style.headerText}>
+                    India’s <span style={{ color: '#ff5003' }}>#1</span> <br />
+                    {card.text} Program <br />
+                    with <span style={{ color: '#ff5003' }}>Career Intelligence</span>
 
-              {/* Highlighted Text */}
-              <p className={`mt-3 ${style.highlightedText}`}>
+                  </h2>
 
-                Built for 2026  - <span className={style.tagline} > Curriculum That Gets You Hired </span>
-              </p>
+                  <p className={`mt-3 ${style.highlightedText}`}>
+                    {card?.subText} <span className={style.tagline}>{card?.subTextHighlits}</span>
+                  </p>
 
-              {/* Symbol Items */}
-              <div className={style.symbolItemContent}>
-                <div className={style.symbolItem}>
-                  <Image src={unlockLogo} alt="Book symbol" className={style.symbol1} unoptimized />
-                  <span className={style.symbolText}>
-                    <strong>Students have earned ₹4,45,000 INR through our paid internships.</strong>
-                  </span>
-                </div>
-                <div className={style.symbolItem}>
-                  <Image src={booksymbol} alt="Book symbol" className={style.symbol} unoptimized />
-                  <span className={style.symbolText}>
-                    <strong>3-Month Full-Day Industry Internship</strong>
-                  </span>
-                </div>
-                <div className={style.symbolItem}>
-                  <Image src={successLogo} alt="Book symbol" className={style.symbol} />
-                  <span className={style.symbolText}>
-                    <strong>7 Global Certifications (IBM, Microsoft & more)</strong>
-                  </span>
-                </div>
-                <div className={style.symbolItem}>
-                  <Image src={partnershipLogo} alt="Book symbol" className={style.symbol} />
-                  <span className={style.symbolText}>
-                    <strong>3/5/7 Month Fast-Track Programs with Paid Internship</strong>
-                  </span>
-                </div>
-                <div className={style.symbolItem}>
-                  <Image src={MobileIconLogo} alt="Book symbol" className={style.symbol} />
-                  <span className={style.symbolText}>
-                    <strong>Build 30+ End-to-End AI Applications</strong>
-                  </span>
-                </div>
-                <div className={style.symbolItem}>
-                  <Image src={jobRolesLogo} alt="Job roles symbol" className={style.symbol} unoptimized />
-                  <span className={style.symbolText}>
-                    <strong>Eligible for 10+ High-Demand Job Roles</strong>
-                  </span>
-                </div>
-              </div>
+                  <div className={style.symbolItemContent}>
+                    <div className={style.symbolItem}>
+                      <Image src={unlockLogo} alt="Book symbol" className={style.symbol1} unoptimized />
+                      <span className={style.symbolText}>
+                        <strong>{card?.highlights?.[0]}</strong>
+                      </span>
+                    </div>
+                    <div className={style.symbolItem}>
+                      <Image src={booksymbol} alt="Book symbol" className={style.symbol} unoptimized />
+                      <span className={style.symbolText}>
+                        <strong>{card?.highlights?.[1]}</strong>
+                      </span>
+                    </div>
+                    <div className={style.symbolItem}>
+                      <Image src={successLogo} alt="Book symbol" className={style.symbol} />
+                      <span className={style.symbolText}>
+                        <strong>{card?.highlights?.[2]}</strong>
+                      </span>
+                    </div>
+                    <div className={style.symbolItem}>
+                      <Image src={partnershipLogo} alt="Book symbol" className={style.symbol} />
+                      <span className={style.symbolText}>
+                        <strong>{card?.highlights?.[3]}</strong>
+                      </span>
+                    </div>
+                    <div className={style.symbolItem}>
+                      <Image src={MobileIconLogo} alt="Book symbol" className={style.symbol} />
+                      <span className={style.symbolText}>
+                        <strong>{card?.highlights?.[4]}</strong>
+                      </span>
+                    </div>
+                    <div className={style.symbolItem}>
+                      <Image src={successLogo} alt="Book symbol" className={style.symbol} />
+                      <span className={style.symbolText}>
+                        <strong>{card?.highlights?.[5]}</strong>
+                      </span>
+                    </div>
+                    <div className={style.symbolItem}>
+                      <Image src={jobRolesLogo} alt="Job roles symbol" className={style.symbol} unoptimized />
+                      <span className={style.symbolText}>
+                        <strong>{card?.highlights?.[6]}</strong>
+                      </span>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* RIGHT CONTENT - IMAGE */}
@@ -418,38 +423,41 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div >
 
 
 
       {/* quick navigation buttons */}
-      <section key={pathname} className="sticky top-0 z-[100] bg-white shadow-md">
+      < section key={pathname} className="sticky top-0 z-[100] bg-white shadow-md" >
         <QuickNavigation openDialog={openDialog} scrollToSection={scrollToSection} />
-        {dialogType === "emi" ? (
-          <EmiFormDialog
-            isOpen={dialogOpen}
-            onClose={() => setDialogOpen(false)}
-          />
-        ) : (
-          <LeadFormDialog
-            isOpen={dialogOpen}
-            onClose={() => setDialogOpen(false)}
-            dialogType={dialogType}
-          />
-        )}
-      </section>
+        {
+          dialogType === "emi" ? (
+            <EmiFormDialog
+              isOpen={dialogOpen}
+              onClose={() => setDialogOpen(false)}
+            />
+          ) : (
+            <LeadFormDialog
+              isOpen={dialogOpen}
+              onClose={() => setDialogOpen(false)}
+              dialogType={dialogType}
+            />
+          )
+        }
+      </section >
 
 
 
 
       {/* Video Section */}
-      {[
-        "data-science",
-        "awsdevopscourse",
-        "artificial-intelligence-course-training-institute-in-hyderabad",
-        "generative-ai-course-training-institute-hyderabad",
-        "data-analytics-course-training-hyderabad",
-      ].includes(slug) && (
+      {
+        [
+          "data-science",
+          "awsdevopscourse",
+          "artificial-intelligence-course-training-institute-in-hyderabad",
+          "generative-ai-course-training-institute-hyderabad",
+          "data-analytics-course-training-hyderabad",
+        ].includes(slug) && (
           <div className="flex justify-center my-5 px-4">
             <div className="max-w-3xl text-center mx-auto">
               <h2
@@ -472,7 +480,8 @@ const Header = () => {
               )}
             </div>
           </div>
-        )}
+        )
+      }
 
 
     </>
