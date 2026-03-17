@@ -324,8 +324,7 @@ const Header = () => {
                 <>
                   <h2 className={style.headerText}>
                     India’s <span style={{ color: '#ff5003' }}>#1</span> <br />
-                    {card.text} Program <br />
-                    with <span style={{ color: '#ff5003' }}>Career Intelligence</span>
+                    {card.text} Program with <span style={{ color: '#ff5003' }}>Career Intelligence</span>
 
                   </h2>
 
