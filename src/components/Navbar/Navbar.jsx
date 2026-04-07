@@ -92,6 +92,7 @@ const NavBar = () => {
     { hrefLink: "/aboutUs", routerName: "About us" },
     { hrefLink: "/preplacement", routerName: "Pre-Placement" },
     { hrefLink: "/blog", routerName: "Our-Blogs" },
+    { hrefLink: "/data-science-ai-program", routerName: "Data Science - AI Program" },
     { hrefLink: "/events", routerName: "Events" },
     { hrefLink: "/dataclash", routerName: "DataClash" },
     { hrefLink: "/codeclash", routerName: "CodeClash" },
