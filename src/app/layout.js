@@ -6,6 +6,7 @@ import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import Script from "next/script";
 import DynamicHeaderManager from "@/components/DynamicHeaderManager/DynamicHeaderManager";
 import { DateProvider } from "@/components/Forms/DateContext";
+import ZiroChatWidget from "@/components/ZiroChatWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -100,7 +101,7 @@ export default function RootLayout({ children }) {
         />
 
         {/* Collect widget loader (non-blocking) */}
-        <Script
+        {/* <Script
           id="collect-widget-loader"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -116,7 +117,7 @@ export default function RootLayout({ children }) {
               })(window, document);
             `,
           }}
-        />
+        /> */}
 
         {/* Facebook Pixel (non-blocking) */}
         <Script
@@ -240,6 +241,16 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+
+        <ZiroChatWidget
+          endpoint="https://auth.ziro.digital/functions/v1/website-chat-progress-save"
+          branch="socialprachar"
+          primaryColor="#1d4ed8"
+          autoOpenDelayMs={6000}
+        />
+
+
+        
       </body>
       <Analytics />
     </html>
