@@ -500,7 +500,7 @@ export default function ZiroChatWidget({
     () => ({
       position: "fixed",
       right: 24,
-      bottom: 24,
+      bottom: "50%",
       width: 62,
       height: 62,
       borderRadius: "50%",
