@@ -24,6 +24,7 @@ const COURSE_OPTIONS = [
   "Data Science & AI",
   "Data Analytics",
   "AI Ops / ML Ops / DevOps",
+  "Digital Marketing",
 ];
 
 const STATUS_OPTIONS = [
