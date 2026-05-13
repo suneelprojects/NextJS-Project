@@ -20,11 +20,10 @@ const FONT_FAMILY =
   'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
 
 const COURSE_OPTIONS = [
-  "Full Stack Java/Python",
+  "Digital Marketing AI",
   "Data Science & AI",
   "Data Analytics",
-  "AI Ops / ML Ops / DevOps",
-  "Digital Marketing",
+  "Full Stack Java/Python",
 ];
 
 const STATUS_OPTIONS = [
