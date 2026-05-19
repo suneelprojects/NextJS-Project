@@ -10,6 +10,7 @@
  */
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import SpLogo from "../assets/sp-logo.jpg"
 
@@ -300,38 +301,47 @@ export default function ZiroChatWidget({
   // ── FIX 1: Auto-open on every page load / Next.js route change ──────────
   // We use a key derived from the pathname so that every route change re-runs
   // the effect and schedules a fresh 6-second open timer.
-  const [pathname, setPathname] = useState(
-    typeof window !== "undefined" ? window.location.pathname : "/"
-  );
+  // const [pathname, setPathname] = useState(
+  //   typeof window !== "undefined" ? window.location.pathname : "/"
+  // );
 
   // Listen for Next.js router events (App Router uses popstate / pushstate)
-  useEffect(() => {
-    const handleRouteChange = () => {
-      setPathname(window.location.pathname);
-      ctxRef.current = readUtm(); // refresh UTM on navigation too
-    };
+  // useEffect(() => {
+  //   const handleRouteChange = () => {
+  //     setPathname(window.location.pathname);
+  //     ctxRef.current = readUtm(); // refresh UTM on navigation too
+  //   };
 
-    window.addEventListener("popstate", handleRouteChange);
+  //   window.addEventListener("popstate", handleRouteChange);
 
     // Patch history.pushState / replaceState to catch client-side navigation
-    const origPush = history.pushState.bind(history);
-    const origReplace = history.replaceState.bind(history);
+  //   const origPush = history.pushState.bind(history);
+  //   const origReplace = history.replaceState.bind(history);
 
-    history.pushState = (...args) => {
-      origPush(...args);
-      handleRouteChange();
-    };
-    history.replaceState = (...args) => {
-      origReplace(...args);
-      handleRouteChange();
-    };
+  //   history.pushState = (...args) => {
+  //     origPush(...args);
+  //     handleRouteChange();
+  //   };
+  //   history.replaceState = (...args) => {
+  //     origReplace(...args);
+  //     handleRouteChange();
+  //   };
 
-    return () => {
-      window.removeEventListener("popstate", handleRouteChange);
-      history.pushState = origPush;
-      history.replaceState = origReplace;
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("popstate", handleRouteChange);
+  //     history.pushState = origPush;
+  //     history.replaceState = origReplace;
+  //   };
+  // }, []);
+
+
+  // new  code  bloack 
+
+  const pathname = usePathname();
+
+useEffect(() => {
+  ctxRef.current = readUtm();
+}, [pathname]);
 
   // Every time the pathname changes (including initial load), schedule open
   useEffect(() => {
