@@ -24,8 +24,8 @@ import { slugify } from '../../utils/slugify';
 const TiptapEditor = dynamic(() => import('./TiptapEditor'), { ssr: false });
 
 const categories = [
-  "Development", "Design", "Marketing", "Business", "Technology", "Programming",
-  "Web Development", "Mobile Development", "Data Science", "AI/ML", "DevOps", "UI/UX"
+  "Development", "Design", "Digital Marketing", "Business", "Technology", "Programming",
+  "Web Development", "Mobile Development", "Data Science", "AI/ML", "DevOps", "UI/UX","Product Management", "Startups", "Career Advice", "Freelancing", "Remote Work","AI Tools", "Cloud Computing", "Cybersecurity", "Blockchain", "Game Development", "Software Testing","Agile Methodologies", "Programming Languages", "Frameworks & Libraries", "Open Source","Tech Events", "Interviews with Experts", "Case Studies", "Tutorials & How-tos","Machine Learning", "Deep Learning", "Natural Language Processing", "Computer Vision", "Reinforcement Learning","Data Visualization", "Big Data", "Data Engineering", "Data Analysis", "Data Ethics","Virtual Reality", "Augmented Reality", "Mixed Reality", "Metaverse", "3D Modeling","Internet of Things (IoT)", "Edge Computing", "Smart Devices", "Wearables", "Connected Cars","Programming Tips & Best Practices", "Career Development", "Work-Life Balance in Tech", "Tech Culture & Diversity"
 ];
 
 export default function CourseBlogdashboard() {
