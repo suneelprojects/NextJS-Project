@@ -2,10 +2,10 @@
   "name": "sp_nextapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://socialprachar.in",
+  "homepage": "https://socialprachar.com",
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "build": "next build --webpack && node scripts/generate-sitemap.js",
     "start": "next start",
     "lint": "next lint",
     "generate-sitemap": "node scripts/generate-sitemap.js"

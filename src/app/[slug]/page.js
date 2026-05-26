@@ -93,12 +93,67 @@ const Page = async ({ params }) => {
   const course = data.find(c => c.slug === slug);
   if (!course) return notFound();
 
+  const faqEntities = (course?.accordionContent || [])
+    .filter((f) => f.title && f.content)
+    .map((f) => ({
+      "@type": "Question",
+      name: f.title,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.content,
+      },
+    }));
+
+  const faqSchema =
+    faqEntities.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqEntities,
+        }
+      : null;
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://socialprachar.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Courses",
+        item: "https://socialprachar.com/courses",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: course?.Header || course?.courseTitle || course?.text || slug,
+        item: `https://socialprachar.com/${slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       {/* Inject JSON-LD for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(course.schemaJsonLd) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <div className=" postion-relative ">

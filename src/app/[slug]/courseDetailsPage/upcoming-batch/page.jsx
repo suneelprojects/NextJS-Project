@@ -67,7 +67,7 @@ export default function Page() {
                   <div>
                     <div className="text-3xl font-bold text-blue-600 mb-2">
 
-                      20th May 2026
+                      10th June 2026
 
 
                       

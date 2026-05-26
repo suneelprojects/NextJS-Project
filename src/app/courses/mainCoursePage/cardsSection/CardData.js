@@ -485,9 +485,9 @@ export const data = [
             "provider": {
                 "@type": "Organization",
                 "name": "SocialPrachar",
-                "url": "https://www.socialprachar.com"
+                "url": "https://socialprachar.com"
             },
-            "url": "https://www.socialprachar.com/data-science",
+            "url": "https://socialprachar.com/data-science",
             "educationalCredentialAwarded": "Certificate of Completion"
         }
 
@@ -853,9 +853,9 @@ export const data = [
             "provider": {
                 "@type": "Organization",
                 "name": "SocialPrachar",
-                "url": "https://www.socialprachar.com"
+                "url": "https://socialprachar.com"
             },
-            "url": "https://www.socialprachar.com/full-stack-developer-course",
+            "url": "https://socialprachar.com/full-stack-developer-course",
             "educationalCredentialAwarded": "Certificate of Completion"
         }
 
@@ -1256,14 +1256,14 @@ export const data = [
         schemaJsonLd: {
             "@context": "https://schema.org",
             "@type": "Course",
-            "name": "Full Stack Developer Course in Hyderabad",
-            "description": "Become a Full Stack Developer with our comprehensive course covering MERN stack, Java/Python backend, and real-world projects. Enroll now!",
+            "name": "Full Stack Python Developer Course in Hyderabad",
+            "description": "Become a Full Stack Python Developer with our comprehensive course covering Python, Django/Flask, React, and real-world projects. Enroll now!",
             "provider": {
                 "@type": "Organization",
                 "name": "SocialPrachar",
-                "url": "https://www.socialprachar.com"
+                "url": "https://socialprachar.com"
             },
-            "url": "https://www.socialprachar.com/full-stack-developer-course",
+            "url": "https://socialprachar.com/python-full-stack-development-course",
             "educationalCredentialAwarded": "Certificate of Completion"
         }
     },
@@ -1704,9 +1704,9 @@ export const data = [
             "provider": {
                 "@type": "Organization",
                 "name": "SocialPrachar",
-                "url": "https://www.socialprachar.com"
+                "url": "https://socialprachar.com"
             },
-            "url": "https://www.socialprachar.com/full-stack-java-developer-course",
+            "url": "https://socialprachar.com/java-full-stack-development-course",
             "educationalCredentialAwarded": "Certificate of Completion"
         }
     },
@@ -2054,9 +2054,9 @@ export const data = [
             "provider": {
                 "@type": "Organization",
                 "name": "SocialPrachar",
-                "url": "https://www.socialprachar.com"
+                "url": "https://socialprachar.com"
             },
-            "url": "https://www.socialprachar.com/aws-devops-course",
+            "url": "https://socialprachar.com/awsdevopscourse",
             "educationalCredentialAwarded": "Certificate of Completion"
         }
     },
@@ -2425,9 +2425,9 @@ export const data = [
             "provider": {
                 "@type": "Organization",
                 "name": "SocialPrachar",
-                "url": "https://www.socialprachar.com"
+                "url": "https://socialprachar.com"
             },
-            "url": "https://www.socialprachar.com/artificial-intelligence-course",
+            "url": "https://socialprachar.com/artificial-intelligence-course-training-institute-in-hyderabad",
             "educationalCredentialAwarded": "Certificate of Completion"
         }
     },
@@ -2755,9 +2755,9 @@ export const data = [
             "provider": {
                 "@type": "Organization",
                 "name": "SocialPrachar",
-                "url": "https://www.socialprachar.com"
+                "url": "https://socialprachar.com"
             },
-            "url": "https://www.socialprachar.com/digital-marketing-course",
+            "url": "https://socialprachar.com/digital-marketing-course-training-institute-hyderabad",
             "educationalCredentialAwarded": "Certificate of Completion"
         }
 
@@ -3124,9 +3124,9 @@ export const data = [
             "provider": {
                 "@type": "Organization",
                 "name": "SocialPrachar",
-                "url": "https://www.socialprachar.com"
+                "url": "https://socialprachar.com"
             },
-            "url": "https://www.socialprachar.com/generative-ai-course",
+            "url": "https://socialprachar.com/generative-ai-course-training-institute-hyderabad",
             "educationalCredentialAwarded": "Certificate of Completion"
         }
 
@@ -3472,9 +3472,9 @@ export const data = [
             "provider": {
                 "@type": "Organization",
                 "name": "SocialPrachar",
-                "url": "https://www.socialprachar.com"
+                "url": "https://socialprachar.com"
             },
-            "url": "https://www.socialprachar.com/data-analytics-course",
+            "url": "https://socialprachar.com/data-analytics-course-training-hyderabad",
             "educationalCredentialAwarded": "Certificate of Completion"
         }
 
@@ -3856,9 +3856,9 @@ export const data = [
             "provider": {
                 "@type": "Organization",
                 "name": "SocialPrachar",
-                "url": "https://www.socialprachar.com"
+                "url": "https://socialprachar.com"
             },
-            "url": "https://www.socialprachar.com/snowflake-training-in-hyderabad",
+            "url": "https://socialprachar.com/snowflake-training-in-hyderabad",
             "educationalCredentialAwarded": "Certificate of Completion"
         }
 
@@ -4240,9 +4240,9 @@ export const data = [
             "provider": {
                 "@type": "Organization",
                 "name": "SocialPrachar",
-                "url": "https://www.socialprachar.com"
+                "url": "https://socialprachar.com"
             },
-            "url": "https://www.socialprachar.com/salesforce-course",
+            "url": "https://socialprachar.com/salesforce-course",
             "educationalCredentialAwarded": "Certificate of Completion"
         }
     }

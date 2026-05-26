@@ -322,11 +322,11 @@ const Header = () => {
               {/* Added mt-5 to push down content below banner */}
               {card && (
                 <>
-                  <h2 className={style.headerText}>
+                  <h1 className={style.headerText}>
                     India’s <span style={{ color: '#ff5003' }}>#1</span> <br />
                     {card.text} Program with <span style={{ color: '#ff5003' }}>Career Intelligence</span>
 
-                  </h2>
+                  </h1>
 
                   <p className={`mt-3 ${style.highlightedText}`}>
                     {card?.subText} <span className={style.tagline}>{card?.subTextHighlits}</span>

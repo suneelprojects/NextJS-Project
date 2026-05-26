@@ -90,7 +90,7 @@ const SpecialFaqs = ({ slug }) => {
         schema = {
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": DS_FAQS.slice(0, 5).map(f => ({
+            "mainEntity": DS_FAQS.map(f => ({
                 "@type": "Question",
                 "name": f.q,
                 "acceptedAnswer": { "@type": "Answer", "text": f.a }
@@ -102,7 +102,7 @@ const SpecialFaqs = ({ slug }) => {
         schema = {
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": GENAI_FAQS.slice(0, 5).map(f => ({
+            "mainEntity": GENAI_FAQS.map(f => ({
                 "@type": "Question",
                 "name": f.q,
                 "acceptedAnswer": { "@type": "Answer", "text": f.a }

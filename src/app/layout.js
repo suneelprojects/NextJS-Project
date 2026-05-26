@@ -200,6 +200,49 @@ export default function RootLayout({ children }) {
             })
           }}
         />
+
+        {/* LocalBusiness Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "@id": "https://socialprachar.com/#localbusiness",
+              "name": "SocialPrachar",
+              "image": "https://socialprachar.com/og/Home-image.png",
+              "url": "https://socialprachar.com",
+              "telephone": "+91-8019479419",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "301, Satyabama Commercial Complex, KPHB Main Rd, Bhagya Nagar Colony",
+                "addressLocality": "Hyderabad",
+                "addressRegion": "Telangana",
+                "postalCode": "500085",
+                "addressCountry": "IN"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 17.491839,
+                "longitude": 78.3910161
+              },
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                  "opens": "09:00",
+                  "closes": "20:00"
+                }
+              ],
+              "areaServed": "Hyderabad, India",
+              "sameAs": [
+                "https://www.facebook.com/socialprachar/",
+                "https://www.linkedin.com/company/6635034/",
+                "https://youtube.com/@socialprachar"
+              ]
+            }),
+          }}
+        />
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

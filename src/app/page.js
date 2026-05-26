@@ -4,10 +4,10 @@ import HomepageClient from "./HomepageClient";
 const ogImage = "https://socialprachar.com/og/Home-image.png";
 
 export const generateMetadata = () => ({
-  title: 'Best Leading  Training Institute in Hyderabad | SocialPrachar',
+  title: 'Best AI & Data Science Training Institute in Hyderabad | SocialPrachar',
   description: 'Join the top-rated leading Training Institute  in Hyderabad with real-time projects and expert mentors at SocialPrachar.',
   openGraph: {
-    title: 'Best Leading  Training Institute in Hyderabad | SocialPrachar',
+    title: 'Best AI & Data Science Training Institute in Hyderabad | SocialPrachar',
     description: 'Join the top-rated leading Training Institute  in Hyderabad with real-time projects and expert mentors at SocialPrachar.',
     url: 'https://socialprachar.com/',
     type: 'website',
@@ -17,7 +17,7 @@ export const generateMetadata = () => ({
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Leading  Training Institute in Hyderabad | SocialPrachar',
+    title: 'Best AI & Data Science Training Institute in Hyderabad | SocialPrachar',
     description: 'Join the top-rated leading Training Institute  in Hyderabad with real-time projects and expert mentors at SocialPrachar.',
     images: [ogImage],
   },

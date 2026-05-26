@@ -103,16 +103,30 @@ const BlogUrls = [
 ];
 
 // ============================
-// 4. Combine All URLs
+// 4. Excluded routes (admin, internal, API)
+// ============================
+const excludedPaths = [
+  '/courseBlog-dashboard',
+  '/thank-you',
+  '/api',
+];
+
+// ============================
+// 5. Combine All URLs
 // ============================
 const urls = [
   ...staticUrls,
   ...courseSlugs.map(slug => `/${slug}`),
-  ...BlogUrls
-];
+  ...BlogUrls,
+].filter(
+  (url) =>
+    !excludedPaths.some(
+      (excluded) => url === excluded || url.startsWith(`${excluded}/`)
+    )
+);
 
 // ============================
-// 5. Generate XML
+// 6. Generate XML
 // ============================
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -138,7 +152,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 </urlset>`;
 
 // ============================
-// 6. Output sitemap.xml
+// 7. Output sitemap.xml
 // ============================
 const outputPath = path.join(__dirname, '../public/sitemap.xml');
 fs.writeFileSync(outputPath, sitemap);

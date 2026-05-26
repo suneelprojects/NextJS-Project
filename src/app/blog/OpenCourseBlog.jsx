@@ -4,6 +4,7 @@ import { CalendarDays, Clock, ArrowLeft, Share2, BookOpen, User } from 'lucide-r
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
+import NextImage from 'next/image';
 import Highlight from '@tiptap/extension-highlight';
 import Link from '@tiptap/extension-link';
 import Underline from '@tiptap/extension-underline';
@@ -184,10 +185,14 @@ const OpenCourseBlog = ({ blog }) => {
         {blogData.imageUrl && (
           <div className="mb-8 sm:mb-12 px-2 sm:px-0">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img
+              <NextImage
                 src={blogData.imageUrl}
-                alt={blogData.title || "Article image"}
-                className="w-full h-full sm:h-64 md:h-full object-cover transition-transform duration-700 hover:scale-105"
+                alt={blogData.title || "SocialPrachar - Article image"}
+                width={1200}
+                height={630}
+                className="w-full h-full sm:h-64 md:h-full object-cover rounded-xl transition-transform duration-700 hover:scale-105"
+                priority={false}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
@@ -240,6 +245,57 @@ const OpenCourseBlog = ({ blog }) => {
             />
           )}
         </div>
+        {/* Internal linking block — SEO course links */}
+        <section className="mt-12 p-6 bg-orange-50 border border-orange-200 rounded-2xl">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">
+            Explore Top-Rated Courses in Hyderabad
+          </h2>
+          <p className="text-gray-600 mb-4 text-sm">
+            Ready to build a career in AI and Data Science? Join 17,000+ students at SocialPrachar.
+          </p>
+          <ul className="space-y-2">
+            <li>
+              <a
+                href="/data-science"
+                className="text-orange-600 font-semibold hover:underline"
+              >
+                → Data Science & AI Course in Hyderabad
+              </a>
+            </li>
+            <li>
+              <a
+                href="/artificial-intelligence-course-training-institute-in-hyderabad"
+                className="text-orange-600 font-semibold hover:underline"
+              >
+                → Artificial Intelligence Course in Hyderabad
+              </a>
+            </li>
+            <li>
+              <a
+                href="/generative-ai-course-training-institute-hyderabad"
+                className="text-orange-600 font-semibold hover:underline"
+              >
+                → Generative AI Course in Hyderabad
+              </a>
+            </li>
+            <li>
+              <a
+                href="/full-stack-developer-course"
+                className="text-orange-600 font-semibold hover:underline"
+              >
+                → Full Stack Developer Course in Hyderabad
+              </a>
+            </li>
+            <li>
+              <a
+                href="/data-analytics-course-in-hyderabad"
+                className="text-orange-600 font-semibold hover:underline"
+              >
+                → Data Analytics Course in Hyderabad
+              </a>
+            </li>
+          </ul>
+        </section>
         {/* Article Footer */}
         <footer className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-500 px-2 sm:px-0">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
