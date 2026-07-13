@@ -9,6 +9,7 @@
 .hide_scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .topContent {
   background-color: #543cdf31;
   padding-bottom: 30px;
@@ -18,10 +19,12 @@
   width: 100%;
   padding: 30px;
 }
+
 .insightsHeader {
   font-size: 3rem;
   font-weight: 600;
 }
+
 .insideBox p {
   font-size: 18px;
   font-weight: 500;
@@ -31,6 +34,7 @@
 .insideBox {
   background-color: #553cdf;
 }
+
 .strong {
   font-size: 1.6 rem;
   color: white;
@@ -41,21 +45,25 @@
   font-size: 50px;
   color: white;
 }
+
 .wholeLinkedinCard {
   scroll-behavior: smooth;
 }
+
 .wholeLinkedinCard::-webkit-scrollbar {
   /* height: 8px; */
   display: none;
 }
 
-.profileName > p {
+.profileName>p {
   font-size: 12px;
 }
+
 .profileImage {
   width: 40px;
   height: 40px;
 }
+
 .linkedinInnerCardtitle {
   font-size: 25px;
   color: #0a66c2;
@@ -66,7 +74,7 @@
   width: 26px;
   height: 26px;
   position: relative;
-  top:4px;
+  top: 4px;
   left: 2px;
 }
 
@@ -96,7 +104,7 @@
   overflow-y: hidden;
 }
 
-.linkedinContent > p {
+.linkedinContent>p {
   font-size: 14px;
 }
 
@@ -104,6 +112,7 @@
   .insideBox strong {
     font-size: 18px;
   }
+
   .insideBox p {
     font-size: 14px;
   }
@@ -112,13 +121,16 @@
     font-size: 16px;
     font-weight: 600;
   }
+
   .linkedinLogo {
     width: 20px;
     height: 20px;
   }
+
   .linkedinContent p {
     font-size: 10px;
   }
+
   .linkedinInnerBox {
     max-height: 240px;
   }
@@ -127,12 +139,15 @@
     width: 30px;
     height: 30px;
   }
+
   .profileName h5 {
     font-size: 13px;
   }
+
   .profileName p {
     font-size: 8px;
   }
+
   .alumniProfileImage {
     width: 110px !important;
     height: 100px !important;
@@ -140,37 +155,45 @@
     top: 20px !important;
     left: 10px !important;
   }
+
   .personalInfo {
     position: relative;
     top: 18px;
     left: 10px !important;
   }
+
   .offers {
     height: 20px;
   }
+
   .leadHeading {
     font-size: 8px;
   }
+
   .Headercontent {
-    font-size: 14px !important ;
+    font-size: 14px !important;
   }
 }
 
 @media (min-width: 377px) and (max-width: 767px) {
-   .Headercontent {
-    font-size: 14px !important ;
+  .Headercontent {
+    font-size: 14px !important;
   }
+
   .linkedinInnerCardtitle {
     font-size: 18px;
     font-weight: 600;
   }
+
   .linkedinLogo {
     width: 22px;
     height: 22px;
   }
+
   .linkedinContent p {
     font-size: 12px;
   }
+
   .linkedinInnerBox {
     max-height: 240px;
   }
@@ -179,9 +202,11 @@
     width: 30px;
     height: 30px;
   }
+
   .profileName h5 {
     font-size: 14px;
   }
+
   .profileName p {
     font-size: 10px;
   }
@@ -191,6 +216,7 @@
   .linkedin {
     height: 110vh;
   }
+
   .linkedinContent p {
     font-size: 14px;
   }
@@ -200,6 +226,7 @@
   .linkedin {
     height: 110vh;
   }
+
   .linkedinContent p {
     font-size: 14px;
   }
@@ -209,9 +236,11 @@
   .linkedinContent p {
     font-size: 14px;
   }
+
   .linkedin {
     height: 110vh;
   }
+
   .linkedinInnerBox {
     max-height: 320px;
   }
@@ -222,13 +251,16 @@
   height: 75%;
   margin-top: 50px;
 }
+
 .wholeAlumniCard {
   background: linear-gradient(180deg, white, #553cdf);
   border: 1px solid #543cdf5f;
 }
+
 .alumniScrollContainer::-webkit-scrollbar {
   display: none;
 }
+
 .personalInfo {
   background: white;
   z-index: 1;
@@ -309,9 +341,102 @@
   font-size: 1.6rem;
   letter-spacing: 1px;
 }
+
 .Headercontent {
   font-size: 1.4rem;
   line-height: "1.8";
   font-weight: "400";
 }
+
 /* filter button ending */
+
+/* ===== Recent Placements Infinite Scroll Carousel ===== */
+.placementsCarouselSection {
+  width: 100%;
+  background: #ffffff;
+  padding: 36px 0 28px;
+  overflow: hidden;
+  margin-bottom:40px;
+}
+
+.placementsCarouselHeading {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #0b0b0b;
+  letter-spacing: 1px;
+  
+  margin-top: 24px;
+  font-style: bolder;
+}
+
+.carouselViewport {
+  width: 100%;
+  overflow: hidden;
+  /* height fits the natural image height — no fixed px needed */
+}
+
+.carouselTrack {
+  display: flex;
+  flex-wrap: nowrap;
+  /* 23 images × 3s = 69s for one full pass; duplicate set → seamless loop */
+  animation: scrollLeft 69s linear infinite;
+  width: max-content;
+}
+
+.carouselSlide {
+  flex-shrink: 0;
+  margin-right: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(85, 60, 223, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carouselSlide:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 28px rgba(85, 60, 223, 0.3);
+  /* pause the whole track when hovering any slide */
+  animation-play-state: paused;
+}
+
+/* pause track animation on hover via CSS sibling trick — apply on viewport */
+.carouselViewport:hover .carouselTrack {
+  animation-play-state: paused;
+}
+
+.carouselImage {
+  display: block;
+  height: auto !important;
+  width: auto !important;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    /* translate by exactly half the track width = the original 23 images */
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .placementsCarouselHeading {
+    font-size: 1.4rem;
+  }
+
+  .carouselImage {
+    max-height: 200px;
+  }
+
+  .carouselTrack {
+    animation-duration: 55s;
+  }
+}
+
+/* ===== End of Carousel ===== */
