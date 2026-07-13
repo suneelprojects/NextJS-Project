@@ -179,7 +179,7 @@ const SuccessStoriesReader = () => {
 
       {/* ===== Recent Placements Infinite Scroll Carousel ===== */}
       <div className={style.placementsCarouselSection}>
-        <h2 className={style.placementsCarouselHeading}>Our Recent Placements</h2>
+        <h2 className={style.placementsCarouselHeading}>Our Recent Placements in Last 60 Days</h2>
         <p className="text-center mb-6 text-lg sm:text-lg md:text-xl py-3 font-light">
           Discover the latest success stories from our alumni
         </p>
