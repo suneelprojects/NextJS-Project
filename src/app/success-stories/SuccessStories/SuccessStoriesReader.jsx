@@ -33,6 +33,7 @@ import rp20 from '@/assets/recent-placements/recent-placements20.jpg';
 import rp21 from '@/assets/recent-placements/recent-placements21.jpg';
 import rp22 from '@/assets/recent-placements/recent-placements22.jpg';
 import rp23 from '@/assets/recent-placements/recent-placements23.jpg';
+import rp24 from '@/assets/recent-placements/1000025348.jpg';
 
 const SuccessStoriesReader = () => {
   const [studentsEnrolled, setStudentsEnrolled] = useState(0);
@@ -184,13 +185,13 @@ const SuccessStoriesReader = () => {
         </p>
         <div className={style.carouselViewport}>
           <div className={style.carouselTrack}>
-            {[rp1, rp2, rp3, rp4, rp5, rp6, rp7, rp8, rp9, rp10, rp11, rp12, rp13, rp14, rp15, rp16, rp17, rp18, rp19, rp20, rp21, rp22, rp23,
-              rp1, rp2, rp3, rp4, rp5, rp6, rp7, rp8, rp9, rp10, rp11, rp12, rp13, rp14, rp15, rp16, rp17, rp18, rp19, rp20, rp21, rp22, rp23
+            {[rp1, rp18,rp2,rp19, rp3,rp20, rp4,rp21, rp5,rp22, rp6, rp23,rp7, rp24,rp8,rp18, rp9, rp10,rp19, rp11, rp20,rp12, rp13,rp22, rp14, rp15, rp16,rp24, rp17,
+              rp1, rp18,rp2,rp19, rp3,rp20, rp4,rp21, rp5,rp22, rp6, rp23,rp7, rp24,rp8,rp18, rp9, rp10,rp19, rp11, rp20,rp12, rp13,rp22, rp14, rp15, rp16,rp24, rp17
             ].map((img, idx) => (
               <div key={idx} className={style.carouselSlide}>
                 <Image
                   src={img}
-                  alt={`Recent Placement ${(idx % 23) + 1}`}
+                  alt={`Recent Placement ${(idx % 24) + 1}`}
                   className={style.carouselImage}
                   unoptimized={true}
                 />
