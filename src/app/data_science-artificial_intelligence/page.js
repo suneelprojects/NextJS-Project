@@ -2,6 +2,7 @@ import React from 'react';
 import DataScience from './DataScience.jsx';
 import Ai from './Ai.jsx';
 import AEO_opt from './AEO_opt';
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 import Head from 'next/head';
 
 const page = () => {
@@ -13,6 +14,7 @@ const page = () => {
         <div>
             <DataScience/>
             <Ai/>
+            <PoweredLearningEcosystem />
             <AEO_opt/>
         </div>
         </>

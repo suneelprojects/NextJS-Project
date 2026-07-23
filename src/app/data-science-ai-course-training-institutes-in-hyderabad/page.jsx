@@ -7,6 +7,7 @@ import Image2 from '@/assets/articleAssets/ds-2.png';
 import Image3 from '@/assets/articleAssets/ds-3.png';
 import hero from '@/assets/articleAssets/hero2.png';
 import DataAnalyticsForm from '@/app/best-data-analytics-hyderabad/DataAnalyticsForm';
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 
 
 

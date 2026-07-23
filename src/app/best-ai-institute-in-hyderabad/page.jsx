@@ -23,6 +23,7 @@ import amazon from '@/assets/successStories/AWS.png';
 import microsoft from '@/assets/successStories/CISCO.jpg';
 import google from '@/assets/successStories/google.png';
 import deloitte from '@/assets/successStories/Sutherland.png';
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 import accenture from '@/assets/successStories/Accenture.png';
 import techmahindra from '@/assets/successStories/Tech Mahindra.jpeg';
 import DataAnalyticsForm from '@/app/best-data-analytics-hyderabad/DataAnalyticsForm';

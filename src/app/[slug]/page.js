@@ -13,6 +13,7 @@ import Banner from './courseDetailsPage/Banner/Banner';
 import { notFound } from 'next/navigation';
 import Datascience from './courseDetailsPage/Datascience_ai_newsection/page'
 import UpcomingBatches from './courseDetailsPage/upcoming-batch/page';
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 
 
 // ✅ Generate metadata
@@ -162,6 +163,7 @@ const Page = async ({ params }) => {
 
         <Testimonials />
         <WhatwillYouLearn />
+        <PoweredLearningEcosystem />
         <Datascience slug={slug} />
         <Unlockbonuses />
         <Coursepath />

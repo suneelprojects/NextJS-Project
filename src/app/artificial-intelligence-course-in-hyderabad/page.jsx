@@ -26,6 +26,7 @@ import img7 from "@/assets/articleAssets/artical-img-12.png";
 import img8 from "@/assets/articleAssets/artical-img-13.png";
 import img9 from "@/assets/articleAssets/artical-img-14.png";
 import SignInForm from '@/components/Forms/coursesForm';
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 
 export default function Page() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
@@ -301,6 +302,9 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      {/* Powered Learning Ecosystem Block */}
+      <PoweredLearningEcosystem />
 
       {isPopupVisible && (
         <SignInForm

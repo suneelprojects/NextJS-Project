@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 // import { IndianRupee } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 import img1 from "../../assets/newassets/artical-4-1.png";
 import img2 from "../../assets/newassets/artical-4-2.png";
 
@@ -1565,6 +1566,7 @@ export default function Page() {
           <Tips />
           <FAQ />
           <CTA />
+          <PoweredLearningEcosystem />
         </main>
         {/* <Footer /> */}
 

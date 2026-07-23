@@ -5,6 +5,7 @@ import StepbyStep from './StepbyStepCareer.jsx';
 import DMCvsDSAI from './DMCvsDSAI.jsx';
 import AEO_opt from './AEO_opt.jsx';
 import Conclusion from './Conclusion.jsx';
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 
 
 const page = () => {
@@ -19,6 +20,7 @@ const page = () => {
                 <DMCvsDSAI/>
                 <AEO_opt/>
                 <Conclusion/>
+                <PoweredLearningEcosystem />
             </div>
         </>
     );

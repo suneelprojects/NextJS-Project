@@ -25,8 +25,7 @@ import img1 from "@/assets/articleAssets/artical-img-15.png"
 import img2 from "@/assets/articleAssets/artical-img-16.png"
 import img3 from "@/assets/articleAssets/artical-img-17.png"
 import img4 from "@/assets/articleAssets/artical-img-18.png"
-import SignInForm from '@/components/Forms/coursesForm';
-
+import SignInForm from '@/components/Forms/coursesForm';import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 // Animation variants for sections
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -569,6 +568,8 @@ export default function Page() {
         </div>
 
         {/* Footer Text */}
+        <PoweredLearningEcosystem />
+
         <p className=" text-gray-700  mx-auto leading-relaxed text-base md:text-lg">
           Join <span className="font-bold text-orange-500 bg-orange-50 px-1">SocialPrachar's</span> community of{' '}
           <span className="font-bold text-orange-500">16,000+ successful</span>{' '}

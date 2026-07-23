@@ -28,6 +28,7 @@ import img3 from "@/assets/articleAssets/artical-img-3.png";
 import img4 from  "@/assets/articleAssets/artical-img-4.png";
 import img5 from  "@/assets/articleAssets/artical-img-5.png";
 import SignInForm from '@/components/Forms/coursesForm';
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 
 
 
@@ -694,6 +695,10 @@ export default function Page() {
                 
                 />
             </section>
+            
+            {/* Powered Learning Ecosystem Block */}
+            <PoweredLearningEcosystem />
+            
             {isPopupVisible && (
                     <SignInForm
                       onClose={togglePopup}

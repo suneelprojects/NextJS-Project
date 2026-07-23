@@ -9,6 +9,7 @@ import DigitalMarketing from './DigitalMarketingTools/DigitalMarketing';
 import NextGenAiTools from './NextGenAITools/NextGenAiTools';
 import PlacementsSupport from './PlacementSupport/PlacementSupport';
 import WhatSupport from './WhatSupport/WhatSupport';
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 
 const page = () => {
     return (
@@ -26,6 +27,7 @@ const page = () => {
                 <NextGenAiTools />
                 <PlacementsSupport />
                 <WhatSupport />
+                <PoweredLearningEcosystem />
             </div>
         </>
     );

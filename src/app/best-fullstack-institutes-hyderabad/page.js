@@ -10,6 +10,7 @@ import careerOpportunitiesImage from "../../assets/newassets/Artical1-img4.jpg";
 import salaryTrendsImage from "../../assets/newassets/Artical1-img-5.jpg";
 // import finalThoughtsImage from "../../assets/newassets/Artical1-img-6.jpg";
 import DataAnalyticsForm from '../best-data-analytics-hyderabad/DataAnalyticsForm';
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 import Head from 'next/head';
 
 export default function BestFullstackInstitutesHyderabad() {
@@ -919,9 +920,8 @@ const [showFormPopup, setShowFormPopup] = useState(false);
               )}
             </AnimatePresence>
 
-      
+      <PoweredLearningEcosystem />
 
-      
     </div>
   );
 }

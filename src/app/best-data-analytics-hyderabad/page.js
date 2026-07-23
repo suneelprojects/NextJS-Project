@@ -9,6 +9,7 @@ import img3 from '../../assets/newassets/artical-2.jpg';
 import { AnimatePresence, motion } from 'framer-motion';
 import DataAnalyticsForm from './DataAnalyticsForm';
 import Head from 'next/head';
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 
 const Section = ({ children, className = '', id }) => (
   <motion.section

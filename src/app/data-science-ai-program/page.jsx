@@ -20,6 +20,7 @@ import placementHaripriya from "../../assets/ds-program/placements/haripriya.png
 import placementBalu from "../../assets/ds-program/placements/balu.png";
 import placementNarasimha from "../../assets/ds-program/placements/narasimha.png";
 import placementDivija from "../../assets/divija-placement.png";
+import PoweredLearningEcosystem from '@/components/reusedComponents/PoweredLearningEcosystem';
 
 
 
