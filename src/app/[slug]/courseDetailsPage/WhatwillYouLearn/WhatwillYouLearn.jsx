@@ -39,7 +39,7 @@ const WhatwillYouLearn = () => {
 
     return (
       <>
-        <div className={styles.totalPage} id="what-will-you-learn-section">
+        <div className={styles.totalPage} id="what-will-you-learn-section"  >
           <div className={styles.container}>
             <div className={styles.header}>
               <p className={styles.heading}>
@@ -112,7 +112,7 @@ const WhatwillYouLearn = () => {
                 ))}
             </section>
 
-            <div className={`${styles.skillUp}`}>
+            <div className={`${styles.skillUp}`} style={{ marginBottom: "-10px" }}>
               
               {card && (
                 <EnrollButton

@@ -88,12 +88,13 @@ const PoweredLearningEcosystem = () => {
   ];
 
   return (
+    
     <section
       id="powered-ecosystem-section"
-      className="w-full bg-gradient-to-b from-slate-50 via-white to-slate-50 py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-b border-gray-100"
+      className="w-full bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8  "
     >
       <motion.div
-        className="max-w-7xl mx-auto text-center"
+        className="max-w-7xl mx-auto text-center "
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
@@ -112,13 +113,12 @@ const PoweredLearningEcosystem = () => {
           className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight text-slate-900 tracking-tight max-w-6xl mx-auto"
           style={{ fontWeight: 900 }}
         >
-          Training Is Only Half the Journey.{' '}
-          <span className="text-[#ff5003] font-black">Ziro</span> Completes the Other Half.
+           From Learning to Landing Your Dream Career — <span className="text-[#ff5003] font-black">One Complete AI-Powered Ecosystem</span>
         </motion.h2>
 
         {/* Description */}
         <motion.p variants={itemVariants} className="text-base md:text-lg text-gray-600 mx-auto max-w-4xl mb-10 leading-relaxed font-normal">
-          SocialPrachar provides expert-led training and mentoring. <strong className="text-gray-900 font-semibold">Ziro</strong> powers AI practice labs, skill assessments, real-world projects, internships, and career readiness &mdash; helping you practice, prove, and convert your skills into top career outcomes.
+          Master industry-relevant skills with SocialPrachar and validate them through <strong className="text-gray-900 font-semibold">Ziro's</strong> AI-powered practice labs, real-world projects, internships, assessments, and career readiness programs. Everything you need to learn, practice, prove your expertise, and get hired—all in one ecosystem.
         </motion.p>
 
 

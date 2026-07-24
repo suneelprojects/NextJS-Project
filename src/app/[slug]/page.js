@@ -163,6 +163,7 @@ const Page = async ({ params }) => {
 
         <Testimonials />
         <WhatwillYouLearn />
+        
         <PoweredLearningEcosystem />
         <Datascience slug={slug} />
         <Unlockbonuses />
