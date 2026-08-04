@@ -108,10 +108,10 @@ const Page = async ({ params }) => {
   const faqSchema =
     faqEntities.length > 0
       ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqEntities,
-        }
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqEntities,
+      }
       : null;
 
   const breadcrumbSchema = {
@@ -163,8 +163,8 @@ const Page = async ({ params }) => {
 
         <Testimonials />
         <WhatwillYouLearn />
-        
-        <PoweredLearningEcosystem />
+
+        {/* <PoweredLearningEcosystem /> */}
         <Datascience slug={slug} />
         <Unlockbonuses />
         <Coursepath />

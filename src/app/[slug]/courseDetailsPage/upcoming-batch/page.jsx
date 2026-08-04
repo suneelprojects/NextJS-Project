@@ -67,10 +67,10 @@ export default function Page() {
                   <div>
                     <div className="text-3xl font-bold text-blue-600 mb-2">
 
-                      05th August 2026
+                      20th August 2026
 
 
-                      
+
                     </div>
                     <p className="text-gray-600">
                       Online & Classroom (KPHB, Hyderabad)
