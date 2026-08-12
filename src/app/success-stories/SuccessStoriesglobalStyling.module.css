@@ -350,13 +350,13 @@
 
 /* filter button ending */
 
-/* ===== Recent Placements Infinite Scroll Carousel ===== */
+/* ===== Recent Placements Infinite Scroll Carousel & Responsive Grid ===== */
 .placementsCarouselSection {
   width: 100%;
   background: #ffffff;
   padding: 36px 0 28px;
   overflow: hidden;
-  margin-bottom:40px;
+  margin-bottom: 40px;
 }
 
 .placementsCarouselHeading {
@@ -365,7 +365,6 @@
   font-weight: 900;
   color: #0b0b0b;
   letter-spacing: 1px;
-  
   margin-top: 24px;
   font-style: bolder;
 }
@@ -373,13 +372,11 @@
 .carouselViewport {
   width: 100%;
   overflow: hidden;
-  /* height fits the natural image height — no fixed px needed */
 }
 
 .carouselTrack {
   display: flex;
   flex-wrap: nowrap;
-  /* 23 images × 3s = 69s for one full pass; duplicate set → seamless loop */
   animation: scrollLeft 69s linear infinite;
   width: max-content;
 }
@@ -396,11 +393,9 @@
 .carouselSlide:hover {
   transform: scale(1.04);
   box-shadow: 0 8px 28px rgba(85, 60, 223, 0.3);
-  /* pause the whole track when hovering any slide */
   animation-play-state: paused;
 }
 
-/* pause track animation on hover via CSS sibling trick — apply on viewport */
 .carouselViewport:hover .carouselTrack {
   animation-play-state: paused;
 }
@@ -420,12 +415,74 @@
   }
 
   100% {
-    /* translate by exactly half the track width = the original 23 images */
     transform: translateX(-50%);
   }
 }
 
-@media (max-width: 768px) {
+/* Container for desktop/tablet grid */
+.placementsGridContainer {
+  display: none;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.placementsGrid {
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+}
+
+.gridCard {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(85, 60, 223, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #ffffff;
+  width: 100%;
+}
+
+.gridCard:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(85, 60, 223, 0.25);
+}
+
+.gridImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 14px;
+  display: block;
+}
+
+.viewMoreBtn {
+  background-color: #553cdf;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(85, 60, 223, 0.35);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.viewMoreBtn:hover {
+  background-color: #432bbb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(85, 60, 223, 0.45);
+}
+
+.viewMoreBtn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 767px) {
   .placementsCarouselHeading {
     font-size: 1.4rem;
   }
@@ -437,6 +494,54 @@
   .carouselTrack {
     animation-duration: 55s;
   }
+
+  .carouselViewport {
+    display: block;
+  }
+
+  .placementsGridContainer {
+    display: none;
+  }
 }
 
-/* ===== End of Carousel ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .carouselViewport {
+    display: none;
+  }
+
+  .placementsGridContainer {
+    display: block;
+  }
+
+  .placementsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .placementsGrid.gridCollapsed > .gridCard:nth-child(n+7) {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carouselViewport {
+    display: none;
+  }
+
+  .placementsGridContainer {
+    display: block;
+  }
+
+  .placementsGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .placementsGrid.gridCollapsed > .gridCard {
+    display: block;
+  }
+
+  .placementsGrid.gridCollapsed > .gridCard:nth-child(n+11) {
+    display: none;
+  }
+}
+
+/* ===== End of Carousel & Responsive Grid ===== */

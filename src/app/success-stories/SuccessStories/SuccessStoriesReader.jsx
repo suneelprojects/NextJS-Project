@@ -7,7 +7,7 @@ import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import award_image from '@/assets/successStories/award_image.jpg';
-import higherPackage from '@/assets/successStories/higherpackage.png';
+import higherPackage from '@/assets/successStories/highest-package-divija.png';
 
 // Recent Placements Images
 import rp1 from '@/assets/recent-placements/recent-placements1.jpg';
@@ -34,6 +34,14 @@ import rp21 from '@/assets/recent-placements/recent-placements21.jpg';
 import rp22 from '@/assets/recent-placements/recent-placements22.jpg';
 import rp23 from '@/assets/recent-placements/recent-placements23.jpg';
 import rp24 from '@/assets/recent-placements/1000025348.jpg';
+import rp25 from '@/assets/recent-placements/recent-placemnts-aug.jpg';
+import rp26 from '@/assets/recent-placements/recent-placemnts-aug2.jpg';
+import rp27 from '@/assets/recent-placements/recent-placemnts-aug3.jpg';
+import rp28 from '@/assets/recent-placements/recent-placemnts-aug4.jpg';
+
+const placementImages = [
+  rp28, rp27, rp26, rp25, rp1, rp18, rp2, rp19, rp3, rp20, rp4, rp21, rp5, rp22, rp6, rp23, rp7, rp24, rp8, rp18, rp9, rp10, rp19, rp11, rp20, rp12, rp13, rp22, rp14, rp15, rp16, rp24, rp17
+];
 
 const SuccessStoriesReader = () => {
   const [studentsEnrolled, setStudentsEnrolled] = useState(0);
@@ -41,6 +49,7 @@ const SuccessStoriesReader = () => {
   const [completionRating, setCompletionRating] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
   const statsRef = useRef(null);
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -115,57 +124,59 @@ const SuccessStoriesReader = () => {
         </div>
 
         {/* displaying achievements */}
-        <div className="row g-4 justify-content-center">
+        <div className="row g-4 justify-content-center align-items-start">
           {/* Job Placements */}
-          <div className="col-md-4 d-flex flex-column align-items-center">
+          <div className="col-md-5 d-flex flex-column align-items-center">
             <h4
-              className="text-center mb-3 fw-bold text-uppercase position-relative d-inline-block px-3"
+              className="text-center mb-3 fw-bold text-uppercase position-relative d-flex align-items-center justify-content-center px-3"
               style={{
                 color: "#553cdf",
                 letterSpacing: "1px",
                 paddingBottom: "5px",
                 marginTop: "10px",
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.35)",
+                minHeight: "56px",
               }}
             >
               Our Recent Highest Salary Package
             </h4>
             <div
-              className="card shadow bg-dark text-white w-100 position-relative rounded-4 overflow-hidden d-flex flex-column"
-              style={{ height: "360px" }}
+              className="card shadow w-100 position-relative rounded-4 overflow-hidden"
+              style={{ maxWidth: "440px", aspectRatio: "1448 / 1086", backgroundColor: "#ffffff" }}
             >
               <Image
                 src={recentJobs[activeJobIndex].image}
-                className="img-fluid w-100 h-100"
+                className="w-100 h-100 d-block"
                 alt={recentJobs[activeJobIndex].name}
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "contain" }}
                 unoptimized={true}
               />
             </div>
           </div>
           {/* Awards Section */}
-          <div className="col-md-4 d-flex flex-column align-items-center">
+          <div className="col-md-5 d-flex flex-column align-items-center">
             <h4
-              className="text-center mb-3 fw-bold text-uppercase position-relative d-inline-block px-3"
+              className="text-center mb-3 fw-bold text-uppercase position-relative d-flex align-items-center justify-content-center px-3"
               style={{
                 color: "#553cdf",
                 letterSpacing: "1px",
                 paddingBottom: "5px",
                 marginTop: "10px",
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.35)",
+                minHeight: "56px",
               }}
             >
               Training & Development Company of the Year 2025
             </h4>
             <div
-              className="card shadow bg-dark text-white w-100 position-relative rounded-4 overflow-hidden d-flex flex-column"
-              style={{ height: "360px" }}
+              className="card shadow w-100 position-relative rounded-4 overflow-hidden"
+              style={{ maxWidth: "440px", aspectRatio: "1448 / 1086", backgroundColor: "#000000" }}
             >
               <Image
                 src={recentAwards[activeAwardIndex].image}
-                className="img-fluid w-100 h-100"
+                className="w-100 h-100 d-block"
                 alt={recentAwards[activeAwardIndex].name}
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "contain" }}
                 unoptimized={true}
               />
             </div>
@@ -177,21 +188,21 @@ const SuccessStoriesReader = () => {
 
 
 
-      {/* ===== Recent Placements Infinite Scroll Carousel ===== */}
+      {/* ===== Recent Placements Section ===== */}
       <div className={style.placementsCarouselSection}>
         <h2 className={style.placementsCarouselHeading}>Our Recent Placements in Last 60 Days</h2>
         <p className="text-center mb-6 text-lg sm:text-lg md:text-xl py-3 font-light">
           Discover the latest success stories from our alumni
         </p>
+
+        {/* Mobile View: Infinite Autoscroll Carousel */}
         <div className={style.carouselViewport}>
           <div className={style.carouselTrack}>
-            {[rp1, rp18,rp2,rp19, rp3,rp20, rp4,rp21, rp5,rp22, rp6, rp23,rp7, rp24,rp8,rp18, rp9, rp10,rp19, rp11, rp20,rp12, rp13,rp22, rp14, rp15, rp16,rp24, rp17,
-              rp1, rp18,rp2,rp19, rp3,rp20, rp4,rp21, rp5,rp22, rp6, rp23,rp7, rp24,rp8,rp18, rp9, rp10,rp19, rp11, rp20,rp12, rp13,rp22, rp14, rp15, rp16,rp24, rp17
-            ].map((img, idx) => (
+            {[...placementImages, ...placementImages].map((img, idx) => (
               <div key={idx} className={style.carouselSlide}>
                 <Image
                   src={img}
-                  alt={`Recent Placement ${(idx % 24) + 1}`}
+                  alt={`Recent Placement ${(idx % placementImages.length) + 1}`}
                   className={style.carouselImage}
                   unoptimized={true}
                 />
@@ -199,8 +210,47 @@ const SuccessStoriesReader = () => {
             ))}
           </div>
         </div>
+
+        {/* Laptop & Tablet View: Grid (5/row laptop, 3/row tablet, initially 2 rows + View More) */}
+        <div className={style.placementsGridContainer}>
+          <div className={`${style.placementsGrid} ${!isExpanded ? style.gridCollapsed : ''}`}>
+            {placementImages.map((img, idx) => (
+              <div key={idx} className={style.gridCard}>
+                <Image
+                  src={img}
+                  alt={`Recent Placement ${idx + 1}`}
+                  className={style.gridImage}
+                  unoptimized={true}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-4 pt-2">
+            <button
+              className={style.viewMoreBtn}
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              {isExpanded ? (
+                <>
+                  View Less
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+                  </svg>
+                </>
+              ) : (
+                <>
+                  View More
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                  </svg>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
       </div>
-      {/* ===== End of Recent Placements Carousel ===== */}
+      {/* ===== End of Recent Placements Section ===== */}
 
 
 

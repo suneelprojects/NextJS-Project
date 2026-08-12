@@ -38,7 +38,7 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
     "https://integration.pqa.salesmax.ai/salesmax/leads?token=ZFLXQw9q0qT-FJn11iRc2w";
 
   const zoomShareUrl =
-    "https://us06web.zoom.us/rec/share/vDKRTl7wpfMbocKPPlcG3HDyhRyG5CydHmrBM-r1jASGq4-WcPzKVGeIOokFTGuq.FFI9RZB-2MIpsnRC";
+    "https://shorturl.at/TRrG9";
 
   const handleSubmit = async (e) => {
     e.preventDefault();

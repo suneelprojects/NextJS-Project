@@ -1145,7 +1145,7 @@ const Header = () => {
 
         <style jsx>{`
           .ecosystemWrapper {
-            background-color: #eaf6ff;
+            background-color: #ffff;
             padding: 56px 16px;
           }
           .ecosystemGrid {
