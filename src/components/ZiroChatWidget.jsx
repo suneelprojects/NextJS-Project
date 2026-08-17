@@ -25,6 +25,7 @@ const COURSE_OPTIONS = [
   "Data Science & AI",
   "Data Analytics",
   "Full Stack Java/Python",
+  "GenAI & Agentic AI",
 ];
 
 const STATUS_OPTIONS = [
