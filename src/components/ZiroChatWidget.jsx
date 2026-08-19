@@ -78,16 +78,151 @@ function getOrCreateVisitorId() {
   return fresh;
 }
 
+const LS_ATTRIBUTION_KEY = "ziro_first_touch_attribution";
+
+function safeStorageGet(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeStorageSet(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // localStorage may be blocked
+  }
+}
+
 function readUtm() {
   if (typeof window === "undefined") {
-    return { source_page: "/", utm_source: null, utm_medium: null, utm_campaign: null };
+    return {
+      source_page: "/",
+      page_url: null,
+      referrer_url: null,
+      utm_source: null,
+      utm_medium: null,
+      utm_campaign: null,
+      utm_term: null,
+      utm_content: null,
+      utm_adgroup: null,
+      gclid: null,
+      gbraid: null,
+      wbraid: null,
+    };
   }
-  const sp = new URLSearchParams(window.location.search);
-  return {
+
+  const params = new URLSearchParams(window.location.search);
+
+  const current = {
     source_page: window.location.pathname || "/",
-    utm_source: sp.get("utm_source"),
-    utm_medium: sp.get("utm_medium"),
-    utm_campaign: sp.get("utm_campaign"),
+    page_url: window.location.href || null,
+    referrer_url: document.referrer || null,
+
+    utm_source: params.get("utm_source"),
+    utm_medium: params.get("utm_medium"),
+    utm_campaign: params.get("utm_campaign"),
+
+    utm_term:
+      params.get("utm_term") ||
+      params.get("keyword") ||
+      params.get("term") ||
+      params.get("search_term") ||
+      params.get("searchterm"),
+
+    utm_content: params.get("utm_content"),
+
+    utm_adgroup:
+      params.get("utm_adgroup") ||
+      params.get("adgroup"),
+
+    gclid: params.get("gclid"),
+    gbraid: params.get("gbraid"),
+    wbraid: params.get("wbraid"),
+  };
+
+  let firstTouch = {};
+  try {
+    const saved = safeStorageGet(LS_ATTRIBUTION_KEY);
+    firstTouch = saved ? JSON.parse(saved) : {};
+  } catch {
+    firstTouch = {};
+  }
+
+  // After loading firstTouch, purge any stale page info that might have been saved from older versions
+  if (firstTouch.source_page || firstTouch.page_url) {
+    delete firstTouch.source_page;
+    delete firstTouch.page_url;
+    // Persist the cleaned object back to localStorage so future reads see the correct shape
+    safeStorageSet(LS_ATTRIBUTION_KEY, JSON.stringify(firstTouch));
+  }
+
+  // Check if current URL has any campaign parameters
+  const hasCurrentCampaignParams = Boolean(
+    current.utm_source ||
+    current.utm_medium ||
+    current.utm_campaign ||
+    current.utm_term ||
+    current.utm_content ||
+    current.utm_adgroup ||
+    current.gclid ||
+    current.gbraid ||
+    current.wbraid
+  );
+
+  // Check if saved firstTouch has any campaign parameters
+  const hasSavedCampaignParams = Boolean(
+    firstTouch.utm_source ||
+    firstTouch.utm_medium ||
+    firstTouch.utm_campaign ||
+    firstTouch.utm_term ||
+    firstTouch.utm_content ||
+    firstTouch.utm_adgroup ||
+    firstTouch.gclid ||
+    firstTouch.gbraid ||
+    firstTouch.wbraid
+  );
+
+  // Save/update campaign attribution if no storage exists OR if new campaign params arrive and none were stored previously
+  if (!safeStorageGet(LS_ATTRIBUTION_KEY) || (hasCurrentCampaignParams && !hasSavedCampaignParams)) {
+    const newTouch = {
+      landing_page_url: current.page_url,
+      referrer_url: firstTouch.referrer_url || current.referrer_url,
+
+      utm_source: current.utm_source || firstTouch.utm_source || null,
+      utm_medium: current.utm_medium || firstTouch.utm_medium || null,
+      utm_campaign: current.utm_campaign || firstTouch.utm_campaign || null,
+      utm_term: current.utm_term || firstTouch.utm_term || null,
+      utm_content: current.utm_content || firstTouch.utm_content || null,
+      utm_adgroup: current.utm_adgroup || firstTouch.utm_adgroup || null,
+
+      gclid: current.gclid || firstTouch.gclid || null,
+      gbraid: current.gbraid || firstTouch.gbraid || null,
+      wbraid: current.wbraid || firstTouch.wbraid || null,
+    };
+    safeStorageSet(LS_ATTRIBUTION_KEY, JSON.stringify(newTouch));
+    firstTouch = newTouch;
+  }
+
+  return {
+    // Current page details (always reflects current active page)
+    source_page: current.source_page,
+    page_url: current.page_url,
+    referrer_url: firstTouch.referrer_url || current.referrer_url,
+
+    // Campaign parameters (preserved first-touch attribution)
+    utm_source: firstTouch.utm_source || current.utm_source,
+    utm_medium: firstTouch.utm_medium || current.utm_medium,
+    utm_campaign: firstTouch.utm_campaign || current.utm_campaign,
+    utm_term: firstTouch.utm_term || current.utm_term,
+    utm_content: firstTouch.utm_content || current.utm_content,
+    utm_adgroup: firstTouch.utm_adgroup || current.utm_adgroup,
+
+    gclid: firstTouch.gclid || current.gclid,
+    gbraid: firstTouch.gbraid || current.gbraid,
+    wbraid: firstTouch.wbraid || current.wbraid,
   };
 }
 
