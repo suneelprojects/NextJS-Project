@@ -37,14 +37,14 @@ const NavBar = () => {
     const selectedIndex = event.target.selectedIndex;
     if (selectedIndex > 0) {
       const selectedOption = dropDownValues[selectedIndex - 1]; // Adjust for default option
-      window.location.href = selectedOption.path; // Force full page reload
-      setSelectedValue(""); // Reset dropdown after navigation
+      router.push(selectedOption.path);
+      setSelectedValue("");
     }
   };
 
   const [expanded, setExpand] = useState(false);
-  const Showtoggle = () => {
-    setExpand(!expanded);
+  const toggleMenu = () => {
+    setExpand((isExpanded) => !isExpanded);
   };
   const closeToggle = () => {
     setExpand(false);
@@ -62,17 +62,28 @@ const NavBar = () => {
 
   const toggleDropdown = (dropdown) => {
     setDropdowns((prevState) => ({
-      ...prevState,
-      [dropdown]: !prevState[dropdown], // Toggle only the clicked dropdown
+      dropdown1: false,
+      dropdown2: false,
+      careerDropdown: false,
+      [dropdown]: !prevState[dropdown],
     }));
   };
 
   const closeDropdown = (dropdown) => {
     setDropdowns((prevState) => ({
       ...prevState,
-      [dropdown]: false, // Close only the specified dropdown
+      [dropdown]: false,
     }));
   };
+
+  useEffect(() => {
+    setExpand(false);
+    setDropdowns({
+      dropdown1: false,
+      dropdown2: false,
+      careerDropdown: false,
+    });
+  }, [pathname]);
 
   const marqueeItems = [
     { text: "Learn Till Get Placed", icon: <FontAwesomeIcon icon={faGraduationCap} className="me-3" style={{ color: 'white' }} /> },
@@ -155,7 +166,10 @@ const isExternal = (hrefLink) => hrefLink.startsWith("http");
           <button
             className={`navbar-toggler ${navBarStyle.navbarTogglerBar}`}
             type="button"
-            onClick={Showtoggle}
+            onClick={toggleMenu}
+            aria-label={expanded ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={expanded}
+            aria-controls="primary-navigation"
           >
             <span className="navbar-toggler-icon "></span>
           </button>
@@ -166,7 +180,10 @@ const isExternal = (hrefLink) => hrefLink.startsWith("http");
 
           <div className={`${navBarStyle.navBarList}`}>
             <div
-              className={`collapse navbar-collapse offcanvas offcanvas-end ${navBarStyle.offCanvasContaniner}  ${!!expanded && "show"}`}
+              id="primary-navigation"
+              className={`${navBarStyle.offCanvasContaniner} ${
+                expanded ? navBarStyle.mobileMenuOpen : ""
+              }`}
             >
               <div
                 className={`offcanvas-header  ${navBarStyle.offCanvasContaninerHeader}`}
@@ -175,8 +192,7 @@ const isExternal = (hrefLink) => hrefLink.startsWith("http");
                   type="button"
                   className="btn-close btn-close-white"
                   style={{ position: "absolute", left: 0 }}
-                  onClick={Showtoggle}
-                  data-bs-dismiss="offcanvas"
+                  onClick={closeToggle}
                   aria-label="Close"
                 ></button>
               </div>
@@ -350,6 +366,14 @@ const isExternal = (hrefLink) => hrefLink.startsWith("http");
               </ul>
             </div>
           </div>
+          {expanded && (
+            <button
+              type="button"
+              className={navBarStyle.mobileBackdrop}
+              aria-label="Close navigation menu"
+              onClick={closeToggle}
+            />
+          )}
         </div>
       </nav>
 
