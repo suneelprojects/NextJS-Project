@@ -37,18 +37,29 @@ const NavBar = () => {
     const selectedIndex = event.target.selectedIndex;
     if (selectedIndex > 0) {
       const selectedOption = dropDownValues[selectedIndex - 1]; // Adjust for default option
-      window.location.href = selectedOption.path; // Force full page reload
-      setSelectedValue(""); // Reset dropdown after navigation
+      setSelectedValue(""); // Reset dropdown before client-side navigation
+      setExpand(false);
+      router.push(selectedOption.path);
     }
   };
 
   const [expanded, setExpand] = useState(false);
   const Showtoggle = () => {
-    setExpand(!expanded);
+    setExpand((previousExpanded) => !previousExpanded);
   };
   const closeToggle = () => {
     setExpand(false);
   };
+
+  // Keep the mobile menu and dropdown state in sync after client-side navigation.
+  useEffect(() => {
+    setExpand(false);
+    setDropdowns({
+      dropdown1: false,
+      dropdown2: false,
+      careerDropdown: false,
+    });
+  }, [pathname]);
 
   
   const isCareerWorkshopPage = pathname === "/Career-Success-workshop";
@@ -176,7 +187,6 @@ const isExternal = (hrefLink) => hrefLink.startsWith("http");
                   className="btn-close btn-close-white"
                   style={{ position: "absolute", left: 0 }}
                   onClick={Showtoggle}
-                  data-bs-dismiss="offcanvas"
                   aria-label="Close"
                 ></button>
               </div>
