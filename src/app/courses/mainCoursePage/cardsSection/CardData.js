@@ -128,6 +128,32 @@ export const data = [
         categoryIndex: 0,
         tagIndex: 1,
         slug: 'data-science',
+        heroContent: {
+            preHeading: "Data Science Training in Hyderabad",
+
+            title: "Learn Data Science by Solving Real Data Problems",
+
+            highlightText: "Real Data Problems",
+
+            description:
+                "Build practical skills in working with data, finding patterns and creating data-driven solutions through structured learning, guided projects and regular practice.",
+
+            benefits: [
+                "Practical Data Projects",
+                "Problem-Solving Practice",
+                "Guided Learning",
+                "Skill Assessments",
+                "3-Month Industry Internship",
+                "Weekly Skill Assessments & Performance Reports",
+            ],
+
+            primaryCTA: "Get Data Science Course Details",
+
+            helperText:
+                "Get curriculum, fees and upcoming batch information.",
+
+            secondaryCTA: "View Curriculum",
+        },
 
         students: '16000+ Students',
         Header: "#India’s 1st Data Science Program with Career Intelligence",
@@ -2067,6 +2093,32 @@ export const data = [
         categoryIndex: 7,
         tagIndex: 1,
         slug: 'artificial-intelligence-course-training-institute-in-hyderabad',
+        heroContent: {
+            preHeading: "Artificial Intelligence Training in Hyderabad",
+
+            title: "Build Real AI Skills. Not Just Theory.",
+
+            highlightText: "Real AI Skills",
+
+            description:
+                "Learn Artificial Intelligence through practical projects, guided labs and modern AI workflows designed to help you understand concepts by actually building with them.",
+
+            benefits: [
+                "Practical Data Projects",
+                "Problem-Solving Practice",
+                "Guided Learning",
+                "Skill Assessments",
+                "3-Month Industry Internship",
+                "Weekly Skill Assessments & Performance Reports",
+            ],
+
+            primaryCTA: "Get AI Course Details",
+
+            helperText:
+                "Get curriculum, fees and upcoming batch information.",
+
+            secondaryCTA: "View AI Curriculum",
+        },
 
         students: '16000+ Students',
         Header: "#India’s 1st Artificial Intelligence Program with Career Intelligence",
@@ -2769,6 +2821,32 @@ export const data = [
         categoryIndex: 8,
         tagIndex: 1,
         slug: 'generative-ai-course-training-institute-hyderabad',
+        heroContent: {
+            preHeading: "Generative AI Training in Hyderabad",
+
+            title: "Don’t Just Use AI. Learn to Build With It.",
+
+            highlightText: "Learn to Build With It.",
+
+            description:
+                "Learn Generative AI through practical applications, guided exercises and project-based learning that takes you from understanding AI tools to creating useful AI workflows.",
+
+            benefits: [
+                "Practical Data Projects",
+                "Problem-Solving Practice",
+                "Guided Learning",
+                "Skill Assessments",
+                "3-Month Industry Internship",
+                "Weekly Skill Assessments & Performance Reports",
+            ],
+
+            primaryCTA: "Get Generative AI Course Details",
+
+            helperText:
+                "Get curriculum, fees and upcoming batch information.",
+
+            secondaryCTA: "View GenAI Curriculum",
+        },
 
         students: '16000+ Students',
         Header: "#India’s 1st Generative AI Program with Career Intelligence",
@@ -3138,6 +3216,32 @@ export const data = [
         categoryIndex: 4, // Development
         tagIndex: 1,      // Web Development
         slug: 'data-analytics-course-training-hyderabad',
+        heroContent: {
+            preHeading: "Data Analytics Training in Hyderabad",
+
+            title: "Turn Data Into Decisions That Businesses Can Act On",
+
+            highlightText: "Businesses Can Act On",
+
+            description:
+                "Learn practical data analysis through hands-on exercises, business-focused projects and guided practice - so you can move from raw data to clear insights with confidence.",
+
+            benefits: [
+                "Practical Data Projects",
+                "Problem-Solving Practice",
+                "Guided Learning",
+                "Skill Assessments",
+                "3-Month Industry Internship",
+                "Weekly Skill Assessments & Performance Reports",
+            ],
+
+            primaryCTA: "Get Data Analytics Course Details",
+
+            helperText:
+                "Get curriculum, fees and upcoming batch information.",
+
+            secondaryCTA: "View Curriculum",
+        },
 
         students: '16000+ Students',
         Header: "#India’s 1st Data Analytics Program with Career Intelligence",

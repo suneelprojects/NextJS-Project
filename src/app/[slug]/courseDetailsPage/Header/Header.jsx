@@ -597,9 +597,89 @@ const Header = () => {
   const { slug } = useParams();
   const pathname = usePathname();
   const [card, setCard] = useState(null);
+  const hasNewHero = Boolean(card?.heroContent);
+  const heroBenefitIcons = [
+    unlockLogo,
+    booksymbol,
+    successLogo,
+    partnershipLogo,
+    MobileIconLogo,
+    jobRolesLogo,
+  ];
   const redLineRef = useRef(null);
   const doughtsPartRef = useRef(null);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  // const renderHeroTitle = () => {
+
+
+  //   const title = card?.heroContent?.title || "";
+  //   const highlightText = card?.heroContent?.highlightText || "";
+
+  //   if (!highlightText || !title.includes(highlightText)) {
+  //     return <>{title}</>;
+  //   }
+
+  //   const highlightStart = title.indexOf(highlightText);
+  //   const beforeHighlight = title.slice(0, highlightStart);
+  //   const afterHighlight = title.slice(highlightStart + highlightText.length);
+
+  //   return (
+  //     <>
+  //       {beforeHighlight}
+  //       <span
+  //         className={style.heroTitleHighlight}
+  //         style={{ color: "#ff5003", fontWeight: 800 }}
+  //       >
+  //         {highlightText}
+  //       </span>
+  //       {afterHighlight}
+  //     </>
+  //   );
+  // };
+
+
+
+
+  const renderHeroTitle = () => {
+    const heroContent = card?.heroContent;
+
+    if (!heroContent) return null;
+
+    const title = heroContent.title || "";
+    const highlightText = heroContent.highlightText || "";
+
+    // If no highlight is configured, show the normal title.
+    if (!highlightText) {
+      return title;
+    }
+
+    // Find the highlighted phrase inside the full title.
+    const highlightIndex = title.indexOf(highlightText);
+
+    // Safety fallback if the phrase isn't found.
+    if (highlightIndex === -1) {
+      return title;
+    }
+
+    const beforeHighlight = title.slice(0, highlightIndex);
+
+    const afterHighlight = title.slice(
+      highlightIndex + highlightText.length
+    );
+
+    return (
+      <>
+        {beforeHighlight}
+
+        <span className={style.heroTitleHighlight}>
+          {highlightText}
+        </span>
+
+        {afterHighlight}
+      </>
+    );
+  };
 
   useEffect(() => {
     const cardDetails = data.find((item) => item.slug === slug);
@@ -668,6 +748,21 @@ const Header = () => {
     if (section) section.scrollIntoView({ behavior: "smooth" });
   };
 
+  console.log("CURRENT COURSE:", card?.slug);
+  console.log("HERO TITLE:", card?.heroContent?.title);
+  console.log(
+    "HIGHLIGHT:",
+    card?.heroContent?.highlightText
+  );
+  console.log(
+    "BENEFITS:",
+    card?.heroContent?.benefits
+  );
+  console.log(
+    "BENEFIT COUNT:",
+    card?.heroContent?.benefits?.length
+  );
+
   return (
     <>
 
@@ -685,7 +780,6 @@ const Header = () => {
           {/* Offer Banner inside the card at top */}
           <div
             className={`px-5 py-4 d-flex flex-column flex-md-row col-11 col-md-12 col-lg-10 col-xl-8 bg-white vh-75 rounded-4 shadow position-relative ${style.card}`}
-            style={{ zIndex: 10 }}
           >
             {/* ===== Seamless Scrolling Offer Banner ===== */}
 
@@ -777,75 +871,138 @@ const Header = () => {
 
 
             {/* LEFT CONTENT */}
-            <div className="col-md-6 d-flex flex-column justify-content-center px-2 mt-5">
-              {/* Added mt-5 to push down content below banner */}
-              {card && (
+            {/* NEW hero layout — for courses that have heroContent defined */}
+            {card && card.heroContent ? (
+              <div className={`col-md-6 d-flex flex-column justify-content-center px-2 mt-5 ${style.enhancedHeroLeft}`}>
                 <>
-                  <h1 className={style.headerText}>
-                    India’s <span style={{ color: '#ff5003' }}>#1</span> <br />
-                    {card.text} Program with <span style={{ color: '#ff5003' }}>Career Intelligence</span>
+                  {/* PRE-HEADING */}
+                  <div className={style.heroPreHeading}>
+                    <span className={style.heroPreHeadingIcon}></span>
+                    <span>{card.heroContent.preHeading}</span>
+                  </div>
 
+                  {/* H1 */}
+                  <h1 className={style.enhancedHeroTitle}>
+                    {renderHeroTitle()}
                   </h1>
 
-                  <p className={`mt-3 ${style.highlightedText}`}>
-                    {card?.subText} <span className={style.tagline}>{card?.subTextHighlits}</span>
+                  {/* DESCRIPTION */}
+                  <p className={style.heroSubheadline}>
+                    {card.heroContent.description}
                   </p>
 
-                  <div className={style.symbolItemContent}>
-                    <div className={style.symbolItem}>
-                      <Image src={unlockLogo} alt="Book symbol" className={style.symbol1} unoptimized />
-                      <span className={style.symbolText}>
-                        <strong>{card?.highlights?.[0]}</strong>
-                      </span>
-                    </div>
-                    <div className={style.symbolItem}>
-                      <Image src={booksymbol} alt="Book symbol" className={style.symbol} unoptimized />
-                      <span className={style.symbolText}>
-                        <strong>{card?.highlights?.[1]}</strong>
-                      </span>
-                    </div>
-                    <div className={style.symbolItem}>
-                      <Image src={successLogo} alt="Book symbol" className={style.symbol} />
-                      <span className={style.symbolText}>
-                        <strong>{card?.highlights?.[2]}</strong>
-                      </span>
-                    </div>
-                    <div className={style.symbolItem}>
-                      <Image src={partnershipLogo} alt="Book symbol" className={style.symbol} />
-                      <span className={style.symbolText}>
-                        <strong>{card?.highlights?.[3]}</strong>
-                      </span>
-                    </div>
-                    <div className={style.symbolItem}>
-                      <Image src={MobileIconLogo} alt="Book symbol" className={style.symbol} />
-                      <span className={style.symbolText}>
-                        <strong>{card?.highlights?.[4]}</strong>
-                      </span>
-                    </div>
-                    <div className={style.symbolItem}>
-                      <Image src={successLogo} alt="Book symbol" className={style.symbol} />
-                      <span className={style.symbolText}>
-                        <strong>{card?.highlights?.[5]}</strong>
-                      </span>
-                    </div>
-                    <div className={style.symbolItem}>
-                      <Image src={jobRolesLogo} alt="Job roles symbol" className={style.symbol} unoptimized />
-                      <span className={style.symbolText}>
-                        <strong>{card?.highlights?.[6]}</strong>
-                      </span>
-                    </div>
+                  {/* ALL BENEFITS */}
+                  <div className={style.heroBenefitsGrid}>
+                    {card.heroContent.benefits?.map((benefit, index) => {
+                      const benefitIcon = heroBenefitIcons[index % heroBenefitIcons.length];
+                      return (
+                        <div
+                          key={`${card.slug}-benefit-${index}`}
+                          className={style.heroBenefitItem}
+                        >
+                          <div
+                            className={`${style.heroBenefitIcon} ${index % 2 === 0
+                                ? style.heroBenefitIconOrange
+                                : style.heroBenefitIconBlue
+                              }`}
+                          >
+                            <Image
+                              src={benefitIcon}
+                              alt=""
+                              className={style.heroBenefitImage}
+                              unoptimized
+                            />
+                          </div>
+                          <div className={style.heroBenefitContent}>{benefit}</div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* CTA */}
+                  <div className={style.heroCtaContainer}>
+                    <EnrollButton
+                      label={card.heroContent.primaryCTA}
+                      courseID={card.id}
+                      className={`${style.Button} ${style.heroPrimaryButton}`}
+                      actionType="Button:Enroll Now"
+                    />
+                    <p className={style.heroHelperText}>
+                      {card.heroContent.helperText}
+                    </p>
                   </div>
                 </>
-              )}
-            </div>
+              </div>
+            ) : (
+              /* LEGACY layout — for all other courses without heroContent */
+              <div className="col-md-6 d-flex flex-column justify-content-center px-2 mt-5">
+                {card && (
+                  <>
+                    <h1 className={style.headerText}>
+                      India's <span style={{ color: '#ff5003' }}>#1</span> <br />
+                      {card.text} Program with <span style={{ color: '#ff5003' }}>Career Intelligence</span>
+                    </h1>
+
+                    <p className={`mt-3 ${style.highlightedText}`}>
+                      {card?.subText} <span className={style.tagline}>{card?.subTextHighlits}</span>
+                    </p>
+
+                    <div className={style.symbolItemContent}>
+                      <div className={style.symbolItem}>
+                        <Image src={unlockLogo} alt="Book symbol" className={style.symbol1} unoptimized />
+                        <span className={style.symbolText}>
+                          <strong>{card?.highlights?.[0]}</strong>
+                        </span>
+                      </div>
+                      <div className={style.symbolItem}>
+                        <Image src={booksymbol} alt="Book symbol" className={style.symbol} unoptimized />
+                        <span className={style.symbolText}>
+                          <strong>{card?.highlights?.[1]}</strong>
+                        </span>
+                      </div>
+                      <div className={style.symbolItem}>
+                        <Image src={successLogo} alt="Book symbol" className={style.symbol} />
+                        <span className={style.symbolText}>
+                          <strong>{card?.highlights?.[2]}</strong>
+                        </span>
+                      </div>
+                      <div className={style.symbolItem}>
+                        <Image src={partnershipLogo} alt="Book symbol" className={style.symbol} />
+                        <span className={style.symbolText}>
+                          <strong>{card?.highlights?.[3]}</strong>
+                        </span>
+                      </div>
+                      <div className={style.symbolItem}>
+                        <Image src={MobileIconLogo} alt="Book symbol" className={style.symbol} />
+                        <span className={style.symbolText}>
+                          <strong>{card?.highlights?.[4]}</strong>
+                        </span>
+                      </div>
+                      <div className={style.symbolItem}>
+                        <Image src={successLogo} alt="Book symbol" className={style.symbol} />
+                        <span className={style.symbolText}>
+                          <strong>{card?.highlights?.[5]}</strong>
+                        </span>
+                      </div>
+                      <div className={style.symbolItem}>
+                        <Image src={jobRolesLogo} alt="Job roles symbol" className={style.symbol} unoptimized />
+                        <span className={style.symbolText}>
+                          <strong>{card?.highlights?.[6]}</strong>
+                        </span>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
 
             {/* RIGHT CONTENT - IMAGE */}
-            <div className="col-md-6 d-flex justify-content-center align-items-center mt-5">
-              <div className={`${style.HeaderPicture} text-center`}>
+            <div className={`col-md-6 d-flex justify-content-center align-items-center mt-5 ${hasNewHero ? style.enhancedHeroRight : ""}`}>
+              <div className={`${style.HeaderPicture} ${hasNewHero ? style.enhancedHeaderPicture : ""} text-center`}>
                 {card && (
-                  <Image src={awardImage} alt="Course" className={`img-fluid ${style.headerImage} shadow`} loading="lazy" />
+                  <Image src={awardImage} alt="Course" className={`img-fluid ${style.headerImage} ${hasNewHero ? style.enhancedHeaderImage : ""} shadow`} loading="lazy" />
                 )}
-                <div className={style.EnrollButtonContent}>
+                <div className={`${style.EnrollButtonContent} ${hasNewHero ? style.enhancedProofRow : ""}`}>
                   {card && !isSmallScreen && (
                     <EnrollButton
                       label="Watch Free Demo"
@@ -886,7 +1043,7 @@ const Header = () => {
 
 
       {/* quick navigation buttons */}
-      < section key={pathname} className="sticky top-0 z-[100] bg-white shadow-md" >
+      < section key={pathname} className="sticky top-0 z-10 bg-white shadow-md" >
         <QuickNavigation openDialog={openDialog} scrollToSection={scrollToSection} />
         {
           dialogType === "emi" ? (

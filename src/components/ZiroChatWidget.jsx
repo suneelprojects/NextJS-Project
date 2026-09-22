@@ -21,11 +21,10 @@ const FONT_FAMILY =
   'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
 
 const COURSE_OPTIONS = [
-  "Digital Marketing AI",
   "Data Science & AI",
   "Data Analytics",
-  "Full Stack Java/Python",
   "GenAI & Agentic AI",
+  "Digital Marketing AI",
 ];
 
 const STATUS_OPTIONS = [
@@ -450,7 +449,7 @@ export default function ZiroChatWidget({
 
   //   window.addEventListener("popstate", handleRouteChange);
 
-    // Patch history.pushState / replaceState to catch client-side navigation
+  // Patch history.pushState / replaceState to catch client-side navigation
   //   const origPush = history.pushState.bind(history);
   //   const origReplace = history.replaceState.bind(history);
 
@@ -475,9 +474,9 @@ export default function ZiroChatWidget({
 
   const pathname = usePathname();
 
-useEffect(() => {
-  ctxRef.current = readUtm();
-}, [pathname]);
+  useEffect(() => {
+    ctxRef.current = readUtm();
+  }, [pathname]);
 
   // Every time the pathname changes (including initial load), schedule open
   useEffect(() => {
@@ -670,35 +669,35 @@ useEffect(() => {
     () =>
       isMobile
         ? {
-            position: "fixed",
-            inset: 0,
-            height: "100dvh",
-            minHeight: "100dvh",
-            maxHeight: "100dvh",
-            background: "#ffffff",
-            zIndex: 999999,
-            display: "flex",
-            flexDirection: "column",
-            overflow: "hidden",
-            fontFamily: FONT_FAMILY,
-          }
+          position: "fixed",
+          inset: 0,
+          height: "100dvh",
+          minHeight: "100dvh",
+          maxHeight: "100dvh",
+          background: "#ffffff",
+          zIndex: 999999,
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
+          fontFamily: FONT_FAMILY,
+        }
         : {
-            position: "fixed",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 420,
-            height: 640,
-            maxHeight: "calc(100vh - 40px)",
-            background: "#ffffff",
-            borderRadius: 20,
-            boxShadow: "0 28px 70px rgba(15,23,42,0.35), 0 6px 16px rgba(15,23,42,0.12)",
-            zIndex: 999999,
-            display: "flex",
-            flexDirection: "column",
-            overflow: "hidden",
-            fontFamily: FONT_FAMILY,
-          },
+          position: "fixed",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+          width: 420,
+          height: 640,
+          maxHeight: "calc(100vh - 40px)",
+          background: "#ffffff",
+          borderRadius: 20,
+          boxShadow: "0 28px 70px rgba(15,23,42,0.35), 0 6px 16px rgba(15,23,42,0.12)",
+          zIndex: 999999,
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
+          fontFamily: FONT_FAMILY,
+        },
     [isMobile],
   );
 

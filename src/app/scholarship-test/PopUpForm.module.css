@@ -1,112 +1,227 @@
 /** @format */
+
+/* =========================================
+   MAIN POPUP BACKDROP
+   ========================================= */
+
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /*
+   * Popup is rendered into document.body
+   * using createPortal() from Button.jsx.
+   */
+  z-index: 99999;
+
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   FORM CONTAINER
+   ========================================= */
+
+.formContainer {
+  position: relative;
+  z-index: 100000;
+
+  background: #fff;
+  color: black !important;
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+  width: 350px;
+  max-width: 100%;
+
+  max-height: 90vh;
+  overflow-y: auto;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================
+   LOADING OVERLAY
+   ========================================= */
+
+.loadingOverlay {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(255, 255, 255, 0.8);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /*
+   * Must be above both popup backdrop
+   * and form container.
+   */
+  z-index: 100001;
+}
+
+.loadingOverlay div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* =========================================
+   FORM TITLE
+   ========================================= */
+
+.RegisterNow {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+/* =========================================
+   FORM GROUPS
+   ========================================= */
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+
+/* =========================================
+   INPUTS / SELECT
+   ========================================= */
+
+.input,
+.select {
+  width: 100%;
+
+  padding: 10px;
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   SUBMIT BUTTON
+   ========================================= */
+
+.submitButton {
+  width: 100%;
+
+  padding: 10px;
+
+  background-color: #007bff;
+  color: #fff;
+
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  margin-top: 10px;
+
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   CLOSE BUTTON
+   ========================================= */
+
+.closeButton {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  background-color: #fff;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 24px;
+  line-height: 1;
+
+  color: #333;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.closeButton:hover {
+  background-color: #f0f0f0;
+
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 576px) {
+  .overlay {
+    padding: 15px;
   }
-  .loadingOverlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999; /* Make sure it's above other content */
-  }
-  
-  .loadingOverlay div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-  
+
   .formContainer {
-    background: #fff;
-    color: black!important;
-    padding: 20px;
-    border-radius: 10px;
-    width: 350px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .RegisterNow {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .formGroup {
-    margin-bottom: 15px;
-  }
-  
-  .input,
-  .select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    max-width: 350px;
+
+    padding: 18px;
+
+    max-height: 90vh;
+    overflow-y: auto;
   }
-  
-  .submitButton {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* .closeButton {
-    width: 100%;
-    padding: 10px;
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  } */
-  
+
   .closeButton {
-      position: relative;
-      top: 0;
-      left:270px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%; 
-      background-color: #fff; 
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 24px; /* Size of the 'X' */
-      color: #333; /* Color of the 'X' */
-      border: none; /* Remove default border */
-      cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    top: 10px;
+    right: 10px;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 22px;
   }
-  
-  .closeButton:hover {
-      background-color: #f0f0f0; /* Light background on hover */
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
-  }
-  
+}
