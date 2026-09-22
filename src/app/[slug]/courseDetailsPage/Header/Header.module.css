@@ -141,10 +141,10 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  z-index: 999;
 }
-.Button{
-  z-index: 300;
+
+.Button {
+  position: relative;
 }
 
 .FollowerStars {
