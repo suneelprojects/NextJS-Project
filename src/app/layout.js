@@ -292,10 +292,8 @@ export default function RootLayout({ children }) {
           autoOpenDelayMs={6000}
         />
 
-
-        
+        <Analytics />
       </body>
-      <Analytics />
     </html>
   );
 }
