@@ -21,3 +21,18 @@ background-color: orange;
     height: auto;
     display: inline;
 }
+
+
+/* Accessible colors independent of Bootstrap/Webtune runtime overrides. */
+.page {
+  color: #212529;
+  background-color: #ffffff;
+}
+
+.infoText {
+  color: #075985 !important;
+}
+
+.warningText {
+  color: #7a4b00 !important;
+}

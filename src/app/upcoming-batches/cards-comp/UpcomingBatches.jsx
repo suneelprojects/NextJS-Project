@@ -122,12 +122,12 @@ const UpcomingBatches = () => {
         <>
             <div className={style.container}>
                 <div className={`${style.bg} container pt-5`}>
-                    <div className="text-start d-flex flex-wrap align-items-center justify-content-between text-white">
-                        <div>
+                    <div className={`${style.heroContent} text-start text-white`}>
+                        <div className={style.heroText}>
                             <h1>Upcoming Batches</h1>
                             <p className="fw-bold">Learn Tech Concepts From Industry Leaders Who Have Been There and Done That!</p>
                         </div>
-                        <div className='col-sm-12 col-md-12 col-lg-6'>
+                        <div className={style.heroImage}>
                             <Image src={navbarImage} alt="Masterclass" className={style.custom_image} />
                         </div>
                     </div>

@@ -545,3 +545,8 @@
 }
 
 /* ===== End of Carousel & Responsive Grid ===== */
+
+/* Explicit contrast for light sections after removing Webtune DOM overrides. */
+.darkText {
+  color: #212529 !important;
+}

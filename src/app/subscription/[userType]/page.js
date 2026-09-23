@@ -19,7 +19,7 @@ export default function Page() {
   const isWorkingProfessionals = userType === 'working-professionals';
 
   return (
-    <>
+    <div style={{ color: "#212529", backgroundColor: "#ffffff" }}>
       <Head>
         <link rel="canonical" href={isWorkingProfessionals ? "https://socialprachar.com/subscription/working-professionals" : "https://socialprachar.com/subscription"} />
         <title>{isWorkingProfessionals ? "Working Professionals Subscription Plans – SocialPrachar" : "Affordable Learning Plans for Students and Working Professionals | socialprachar"}</title>
@@ -123,6 +123,6 @@ export default function Page() {
         <Google />
         <SubscriptionFaqs />
       </Suspense>
-    </>
+    </div>
   );
 }

@@ -115,7 +115,7 @@ const SuccessStoriesReader = () => {
 
   return (
     <>
-      <div className="container-fluid bg-light">
+      <div className={`container-fluid bg-light ${style.darkText}`}>
         <div className="text-center pt-4">
           <h1 className="display-5 fw-bold">Our Success Stories</h1>
           <p className="lead">
@@ -191,7 +191,7 @@ const SuccessStoriesReader = () => {
       {/* ===== Recent Placements Section ===== */}
       <div className={style.placementsCarouselSection}>
         <h2 className={style.placementsCarouselHeading}>Our Recent Placements in Last 60 Days</h2>
-        <p className="text-center mb-6 text-lg sm:text-lg md:text-xl py-3 font-light">
+        <p className={`${style.darkText} text-center mb-6 text-lg sm:text-lg md:text-xl py-3 font-light`}>
           Discover the latest success stories from our alumni
         </p>
 
@@ -257,7 +257,7 @@ const SuccessStoriesReader = () => {
 
       <div className={style.topContent}>
         <div className={style.insights}>
-          <p className="text-center mb-4 text-2xl sm:text-2xl md:text-6xl py-3 font-semibold">
+          <p className={`${style.darkText} text-center mb-4 text-2xl sm:text-2xl md:text-6xl py-3 font-semibold`}>
             16000+ Success Stories Since 2014
           </p>
 
