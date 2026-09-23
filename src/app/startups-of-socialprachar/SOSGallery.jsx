@@ -255,7 +255,7 @@ export default function SOSGallery() {
                     placeholder="Search projects by title or category..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="flex-1 px-6 py-3 border-2 border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-lg hover:shadow-md transition-shadow"
+                    className="flex-1 px-6 py-3 border-2 border-slate-200 rounded-full bg-white text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-lg hover:shadow-md transition-shadow"
                   />
                   {/* <button
                     onClick={() => setCurrentPage(0)}
