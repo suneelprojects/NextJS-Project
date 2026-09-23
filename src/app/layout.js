@@ -6,7 +6,7 @@ import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import Script from "next/script";
 import DynamicHeaderManager from "@/components/DynamicHeaderManager/DynamicHeaderManager";
 import { DateProvider } from "@/components/Forms/DateContext";
-// Diagnostic isolation: ZiroChatWidget is temporarily disabled.
+import ZiroChatWidget from "@/components/ZiroChatWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -266,7 +266,12 @@ export default function RootLayout({ children }) {
           }}
         />
 
-        {/* Diagnostic isolation: ZiroChatWidget temporarily disabled. */}
+        <ZiroChatWidget
+          endpoint="https://auth.ziro.digital/functions/v1/website-chat-progress-save"
+          branch="socialprachar"
+          primaryColor="#1d4ed8"
+          autoOpenDelayMs={6000}
+        />
 
         <Analytics />
       </body>
