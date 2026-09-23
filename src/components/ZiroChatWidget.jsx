@@ -420,6 +420,7 @@ export default function ZiroChatWidget({
   const [typing, setTyping] = useState(false);
   const typingTimerRef = useRef(null);
   const autoOpenTimerRef = useRef(null);
+  const hasScheduledAutoOpenRef = useRef(false);
   const bodyRef = useRef(null);
   const hasScrolledOnceRef = useRef(false);
   const visitorIdRef = useRef("");
@@ -476,18 +477,18 @@ export default function ZiroChatWidget({
 
   useEffect(() => {
     ctxRef.current = readUtm();
+
+    // A completed route change must never leave the modal over the new page.
+    setOpen(false);
+    setTyping(false);
+    if (typingTimerRef.current) clearTimeout(typingTimerRef.current);
   }, [pathname]);
 
-  // Every time the pathname changes (including initial load), schedule open
+  // Auto-open once per mounted browser tab, not after every route change.
   useEffect(() => {
-    if (autoOpenDelayMs <= 0) return;
+    if (autoOpenDelayMs <= 0 || hasScheduledAutoOpenRef.current) return;
 
-    // Reset widget state on navigation so it reopens fresh
-    setOpen(false);
-    setStep(0);
-
-    if (autoOpenTimerRef.current) clearTimeout(autoOpenTimerRef.current);
-
+    hasScheduledAutoOpenRef.current = true;
     autoOpenTimerRef.current = setTimeout(() => {
       setOpen(true);
     }, autoOpenDelayMs);
@@ -495,7 +496,33 @@ export default function ZiroChatWidget({
     return () => {
       if (autoOpenTimerRef.current) clearTimeout(autoOpenTimerRef.current);
     };
-  }, [pathname, autoOpenDelayMs]);
+  }, [autoOpenDelayMs]);
+
+  // Close before Next.js starts an internal navigation. usePathname only updates
+  // after navigation commits, which is too late for a full-screen modal.
+  useEffect(() => {
+    const closeForNavigation = (event) => {
+      const link = event.target.closest?.("a[href]");
+      if (!link || link.target === "_blank" || link.hasAttribute("download")) return;
+
+      const destination = new URL(link.href, window.location.href);
+      const current = new URL(window.location.href);
+
+      if (
+        destination.origin === current.origin &&
+        (destination.pathname !== current.pathname ||
+          destination.search !== current.search)
+      ) {
+        setOpen(false);
+        setTyping(false);
+        if (typingTimerRef.current) clearTimeout(typingTimerRef.current);
+        if (autoOpenTimerRef.current) clearTimeout(autoOpenTimerRef.current);
+      }
+    };
+
+    document.addEventListener("click", closeForNavigation, true);
+    return () => document.removeEventListener("click", closeForNavigation, true);
+  }, []);
 
   // Auto-scroll to bottom on step/typing change
   useEffect(() => {

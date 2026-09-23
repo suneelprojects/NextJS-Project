@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
-import { DateProvider } from "@/components/Forms/DateContext";
 import Loading from "@/components/reusedComponents/Loading";
 import QuickHelpButton from "@/components/QuickHelpButton/QuickHelpButton";
 import { Suspense } from "react";
@@ -48,7 +47,7 @@ export default function ClientLayoutWrapper({ children }) {
         {/* Popup disabled globally */}
         {/* {!excludedPaths.some((path) => pathname?.startsWith(path)) &&
           showPopup && <Popup setShowPopup={setShowPopup} />} */}
-        <DateProvider>{children}</DateProvider>
+        {children}
         <Footer />
         <FooterBtn />
       </Suspense>
