@@ -160,7 +160,7 @@ const OurAchievements = () => {
         </div>
 
         <hr className="mx-auto w-75" />
-        <div className="text-center" style={{ fontSize: "18px" }}>
+        <div className={`text-center ${style.darkText}`} style={{ fontSize: "18px" }}>
           <p className="fw-bold">
             SocialPrachar alumni are working in 1,100+ companies across India.
             Contact us to know more about placements!
