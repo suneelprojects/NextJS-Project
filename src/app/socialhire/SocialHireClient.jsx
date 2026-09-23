@@ -60,7 +60,7 @@ export default function SocialHireClient() {
               🌟 <strong className="text-success">SocialPrachar</strong>: An initiative by IIM alumni, delivering top-notch industry-relevant training for over 10 years.
             </p>
             <p className="lead fs-6">
-              🚀 <strong className="text-info">SocialHire</strong>: The AI-powered platform connecting you with career opportunities and tools for success.
+              🚀 <strong className={styles.infoText}>SocialHire</strong>: The AI-powered platform connecting you with career opportunities and tools for success.
             </p>
           </div>
           <div className="col-lg-8 mb-4">
@@ -81,7 +81,7 @@ export default function SocialHireClient() {
           <h2 className="h4 text-primary">What We Offer:</h2>
           {ourOffersArray.map((item, i) => (
             <div className="mb-4" key={i}>
-              <h3 className="h5 text-info">{item.offerTitle}</h3>
+              <h3 className={`h5 ${styles.infoText}`}>{item.offerTitle}</h3>
               <p>{item.offerContent}</p>
             </div>
           ))}
@@ -100,7 +100,7 @@ export default function SocialHireClient() {
           </div>
           <div className="mb-4">
             <p className="lead">
-              🏆 <strong className="text-warning">Recognized Excellence:</strong>
+              🏆 <strong className={styles.warningText}>Recognized Excellence:</strong>
             </p>
             <ul className="list-group">
               <li className="list-group-item">Winner of 9 EdTech Awards for quality training and student success.</li>
@@ -109,7 +109,7 @@ export default function SocialHireClient() {
           </div>
           <div className="mb-4">
             <p className="lead">
-              💡 <strong className="text-info">Real Success Stories:</strong>
+              💡 <strong className={styles.infoText}>Real Success Stories:</strong>
             </p>
             <ul className="list-group">
               <li className="list-group-item">Raghu, a Data Science graduate, recently secured a job in AI with a package of ₹6.5 LPA, transforming his career path.</li>
