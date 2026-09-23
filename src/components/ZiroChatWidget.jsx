@@ -40,6 +40,33 @@ const STATUS_OPTIONS = [
 // coloured background. Example: "/logo.png" or "https://yourdomain.com/icon.png"
 const LOGO_URL = SpLogo; // ← ✏️  UPDATE THIS
 
+const SafeLogo = React.memo(({ width, height, fontSize = 11 }) => {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    return (
+      <span
+        aria-hidden="true"
+        style={{ color: "#fff", fontSize, fontWeight: 700, lineHeight: 1 }}
+      >
+        SP
+      </span>
+    );
+  }
+
+  return (
+    <Image
+      src={LOGO_URL}
+      alt="SocialPrachar"
+      width={width}
+      height={height}
+      style={{ objectFit: "contain" }}
+      onError={() => setFailed(true)}
+    />
+  );
+});
+SafeLogo.displayName = "SafeLogo";
+
 // ─── Helpers ───────────────────────────────────────────────────────────────
 function uuidv4() {
   const c = typeof crypto !== "undefined" ? crypto : null;
@@ -259,19 +286,7 @@ const Avatar = React.memo(({ primaryColor }) => (
       overflow: "hidden",
     }}
   >
-    <Image
-      src={LOGO_URL}
-      alt="SocialPrachar"
-      width={24}
-      height={24}
-      style={{ objectFit: "contain" }}
-      onError={(e) => {
-        // Fallback to "SP" text if image fails to load
-        e.currentTarget.style.display = "none";
-        e.currentTarget.parentElement.innerHTML =
-          '<span style="color:#fff;font-size:11px;font-weight:700;">SP</span>';
-      }}
-    />
+    <SafeLogo width={24} height={24} fontSize={11} />
   </div>
 ));
 Avatar.displayName = "Avatar";
@@ -1234,18 +1249,7 @@ export default function ZiroChatWidget({
                 overflow: "hidden",
               }}
             >
-              <Image
-                src={LOGO_URL}
-                alt="SocialPrachar"
-                width={32}
-                height={32}
-                style={{ objectFit: "contain" }}
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                  e.currentTarget.parentElement.innerHTML +=
-                    '<span style="color:#fff;font-size:13px;font-weight:700;">SP</span>';
-                }}
-              />
+              <SafeLogo width={32} height={32} fontSize={13} />
               <span
                 style={{
                   position: "absolute",
