@@ -72,7 +72,7 @@ export default async function BlogPage() {
   }));
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50 text-slate-900">
       <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* FEATURED POST - Server rendered (LCP optimized) */}
         <FeaturedBlog featuredPost={featuredPost} />
