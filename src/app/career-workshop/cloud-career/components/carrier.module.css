@@ -850,3 +850,9 @@
     transform: translateX(70px);
   }
 } 
+
+/* Explicit banner contrast after third-party style removal. */
+.webinarText,
+.limitedSeats {
+  color: #212529;
+}
