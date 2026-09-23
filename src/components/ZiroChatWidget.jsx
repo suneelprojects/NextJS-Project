@@ -513,31 +513,9 @@ export default function ZiroChatWidget({
     };
   }, [autoOpenDelayMs]);
 
-  // Close before Next.js starts an internal navigation. usePathname only updates
-  // after navigation commits, which is too late for a full-screen modal.
-  useEffect(() => {
-    const closeForNavigation = (event) => {
-      const link = event.target.closest?.("a[href]");
-      if (!link || link.target === "_blank" || link.hasAttribute("download")) return;
-
-      const destination = new URL(link.href, window.location.href);
-      const current = new URL(window.location.href);
-
-      if (
-        destination.origin === current.origin &&
-        (destination.pathname !== current.pathname ||
-          destination.search !== current.search)
-      ) {
-        setOpen(false);
-        setTyping(false);
-        if (typingTimerRef.current) clearTimeout(typingTimerRef.current);
-        if (autoOpenTimerRef.current) clearTimeout(autoOpenTimerRef.current);
-      }
-    };
-
-    document.addEventListener("click", closeForNavigation, true);
-    return () => document.removeEventListener("click", closeForNavigation, true);
-  }, []);
+  // Route-driven cleanup is intentionally handled by the pathname effect above.
+  // Closing from a capture-phase document click races React's route commit and can
+  // cause a removeChild reconciliation crash.
 
   // Auto-scroll to bottom on step/typing change
   useEffect(() => {
@@ -1165,14 +1143,7 @@ export default function ZiroChatWidget({
   // ── Panel (widget open) ───────────────────────────────────────────────────
   return (
     <>
-      {/* Backdrop — desktop only */}
-      {!isMobile && (
-        <div
-          style={backdropStyle}
-          onClick={() => setOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+      {/* Keep the page and navbar interactive while the assistant is open. */}
       <div
         role="dialog"
         aria-label="SocialPrachar Career Assistant"
