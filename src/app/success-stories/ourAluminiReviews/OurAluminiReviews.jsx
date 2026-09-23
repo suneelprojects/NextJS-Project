@@ -18,7 +18,7 @@ const OurAluminiReviews = () => {
   return (
     <>
       <div className={style.ourAlumini_Reviews}>
-        <h2 className="text-center">Our Alumni Reviews</h2>
+        <h2 className={`${style.darkText} text-center`}>Our Alumni Reviews</h2>
         <div className="container my-5">
           <div
             className={`${style.alumniScrollContainer} d-flex`}
