@@ -67,3 +67,33 @@
     }
   } */
   
+
+/* Keep the hero layout stable without relying on third-party DOM styling. */
+.heroContent {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2rem;
+}
+
+.heroText,
+.heroImage {
+  min-width: 0;
+}
+
+.heroImage {
+  width: 100%;
+}
+
+.custom_image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 991.98px) {
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
