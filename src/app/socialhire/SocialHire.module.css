@@ -21,3 +21,13 @@ background-color: orange;
     height: auto;
     display: inline;
 }
+
+
+/* Accessible text colors for white content backgrounds. */
+.infoText {
+    color: #075985;
+}
+
+.warningText {
+    color: #7a4b00;
+}
