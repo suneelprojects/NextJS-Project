@@ -83,7 +83,7 @@ const EventMainPage = () => {
                                     />
                                 </div>
                                 {/* Labels */}
-                                <div className="ms-2 text-center">
+                                <div className="ms-2 text-center text-dark">
                                     <p className="mb-0 fw-bold">{item.labelHead}</p>
                                     <span>{item.labelDown}</span>
                                 </div>
