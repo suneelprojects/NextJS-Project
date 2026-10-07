@@ -14,7 +14,7 @@ function getUpcomingBatchDate(now = new Date()) {
   );
   const todayDay = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
   const daysSinceAnchor = Math.floor((todayDay - anchorDay) / 86400000);
-  const intervalsElapsed = Math.max(0, Math.ceil(daysSinceAnchor / BATCH_INTERVAL_DAYS));
+  const intervalsElapsed = Math.max(0, Math.floor(daysSinceAnchor / BATCH_INTERVAL_DAYS) + 1);
   const nextDate = new Date(BATCH_START_DATE);
   nextDate.setDate(BATCH_START_DATE.getDate() + intervalsElapsed * BATCH_INTERVAL_DAYS);
   return nextDate;
