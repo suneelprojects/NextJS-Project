@@ -1,8 +1,41 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Calendar, IndianRupee, X } from "lucide-react";
 
+const BATCH_START_DATE = new Date(2026, 9, 12);
+const BATCH_INTERVAL_DAYS = 15;
+
+function getUpcomingBatchDate(now = new Date()) {
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const anchorDay = Date.UTC(
+    BATCH_START_DATE.getFullYear(),
+    BATCH_START_DATE.getMonth(),
+    BATCH_START_DATE.getDate()
+  );
+  const todayDay = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+  const daysSinceAnchor = Math.floor((todayDay - anchorDay) / 86400000);
+  const intervalsElapsed = Math.max(0, Math.ceil(daysSinceAnchor / BATCH_INTERVAL_DAYS));
+  const nextDate = new Date(BATCH_START_DATE);
+  nextDate.setDate(BATCH_START_DATE.getDate() + intervalsElapsed * BATCH_INTERVAL_DAYS);
+  return nextDate;
+}
+
+function formatBatchDate(date) {
+  const day = date.getDate();
+  const suffix =
+    day % 100 >= 11 && day % 100 <= 13
+      ? "th"
+      : { 1: "st", 2: "nd", 3: "rd" }[day % 10] || "th";
+  const monthAndYear = new Intl.DateTimeFormat("en-IN", {
+    month: "long",
+    year: "numeric",
+  }).format(date);
+
+  return `${day}${suffix} ${monthAndYear}`;
+}
+
 export default function Page() {
+  const [today, setToday] = useState(null);
   const [priceUnlocked, setPriceUnlocked] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -12,6 +45,16 @@ export default function Page() {
     graduation: "",
     mode: "",
   });
+
+  useEffect(() => {
+    const updateDate = () => setToday(new Date());
+    updateDate();
+    const intervalId = window.setInterval(updateDate, 60 * 1000);
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  const nextBatchDate = today ? getUpcomingBatchDate(today) : null;
+  const formattedBatchDate = nextBatchDate ? formatBatchDate(nextBatchDate) : "";
 
   const handleOpenDialog = () => setIsDialogOpen(true);
   const handleCloseDialog = () => setIsDialogOpen(false);
@@ -67,7 +110,7 @@ export default function Page() {
                   <div>
                     <div className="text-3xl font-bold text-blue-600 mb-2">
 
-                      24th August 2026
+                      {formattedBatchDate || "Loading..."}
 
 
 
@@ -81,7 +124,7 @@ export default function Page() {
                       Limited Seats
                     </div>
                     <div className="text-2xl font-bold text-gray-900">
-                      12th October 2026
+                      {formattedBatchDate || "Loading..."}
                     </div>
                   </div>
                 </div>
