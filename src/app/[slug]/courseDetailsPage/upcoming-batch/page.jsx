@@ -124,7 +124,7 @@ export default function Page() {
                       Limited Seats
                     </div>
                     <div className="text-2xl font-bold text-gray-900">
-                      {formattedBatchDate || "Loading..."}
+                      20 Students per Batch
                     </div>
                   </div>
                 </div>
