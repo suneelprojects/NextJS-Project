@@ -81,7 +81,7 @@ export default function Page() {
                       Limited Seats
                     </div>
                     <div className="text-2xl font-bold text-gray-900">
-                      20 Students per Batch
+                      12th October 2026
                     </div>
                   </div>
                 </div>
