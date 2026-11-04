@@ -35,6 +35,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/ai-courses-kphb/hyderaba',
+        destination: '/artificial-intelligence-course-in-hyderabad',
+        statusCode: 301,
+      },
+      {
         source: '/:path*',
         has: [{ type: 'host', value: 'www.socialprachar.com' }],
         destination: 'https://socialprachar.com/:path*',
