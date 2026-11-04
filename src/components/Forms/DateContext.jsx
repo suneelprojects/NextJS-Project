@@ -14,16 +14,22 @@ export const DateProvider = ({ children }) => {
   });
   const [upcomingBatchesDate, setUpcomingBatchesDate] = useState({});
 
+  const [coursePageBatchDate, setCoursePageBatchDate] = useState("");
+
   // Fetch dates from Firestore
   useEffect(() => {
     const fetchDates = async () => {
       try {
-        const [careerSnap, scholarshipSnap, batchesSnap] = await Promise.all([
+        const [careerSnap, scholarshipSnap, batchesSnap, coursePageSnap] = await Promise.all([
           getDoc(doc(db, "DatesForm", "careerWorkshop")),
           getDoc(doc(db, "DatesForm", "scholarshipTest")),
           getDoc(doc(db, "DatesForm", "upcomingBatches")),
+          getDoc(doc(db, "DatesForm", "coursePageBatch")),
         ]);
 
+        if (coursePageSnap.exists()) {
+          setCoursePageBatchDate(coursePageSnap.data().selectedDate || "");
+        }
         if (careerSnap.exists()) {
           setCareerWorkshopDate(careerSnap.data().selectedDate || "");
         }
@@ -49,6 +55,8 @@ export const DateProvider = ({ children }) => {
   return (
     <DateContext.Provider
       value={{
+        coursePageBatchDate,
+        setCoursePageBatchDate,
         careerWorkshopDate,
         setCareerWorkshopDate,
         scholarshipTestDate,

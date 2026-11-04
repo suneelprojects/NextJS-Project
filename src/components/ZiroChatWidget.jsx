@@ -572,9 +572,9 @@ export default function ZiroChatWidget({
 
   const postStep = useCallback(
     async (n, payload) => {
-      if (!endpoint) return;
+      if (!endpoint) return false;
       try {
-        await fetch(endpoint, {
+        const response = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -585,8 +585,10 @@ export default function ZiroChatWidget({
             branch: branch,
           }),
         });
+        return response.ok;
       } catch (e) {
         console.warn("[ZiroChatWidget] step post failed:", e);
+        return false;
       }
     },
     [endpoint, branch],
@@ -619,10 +621,15 @@ export default function ZiroChatWidget({
     }
     setError(null);
     setSubmitting(true);
-    await postStep(3, { name: data.name.trim() });
+    if (submitting) return;
+    const saved = await postStep(3, { name: data.name.trim() });
     setSubmitting(false);
+    if (!saved) {
+      setError("We couldn't save your details. Please try again.");
+      return;
+    }
     advanceWithTyping(4);
-  }, [data.name, postStep, advanceWithTyping]);
+  }, [data.name, postStep, advanceWithTyping, submitting]);
 
   const submitPhone = useCallback(async () => {
     if (!isValidIndianPhone(data.phone)) {
@@ -631,10 +638,15 @@ export default function ZiroChatWidget({
     }
     setError(null);
     setSubmitting(true);
-    await postStep(4, { phone: data.phone.replace(/\D/g, "") });
+    if (submitting) return;
+    const saved = await postStep(4, { phone: data.phone.replace(/\D/g, "") });
     setSubmitting(false);
+    if (!saved) {
+      setError("We couldn't save your details. Please try again.");
+      return;
+    }
     advanceWithTyping(5);
-  }, [data.phone, postStep, advanceWithTyping]);
+  }, [data.phone, postStep, advanceWithTyping, submitting]);
 
   const submitEmail = useCallback(async () => {
     if (!isValidEmail(data.email)) {
@@ -643,10 +655,15 @@ export default function ZiroChatWidget({
     }
     setError(null);
     setSubmitting(true);
-    await postStep(5, { email: data.email.trim().toLowerCase() });
+    if (submitting) return;
+    const saved = await postStep(5, { email: data.email.trim().toLowerCase() });
     setSubmitting(false);
-    advanceWithTyping(6);
-  }, [data.email, postStep, advanceWithTyping]);
+    if (!saved) {
+      setError("We couldn't save your details. Please try again.");
+      return;
+    }
+    window.location.assign(`/thank-you${window.location.search}`);
+  }, [data.email, postStep, advanceWithTyping, submitting]);
 
   const handleInputFocus = useCallback(() => {
     setTimeout(() => {

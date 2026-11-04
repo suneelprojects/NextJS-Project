@@ -42,6 +42,7 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isLoading) return;
 
     const { fullName, email, phone, course, mode } = formData;
     const phoneRegex = /^[6-9]\d{9}$/;
@@ -57,8 +58,10 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
     }
 
     // 👇 Open a tab immediately to avoid popup blocking
-    const zoomTab = window.open("", "_blank");
-    zoomTab.document.write("<p>Loading your Zoom session...</p>");
+    const zoomTab = actionType === "Button:Watch Video"
+      ? window.open("", "_blank")
+      : null;
+    if (zoomTab) zoomTab.document.write("<p>Loading your Zoom session...</p>");
 
     setIsLoading(true);
 
@@ -69,13 +72,15 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
         formPayload.append(key, value);
       });
 
-      await fetch(scriptURL, {
+      const sheetResponse = await fetch(scriptURL, {
         method: "POST",
         body: formPayload,
       });
 
+      if (!sheetResponse.ok) throw new Error("Sheet submission failed");
+
       // --- Submit to SalesMax CRM ---
-      await fetch(crmTokenURL, {
+      const crmResponse = await fetch(crmTokenURL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,6 +91,8 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
           timestamp: new Date().toISOString(),
         }),
       });
+
+      if (!crmResponse.ok) throw new Error("CRM submission failed");
 
       alert("✅ Form submitted successfully!");
       onClose();
@@ -106,7 +113,7 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
         }
 
         setTimeout(() => {
-          router.push("/thank-you");
+          window.location.assign(`/thank-you${window.location.search}`);
         }, 1500);
       }
 

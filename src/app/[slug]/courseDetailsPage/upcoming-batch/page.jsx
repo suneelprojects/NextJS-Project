@@ -1,32 +1,16 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Calendar, IndianRupee, X } from "lucide-react";
-
-const BATCH_START_DATE = new Date(2026, 9, 12);
-const BATCH_INTERVAL_DAYS = 15;
-
-function getUpcomingBatchDate(now = new Date()) {
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const anchorDay = Date.UTC(
-    BATCH_START_DATE.getFullYear(),
-    BATCH_START_DATE.getMonth(),
-    BATCH_START_DATE.getDate()
-  );
-  const todayDay = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
-  const daysSinceAnchor = Math.floor((todayDay - anchorDay) / 86400000);
-  const intervalsElapsed = Math.max(0, Math.floor(daysSinceAnchor / BATCH_INTERVAL_DAYS) + 1);
-  const nextDate = new Date(BATCH_START_DATE);
-  nextDate.setDate(BATCH_START_DATE.getDate() + intervalsElapsed * BATCH_INTERVAL_DAYS);
-  return nextDate;
-}
+import { useDateContext } from "@/components/Forms/DateContext";
 
 function formatBatchDate(date) {
-  const day = date.getDate();
+  const day = Number(new Intl.DateTimeFormat("en-IN", { day: "numeric", timeZone: "Asia/Kolkata" }).format(date));
   const suffix =
     day % 100 >= 11 && day % 100 <= 13
       ? "th"
       : { 1: "st", 2: "nd", 3: "rd" }[day % 10] || "th";
   const monthAndYear = new Intl.DateTimeFormat("en-IN", {
+    timeZone: "Asia/Kolkata",
     month: "long",
     year: "numeric",
   }).format(date);
@@ -35,7 +19,7 @@ function formatBatchDate(date) {
 }
 
 export default function Page() {
-  const [today, setToday] = useState(null);
+  const { coursePageBatchDate } = useDateContext();
   const [priceUnlocked, setPriceUnlocked] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -46,15 +30,12 @@ export default function Page() {
     mode: "",
   });
 
-  useEffect(() => {
-    const updateDate = () => setToday(new Date());
-    updateDate();
-    const intervalId = window.setInterval(updateDate, 60 * 1000);
-    return () => window.clearInterval(intervalId);
-  }, []);
-
-  const nextBatchDate = today ? getUpcomingBatchDate(today) : null;
-  const formattedBatchDate = nextBatchDate ? formatBatchDate(nextBatchDate) : "";
+  const nextBatchDate = /^\d{4}-\d{2}-\d{2}$/.test(coursePageBatchDate)
+    ? new Date(`${coursePageBatchDate}T00:00:00+05:30`)
+    : null;
+  const formattedBatchDate = nextBatchDate && !Number.isNaN(nextBatchDate.getTime())
+    ? formatBatchDate(nextBatchDate)
+    : "Contact us for the next batch date";
 
   const handleOpenDialog = () => setIsDialogOpen(true);
   const handleCloseDialog = () => setIsDialogOpen(false);
@@ -110,7 +91,7 @@ export default function Page() {
                   <div>
                     <div className="text-3xl font-bold text-blue-600 mb-2">
 
-                      5th November 2026
+                      {formattedBatchDate}
 
 
 

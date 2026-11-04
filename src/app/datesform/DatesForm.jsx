@@ -32,6 +32,35 @@ const DatesForm = () => {
   const { careerWorkshopDate, upcomingBatchesDate } = useDateContext();
   const { scholarshipTestDate, setScholarshipTestDate } = useDateContext();
 
+  const { coursePageBatchDate, setCoursePageBatchDate } = useDateContext();
+  const [courseBatchInput, setCourseBatchInput] = useState("");
+  const [savingCourseBatch, setSavingCourseBatch] = useState(false);
+  const [courseBatchMessage, setCourseBatchMessage] = useState("");
+
+  useEffect(() => {
+    setCourseBatchInput(coursePageBatchDate);
+  }, [coursePageBatchDate]);
+
+  const saveCoursePageBatch = async (event) => {
+    event.preventDefault();
+    if (!courseBatchInput || savingCourseBatch) return;
+    setSavingCourseBatch(true);
+    setCourseBatchMessage("");
+    try {
+      await setDoc(doc(db, "DatesForm", "coursePageBatch"), {
+        selectedDate: courseBatchInput,
+        updatedAt: serverTimestamp(),
+      }, { merge: true });
+      setCoursePageBatchDate(courseBatchInput);
+      setCourseBatchMessage("Saved. Course pages will show this date on their next load.");
+    } catch (error) {
+      console.error("Error saving course page batch date:", error);
+      setCourseBatchMessage("Could not save the date. Please try again.");
+    } finally {
+      setSavingCourseBatch(false);
+    }
+  };
+
   // Career Workshop
   const [generalDate, setGeneralDate] = useState("");
   const [date, setDate] = useState("");
@@ -317,6 +346,22 @@ const DatesForm = () => {
                   ✅ Offline Test Date: {submittedOfflineDate}
                 </p>
               )}
+            </form>
+          </div>
+
+          <div className="col-md-12 mt-4">
+            <form className="card shadow-sm p-4" onSubmit={saveCoursePageBatch}>
+              <h3>Course Pages — Next Batch Starts</h3>
+              <p>Set the shared date shown in the Upcoming Batch section on all course detail pages.</p>
+              <label htmlFor="course-page-batch-date" className="form-label">Next batch date</label>
+              <input id="course-page-batch-date" type="date" required
+                className="form-control" value={courseBatchInput}
+                onChange={(event) => setCourseBatchInput(event.target.value)} />
+              <button type="submit" className="btn btn-success mt-3" disabled={savingCourseBatch}>
+                {savingCourseBatch ? "Saving…" : "Save Course Page Batch Date"}
+              </button>
+              <p className="mt-2">Saved date: {coursePageBatchDate || "Not set"}</p>
+              <p role="status">{courseBatchMessage}</p>
             </form>
           </div>
 
