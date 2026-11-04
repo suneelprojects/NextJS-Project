@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import React from 'react'
 import Script from 'next/script';
+import { trackSavedLead } from '@/lib/leadTracking';
 import Buttonstyle from '@/app/subscription/[userType]/subscription-comp/Enrollbutton.module.css';
 
 
@@ -74,7 +75,7 @@ const Thankyou = () => {
                 src="https://www.googletagmanager.com/gtag/js?id=AW-930111032"
                 strategy="afterInteractive"
             />
-            <Script id="google-analytics" strategy="afterInteractive">
+            <Script id="google-analytics" strategy="afterInteractive" onReady={trackSavedLead}>
                 {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

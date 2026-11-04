@@ -1,14 +1,18 @@
 /** @format */
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import styles from "@/app/scholarship-test/PopUpForm.module.css";
 import { data } from "@/app/courses/mainCoursePage/cardsSection/CardData";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Loading from "../reusedComponents/Loading";
+import { prepareLeadConversion, requireSavedResponse } from "@/lib/leadTracking";
 
 const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
-  const router = useRouter();
+  const submissionLock = useRef(false);
+  const leadId = useRef(null);
+  const sheetSaved = useRef(null);
+  const [matchingConsent, setMatchingConsent] = useState(false);
   const { slug: paramsSlug } = useParams();
   const slug = propSlug || paramsSlug;
 
@@ -42,7 +46,7 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isLoading) return;
+    if (submissionLock.current) return;
 
     const { fullName, email, phone, course, mode } = formData;
     const phoneRegex = /^[6-9]\d{9}$/;
@@ -63,6 +67,8 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
       : null;
     if (zoomTab) zoomTab.document.write("<p>Loading your Zoom session...</p>");
 
+    submissionLock.current = true;
+    leadId.current ||= crypto.randomUUID();
     setIsLoading(true);
 
     try {
@@ -72,12 +78,16 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
         formPayload.append(key, value);
       });
 
+      const sheetSignature = JSON.stringify(formData);
+      if (sheetSaved.current !== sheetSignature) {
       const sheetResponse = await fetch(scriptURL, {
         method: "POST",
         body: formPayload,
       });
 
-      if (!sheetResponse.ok) throw new Error("Sheet submission failed");
+      await requireSavedResponse(sheetResponse);
+      sheetSaved.current = sheetSignature;
+      }
 
       // --- Submit to SalesMax CRM ---
       const crmResponse = await fetch(crmTokenURL, {
@@ -92,10 +102,10 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
         }),
       });
 
-      if (!crmResponse.ok) throw new Error("CRM submission failed");
+      await requireSavedResponse(crmResponse);
+      await prepareLeadConversion({ email, phone, source: "enroll_now", consent: matchingConsent, id: leadId.current });
 
-      alert("✅ Form submitted successfully!");
-      onClose();
+
 
       if (actionType === "Button:Watch Video") {
         // --- Only open Zoom for Watch Free Demo ---
@@ -109,17 +119,16 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
         // --- For other buttons: Download Roadmap and Redirect to Thank You ---
         if (zoomTab) zoomTab.close(); // Close the unused tab
         if (card?.careerRoadmap) {
-          downloadRoadmap(card.careerRoadmap);
+          try { downloadRoadmap(card.careerRoadmap); } catch { /* A download must not interrupt a saved enquiry. */ }
         }
 
-        setTimeout(() => {
-          window.location.assign(`/thank-you${window.location.search}`);
-        }, 1500);
+        window.location.assign(`/thank-you${window.location.search}`);
       }
 
     } catch (error) {
       console.error("❌ Error submitting the form:", error);
-      alert("There was an error submitting the form. Please try again.");
+      alert("We could not confirm your enquiry was saved. Please try again; your details are still here.");
+      submissionLock.current = false;
       if (zoomTab) zoomTab.close();
     } finally {
       setIsLoading(false);
@@ -234,6 +243,8 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
             </select>
           </div>
 
+          <p style={{ fontSize: 12 }}>By submitting, you request a callback about your enquiry. <a href="/privacy-policy">Privacy policy</a></p>
+          <label style={{ fontSize: 12 }}><input type="checkbox" checked={matchingConsent} onChange={e => setMatchingConsent(e.target.checked)} /> I agree to share hashed contact details with Google for ad measurement (optional).</label>
           <button
             type="submit"
             className={styles.submitButton}

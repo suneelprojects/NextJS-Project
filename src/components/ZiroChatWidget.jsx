@@ -9,6 +9,7 @@
  * 3. Custom logo/icon replaces the "SP" placeholder everywhere
  */
 
+import { prepareLeadConversion, requireSavedResponse } from "@/lib/leadTracking";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -420,6 +421,10 @@ export default function ZiroChatWidget({
   autoOpenDelayMs = 6000,
   branch,
 }) {
+  const submissionLock = useRef(false);
+  const savedSteps = useRef(new Map());
+  const [matchingConsent, setMatchingConsent] = useState(false);
+  const [question, setQuestion] = useState("");
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
   const [data, setData] = useState({
@@ -553,10 +558,14 @@ export default function ZiroChatWidget({
 
   // ── Helpers ──
   const restart = () => {
+    if (submissionLock.current) return;
     if (typingTimerRef.current) clearTimeout(typingTimerRef.current);
     setTyping(false);
     setError(null);
     setData({ course_interest: null, student_status: null, name: "", phone: "", email: "" });
+    savedSteps.current.clear();
+    setQuestion("");
+    setMatchingConsent(false);
     setStep(1);
   };
 
@@ -585,7 +594,8 @@ export default function ZiroChatWidget({
             branch: branch,
           }),
         });
-        return response.ok;
+        await requireSavedResponse(response);
+        return true;
       } catch (e) {
         console.warn("[ZiroChatWidget] step post failed:", e);
         return false;
@@ -594,76 +604,38 @@ export default function ZiroChatWidget({
     [endpoint, branch],
   );
 
-  const pickCourse = useCallback(
-    (c) => {
-      setError(null);
-      setData((d) => ({ ...d, course_interest: c }));
-      void postStep(1, { course_interest: c });
-      advanceWithTyping(2);
-    },
-    [postStep, advanceWithTyping],
-  );
-
-  const pickStatus = useCallback(
-    (s) => {
-      setError(null);
-      setData((d) => ({ ...d, student_status: s }));
-      void postStep(2, { student_status: s });
-      advanceWithTyping(3);
-    },
-    [postStep, advanceWithTyping],
-  );
-
-  const submitName = useCallback(async () => {
-    if (!isValidName(data.name)) {
-      setError("Please enter your full name (letters only).");
+  const submitEmail = async () => {
+    if (submissionLock.current) return;
+    if (!isValidName(data.name) || !isValidIndianPhone(data.phone) || !isValidEmail(data.email) || !data.course_interest) {
+      setError("Please enter your name, valid phone and email, and course interest.");
       return;
     }
-    setError(null);
+    submissionLock.current = true;
     setSubmitting(true);
-    if (submitting) return;
-    const saved = await postStep(3, { name: data.name.trim() });
-    setSubmitting(false);
-    if (!saved) {
-      setError("We couldn't save your details. Please try again.");
-      return;
-    }
-    advanceWithTyping(4);
-  }, [data.name, postStep, advanceWithTyping, submitting]);
-
-  const submitPhone = useCallback(async () => {
-    if (!isValidIndianPhone(data.phone)) {
-      setError("Please enter a valid 10-digit Indian mobile number.");
-      return;
-    }
     setError(null);
-    setSubmitting(true);
-    if (submitting) return;
-    const saved = await postStep(4, { phone: data.phone.replace(/\D/g, "") });
-    setSubmitting(false);
-    if (!saved) {
-      setError("We couldn't save your details. Please try again.");
-      return;
+    try {
+      // Keep the existing backend step contract and wait for every write in order.
+      const steps = [
+        [1, { course_interest: question.trim() ? `${data.course_interest} — Question: ${question.trim()}` : data.course_interest }],
+        [2, { student_status: data.student_status || "Not specified" }],
+        [3, { name: data.name.trim() }],
+        [4, { phone: data.phone.replace(/\D/g, "") }],
+        [5, { email: data.email.trim().toLowerCase() }],
+      ];
+      for (const [number, payload] of steps) {
+        const signature = JSON.stringify(payload);
+        if (savedSteps.current.get(number) === signature) continue;
+        if (!await postStep(number, payload)) throw new Error("Save failed");
+        savedSteps.current.set(number, signature);
+      }
+      await prepareLeadConversion({ ...data, source: "chatbot", consent: matchingConsent, id: visitorIdRef.current });
+      window.location.assign(`/thank-you${window.location.search}`);
+    } catch {
+      setError("We couldn't confirm your enquiry was saved. Please try again. Your details are still here.");
+      submissionLock.current = false;
+      setSubmitting(false);
     }
-    advanceWithTyping(5);
-  }, [data.phone, postStep, advanceWithTyping, submitting]);
-
-  const submitEmail = useCallback(async () => {
-    if (!isValidEmail(data.email)) {
-      setError("Please enter a valid email address.");
-      return;
-    }
-    setError(null);
-    setSubmitting(true);
-    if (submitting) return;
-    const saved = await postStep(5, { email: data.email.trim().toLowerCase() });
-    setSubmitting(false);
-    if (!saved) {
-      setError("We couldn't save your details. Please try again.");
-      return;
-    }
-    window.location.assign(`/thank-you${window.location.search}`);
-  }, [data.email, postStep, advanceWithTyping, submitting]);
+  };
 
   const handleInputFocus = useCallback(() => {
     setTimeout(() => {
@@ -879,188 +851,25 @@ export default function ZiroChatWidget({
 
   const firstName = data.name ? data.name.trim().split(" ")[0] : "";
 
-  const renderBody = () => {
-    if (step === 6) {
-      return (
-        <>
-          <BotBubble primaryColor={primaryColor}>
-            👋 Hi! Welcome to <strong>SocialPrachar</strong>.
-            <br /><br />
-            We help graduates build job-ready tech careers with internships,
-            AI-powered learning, and placement support.
-          </BotBubble>
-          {data.course_interest && (
-            <UserBubble primaryColor={primaryColor}>{data.course_interest}</UserBubble>
-          )}
-          {data.student_status && (
-            <UserBubble primaryColor={primaryColor}>{data.student_status}</UserBubble>
-          )}
-          {data.name && <UserBubble primaryColor={primaryColor}>{data.name}</UserBubble>}
-          {data.phone && <UserBubble primaryColor={primaryColor}>+91 {data.phone}</UserBubble>}
-          {data.email && <UserBubble primaryColor={primaryColor}>{data.email}</UserBubble>}
-          <BotBubble primaryColor={primaryColor}>
-            🎉 <strong>Thank you{firstName ? `, ${firstName}` : ""}!</strong>
-            <br />
-            Our career counsellor will contact you shortly on{" "}
-            <strong>+91 {data.phone}</strong>.
-            <br /><br />
-            Meanwhile, explore how Ziro helps students save time, practise
-            better, and become job-ready faster.
-          </BotBubble>
-          <div className="ziro-msg-in" style={{ marginLeft: 38, marginTop: 4, marginBottom: 8 }}>
-            <a
-              href="https://ziro.digital/ziro-advantage"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ziro-cta"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                background: `linear-gradient(135deg, ${primaryColor} 0%, #2563eb 55%, #3b82f6 100%)`,
-                color: "#ffffff",
-                textDecoration: "none",
-                borderRadius: 999,
-                padding: "12px 20px",
-                fontSize: 14,
-                fontWeight: 700,
-                boxShadow: "0 8px 22px rgba(29,78,216,0.32)",
-                fontFamily: FONT_FAMILY,
-              }}
-            >
-              Explore Ziro Advantage <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </>
-      );
-    }
-
-    return (
-      <>
-        <BotBubble primaryColor={primaryColor}>
-          👋 Hi! Welcome to <strong>SocialPrachar</strong>.
-          <br />
-          We help graduates build job-ready tech careers with internships,
-          AI-powered learning, and placement support.
-        </BotBubble>
-
-        {step >= 1 && (
-          <BotBubble primaryColor={primaryColor}>Which course are you looking for?</BotBubble>
-        )}
-        {step === 1 && !typing &&
-          COURSE_OPTIONS.map((c) => (
-            <div key={c} style={{ marginLeft: 38 }}>
-              <OptionPill primaryColor={primaryColor} label={c} onClick={() => pickCourse(c)} />
-            </div>
-          ))}
-        {data.course_interest && step >= 2 && (
-          <UserBubble primaryColor={primaryColor}>{data.course_interest}</UserBubble>
-        )}
-
-        {step >= 2 && step < 6 && (
-          <BotBubble primaryColor={primaryColor}>You are currently:</BotBubble>
-        )}
-        {step === 2 && !typing &&
-          STATUS_OPTIONS.map((s) => (
-            <div key={s} style={{ marginLeft: 38 }}>
-              <OptionPill primaryColor={primaryColor} label={s} onClick={() => pickStatus(s)} />
-            </div>
-          ))}
-        {data.student_status && step >= 3 && (
-          <UserBubble primaryColor={primaryColor}>{data.student_status}</UserBubble>
-        )}
-
-        {step >= 3 && step < 6 && (
-          <BotBubble primaryColor={primaryColor}>Great! What&apos;s your full name?</BotBubble>
-        )}
-        {step === 3 && !typing && (
-          <>
-            {renderInputRow(
-              <input
-                key="name-input"
-                style={chatInputStyle}
-                value={data.name}
-                onChange={(e) => setData((d) => ({ ...d, name: e.target.value }))}
-                onFocus={handleInputFocus}
-                placeholder="Your full name"
-                autoFocus
-                autoComplete="name"
-                onKeyDown={(e) => e.key === "Enter" && submitName()}
-              />,
-              submitName,
-              "Continue",
-            )}
-            {error && <div style={errorStyle}>{error}</div>}
-          </>
-        )}
-        {data.name && step >= 4 && (
-          <UserBubble primaryColor={primaryColor}>{data.name}</UserBubble>
-        )}
-
-        {step >= 4 && step < 6 && (
-          <BotBubble primaryColor={primaryColor}>
-            Thanks{firstName ? ` ${firstName}` : ""}. Please share your WhatsApp
-            number so our career team can guide you.
-          </BotBubble>
-        )}
-        {step === 4 && !typing && (
-          <>
-            {renderInputRow(
-              <input
-                key="phone-input"
-                style={chatInputStyle}
-                type="tel"
-                inputMode="numeric"
-                maxLength={10}
-                value={data.phone}
-                onChange={(e) =>
-                  setData((d) => ({ ...d, phone: e.target.value.replace(/\D/g, "").slice(0, 10) }))
-                }
-                onFocus={handleInputFocus}
-                placeholder="10-digit mobile"
-                autoFocus
-                autoComplete="tel"
-                onKeyDown={(e) => e.key === "Enter" && submitPhone()}
-              />,
-              submitPhone,
-              "Continue",
-            )}
-            {error && <div style={errorStyle}>{error}</div>}
-          </>
-        )}
-        {data.phone && step >= 5 && (
-          <UserBubble primaryColor={primaryColor}>+91 {data.phone}</UserBubble>
-        )}
-
-        {step >= 5 && step < 6 && (
-          <BotBubble primaryColor={primaryColor}>Last step — your email address?</BotBubble>
-        )}
-        {step === 5 && !typing && (
-          <>
-            {renderInputRow(
-              <input
-                key="email-input"
-                style={chatInputStyle}
-                type="email"
-                value={data.email}
-                onChange={(e) => setData((d) => ({ ...d, email: e.target.value }))}
-                onFocus={handleInputFocus}
-                placeholder="you@example.com"
-                autoFocus
-                autoComplete="email"
-                onKeyDown={(e) => e.key === "Enter" && submitEmail()}
-              />,
-              submitEmail,
-              "Submit",
-            )}
-            {error && <div style={errorStyle}>{error}</div>}
-          </>
-        )}
-
-        {typing && <TypingBubble primaryColor={primaryColor} />}
-      </>
-    );
-  };
+  const renderBody = () => (
+    <form onSubmit={(event) => { event.preventDefault(); void submitEmail(); }}>
+      <BotBubble primaryColor={primaryColor}>Hi! Share your contact details and ask us about any course. Our career team will get back to you.</BotBubble>
+      <fieldset disabled={submitting} style={{ border: 0, padding: 0, minWidth: 0 }}>
+        <label>Full name<input required autoComplete="name" style={chatInputStyle} value={data.name} onChange={e => setData(d => ({ ...d, name: e.target.value }))} /></label>
+        <label>Phone number<input required type="tel" autoComplete="tel-national" inputMode="numeric" maxLength={10} style={chatInputStyle} value={data.phone} onChange={e => setData(d => ({ ...d, phone: e.target.value.replace(/\D/g, "").slice(0, 10) }))} /></label>
+        <label>Email<input required type="email" autoComplete="email" style={chatInputStyle} value={data.email} onChange={e => setData(d => ({ ...d, email: e.target.value }))} /></label>
+        <p>Choose a course or type your interest below.</p>
+        {COURSE_OPTIONS.map(course => <OptionPill key={course} primaryColor={primaryColor} label={course} selected={data.course_interest === course} onClick={() => setData(d => ({ ...d, course_interest: course }))} />)}
+        <label>Course interest<input required maxLength={200} style={chatInputStyle} value={data.course_interest || ""} onChange={e => setData(d => ({ ...d, course_interest: e.target.value }))} /></label>
+        <label>Your question (optional)<textarea maxLength={1000} rows={3} style={{ ...chatInputStyle, height: 'auto', borderRadius: 12 }} value={question} onChange={e => setQuestion(e.target.value)} placeholder="Ask about fees, batches, syllabus or placements" /></label>
+        <label>Current status (optional)<select style={chatInputStyle} value={data.student_status || ""} onChange={e => setData(d => ({ ...d, student_status: e.target.value }))}><option value="">Select status</option>{STATUS_OPTIONS.map(status => <option key={status}>{status}</option>)}</select></label>
+        <p style={{ fontSize: 12 }}>By submitting, you request a callback about your enquiry. <a href="/privacy-policy">Privacy policy</a></p>
+        <label style={{ fontSize: 12, display: 'block' }}><input type="checkbox" checked={matchingConsent} onChange={e => setMatchingConsent(e.target.checked)} /> I agree to share hashed contact details with Google for ad measurement (optional).</label>
+        <button type="submit" style={{ ...chatInputStyle, background: primaryColor, color: '#fff', marginTop: 12 }}>{submitting ? "Saving your enquiry…" : "Submit enquiry"}</button>
+      </fieldset>
+      {error && <p role="alert" style={{ color: '#b91c1c' }}>{error}</p>}
+    </form>
+  );
 
   // ── Launcher (widget closed) ──────────────────────────────────────────────
   if (!open) {
