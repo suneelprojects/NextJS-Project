@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Download, Users, Clock, BookOpen, Star, ChevronRight, X } from "lucide-react";
 import { RoadMapData } from "./RoadMapData";
 import styles from "./CareerRoadMap.module.css";
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 const CareerRoadmap = () => {
   const [formData, setFormData] = useState({
@@ -73,18 +74,14 @@ const CareerRoadmap = () => {
         body: formDataEncoded
       });
 
-      // SalesMax CRM API submission
-      await fetch("https://integration.pqa.salesmax.ai/salesmax/leads?token=v2_66Qj1eKfwv9eox0_49g", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          ...formData,
-          formType: "Career Roadmap Download Form",
-          pageUrl: window.location.href,
-          timestamp: new Date().toISOString()
-        })
+      // Ziro Digital CRM submission (same service as ZiroChatWidget)
+      await submitToZiroCrm({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        course_interest: formData.course,
+        formType: "Career Roadmap Download Form",
+        pageUrl: window.location.href,
       });
 
       alert("✅ Form submitted successfully!");

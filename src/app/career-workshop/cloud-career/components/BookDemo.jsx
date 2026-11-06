@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import style from './BookDemo.module.css';
 import { useDateContext } from "@/components/Forms/DateContext";
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 function formatDateWithSuffix(dateString) {
   const date = new Date(dateString);
@@ -75,21 +76,14 @@ const Button = () => {
 
       if (!response.ok) throw new Error("Failed to submit the form.");
 
-      // ✅ SalesMax CRM API submission
-      await fetch("https://integration.pqa.salesmax.ai/salesmax/leads?token=HQcGA0UvEPEYySxfojMchw", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          course: formData.course,
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          formType: "Career Workshop Form",
-          pageUrl: window.location.href,
-          timestamp: new Date().toISOString(),
-        }),
+      // ✅ Ziro Digital CRM submission (same service as ZiroChatWidget)
+      await submitToZiroCrm({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        course_interest: formData.course,
+        formType: "Career Workshop Form",
+        pageUrl: window.location.href,
       });
 
       alert("✅ Thank you for registering! Your form has been submitted successfully.");

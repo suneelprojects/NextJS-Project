@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./PopUpForm.module.css";
 import Loading from "@/components/reusedComponents/Loading";
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 const ScholarshipFormTest = ({ onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,9 +17,6 @@ const ScholarshipFormTest = ({ onClose }) => {
 
   const scriptURL =
     "https://script.google.com/macros/s/AKfycbwq2ZtrNBCozKx_A23Ab4k02yCsxt5v1Wx7OQsY2RRzECvEnieV98bYm5rmWch0ZjcIag/exec";
-
-  const crmTokenURL =
-    "https://integration.pqa.salesmax.ai/salesmax/leads?token=jfk9-GtyxBAVt5_ZhL733g";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,24 +48,17 @@ const ScholarshipFormTest = ({ onClose }) => {
 
       if (!response.ok) throw new Error("Failed to submit form to Google Sheets");
 
-      // ✅ Submit to SalesMax CRM
-      await fetch(crmTokenURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          education: formData.education,
-          yearOfPassing: formData.yearOfPassing,
-          course: formData.course,
-          trainingMode: formData.trainingMode,
-          formType: "Scholarship Test Registration",
-          pageUrl: window.location.href,
-          timestamp: new Date().toISOString(),
-        }),
+      // ✅ Submit to Ziro Digital CRM (same service as ZiroChatWidget)
+      await submitToZiroCrm({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        education: formData.education,
+        yearOfPassing: formData.yearOfPassing,
+        course_interest: formData.course,
+        trainingMode: formData.trainingMode,
+        formType: "Scholarship Test Registration",
+        pageUrl: window.location.href,
       });
 
       alert("✅ Form submitted successfully!");

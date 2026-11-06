@@ -6,6 +6,7 @@ import styles from "@/app/scholarship-test/PopUpForm.module.css";
 import { data } from "@/app/courses/mainCoursePage/cardsSection/CardData";
 import { useParams, useRouter } from "next/navigation";
 import Loading from "../reusedComponents/Loading";
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
   const router = useRouter();
@@ -33,9 +34,6 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
 
   const scriptURL =
     "https://script.google.com/macros/s/AKfycbyiFH6YnpFoN2CeaCSOIB5Uv0667e_H3u183xrWTeK95GHV7iUBO1TPn40C6ydXYME2/exec";
-
-  const crmTokenURL =
-    "https://integration.pqa.salesmax.ai/salesmax/leads?token=ZFLXQw9q0qT-FJn11iRc2w";
 
   const zoomShareUrl =
     "https://shorturl.at/TRrG9";
@@ -74,17 +72,17 @@ const CoursesForm = ({ onClose, courseID, actionType, slug: propSlug }) => {
         body: formPayload,
       });
 
-      // --- Submit to SalesMax CRM ---
-      await fetch(crmTokenURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          formType: "Courses_Form",
-          timestamp: new Date().toISOString(),
-        }),
+      // --- Submit to Ziro Digital CRM (same service as ZiroChatWidget) ---
+      await submitToZiroCrm({
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        course_interest: formData.course,
+        mode: formData.mode,
+        slug: formData.slug,
+        actionType: formData.actionType,
+        pageUrl: formData.pageUrl,
+        formType: "Courses_Form",
       });
 
       alert("✅ Form submitted successfully!");

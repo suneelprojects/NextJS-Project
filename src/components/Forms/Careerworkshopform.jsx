@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import style from '@/app/career-counselling/ButtonDemoBooking/Button.module.css';
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 const Careerworkshopform = ({onClose}) => {
  const [formData, setFormData] = useState({
@@ -55,59 +56,15 @@ const Careerworkshopform = ({onClose}) => {
 
      const data = await response.json();
      console.log("Form submitted successfully:", data);
-     // --- SALES MAX CRM INTEGRATION ---
-     try {
-       if (!window.salesmaxScriptLoaded) {
-         const script = document.createElement('script');
-         script.src = 'https://salesmax.ai/formdata/js/index.js';
-         script.async = true;
-         script.onload = () => { 
-           window.salesmaxScriptLoaded = true;
-           console.log('✅ SalesMax script loaded successfully for Career Workshop Form');
-           initializeSalesmax();
-         };
-         script.onerror = () => {
-           console.error('❌ Failed to load SalesMax script for Career Workshop Form');
-         };
-         document.body.appendChild(script);
-       } else {
-         console.log('✅ SalesMax script already loaded for Career Workshop Form');
-         initializeSalesmax();
-       }
 
-       function initializeSalesmax() {
-         try {
-           window.salesmaxDataLayer = window.salesmaxDataLayer || [];
-           function salesmax() {
-             window.salesmaxDataLayer.push(arguments);
-           }
-           salesmax('form-id', 'Career Workshop Form ');
-           salesmax('account', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJqdGkiOiI3OGVhZGZiYS1lZTkxLTRmZmQtYmM5MS1hODFjOGVhNWE1NmQiLCJzdWIiOiJiMmI4MzM2OC01M2QxLTQyOGMtYmEzNC02NDZjZDZlNTExMjMiLCJpYXQiOjE3NTM3MDU0NDZ9.-I-q73YDORNGWsUTOa33q9lFXGl8y4x46Wn1iBn7l4lQqLhHZEHykzZ2BSgM36Pw');
-           salesmax('event', 'form_submit', { 
-             course: formData.course, 
-             name: formData.name, 
-             email: formData.email, 
-             phone: formData.phone,
-             form_type: 'Career Workshop Form',
-             page_url: window.location.href,
-             timestamp: new Date().toISOString()
-           });
-           console.log('✅ SalesMax CRM data sent successfully for Career Workshop Form:', {
-             form_id: 'Career Workshop Form',
-             course: formData.course,
-             name: formData.name,
-             email: formData.email,
-             phone: formData.phone,
-             timestamp: new Date().toISOString()
-           });
-         } catch (error) {
-           console.error('❌ Error in SalesMax initialization for Career Workshop Form:', error);
-         }
-       }
-     } catch (error) {
-       console.error('❌ Error in SalesMax integration for Career Workshop Form:', error);
-     }
-     // --- END SALES MAX ---
+     // --- ZIRO DIGITAL CRM INTEGRATION ---
+     await submitToZiroCrm({
+       name: formData.name,
+       email: formData.email,
+       phone: formData.phone,
+       course_interest: formData.course,
+       formType: "Career Workshop Form",
+     });
      alert(
        "Thank you for registering! Your form has been submitted successfully."
      );

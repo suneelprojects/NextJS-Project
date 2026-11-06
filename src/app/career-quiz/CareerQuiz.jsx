@@ -7,6 +7,7 @@ import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import { quizData } from "@/app/career-quiz/quizData";
 import { useRouter } from "next/navigation";
 import jsPDF from 'jspdf';
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 const CareerQuiz = () => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -28,20 +29,6 @@ const CareerQuiz = () => {
     useEffect(() => {
         AOS.init({ duration: 1000, easing: 'ease-in-out', once: true });
         
-        // Initialize Salesmax script
-        if (!window.salesmaxScriptLoaded && !document.querySelector('script[src*="salesmax.ai"]')) {
-            const script = document.createElement('script');
-            script.src = 'https://salesmax.ai/formdata/js/index.js';
-            script.async = true;
-            script.onload = () => { 
-                window.salesmaxScriptLoaded = true;
-            };
-            script.onerror = () => {
-                console.error('Failed to load Salesmax script');
-            };
-            document.head.appendChild(script);
-        }
-
         // Set initial window width
         setWindowWidth(window.innerWidth);
 
@@ -170,48 +157,13 @@ const CareerQuiz = () => {
                     setIsFormSubmitted(true);
                     setShowForm(false);
 
-                    // Handle Salesmax in background asynchronously
-                    setTimeout(() => {
-                        try {
-                            if (!window.salesmaxScriptLoaded) {
-                                const script = document.createElement('script');
-                                script.src = 'https://salesmax.ai/formdata/js/index.js';
-                                script.async = true;
-                                script.onload = () => { 
-                                    window.salesmaxScriptLoaded = true;
-                                    initializeSalesmax();
-                                };
-                                script.onerror = () => {
-                                    console.error('Failed to load Salesmax script during submission');
-                                };
-                                document.body.appendChild(script);
-                            } else {
-                                initializeSalesmax();
-                            }
-
-                            function initializeSalesmax() {
-                                if (typeof window.salesmaxDataLayer === 'undefined') {
-                                    window.salesmaxDataLayer = [];
-                                }
-                                function salesmax() {
-                                    window.salesmaxDataLayer.push(arguments);
-                                }
-                                
-                                salesmax('form-id', 'Career Quiz Form');
-                                salesmax('account', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJqdGkiOiI0NDQ2MzgwNC1mZTMwLTRhZWYtOGRmMS00OWE3ZmJlNTBlNDAiLCJzdWIiOiJiMmI4MzM2OC01M2QxLTQyOGMtYmEzNC02NDZjZDZlNTExMjMiLCJpYXQiOjE3NTM3MDU0NDZ9.k07Y0TJwp6al2RQAOqbnS4d2JIyqdRLj1des0bYFeBuecEz2CG6ZHboL0z1WS9ko');
-                                
-                                salesmax('event', 'form_submit', { 
-                                    name: formData.name, 
-                                    mobile: formData.mobile,
-                                    form_type: 'Career Quiz Form',
-                                    page_url: window.location.href,
-                                    timestamp: new Date().toISOString()
-                                });
-                            }
-                        } catch (error) {
-                            console.error('Error in SalesMax integration:', error);
-                        }
-                    }, 0); // Immediate async execution
+                    // Submit to Ziro Digital CRM (same service as ZiroChatWidget)
+                    submitToZiroCrm({
+                        name: formData.name,
+                        phone: formData.mobile,
+                        formType: "Career Quiz Form",
+                        pageUrl: window.location.href,
+                    });
                 } else {
                     alert('Error submitting form. Please try again.');
                 }

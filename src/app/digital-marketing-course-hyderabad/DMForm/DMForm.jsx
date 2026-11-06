@@ -2,6 +2,7 @@
 
 "use client";
 import React, { useState } from "react";
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 const DMForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -63,64 +64,17 @@ const DMForm = () => {
 
       setIsLoading(false);
       if (response.ok) {
-        // --- SALES MAX CRM INTEGRATION ---
-        try {
-          if (!window.salesmaxScriptLoaded) {
-            const script = document.createElement('script');
-            script.src = 'https://salesmax.ai/formdata/js/index.js';
-            script.async = true;
-            script.onload = () => { 
-              window.salesmaxScriptLoaded = true;
-              console.log('✅ SalesMax script loaded successfully for Digital Marketing Course Form');
-              initializeSalesmax();
-            };
-            script.onerror = () => {
-              console.error('❌ Failed to load SalesMax script for Digital Marketing Course Form');
-            };
-            document.body.appendChild(script);
-          } else {
-            console.log('✅ SalesMax script already loaded for Digital Marketing Course Form');
-            initializeSalesmax();
-          }
-
-          function initializeSalesmax() {
-            try {
-              window.salesmaxDataLayer = window.salesmaxDataLayer || [];
-              function salesmax() {
-                window.salesmaxDataLayer.push(arguments);
-              }
-              salesmax('form-id', 'Courses Enroll Form');
-              salesmax('account', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzM4NCJ9.eyJqdGkiOiI4YTQxNjEyOC1hYTExLTQxYzAtYWZhMC1mNWNlYWY0YzIyNDQiLCJzdWIiOiJiMmI4MzM2OC01M2QxLTQyOGMtYmEzNC02NDZjZDZlNTExMjMiLCJpYXQiOjE3NTM3MDU0NDZ9.IjGFEGLUs3dzXKKrptyEIbBVyscMMuvRHKL6VRg8hu5mvyUhWWuvoNRmalkpNEEE');
-              salesmax('event', 'form_submit', {
-                fullName: formData.fullName,
-                email: formData.email,
-                phone: formData.phone,
-                course: formData.course,
-                mode: formData.mode,
-                pageUrl: formData.pageUrl,
-                actionType: formData.actionType,
-                form_type: 'Digital Marketing Course Form',
-                timestamp: new Date().toISOString()
-              });
-              console.log('✅ SalesMax CRM data sent successfully for Digital Marketing Course Form:', {
-                form_id: 'Courses Enroll Form',
-                fullName: formData.fullName,
-                email: formData.email,
-                phone: formData.phone,
-                course: formData.course,
-                mode: formData.mode,
-                pageUrl: formData.pageUrl,
-                actionType: formData.actionType,
-                timestamp: new Date().toISOString()
-              });
-            } catch (error) {
-              console.error('❌ Error in SalesMax initialization for Digital Marketing Course Form:', error);
-            }
-          }
-        } catch (error) {
-          console.error('❌ Error in SalesMax integration for Digital Marketing Course Form:', error);
-        }
-        // --- END SALES MAX ---
+        // --- ZIRO DIGITAL CRM INTEGRATION ---
+        await submitToZiroCrm({
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          course_interest: formData.course,
+          mode: formData.mode,
+          pageUrl: formData.pageUrl,
+          actionType: formData.actionType,
+          formType: "Digital Marketing Course Form",
+        });
         alert("Form submitted successfully!");
         setFormData({
           fullName: "",

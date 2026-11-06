@@ -4,6 +4,7 @@ import { X } from "lucide-react";
 import { motion } from "framer-motion";
 import StipendCalculator from "@/components/StipendCalculator";
 import styles from "@/app/scholarship-test/PopUpForm.module.css";
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 export default function LeadFormDialog({ isOpen, onClose, dialogType }) {
   const [showCalculator, setShowCalculator] = useState(false);
@@ -18,22 +19,17 @@ export default function LeadFormDialog({ isOpen, onClose, dialogType }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        "https://integration.pqa.salesmax.ai/salesmax/leads?token=gNAmGSQc15N9Nn4yZwiE4A",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ ...formData, pageUrl: window.location.href }),
-        }
-      );
+      const response = await submitToZiroCrm({
+        ...formData,
+        pageUrl: window.location.href,
+        formType: dialogType === "calculator" ? "Stipend Calculator Lead" : "Stipend Lead Form",
+      });
 
       if (response.ok) {
         if (dialogType === "calculator") setShowCalculator(true);
-        console.log("Form submitted successfully");
+        console.log("Form submitted successfully to Ziro Digital CRM");
       } else {
-        console.error("Failed to submit form");
+        console.error("Failed to submit form to Ziro Digital CRM");
       }
     } catch (error) {
       console.error("Error submitting form:", error);

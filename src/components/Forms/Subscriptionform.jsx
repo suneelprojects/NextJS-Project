@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import React, { useState } from "react";
 import styles from "@/app/scholarship-test/PopUpForm.module.css";
 import Loading from "@/components/reusedComponents/Loading";
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 const Subscriptionform = ({ onClose }) => {
   const { userType } = useParams();
@@ -71,9 +72,6 @@ const Subscriptionform = ({ onClose }) => {
   const scriptURL =
     "https://script.google.com/macros/s/AKfycbwegwRjGZJzUglDDlHIDHnuLry6gOEUSi_Y7AsCrvMsqaEnoONZSD0m3c4gvMz2fyMubg/exec";
 
-  const crmURL =
-    "https://integration.pqa.salesmax.ai/salesmax/leads?token=TOQQ8j5yq9kf26BrNYlYAA";
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
@@ -110,24 +108,18 @@ const Subscriptionform = ({ onClose }) => {
         body: encoded,
       });
 
-      await fetch(crmURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          education: formData.education,
-          yearOfPassing: formData.yearOfPassing,
-          selectedCourses: formData.selectedCourses.join(", "),
-          trainingMode: formData.trainingMode,
-          userType: formData.userType,
-          form_type: "Subscription Page Form",
-          page_url: window.location.href,
-          timestamp: new Date().toISOString(),
-        }),
+      // Submit to Ziro Digital CRM (same service as ZiroChatWidget)
+      await submitToZiroCrm({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        education: formData.education,
+        yearOfPassing: formData.yearOfPassing,
+        selectedCourses: formData.selectedCourses.join(", "),
+        trainingMode: formData.trainingMode,
+        userType: formData.userType,
+        form_type: "Subscription Page Form",
+        page_url: window.location.href,
       });
 
       alert("Form submitted successfully!");

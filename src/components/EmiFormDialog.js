@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import styles from "@/app/scholarship-test/PopUpForm.module.css";
 import StipendCalculator from "@/components/StipendCalculator";
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 export default function EmiFormDialog({ isOpen, onClose }) {
     const [showCalculator, setShowCalculator] = useState(false);
@@ -23,19 +24,14 @@ export default function EmiFormDialog({ isOpen, onClose }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(
-                "https://integration.pqa.salesmax.ai/salesmax/leads?token=dUi0kkBphtCG78rBsKr3Fg",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ ...formData, pageUrl: window.location.href }),
-                }
-            );
+            const response = await submitToZiroCrm({
+                ...formData,
+                pageUrl: window.location.href,
+                formType: "Easy EMI Guide Form",
+            });
 
             if (response.ok) {
-                console.log("Form submitted successfully");
+                console.log("Form submitted successfully to Ziro Digital CRM");
                 // Trigger PDF download
                 const link = document.createElement('a');
                 link.href = '/curriculum_pdfs/Easy-EMI-Guide-Career-Programs.pdf';

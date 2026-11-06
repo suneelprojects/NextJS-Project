@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { X } from "lucide-react";
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 const APPS_SCRIPT_URL = typeof window !== 'undefined'
   ? (process.env.NEXT_PUBLIC_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/REPLACE_WITH_YOUR_DEPLOYED_ID/exec')
@@ -65,7 +66,7 @@ const DataAnalyticsForm = ({ isPopup = false, onClose, heading = "Apply for Data
         detail: { yearOfGraduation: formData.yearOfGraduation }
       }));
 
-      const [appsResult, localResult] = await Promise.allSettled([
+      const [appsResult, ziroResult] = await Promise.allSettled([
         fetch(APPS_PROXY, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -74,10 +75,15 @@ const DataAnalyticsForm = ({ isPopup = false, onClose, heading = "Apply for Data
             ...formData
           })
         }),
-        fetch('/api/data-analytics-lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
+        submitToZiroCrm({
+          name: formData.fullName,
+          phone: formData.mobile,
+          email: formData.email,
+          yearOfGraduation: formData.yearOfGraduation,
+          collegeName: formData.collegeName,
+          course_interest: "Data Analytics",
+          formType: "Data Analytics Course Enrollment",
+          pageUrl: window.location.href,
         })
       ]);
 
@@ -88,14 +94,14 @@ const DataAnalyticsForm = ({ isPopup = false, onClose, heading = "Apply for Data
         console.warn('Forward to Apps Script failed:', appsResult.reason);
       }
 
-      let localOk = false;
-      if (localResult.status === 'fulfilled') {
-        localOk = localResult.value.ok;
+      let ziroOk = false;
+      if (ziroResult.status === 'fulfilled') {
+        ziroOk = ziroResult.value.ok;
       } else {
-        console.warn('Local API call failed:', localResult.reason);
+        console.warn('Ziro CRM call failed:', ziroResult.reason);
       }
 
-      if (appsOk || localOk) {
+      if (appsOk || ziroOk) {
         alert("Application Submitted! Thanks! Our team will contact you within 24 hours.");
         setFormData({
           fullName: "",

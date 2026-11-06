@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Calendar, IndianRupee, X } from "lucide-react";
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 const BATCH_START_DATE = new Date(2026, 9, 12);
 const BATCH_INTERVAL_DAYS = 15;
@@ -63,23 +64,18 @@ export default function Page() {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        "https://integration.pqa.salesmax.ai/salesmax/leads?token=gNAmGSQc15N9Nn4yZwiE4A",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ ...formData, pageUrl: window.location.href }),
-        }
-      );
+      const response = await submitToZiroCrm({
+        ...formData,
+        pageUrl: window.location.href,
+        formType: "Unlock Program Pricing Form",
+      });
 
       if (response.ok) {
         setIsDialogOpen(false);
         setPriceUnlocked(true);
-        console.log("Form submitted successfully");
+        console.log("Form submitted successfully to Ziro Digital CRM");
       } else {
-        console.error("Failed to submit form");
+        console.error("Failed to submit form to Ziro Digital CRM");
       }
     } catch (error) {
       console.error("Error submitting form:", error);

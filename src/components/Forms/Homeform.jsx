@@ -5,12 +5,10 @@ import React, { useState } from "react";
 import EnrollDetailsStyle from "@/components/Homepage/EnrollDetails/enrollDetails.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { submitToZiroCrm } from "@/utils/ziroCrm";
 
 const scriptURL =
   "https://script.google.com/macros/s/AKfycbzBa_V52xpcsc3MHL82mxzx86LqJVyEgBUvc-Hvr-hdjdQMCRUeqhyYvn6_F9YDcfZn/exec";
-
-const crmTokenURL =
-  "https://integration.pqa.salesmax.ai/salesmax/leads?token=-oqrRFlaxrGX5ZmwLjUt2Q";
 
 const Homeform = ({ sheetName }) => {
   const [formData, setFormData] = useState({
@@ -98,22 +96,15 @@ const Homeform = ({ sheetName }) => {
         body: payload,
       });
 
-      // Submit to SalesMax CRM
-      await fetch(crmTokenURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fullName: Name,
-          email: Email,
-          phone: Phone,
-          course: Course,
-          subCourse: SubCourse,
-          pageUrl: window.location.href,
-          formType: "Home Page Enroll Leads",
-          timestamp: new Date().toISOString(),
-        }),
+      // Submit to Ziro Digital CRM (same service as ZiroChatWidget)
+      await submitToZiroCrm({
+        name: Name,
+        email: Email,
+        phone: Phone,
+        course_interest: Course,
+        subCourse: SubCourse,
+        pageUrl: window.location.href,
+        formType: "Home Page Enroll Leads",
       });
 
       toast.success("✅ Form submitted successfully!");
