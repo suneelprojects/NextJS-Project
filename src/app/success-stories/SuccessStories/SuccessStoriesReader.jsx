@@ -38,9 +38,11 @@ import rp25 from '@/assets/recent-placements/recent-placemnts-aug.jpg';
 import rp26 from '@/assets/recent-placements/recent-placemnts-aug2.jpg';
 import rp27 from '@/assets/recent-placements/recent-placemnts-aug3.jpg';
 import rp28 from '@/assets/recent-placements/recent-placemnts-aug4.jpg';
+import rp29 from '@/assets/recent-placements/ac1.jpg';
+import rp30 from '@/assets/recent-placements/ac2.jpg';
 
 const placementImages = [
-  rp28, rp27, rp26, rp25, rp1, rp18, rp2, rp19, rp3, rp20, rp4, rp21, rp5, rp22, rp6, rp23, rp7, rp24, rp8, rp18, rp9, rp10, rp19, rp11, rp20, rp12, rp13, rp22, rp14, rp15, rp16, rp24, rp17
+  rp30, rp29, rp28, rp27, rp26, rp25, rp1, rp18, rp2, rp19, rp3, rp20, rp4, rp21, rp5, rp22, rp6, rp23, rp7, rp24, rp8, rp18, rp9, rp10, rp19, rp11, rp20,(rp12),(rp13),(rp22),(rp14),(rp15),(rp16),(rp24),(rp17)
 ];
 
 const SuccessStoriesReader = () => {
